@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="bg-foreground text-background pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div>
             <div className="font-black text-2xl tracking-tighter mb-4">
               <span className="italic">Chico</span>
