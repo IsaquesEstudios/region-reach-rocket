@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicosPinturaRouteImport } from './routes/servicos.pintura'
 import { Route as ServicosSlugRouteImport } from './routes/servicos.$slug'
 import { Route as ServicosPinturaIndexRouteImport } from './routes/servicos.pintura.index'
 import { Route as ServicosPinturaPinturaSlugRouteImport } from './routes/servicos.pintura.$pinturaSlug'
@@ -37,21 +38,26 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicosPinturaRoute = ServicosPinturaRouteImport.update({
+  id: '/pintura',
+  path: '/pintura',
+  getParentRoute: () => ServicosRoute,
+} as any)
 const ServicosSlugRoute = ServicosSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => ServicosRoute,
 } as any)
 const ServicosPinturaIndexRoute = ServicosPinturaIndexRouteImport.update({
-  id: '/pintura/',
-  path: '/pintura/',
-  getParentRoute: () => ServicosRoute,
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicosPinturaRoute,
 } as any)
 const ServicosPinturaPinturaSlugRoute =
   ServicosPinturaPinturaSlugRouteImport.update({
-    id: '/pintura/$pinturaSlug',
-    path: '/pintura/$pinturaSlug',
-    getParentRoute: () => ServicosRoute,
+    id: '/$pinturaSlug',
+    path: '/$pinturaSlug',
+    getParentRoute: () => ServicosPinturaRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicos/$slug': typeof ServicosSlugRoute
+  '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/pintura/': typeof ServicosPinturaIndexRoute
 }
@@ -79,6 +86,7 @@ export interface FileRoutesById {
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicos/$slug': typeof ServicosSlugRoute
+  '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/pintura/': typeof ServicosPinturaIndexRoute
 }
@@ -90,6 +98,7 @@ export interface FileRouteTypes {
     | '/servicos'
     | '/sitemap.xml'
     | '/servicos/$slug'
+    | '/servicos/pintura'
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/pintura/'
   fileRoutesByTo: FileRoutesByTo
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/servicos'
     | '/sitemap.xml'
     | '/servicos/$slug'
+    | '/servicos/pintura'
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/pintura/'
   fileRoutesById: FileRoutesById
@@ -149,6 +159,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/servicos/pintura': {
+      id: '/servicos/pintura'
+      path: '/pintura'
+      fullPath: '/servicos/pintura'
+      preLoaderRoute: typeof ServicosPinturaRouteImport
+      parentRoute: typeof ServicosRoute
+    }
     '/servicos/$slug': {
       id: '/servicos/$slug'
       path: '/$slug'
@@ -158,31 +175,43 @@ declare module '@tanstack/react-router' {
     }
     '/servicos/pintura/': {
       id: '/servicos/pintura/'
-      path: '/pintura'
+      path: '/'
       fullPath: '/servicos/pintura/'
       preLoaderRoute: typeof ServicosPinturaIndexRouteImport
-      parentRoute: typeof ServicosRoute
+      parentRoute: typeof ServicosPinturaRoute
     }
     '/servicos/pintura/$pinturaSlug': {
       id: '/servicos/pintura/$pinturaSlug'
-      path: '/pintura/$pinturaSlug'
+      path: '/$pinturaSlug'
       fullPath: '/servicos/pintura/$pinturaSlug'
       preLoaderRoute: typeof ServicosPinturaPinturaSlugRouteImport
-      parentRoute: typeof ServicosRoute
+      parentRoute: typeof ServicosPinturaRoute
     }
   }
 }
 
-interface ServicosRouteChildren {
-  ServicosSlugRoute: typeof ServicosSlugRoute
+interface ServicosPinturaRouteChildren {
   ServicosPinturaPinturaSlugRoute: typeof ServicosPinturaPinturaSlugRoute
   ServicosPinturaIndexRoute: typeof ServicosPinturaIndexRoute
 }
 
-const ServicosRouteChildren: ServicosRouteChildren = {
-  ServicosSlugRoute: ServicosSlugRoute,
+const ServicosPinturaRouteChildren: ServicosPinturaRouteChildren = {
   ServicosPinturaPinturaSlugRoute: ServicosPinturaPinturaSlugRoute,
   ServicosPinturaIndexRoute: ServicosPinturaIndexRoute,
+}
+
+const ServicosPinturaRouteWithChildren = ServicosPinturaRoute._addFileChildren(
+  ServicosPinturaRouteChildren,
+)
+
+interface ServicosRouteChildren {
+  ServicosSlugRoute: typeof ServicosSlugRoute
+  ServicosPinturaRoute: typeof ServicosPinturaRouteWithChildren
+}
+
+const ServicosRouteChildren: ServicosRouteChildren = {
+  ServicosSlugRoute: ServicosSlugRoute,
+  ServicosPinturaRoute: ServicosPinturaRouteWithChildren,
 }
 
 const ServicosRouteWithChildren = ServicosRoute._addFileChildren(
