@@ -1,116 +1,137 @@
+## Objetivo
 
-# Plano — Site Chico Resolve (V1)
+Transformar a página única `/servicos/pintura` em um hub com 6 sub-páginas, cada uma otimizada para um cluster de palavras-chave fornecido, aplicando boas práticas de E-E-A-T, GEO (SEO local Fortaleza/CE) e SEO on-page.
 
-Site institucional SEO-otimizado para manutenção predial em Fortaleza/CE, em português, seguindo as estratégias do documento `PROMPT_LOVABLE_ChicoResolve.md` (V1 enxuto: Home + 8 serviços + Contato).
-
-## Direção de Design
-
-Vou usar a direção **Engineering Blueprint** (verde profundo `#064e3b` + acento `#10b981`, tipografia Inter + JetBrains Mono, layout com bordas finas, blocos modulares, índices numerados `01/`, estética de manual de engenharia). Justificativa: é a mais distintiva e técnica das três, e comunica "engenharia séria de manutenção" — não "marketplace de pedreiro" — alinhada com o tom premium do briefing.
-
-## Arquitetura de Rotas (TanStack Start)
+## Nova arquitetura de rotas
 
 ```
 src/routes/
-  __root.tsx                       layout: nav + footer + JSON-LD Organization
-  index.tsx                        / — Homepage
-  contato.tsx                      /contato
-  servicos.tsx                     /servicos — hub
-  servicos.pintura.tsx             /servicos/pintura
-  servicos.eletrica.tsx            /servicos/eletrica
-  servicos.hidraulica.tsx          /servicos/hidraulica
-  servicos.drywall.tsx             /servicos/drywall
-  servicos.juntas-dilatacao.tsx    /servicos/juntas-dilatacao
-  servicos.seguranca.tsx           /servicos/seguranca
-  servicos.reformas.tsx            /servicos/reformas
-  servicos.manutencao.tsx          /servicos/manutencao
-  sitemap[.]xml.ts                 /sitemap.xml gerado
+  servicos.pintura.tsx                              /servicos/pintura            (hub — "empresa de pintura")
+  servicos.pintura.piso-concreto.tsx                /servicos/pintura/piso-concreto
+  servicos.pintura.residencial.tsx                  /servicos/pintura/residencial
+  servicos.pintura.apartamento.tsx                  /servicos/pintura/apartamento
+  servicos.pintura.industrial.tsx                   /servicos/pintura/industrial
+  servicos.pintura.quadra-poliesportiva.tsx         /servicos/pintura/quadra-poliesportiva
 ```
 
-Cada rota tem seu próprio `head()` com `title`, `description`, `og:title`, `og:description`, `og:url` e `canonical` específicos (não duplicar canonical no root).
+A rota dinâmica atual `servicos.$slug.tsx` continua atendendo os outros 7 serviços (elétrica, hidráulica, etc.). Para evitar conflito com `pintura`, o arquivo `servicos.pintura.tsx` (estático) tem prioridade no roteador e vira o hub. Os 6 slugs do `site.ts` referentes a pintura serão removidos do array dinâmico (somente `pintura` continua linkável a partir do grid de serviços principal).
 
-## SEO Técnico
+## Mapeamento palavra-chave → página
 
-- **Meta tags por rota** seguindo as palavras-chave prioritárias do briefing (ex.: `/servicos/pintura` → "Pintura Profissional Residencial e Comercial | Fortaleza").
-- **JSON-LD** via `head().scripts`:
-  - `__root.tsx`: `Organization` + `LocalBusiness` (endereço placeholder, telefone, área Fortaleza, serviceType).
-  - Cada página de serviço: `Service` + `BreadcrumbList`.
-- **`public/robots.txt`**: `User-agent: * / Allow: /` (sem `Sitemap:` até haver domínio).
-- **`src/routes/sitemap[.]xml.ts`**: lista as 10 rotas com `BASE_URL=""` (TODO).
-- **Acessibilidade**: H1 único por página, alt em todas as imagens, contraste AA, semântica (`<nav>`, `<main>`, `<footer>`, `<section>`).
+| Rota | H1 (keyword principal) | Keywords secundárias no corpo |
+|---|---|---|
+| `/servicos/pintura` (hub) | Empresa de Pintura em Fortaleza | pintura predial, pintura de fachada predial, pintura de fachada, empresa de pintura de fachada, pintura de piso epóxi |
+| `/servicos/pintura/piso-concreto` | Pintura para Piso de Concreto | pintura de piso, pintar piso |
+| `/servicos/pintura/residencial` | Pintura Residencial em Fortaleza | empresa de pintura residencial, serviço de pintura residencial, pintura de casa, pintura de parede, pintor de casa, orçamento de pintura residencial, pinturas residenciais e comerciais |
+| `/servicos/pintura/apartamento` | Pintura de Apartamento em Fortaleza | empresa pintura predial, contratar pintor, serviços de pinturas em geral |
+| `/servicos/pintura/industrial` | Pintura Industrial em Fortaleza | contratar pintor, pintura de parede, pintor profissional, empresa de pintura industrial |
+| `/servicos/pintura/quadra-poliesportiva` | Pintura de Quadra Poliesportiva | contratar pintor, pintura de piso esportivo |
 
-## Estrutura da Homepage
+## Estrutura padrão de cada sub-página (E-E-A-T + GEO + SEO)
 
-1. Hero — headline + 2 CTAs (visita técnica + WhatsApp) + imagem
-2. 4 pilares (Rigor Técnico / 100% Prazos / NR10-NR35 / Tecnologia)
-3. Grid 4×2 de 8 serviços com links para páginas internas
-4. 4 segmentos atendidos (Construtoras / Arquitetos / Indústrias / Condomínios)
-5. Faixa de estatísticas (98% / 100% / 0 / 500+) — **marcadas como placeholders editáveis**
-6. 3 depoimentos (placeholders com nomes genéricos)
-7. CTA final verde + telefone + WhatsApp + email
-8. Footer completo
+Conteúdo por página (~600–900 palavras, único, sem duplicação entre páginas):
 
-## Páginas de Serviço (padrão repetível)
+1. **H1** com a keyword principal + "Fortaleza/CE" quando geo-relevante.
+2. **Intro autoral (Experience)**: parágrafo que cita execução em Fortaleza, anos de atuação, exemplo de tipologia atendida (ex.: "edifícios residenciais na Aldeota, galpões na BR-116").
+3. **Bloco "Quando contratar"** — sintomas/situações que demandam o serviço (gera long-tail e ajuda intent).
+4. **Tipos/Técnicas** — 3 a 5 cards (texturas, epóxi, látex PVA, acrílico, demarcação esportiva conforme o caso) usando as keywords secundárias naturalmente.
+5. **Processo numerado** com 5 passos (vistoria → preparação → aplicação → controle → entrega) — mostra **Expertise**.
+6. **Normas e segurança (Authoritativeness)**: NR-35 (trabalho em altura), NR-6 (EPI), NBR 13245 (pintura de edificações), responsável técnico, ART quando aplicável.
+7. **Sinais de Trust**: garantia escrita, ART/laudo, equipe própria CLT, seguro, antes/depois.
+8. **GEO local**: menção a bairros/regiões atendidos (Fortaleza, Aquiraz, Caucaia, Eusébio, RMF), clima litorâneo (maresia → tintas e primers específicos).
+9. **FAQ com 4–5 perguntas** específicas da página (cada página com perguntas distintas) → JSON-LD `FAQPage`.
+10. **Links internos contextuais** para 2–3 sub-páginas irmãs + página de contato.
+11. **Formulário lateral `QuoteForm`** + CTA WhatsApp pré-preenchido com o serviço.
 
-H1 com keyword + introdução (~150 palavras) → tipos/sub-serviços → processo numerado → galeria 3 imagens → benefícios → FAQ (3-4 perguntas) → formulário lateral de orçamento → CTA WhatsApp. Cada página linka internamente para 2-3 outros serviços.
+## SEO técnico por página
 
-## Componentes Compartilhados
+Em cada `head()`:
+- `<title>` ≤ 60 chars, com keyword + "Fortaleza" + marca.
+- `<meta description>` ≤ 155 chars, com keyword principal + diferencial + CTA.
+- `og:title`, `og:description`, `og:url`, `og:type=article`, `og:image` (imagem do serviço).
+- `<link rel="canonical">` apontando para a própria rota (relativo).
+- JSON-LD `Service` (provider = LocalBusiness Chico Resolve, areaServed = Fortaleza, serviceType específico).
+- JSON-LD `BreadcrumbList` (Home → Serviços → Pintura → Subpágina).
+- JSON-LD `FAQPage` montado a partir do FAQ da página.
 
+No hub `/servicos/pintura`:
+- JSON-LD `Service` com `hasOfferCatalog` listando as 5 sub-categorias como `OfferCatalog` → melhora compreensão semântica (GEO/AI search).
+
+## Modelo de dados
+
+Em `src/lib/site.ts`, adicionar:
+
+```ts
+export type PinturaSlug =
+  | "piso-concreto" | "residencial" | "apartamento"
+  | "industrial" | "quadra-poliesportiva";
+
+export const pinturaSubservices: Array<{
+  slug: PinturaSlug;
+  code: string;                 // "P-01" … "P-05"
+  h1: string;
+  shortTitle: string;
+  metaTitle: string;
+  metaDescription: string;
+  summary: string;
+  keywords: string[];           // para uso interno/meta
+  intro: string;                // ~150 palavras
+  whenToHire: string[];
+  types: { title: string; text: string }[];
+  process: { title: string; text: string }[];
+  standards: string[];          // NRs / NBRs aplicáveis
+  trust: string[];
+  geo: string;                  // parágrafo GEO
+  faq: { q: string; a: string }[];
+  related: PinturaSlug[];       // 2–3 irmãs
+}> = [ ... ]
 ```
-src/components/
-  site/Header.tsx       nav sticky + CTA "Agendar Visita" + dropdown Serviços
-  site/Footer.tsx       4 colunas: marca, serviços, segmentos, contato
-  site/Hero.tsx
-  site/ServiceCard.tsx
-  site/StatsBar.tsx
-  site/Testimonials.tsx
-  site/CtaBanner.tsx
-  site/QuoteForm.tsx    formulário de orçamento (envia para WhatsApp via wa.me)
-  site/WhatsAppFab.tsx  botão flutuante mobile
-  site/SeoJsonLd.tsx    helper (na verdade injetado via head().scripts)
-```
 
-## Identidade Visual
+O hub continua usando `serviceContent.pintura` (atual), reescrito para focar em "empresa de pintura" + fachada + epóxi e linkar para as 5 sub-páginas.
 
-Tokens em `src/styles.css` (oklch):
-- `--primary` ≈ verde `#064e3b`
-- `--accent` ≈ `#10b981` (verde vibrante para CTAs)
-- `--background` branco off-white, `--foreground` quase preto
-- Fontes: Inter (body) + JetBrains Mono (labels/numerais) via Google Fonts
+## Componente compartilhado
 
-## Assets Gerados (IA)
+Criar `src/components/site/PinturaSubPage.tsx` (variação enxuta de `ServicePage.tsx`):
+- Breadcrumb com 4 níveis (Home / Serviços / Pintura / Subpágina).
+- Renderiza todas as seções listadas acima a partir de uma entrada do `pinturaSubservices`.
+- Reusa `QuoteForm` e link WhatsApp existentes.
 
-- `src/assets/logo-chico-resolve.png` — wordmark "ChicoResolve" verde+preto, fundo transparente
-- `src/assets/hero-fachada.jpg` — fachada predial moderna em Fortaleza com profissional trabalhando
-- 8× `src/assets/servico-{slug}.jpg` — uma imagem por serviço (pintura, elétrica, etc.)
-- `src/assets/og-default.jpg` — 1200×630 para Open Graph da home
+## Atualizações de navegação e descoberta
 
-Todas as imagens com `loading="lazy"` exceto hero LCP.
+- `Header.tsx`: no dropdown "Serviços", abaixo de "Pintura" listar as 5 sub-categorias.
+- `Footer.tsx`: na coluna de serviços, adicionar as 5 sub-páginas sob Pintura.
+- `ServicesGrid.tsx` (home): card "Pintura" continua apontando para o hub.
+- `src/routes/servicos.tsx` (índice): incluir bloco "Especialidades em Pintura" listando as 5 sub-páginas.
+- `sitemap[.]xml.ts`: incluir as 5 novas URLs.
+- Hub `/servicos/pintura`: nova seção "Especialidades" com 5 cards linkando às sub-páginas (boost de interlinking).
 
-## Contato / WhatsApp
+## Imagens
 
-- Botão WhatsApp → `https://wa.me/5586981547477?text=Olá! Gostaria de um orçamento`
-- Telefone clicável `tel:+5586981547477`
-- Formulário em `/contato` faz `mailto:` ou abre WhatsApp pré-preenchido (sem backend nesta V1 — Lovable Cloud pode ser adicionado depois se quiser receber leads por email)
+Gerar 5 novas imagens (1 por sub-página) em `src/assets/`:
+- `pintura-piso-concreto.jpg` — piso industrial com epóxi sendo aplicado.
+- `pintura-residencial.jpg` — sala residencial pintada, pintor com rolo.
+- `pintura-apartamento.jpg` — apartamento moderno, parede acabada.
+- `pintura-industrial.jpg` — galpão industrial, pintura estrutural.
+- `pintura-quadra-poliesportiva.jpg` — quadra poliesportiva com demarcação nova.
 
-## Detalhes Técnicos
+A imagem atual `servico-pintura.jpg` permanece no hub.
 
-- Stack já existente: TanStack Start v1 + React 19 + Tailwind v4
-- Sem Cloud/backend nesta V1 (formulário usa `wa.me` e `mailto:`)
-- Substituir o placeholder em `src/routes/index.tsx` pela homepage real
-- Adicionar `<Outlet />` ao `__root.tsx` (já existe) e wrapping com Header/Footer
-- Animações sutis com Tailwind (`animate-*`, transitions) — sem libs extras
+Cada `<img>` com `alt` descritivo contendo a keyword principal + "Fortaleza" e `loading="eager"` apenas no LCP da página.
 
-## Conteúdo Marcado como Placeholder
+## Conteúdo placeholder
 
-Conforme combinado: estatísticas (98%/100%/500+), depoimentos, endereço e email serão preenchidos com exemplos genéricos e comentados no código com `{/* TODO: substituir com dado real */}` para você editar depois.
+Como combinado na V1: depoimentos e números seguem como placeholders. Endereço/bairros citados ficam como exemplos plausíveis em Fortaleza, marcados com `{/* TODO: confirmar bairros atendidos */}`.
 
-## Fora do escopo desta V1
+## Fora deste escopo
 
-Páginas de Soluções por segmento, Blog, FAQ dedicada, Portfólio, integração Google Analytics, sistema de contato com backend. Tudo isso pode entrar em V2 depois.
+- Não criar sub-páginas para os outros 7 serviços (somente pintura conforme pedido).
+- Sem backend / sem captura de leads (continua WhatsApp + mailto).
+- Sem alteração de design system, fontes ou paleta.
 
-## Critério de "pronto"
+## Critério de pronto
 
-- 10 rotas navegáveis, todas com `head()` único
-- Sitemap.xml e robots.txt servindo
-- JSON-LD `LocalBusiness` + `Service` validável
-- Build sem erros, mobile responsivo, lighthouse mobile ≥ 90
+- 5 novas rotas navegáveis + hub `/servicos/pintura` reescrito.
+- Cada rota com `<title>`, meta description, canonical, JSON-LD Service + Breadcrumb + FAQPage únicos.
+- H1 único por página com a keyword exata fornecida.
+- Sitemap atualizado, Header/Footer/Hub linkando as 5 páginas.
+- Build limpo, sem duplicação de conteúdo entre páginas.

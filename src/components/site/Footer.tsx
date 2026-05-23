@@ -1,12 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Phone, Mail, MapPin } from "lucide-react";
-import { services, site, whatsappLink } from "@/lib/site";
+import { pinturaSubservices, services, site, whatsappLink } from "@/lib/site";
 
 export function Footer() {
   return (
     <footer className="bg-foreground text-background pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div>
             <div className="font-black text-2xl tracking-tighter mb-4">
               <span className="italic">Chico</span>
@@ -31,13 +31,35 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm text-background/70">
               {services.slice(0, 6).map((s) => (
                 <li key={s.slug}>
-                  <Link to="/servicos/$slug" params={{ slug: s.slug }} className="hover:text-background transition-colors">
+                  <Link
+                    to={s.slug === "pintura" ? "/servicos/pintura" : "/servicos/$slug"}
+                    params={s.slug === "pintura" ? undefined : { slug: s.slug }}
+                    className="hover:text-background transition-colors"
+                  >
                     {s.shortTitle}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+
+          <div>
+            <h2 className="font-bold uppercase text-xs tracking-widest text-accent mb-5">Pintura</h2>
+            <ul className="space-y-2.5 text-sm text-background/70">
+              {pinturaSubservices.map((p) => (
+                <li key={p.slug}>
+                  <Link
+                    to="/servicos/pintura/$pinturaSlug"
+                    params={{ pinturaSlug: p.slug }}
+                    className="hover:text-background transition-colors"
+                  >
+                    {p.shortTitle}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
 
           <div>
             <h2 className="font-bold uppercase text-xs tracking-widest text-accent mb-5">Segmentos</h2>

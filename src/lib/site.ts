@@ -326,3 +326,310 @@ export const serviceContent: Record<ServiceSlug, ServiceContent> = {
     ],
   },
 };
+
+// ============================================================================
+// Pintura: hub + sub-páginas otimizadas para clusters de palavras-chave.
+// Cada sub-página tem H1 = keyword principal + conteúdo único focado em E-E-A-T,
+// GEO local Fortaleza/CE e SEO técnico (Service + Breadcrumb + FAQPage JSON-LD).
+// ============================================================================
+
+export type PinturaSlug =
+  | "piso-concreto"
+  | "residencial"
+  | "apartamento"
+  | "industrial"
+  | "quadra-poliesportiva";
+
+export interface PinturaSubservice {
+  slug: PinturaSlug;
+  code: string;
+  h1: string;
+  shortTitle: string;
+  metaTitle: string;
+  metaDescription: string;
+  summary: string;
+  keywords: string[];
+  intro: string;
+  whenToHire: { title: string; text: string }[];
+  types: { title: string; text: string }[];
+  process: { title: string; text: string }[];
+  standards: string[];
+  trust: string[];
+  geo: string;
+  faq: { q: string; a: string }[];
+  related: PinturaSlug[];
+}
+
+export const pinturaSubservices: PinturaSubservice[] = [
+  {
+    slug: "piso-concreto",
+    code: "PN-01",
+    h1: "Pintura para Piso de Concreto",
+    shortTitle: "Piso de Concreto",
+    metaTitle: "Pintura para Piso de Concreto em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Pintura de piso de concreto em Fortaleza com tinta epóxi e acrílica de alto tráfego. Preparação técnica, antiderrapante e garantia. Solicite orçamento.",
+    summary:
+      "Pintura de piso de concreto com epóxi e acrílico para garagens, galpões, oficinas e áreas técnicas.",
+    keywords: ["pintura de piso", "pintar piso", "pintura piso concreto", "tinta epóxi para piso"],
+    intro:
+      "Pintar piso de concreto exige muito mais do que aplicar tinta sobre a superfície. Na Chico Resolve executamos pintura de piso em galpões, garagens de condomínios, oficinas, áreas de serviço e laboratórios em toda Fortaleza e região metropolitana. Cada projeto começa com diagnóstico de umidade, abertura de poros, correção de fissuras e seleção da tinta certa — epóxi, poliuretano ou acrílico de alto tráfego — para que o piso resista a impacto, óleos, lavagem constante e o clima litorâneo do Ceará.",
+    whenToHire: [
+      { title: "Garagem desgastada", text: "Concreto poroso liberando pó, manchas de óleo e marcas de pneus." },
+      { title: "Galpão industrial", text: "Necessidade de demarcação de áreas, sinalização e resistência química." },
+      { title: "Pós-obra", text: "Piso novo de contrapiso que precisa selar e ganhar acabamento técnico." },
+    ],
+    types: [
+      { title: "Pintura Epóxi", text: "Tinta epóxi bicomponente autonivelante para alto tráfego e resistência química. Ideal para pintar piso de oficinas e indústrias." },
+      { title: "Acrílico de Alto Tráfego", text: "Pintura de piso acrílica para garagens de condomínios e áreas externas, com secagem rápida." },
+      { title: "Antiderrapante", text: "Adição de carga mineral para rampas, áreas molhadas e escadas." },
+      { title: "Demarcação Viária", text: "Faixas amarelas, vagas, setas e sinalização de segurança conforme NR-12." },
+    ],
+    process: [
+      { title: "Diagnóstico do Substrato", text: "Medição de umidade, identificação de fissuras, contaminação por óleo e teste de aderência." },
+      { title: "Preparação Mecânica", text: "Lixamento com diamantadora ou jateamento para abrir o poro do concreto." },
+      { title: "Tratamento e Primer", text: "Correção de buracos, aplicação de primer epóxi penetrante para selar a superfície." },
+      { title: "Aplicação Técnica", text: "Duas a três demãos da tinta especificada com rolo, trincha ou rodo dentado." },
+      { title: "Cura e Entrega", text: "Liberação para tráfego leve em 24h e tráfego pesado em 7 dias, com termo de garantia." },
+    ],
+    standards: ["NBR 14050 (sistemas epóxi)", "NR-18 (segurança em obras)", "NR-6 (EPI)", "FDS dos produtos aplicados"],
+    trust: [
+      "Garantia contratual de 24 a 60 meses conforme o sistema aplicado",
+      "Equipe própria CLT treinada em aplicação de epóxi",
+      "Relatório fotográfico de cada etapa do serviço",
+      "Tintas de marcas homologadas (Sherwin-Williams, WEG, Eucatex)",
+    ],
+    geo: "Atendemos toda Fortaleza, com obras concluídas em galpões do Distrito Industrial, garagens de condomínios na Aldeota, Meireles e Cocó, e áreas técnicas em Eusébio, Maracanaú e Caucaia. Trabalhamos com sistemas resistentes à maresia típica do litoral cearense.",
+    faq: [
+      { q: "Quanto custa pintar piso de concreto em Fortaleza?", a: "O valor depende do sistema (acrílico, epóxi ou poliuretano) e da metragem. Pintura acrílica parte de R$ 35/m² e epóxi autonivelante a partir de R$ 95/m². Fazemos visita técnica gratuita para orçamento exato." },
+      { q: "Preciso esperar o concreto curar antes de pintar?", a: "Sim. Concretos novos precisam de no mínimo 28 dias de cura, e o teste de umidade deve indicar abaixo de 4% antes da aplicação de epóxi." },
+      { q: "A tinta epóxi resiste a óleo e produtos químicos?", a: "Sim. Os sistemas epóxi que usamos são resistentes a óleos, graxas, detergentes e a maioria dos solventes industriais." },
+      { q: "Qual a durabilidade da pintura de piso?", a: "Em uso comercial moderado, de 5 a 10 anos. Em áreas industriais de tráfego pesado, 3 a 6 anos com manutenção." },
+      { q: "Vocês fazem antiderrapante para áreas molhadas?", a: "Sim. Adicionamos carga mineral ou microesferas à última demão para garantir aderência em rampas, vestiários e cozinhas industriais." },
+    ],
+    related: ["industrial", "quadra-poliesportiva", "apartamento"],
+  },
+  {
+    slug: "residencial",
+    code: "PN-02",
+    h1: "Pintura Residencial em Fortaleza",
+    shortTitle: "Residencial",
+    metaTitle: "Pintura Residencial em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Empresa de pintura residencial em Fortaleza. Pintura de casa, parede e fachada com pintor profissional, orçamento em 24h e garantia formal.",
+    summary:
+      "Empresa de pintura residencial com pintor profissional para casas, apartamentos e coberturas em Fortaleza.",
+    keywords: [
+      "empresa de pintura residencial",
+      "serviço de pintura residencial",
+      "pintura de casa",
+      "pintura de parede",
+      "pintor de casa",
+      "orçamento de pintura residencial",
+      "pinturas residenciais e comerciais",
+    ],
+    intro:
+      "A Chico Resolve é uma empresa de pintura residencial em Fortaleza com equipe própria, CLT e treinamento contínuo. Executamos pintura de casa, pintura de parede interna e externa, repintura de fachada e acabamentos especiais (textura, grafiato, efeito cimento queimado). Nosso serviço de pintura residencial nasceu da experiência atendendo bairros como Aldeota, Meireles, Cocó, Edson Queiroz e Sapiranga — onde umidade do mar, sol forte e poeira exigem preparação rigorosa e tintas certas. Cada pintor de casa da nossa equipe é treinado em técnicas modernas (lixamento, massa corrida, selagem com fundo preparador) para um acabamento durável e sem retoques.",
+    whenToHire: [
+      { title: "Mudou de casa", text: "Antes de instalar móveis, é mais barato e rápido pintar com a casa vazia." },
+      { title: "Parede manchada ou descascando", text: "Sinal de infiltração ou tinta vencida — exige tratamento antes da nova demão." },
+      { title: "Vai vender ou alugar", text: "Pintura nova valoriza o imóvel em 5% a 15% e acelera negociação." },
+      { title: "Reforma parcial", text: "Trocou piso, fez gesso ou drywall — a pintura fecha o serviço com acabamento." },
+    ],
+    types: [
+      { title: "Pintura Interna", text: "Pintura de parede em quartos, salas, cozinha e área de serviço com tintas laváveis e antimofo." },
+      { title: "Pintura Externa de Casa", text: "Pintura de fachada residencial com tinta acrílica premium resistente ao sol e à maresia de Fortaleza." },
+      { title: "Texturas e Efeitos", text: "Grafiato, textura projetada, cimento queimado e efeitos decorativos sob medida." },
+      { title: "Esquadrias e Detalhes", text: "Portas, janelas, batentes, rodapés e portões — esmalte sintético ou base d'água." },
+    ],
+    process: [
+      { title: "Visita Técnica Gratuita", text: "Vistoria do imóvel, levantamento de área, identificação de patologias e proposta no mesmo dia." },
+      { title: "Orçamento de Pintura Residencial em 24h", text: "Orçamento detalhado por ambiente, com material e mão de obra discriminados." },
+      { title: "Proteção e Preparação", text: "Cobrimos móveis e piso, lixamos, aplicamos massa e selador conforme cada parede." },
+      { title: "Aplicação por Demãos", text: "Mínimo de duas demãos com rolo de lã ou pistola, respeitando o tempo de secagem." },
+      { title: "Vistoria e Garantia", text: "Vistoria conjunta com o cliente e termo de garantia formal de 12 a 36 meses." },
+    ],
+    standards: ["NBR 13245 (pintura de edificações)", "NR-35 (trabalho em altura para fachadas)", "NR-6 (EPI)", "Tintas com selo Inmetro"],
+    trust: [
+      "Empresa formalizada com CNPJ — emitimos NF de serviço",
+      "Pintor de casa CLT com treinamento e EPI completo",
+      "Garantia de 12 a 36 meses por escrito",
+      "Antes/depois fotografado em todos os projetos",
+      "Atendimento pelo mesmo profissional do início ao fim",
+    ],
+    geo: "Nosso serviço de pintura residencial atende todos os bairros de Fortaleza — Aldeota, Meireles, Cocó, Papicu, Varjota, Dionísio Torres, Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante, Praia do Futuro — e cidades da região metropolitana como Eusébio, Aquiraz, Caucaia e Maracanaú. Como atendemos pinturas residenciais e comerciais, indicamos a tinta certa para o clima litorâneo: anti-mofo nos ambientes internos e acrílico premium nas fachadas.",
+    faq: [
+      { q: "Quanto custa pintar uma casa em Fortaleza?", a: "Em média R$ 20 a R$ 45 por m² incluindo mão de obra e material básico. O orçamento de pintura residencial varia conforme estado das paredes, número de demãos e tipo de tinta. Fazemos visita gratuita." },
+      { q: "Em quanto tempo vocês entregam a pintura de uma casa de 100 m²?", a: "Uma casa de 100 m² com paredes em bom estado leva de 4 a 6 dias úteis com equipe de 2 pintores." },
+      { q: "Preciso comprar a tinta ou vocês fornecem?", a: "Trabalhamos das duas formas. Se preferir, fornecemos a tinta com desconto de revenda e nota fiscal." },
+      { q: "Vocês fazem pintura sem cheiro forte?", a: "Sim. Trabalhamos com tintas à base de água, classificadas como baixo VOC, ideais para apartamentos habitados e quartos infantis." },
+      { q: "A pintura tem garantia?", a: "Sim. Damos de 12 a 36 meses de garantia por escrito conforme o sistema aplicado, cobrindo descascamento e bolhas em condições normais de uso." },
+    ],
+    related: ["apartamento", "piso-concreto", "industrial"],
+  },
+  {
+    slug: "apartamento",
+    code: "PN-03",
+    h1: "Pintura de Apartamento em Fortaleza",
+    shortTitle: "Apartamento",
+    metaTitle: "Pintura de Apartamento em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Pintura de apartamento em Fortaleza com pintor experiente em condomínios. Empresa pintura predial regularizada, orçamento rápido e horários respeitados.",
+    summary:
+      "Pintura de apartamento com equipe que respeita horário de condomínio, cobertura de mobília e acabamento premium.",
+    keywords: [
+      "pintura de apartamento",
+      "empresa pintura predial",
+      "contratar pintor",
+      "serviços de pinturas em geral",
+    ],
+    intro:
+      "Pintar apartamento envolve desafios que casas não têm: horário restrito de obras, normas do condomínio, elevador de serviço, vizinhos sensíveis a cheiro e ruído. A Chico Resolve é uma empresa pintura predial regularizada que atende edifícios em toda Fortaleza com equipes treinadas para esse contexto. Cuidamos da documentação para o síndico, usamos tintas com baixo odor, protegemos hall, elevador e portaria, e entregamos o apartamento limpo e pronto para morar. Se você precisa contratar pintor com referências e nota fiscal, oferecemos serviços de pinturas em geral — paredes, teto, esquadrias e áreas técnicas.",
+    whenToHire: [
+      { title: "Antes da mudança", text: "Pintar com o apartamento vazio é mais rápido, barato e evita móveis manchados." },
+      { title: "Entrega das chaves", text: "Apartamento novo com defeitos de pintura ou cor padrão da construtora que não agrada." },
+      { title: "Reforma do banheiro/cozinha", text: "Após troca de azulejo, é hora de retocar paredes adjacentes e teto." },
+      { title: "Manchas e infiltração", text: "Identificamos a origem (geralmente vizinho superior) antes de pintar." },
+    ],
+    types: [
+      { title: "Apartamento Vazio", text: "Pintura completa de paredes, tetos, batentes, portas e rodapés com prazo otimizado." },
+      { title: "Apartamento Habitado", text: "Pintura por ambientes com cobertura total de móveis e descarte adequado de resíduos." },
+      { title: "Repintura de Áreas Úmidas", text: "Banheiros, lavanderia e cozinha com tinta antimofo e impermeabilizante." },
+      { title: "Acabamentos Decorativos", text: "Paredes de destaque, papel de parede, microcimento e tinta efeito." },
+    ],
+    process: [
+      { title: "Vistoria com o Síndico", text: "Levantamos a norma do condomínio: horários, uso de elevador, taxa de obra." },
+      { title: "Orçamento Detalhado", text: "Proposta com escopo, prazo, marcas de tinta e forma de pagamento." },
+      { title: "Proteção e Isolamento", text: "Cobertura plástica de móveis, lonas no piso e fita crepe em rodapés e tomadas." },
+      { title: "Execução Silenciosa", text: "Aplicação respeitando horário de descanso (7h-17h ou 8h-18h conforme o prédio)." },
+      { title: "Entrega Limpa", text: "Remoção de resíduos, limpeza fina e vistoria final com o morador." },
+    ],
+    standards: ["Convenção de condomínio do edifício", "NR-35 quando houver fachada", "NR-6 (EPI)", "Tintas baixo VOC para ambientes habitados"],
+    trust: [
+      "Empresa pintura predial com CNPJ e ART quando aplicável",
+      "Documentação completa para entrega ao síndico",
+      "Pintor identificado com uniforme e crachá",
+      "Cobertura de seguro contra danos a terceiros",
+      "Pagamento parcelado em até 6x sem juros",
+    ],
+    geo: "Atendemos edifícios em Fortaleza inteira — incluindo prédios na Beira Mar, Mucuripe, Praia de Iracema, Aldeota, Meireles, Cocó, Guararapes e Dionísio Torres — além de empreendimentos em Eusébio, Aquiraz e Caucaia. Trabalhamos com tintas resistentes à umidade típica de apartamentos próximos ao mar.",
+    faq: [
+      { q: "Quanto custa pintar um apartamento de 70 m² em Fortaleza?", a: "Em média de R$ 2.500 a R$ 5.500 incluindo material e mão de obra, dependendo do estado das paredes e tipo de tinta. Fazemos visita gratuita para orçamento exato." },
+      { q: "Vocês respeitam horário de condomínio?", a: "Sim. Cumprimos rigorosamente o horário definido pelo síndico, geralmente das 8h às 17h em dias úteis." },
+      { q: "Fornecem documentação para a administração?", a: "Sim. Entregamos contrato, ART quando aplicável, lista de colaboradores e ASOs para o síndico autorizar a obra." },
+      { q: "Quanto tempo demora a pintura de um apartamento vazio?", a: "Um apartamento de 2 quartos (70 m²) leva de 3 a 5 dias úteis com equipe de 2 pintores." },
+      { q: "Trabalham com apartamento habitado?", a: "Sim. Pintamos por ambientes, cobrimos os móveis, lixamos com aspirador para conter o pó e usamos tinta sem cheiro." },
+    ],
+    related: ["residencial", "piso-concreto", "industrial"],
+  },
+  {
+    slug: "industrial",
+    code: "PN-04",
+    h1: "Pintura Industrial em Fortaleza",
+    shortTitle: "Industrial",
+    metaTitle: "Pintura Industrial em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Empresa de pintura industrial em Fortaleza: estrutura metálica, galpões, tubulações e pintura de parede com pintor profissional NR-35 e tintas técnicas.",
+    summary:
+      "Empresa de pintura industrial com pintor profissional certificado em NR-35 para galpões, estruturas metálicas e plantas fabris.",
+    keywords: [
+      "pintura industrial",
+      "empresa de pintura industrial",
+      "contratar pintor",
+      "pintura de parede",
+      "pintor profissional",
+    ],
+    intro:
+      "A Chico Resolve é uma empresa de pintura industrial em Fortaleza especializada em estruturas metálicas, galpões logísticos, tubulações, tanques, fachadas industriais e pintura de parede em ambientes fabris. Cada pintor profissional da nossa equipe é treinado em NR-35 (trabalho em altura), NR-18 (canteiro de obras) e capacitado em sistemas anticorrosivos — primer epóxi rico em zinco, intermediário epóxi alta espessura e acabamento poliuretânico. Para quem precisa contratar pintor com domínio técnico de tintas industriais (Jotun, Sherwin-Williams Protective, WEG), oferecemos planejamento, execução com inspeção SSPC e relatório de espessura por ponto.",
+    whenToHire: [
+      { title: "Estrutura metálica enferrujada", text: "Vigas, colunas e cobertura com perda de espessura — exige jateamento e novo sistema." },
+      { title: "Galpão novo", text: "Pintura inicial de proteção antes da entrega para operação." },
+      { title: "Manutenção preventiva", text: "Repintura periódica para preservar ativos e atender auditorias." },
+      { title: "Adequação para certificação", text: "Pintura sinalização, código de cores ABNT e marcações de segurança." },
+    ],
+    types: [
+      { title: "Estruturas Metálicas", text: "Sistema anticorrosivo completo: jateamento, primer rico em zinco, epóxi e acabamento PU." },
+      { title: "Pintura de Galpões", text: "Telhas, paredes, pilares e demarcação de áreas operacionais." },
+      { title: "Pintura de Parede Industrial", text: "Paredes de alvenaria com tinta acrílica de alta resistência à lavagem e fungos." },
+      { title: "Tubulações e Tanques", text: "Código de cores ABNT NBR 6493 para identificação de fluidos e segurança." },
+    ],
+    process: [
+      { title: "Inspeção e Especificação", text: "Avaliação do substrato, medição de espessura existente e definição do sistema." },
+      { title: "Preparação SA 2½", text: "Jateamento abrasivo, escovamento mecânico ou hidrojateamento conforme norma SSPC." },
+      { title: "Aplicação Controlada", text: "Pintura por airless ou pistola convencional respeitando DFT especificado." },
+      { title: "Controle de Qualidade", text: "Medição de espessura úmida e seca, teste de aderência (pull-off) e holiday detector." },
+      { title: "Relatório Técnico", text: "Entrega de dossiê com fotos, certificados de tinta, FDS e termo de garantia." },
+    ],
+    standards: ["NR-35 (trabalho em altura)", "NR-33 (espaço confinado)", "NR-18", "ABNT NBR 6493 (cores de tubulação)", "SSPC-SP10 / Sa 2½", "ART de execução"],
+    trust: [
+      "Empresa de pintura industrial com CNPJ e equipe CLT",
+      "ART de execução com engenheiro responsável",
+      "PCMSO, PPRA e ASOs em dia",
+      "Tintas Jotun, Sherwin-Williams Protective ou WEG",
+      "Garantia formal de 24 a 60 meses conforme sistema",
+    ],
+    geo: "Atendemos o Distrito Industrial de Maracanaú, Pacajus, Horizonte, Eusébio, Pecém e parques industriais ao redor de Fortaleza. Já executamos serviços em galpões logísticos, fábricas têxteis, indústrias alimentícias e plantas de equipamentos metálicos do Ceará — sempre com sistemas calibrados para o ambiente salino do litoral.",
+    faq: [
+      { q: "Vocês fazem jateamento abrasivo?", a: "Sim. Trabalhamos com jateamento SA 2½ ou SA 3 conforme especificação, com equipamentos próprios e descarte regular do abrasivo." },
+      { q: "Emitem ART para pintura industrial?", a: "Sim. Quando a obra exige, emitimos ART de execução assinada por engenheiro responsável." },
+      { q: "Qual a duração de uma pintura industrial?", a: "Sistemas anticorrosivos completos duram de 8 a 15 anos em ambiente C3/C4, com inspeção a cada 24 meses." },
+      { q: "Trabalham em altura e espaço confinado?", a: "Sim. Equipe certificada em NR-35 e NR-33, com PT (permissão de trabalho) e supervisão de segurança." },
+      { q: "Como funciona o controle de qualidade?", a: "Medimos a espessura úmida durante a aplicação, espessura seca após cura e fazemos teste de aderência por pull-off em pontos amostrais." },
+    ],
+    related: ["piso-concreto", "quadra-poliesportiva", "residencial"],
+  },
+  {
+    slug: "quadra-poliesportiva",
+    code: "PN-05",
+    h1: "Pintura de Quadra Poliesportiva",
+    shortTitle: "Quadra Poliesportiva",
+    metaTitle: "Pintura de Quadra Poliesportiva em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Pintura de quadra poliesportiva em Fortaleza com tinta de piso esportivo, demarcação oficial de futsal, vôlei e basquete. Contratar pintor especializado.",
+    summary:
+      "Pintura de piso esportivo para quadras de futsal, vôlei e basquete com tinta acrílica e demarcação oficial.",
+    keywords: ["pintura de quadra poliesportiva", "pintura de piso esportivo", "contratar pintor"],
+    intro:
+      "A pintura de quadra poliesportiva é um trabalho técnico que combina pintura de piso esportivo de alto desempenho com demarcação rigorosa das modalidades. A Chico Resolve atende escolas, condomínios, clubes, academias e prefeituras em Fortaleza e região com sistemas acrílicos esportivos resistentes ao sol, chuva e ao impacto de bolas e calçados. Se você precisa contratar pintor experiente em quadras — capaz de medir e demarcar futsal, basquete, vôlei e handebol no mesmo piso — oferecemos projeto de paginação, aplicação técnica e garantia formal.",
+    whenToHire: [
+      { title: "Quadra desbotada", text: "Cores apagadas pelo sol e demarcações ilegíveis comprometem o jogo e a segurança." },
+      { title: "Quadra nova", text: "Concreto liso recém-entregue precisa de proteção, cor e demarcação." },
+      { title: "Mudança de modalidade", text: "Adaptar a quadra para receber novas modalidades exige nova paginação." },
+      { title: "Eventos e campeonatos", text: "Renovar a pintura antes de eventos para visual profissional." },
+    ],
+    types: [
+      { title: "Pintura Acrílica Esportiva", text: "Tinta acrílica 100% específica para piso esportivo, com aditivos UV e antiderrapante." },
+      { title: "Pintura de Piso Esportivo Coberta", text: "Sistema epóxi ou PU para ginásios cobertos com alto brilho e durabilidade." },
+      { title: "Demarcação Multimodal", text: "Linhas de futsal, vôlei, basquete e handebol em cores normatizadas no mesmo piso." },
+      { title: "Pintura de Arquibancada", text: "Bancadas de concreto e estrutura metálica pintadas em conjunto com a quadra." },
+    ],
+    process: [
+      { title: "Diagnóstico do Piso", text: "Avaliação da idade do concreto, fissuras, umidade ascendente e infiltrações." },
+      { title: "Preparação e Selagem", text: "Lixamento, fechamento de fissuras com massa epóxi e aplicação de selador penetrante." },
+      { title: "Demãos de Base", text: "Aplicação de duas demãos da cor principal (ex.: verde) sobre toda a área." },
+      { title: "Demarcação Oficial", text: "Marcação com trena, esquadro e linha — fita crepe técnica e pincel para linhas retas." },
+      { title: "Acabamento e Entrega", text: "Demão final, vistoria com cliente e liberação para uso em 7 dias." },
+    ],
+    standards: ["Medidas oficiais CBFS (futsal), CBV (vôlei), CBB (basquete)", "NBR 13245", "NR-18", "Tintas com selo Inmetro"],
+    trust: [
+      "Demarcação conforme medidas oficiais das confederações",
+      "Garantia de 24 meses para pintura de piso esportivo coberto",
+      "Garantia de 18 meses para quadras descobertas",
+      "Tintas técnicas de fabricantes nacionais homologados",
+      "Registro fotográfico antes/durante/depois",
+    ],
+    geo: "Pintamos quadras em escolas particulares e municipais, condomínios residenciais, clubes e prefeituras de Fortaleza, Eusébio, Aquiraz, Caucaia, Maracanaú e cidades vizinhas. Trabalhamos com sistemas resistentes ao sol intenso e chuvas concentradas do clima cearense.",
+    faq: [
+      { q: "Quanto custa pintar uma quadra poliesportiva em Fortaleza?", a: "O valor médio varia de R$ 60 a R$ 130 por m² incluindo preparação, pintura e demarcação. Quadras cobertas com sistema epóxi/PU custam mais. Solicite visita técnica." },
+      { q: "A demarcação segue medidas oficiais?", a: "Sim. Trabalhamos com as medidas das confederações brasileiras (CBFS, CBV, CBB) para que a quadra possa receber competições oficiais e escolares." },
+      { q: "Quanto tempo demora a pintura completa de uma quadra?", a: "Uma quadra de 800 m² leva de 6 a 10 dias úteis dependendo do clima — concretos novos exigem 28 dias de cura antes da pintura." },
+      { q: "A tinta é antiderrapante?", a: "Sim. As tintas acrílicas esportivas têm carga mineral que garante coeficiente de atrito adequado para a prática esportiva segura." },
+      { q: "Conseguem pintar várias modalidades no mesmo piso?", a: "Sim. Demarcamos até 4 modalidades sobrepostas usando cores diferentes (preto, branco, amarelo, azul) conforme o padrão de cada modalidade." },
+    ],
+    related: ["piso-concreto", "industrial", "residencial"],
+  },
+];
+
+export const getPinturaSubservice = (slug: string): PinturaSubservice | undefined =>
+  pinturaSubservices.find((s) => s.slug === slug);
+
