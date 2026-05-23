@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
-import { services, site, whatsappLink } from "@/lib/site";
+import { pinturaSubservices, services, site, whatsappLink } from "@/lib/site";
 import logo from "@/assets/logo-chico-resolve.png";
 
 export function Header() {
