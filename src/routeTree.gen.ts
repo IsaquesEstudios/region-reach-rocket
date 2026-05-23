@@ -15,6 +15,7 @@ import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicosPinturaRouteImport } from './routes/servicos.pintura'
 import { Route as ServicosSlugRouteImport } from './routes/servicos.$slug'
+import { Route as ServicosPinturaPinturaSlugRouteImport } from './routes/servicos.pintura.$pinturaSlug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -46,6 +47,12 @@ const ServicosSlugRoute = ServicosSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ServicosRoute,
 } as any)
+const ServicosPinturaPinturaSlugRoute =
+  ServicosPinturaPinturaSlugRouteImport.update({
+    id: '/$pinturaSlug',
+    path: '/$pinturaSlug',
+    getParentRoute: () => ServicosPinturaRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -53,7 +60,8 @@ export interface FileRoutesByFullPath {
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicos/$slug': typeof ServicosSlugRoute
-  '/servicos/pintura': typeof ServicosPinturaRoute
+  '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
+  '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -61,7 +69,8 @@ export interface FileRoutesByTo {
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicos/$slug': typeof ServicosSlugRoute
-  '/servicos/pintura': typeof ServicosPinturaRoute
+  '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
+  '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -70,7 +79,8 @@ export interface FileRoutesById {
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicos/$slug': typeof ServicosSlugRoute
-  '/servicos/pintura': typeof ServicosPinturaRoute
+  '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
+  '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +91,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/servicos/$slug'
     | '/servicos/pintura'
+    | '/servicos/pintura/$pinturaSlug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +100,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/servicos/$slug'
     | '/servicos/pintura'
+    | '/servicos/pintura/$pinturaSlug'
   id:
     | '__root__'
     | '/'
@@ -97,6 +109,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/servicos/$slug'
     | '/servicos/pintura'
+    | '/servicos/pintura/$pinturaSlug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -150,17 +163,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicosSlugRouteImport
       parentRoute: typeof ServicosRoute
     }
+    '/servicos/pintura/$pinturaSlug': {
+      id: '/servicos/pintura/$pinturaSlug'
+      path: '/$pinturaSlug'
+      fullPath: '/servicos/pintura/$pinturaSlug'
+      preLoaderRoute: typeof ServicosPinturaPinturaSlugRouteImport
+      parentRoute: typeof ServicosPinturaRoute
+    }
   }
 }
 
+interface ServicosPinturaRouteChildren {
+  ServicosPinturaPinturaSlugRoute: typeof ServicosPinturaPinturaSlugRoute
+}
+
+const ServicosPinturaRouteChildren: ServicosPinturaRouteChildren = {
+  ServicosPinturaPinturaSlugRoute: ServicosPinturaPinturaSlugRoute,
+}
+
+const ServicosPinturaRouteWithChildren = ServicosPinturaRoute._addFileChildren(
+  ServicosPinturaRouteChildren,
+)
+
 interface ServicosRouteChildren {
   ServicosSlugRoute: typeof ServicosSlugRoute
-  ServicosPinturaRoute: typeof ServicosPinturaRoute
+  ServicosPinturaRoute: typeof ServicosPinturaRouteWithChildren
 }
 
 const ServicosRouteChildren: ServicosRouteChildren = {
   ServicosSlugRoute: ServicosSlugRoute,
-  ServicosPinturaRoute: ServicosPinturaRoute,
+  ServicosPinturaRoute: ServicosPinturaRouteWithChildren,
 }
 
 const ServicosRouteWithChildren = ServicosRoute._addFileChildren(
