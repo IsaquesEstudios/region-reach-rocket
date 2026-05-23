@@ -39,23 +39,39 @@ export function Header() {
               <span className="text-xs">↓</span>
             </Link>
             {servicesOpen && (
-              <div className="absolute left-0 top-full pt-3 w-72">
+              <div className="absolute left-0 top-full pt-3 w-80">
                 <ul className="bg-card border border-border shadow-xl p-2">
                   {services.map((s) => (
                     <li key={s.slug}>
                       <Link
-                        to="/servicos/$slug"
-                        params={{ slug: s.slug }}
+                        to={s.slug === "pintura" ? "/servicos/pintura" : "/servicos/$slug"}
+                        params={s.slug === "pintura" ? undefined : { slug: s.slug }}
                         className="flex items-center gap-3 px-3 py-2.5 text-sm hover:bg-surface rounded-xs"
                       >
                         <span className="font-mono text-[10px] text-primary w-7">{s.code}</span>
                         <span>{s.shortTitle}</span>
                       </Link>
+                      {s.slug === "pintura" && (
+                        <ul className="pl-10 pb-2 space-y-1 border-l border-border ml-4 mt-1">
+                          {pinturaSubservices.map((p) => (
+                            <li key={p.slug}>
+                              <Link
+                                to="/servicos/pintura/$pinturaSlug"
+                                params={{ pinturaSlug: p.slug }}
+                                className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary"
+                              >
+                                {p.shortTitle}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </li>
                   ))}
                 </ul>
               </div>
             )}
+
           </div>
           <Link to="/contato" className="hover:text-primary transition-colors" activeProps={{ className: "text-primary" }}>
             Contato
@@ -99,17 +115,34 @@ export function Header() {
               {services.map((s) => (
                 <li key={s.slug}>
                   <Link
-                    to="/servicos/$slug"
-                    params={{ slug: s.slug }}
+                    to={s.slug === "pintura" ? "/servicos/pintura" : "/servicos/$slug"}
+                    params={s.slug === "pintura" ? undefined : { slug: s.slug }}
                     onClick={() => setOpen(false)}
                     className="block px-3 py-2 text-muted-foreground hover:text-primary"
                   >
                     <span className="font-mono text-[10px] text-primary mr-3">{s.code}</span>
                     {s.shortTitle}
                   </Link>
+                  {s.slug === "pintura" && (
+                    <ul className="pl-6 ml-3 border-l border-border space-y-1">
+                      {pinturaSubservices.map((p) => (
+                        <li key={p.slug}>
+                          <Link
+                            to="/servicos/pintura/$pinturaSlug"
+                            params={{ pinturaSlug: p.slug }}
+                            onClick={() => setOpen(false)}
+                            className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary"
+                          >
+                            {p.shortTitle}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               ))}
             </ul>
+
             <Link to="/contato" onClick={() => setOpen(false)} className="block px-3 py-2.5 hover:bg-surface">Contato</Link>
             <a
               href={whatsappLink()}
