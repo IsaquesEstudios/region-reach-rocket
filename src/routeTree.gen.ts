@@ -13,8 +13,8 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicosPinturaRouteImport } from './routes/servicos.pintura'
 import { Route as ServicosSlugRouteImport } from './routes/servicos.$slug'
+import { Route as ServicosPinturaIndexRouteImport } from './routes/servicos.pintura.index'
 import { Route as ServicosPinturaPinturaSlugRouteImport } from './routes/servicos.pintura.$pinturaSlug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -37,21 +37,21 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicosPinturaRoute = ServicosPinturaRouteImport.update({
-  id: '/pintura',
-  path: '/pintura',
-  getParentRoute: () => ServicosRoute,
-} as any)
 const ServicosSlugRoute = ServicosSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => ServicosRoute,
 } as any)
+const ServicosPinturaIndexRoute = ServicosPinturaIndexRouteImport.update({
+  id: '/pintura/',
+  path: '/pintura/',
+  getParentRoute: () => ServicosRoute,
+} as any)
 const ServicosPinturaPinturaSlugRoute =
   ServicosPinturaPinturaSlugRouteImport.update({
-    id: '/$pinturaSlug',
-    path: '/$pinturaSlug',
-    getParentRoute: () => ServicosPinturaRoute,
+    id: '/pintura/$pinturaSlug',
+    path: '/pintura/$pinturaSlug',
+    getParentRoute: () => ServicosRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -60,8 +60,8 @@ export interface FileRoutesByFullPath {
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicos/$slug': typeof ServicosSlugRoute
-  '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
+  '/servicos/pintura/': typeof ServicosPinturaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -69,8 +69,8 @@ export interface FileRoutesByTo {
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicos/$slug': typeof ServicosSlugRoute
-  '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
+  '/servicos/pintura': typeof ServicosPinturaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -79,8 +79,8 @@ export interface FileRoutesById {
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicos/$slug': typeof ServicosSlugRoute
-  '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
+  '/servicos/pintura/': typeof ServicosPinturaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -90,8 +90,8 @@ export interface FileRouteTypes {
     | '/servicos'
     | '/sitemap.xml'
     | '/servicos/$slug'
-    | '/servicos/pintura'
     | '/servicos/pintura/$pinturaSlug'
+    | '/servicos/pintura/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -99,8 +99,8 @@ export interface FileRouteTypes {
     | '/servicos'
     | '/sitemap.xml'
     | '/servicos/$slug'
-    | '/servicos/pintura'
     | '/servicos/pintura/$pinturaSlug'
+    | '/servicos/pintura'
   id:
     | '__root__'
     | '/'
@@ -108,8 +108,8 @@ export interface FileRouteTypes {
     | '/servicos'
     | '/sitemap.xml'
     | '/servicos/$slug'
-    | '/servicos/pintura'
     | '/servicos/pintura/$pinturaSlug'
+    | '/servicos/pintura/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -149,13 +149,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/servicos/pintura': {
-      id: '/servicos/pintura'
-      path: '/pintura'
-      fullPath: '/servicos/pintura'
-      preLoaderRoute: typeof ServicosPinturaRouteImport
-      parentRoute: typeof ServicosRoute
-    }
     '/servicos/$slug': {
       id: '/servicos/$slug'
       path: '/$slug'
@@ -163,36 +156,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicosSlugRouteImport
       parentRoute: typeof ServicosRoute
     }
+    '/servicos/pintura/': {
+      id: '/servicos/pintura/'
+      path: '/pintura'
+      fullPath: '/servicos/pintura/'
+      preLoaderRoute: typeof ServicosPinturaIndexRouteImport
+      parentRoute: typeof ServicosRoute
+    }
     '/servicos/pintura/$pinturaSlug': {
       id: '/servicos/pintura/$pinturaSlug'
-      path: '/$pinturaSlug'
+      path: '/pintura/$pinturaSlug'
       fullPath: '/servicos/pintura/$pinturaSlug'
       preLoaderRoute: typeof ServicosPinturaPinturaSlugRouteImport
-      parentRoute: typeof ServicosPinturaRoute
+      parentRoute: typeof ServicosRoute
     }
   }
 }
 
-interface ServicosPinturaRouteChildren {
-  ServicosPinturaPinturaSlugRoute: typeof ServicosPinturaPinturaSlugRoute
-}
-
-const ServicosPinturaRouteChildren: ServicosPinturaRouteChildren = {
-  ServicosPinturaPinturaSlugRoute: ServicosPinturaPinturaSlugRoute,
-}
-
-const ServicosPinturaRouteWithChildren = ServicosPinturaRoute._addFileChildren(
-  ServicosPinturaRouteChildren,
-)
-
 interface ServicosRouteChildren {
   ServicosSlugRoute: typeof ServicosSlugRoute
-  ServicosPinturaRoute: typeof ServicosPinturaRouteWithChildren
+  ServicosPinturaPinturaSlugRoute: typeof ServicosPinturaPinturaSlugRoute
+  ServicosPinturaIndexRoute: typeof ServicosPinturaIndexRoute
 }
 
 const ServicosRouteChildren: ServicosRouteChildren = {
   ServicosSlugRoute: ServicosSlugRoute,
-  ServicosPinturaRoute: ServicosPinturaRouteWithChildren,
+  ServicosPinturaPinturaSlugRoute: ServicosPinturaPinturaSlugRoute,
+  ServicosPinturaIndexRoute: ServicosPinturaIndexRoute,
 }
 
 const ServicosRouteWithChildren = ServicosRoute._addFileChildren(
@@ -208,3 +198,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

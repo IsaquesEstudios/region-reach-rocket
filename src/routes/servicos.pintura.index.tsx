@@ -10,7 +10,7 @@ const hubMetaTitle = "Empresa de Pintura em Fortaleza | Chico Resolve";
 const hubMetaDescription =
   "Empresa de pintura predial em Fortaleza: pintura de fachada predial, pintura de piso epóxi, residencial, apartamento, industrial e quadras. Orçamento rápido.";
 
-export const Route = createFileRoute("/servicos/pintura")({
+export const Route = createFileRoute("/servicos/pintura/")({
   head: () => {
     const serviceJsonLd = {
       "@context": "https://schema.org",
