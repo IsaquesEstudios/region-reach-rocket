@@ -1,12 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Phone, Mail, MapPin } from "lucide-react";
-import { pinturaSubservices, services, site, whatsappLink } from "@/lib/site";
+import { eletricaSubservices, pinturaSubservices, services, site, whatsappLink } from "@/lib/site";
 
 export function Footer() {
   return (
     <footer className="bg-foreground text-background pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
           <div>
             <div className="font-black text-2xl tracking-tighter mb-4">
               <span className="italic">Chico</span>
@@ -29,17 +29,23 @@ export function Footer() {
           <div>
             <h2 className="font-bold uppercase text-xs tracking-widest text-accent mb-5">Serviços</h2>
             <ul className="space-y-2.5 text-sm text-background/70">
-              {services.slice(0, 6).map((s) => (
-                <li key={s.slug}>
-                  <Link
-                    to={s.slug === "pintura" ? "/servicos/pintura" : "/servicos/$slug"}
-                    params={s.slug === "pintura" ? undefined : { slug: s.slug }}
-                    className="hover:text-background transition-colors"
-                  >
-                    {s.shortTitle}
-                  </Link>
-                </li>
-              ))}
+              {services.slice(0, 6).map((s) => {
+                const hubTo =
+                  s.slug === "pintura"
+                    ? "/servicos/pintura"
+                    : s.slug === "eletrica"
+                    ? "/servicos/eletrica"
+                    : "/servicos/$slug";
+                const hubParams =
+                  s.slug === "pintura" || s.slug === "eletrica" ? undefined : { slug: s.slug };
+                return (
+                  <li key={s.slug}>
+                    <Link to={hubTo} params={hubParams} className="hover:text-background transition-colors">
+                      {s.shortTitle}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -60,6 +66,22 @@ export function Footer() {
             </ul>
           </div>
 
+          <div>
+            <h2 className="font-bold uppercase text-xs tracking-widest text-accent mb-5">Elétrica</h2>
+            <ul className="space-y-2.5 text-sm text-background/70">
+              {eletricaSubservices.map((e) => (
+                <li key={e.slug}>
+                  <Link
+                    to="/servicos/eletrica/$eletricaSlug"
+                    params={{ eletricaSlug: e.slug }}
+                    className="hover:text-background transition-colors"
+                  >
+                    {e.shortTitle}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <div>
             <h2 className="font-bold uppercase text-xs tracking-widest text-accent mb-5">Segmentos</h2>
