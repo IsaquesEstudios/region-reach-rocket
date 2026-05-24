@@ -41,58 +41,48 @@ export function Header() {
             {servicesOpen && (
               <div className="absolute left-0 top-full pt-3 w-80">
                 <ul className="bg-card border border-border shadow-xl p-2">
-                  {services.map((s) => {
-                    const hubTo =
-                      s.slug === "pintura"
-                        ? "/servicos/pintura"
-                        : s.slug === "eletrica"
-                        ? "/servicos/eletrica"
-                        : "/servicos/$slug";
-                    const hubParams =
-                      s.slug === "pintura" || s.slug === "eletrica" ? undefined : { slug: s.slug };
-                    return (
-                      <li key={s.slug}>
-                        <Link
-                          to={hubTo}
-                          params={hubParams}
-                          className="flex items-center gap-3 px-3 py-2.5 text-sm hover:bg-surface rounded-xs"
-                        >
+                  {services.map((s) => (
+                    <li key={s.slug}>
+                      {s.slug === "pintura" ? (
+                        <Link to="/servicos/pintura" className="flex items-center gap-3 px-3 py-2.5 text-sm hover:bg-surface rounded-xs">
                           <span className="font-mono text-[10px] text-primary w-7">{s.code}</span>
                           <span>{s.shortTitle}</span>
                         </Link>
-                        {s.slug === "pintura" && (
-                          <ul className="pl-10 pb-2 space-y-1 border-l border-border ml-4 mt-1">
-                            {pinturaSubservices.map((p) => (
-                              <li key={p.slug}>
-                                <Link
-                                  to="/servicos/pintura/$pinturaSlug"
-                                  params={{ pinturaSlug: p.slug }}
-                                  className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary"
-                                >
-                                  {p.shortTitle}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        {s.slug === "eletrica" && (
-                          <ul className="pl-10 pb-2 space-y-1 border-l border-border ml-4 mt-1">
-                            {eletricaSubservices.map((e) => (
-                              <li key={e.slug}>
-                                <Link
-                                  to="/servicos/eletrica/$eletricaSlug"
-                                  params={{ eletricaSlug: e.slug }}
-                                  className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary"
-                                >
-                                  {e.shortTitle}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </li>
-                    );
-                  })}
+                      ) : s.slug === "eletrica" ? (
+                        <Link to="/servicos/eletrica" className="flex items-center gap-3 px-3 py-2.5 text-sm hover:bg-surface rounded-xs">
+                          <span className="font-mono text-[10px] text-primary w-7">{s.code}</span>
+                          <span>{s.shortTitle}</span>
+                        </Link>
+                      ) : (
+                        <Link to="/servicos/$slug" params={{ slug: s.slug }} className="flex items-center gap-3 px-3 py-2.5 text-sm hover:bg-surface rounded-xs">
+                          <span className="font-mono text-[10px] text-primary w-7">{s.code}</span>
+                          <span>{s.shortTitle}</span>
+                        </Link>
+                      )}
+                      {s.slug === "pintura" && (
+                        <ul className="pl-10 pb-2 space-y-1 border-l border-border ml-4 mt-1">
+                          {pinturaSubservices.map((p) => (
+                            <li key={p.slug}>
+                              <Link to="/servicos/pintura/$pinturaSlug" params={{ pinturaSlug: p.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
+                                {p.shortTitle}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {s.slug === "eletrica" && (
+                        <ul className="pl-10 pb-2 space-y-1 border-l border-border ml-4 mt-1">
+                          {eletricaSubservices.map((e) => (
+                            <li key={e.slug}>
+                              <Link to="/servicos/eletrica/$eletricaSlug" params={{ eletricaSlug: e.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
+                                {e.shortTitle}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
                 </ul>
               </div>
             )}
