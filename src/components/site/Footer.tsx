@@ -29,23 +29,17 @@ export function Footer() {
           <div>
             <h2 className="font-bold uppercase text-xs tracking-widest text-accent mb-5">Serviços</h2>
             <ul className="space-y-2.5 text-sm text-background/70">
-              {services.slice(0, 6).map((s) => {
-                const hubTo =
-                  s.slug === "pintura"
-                    ? "/servicos/pintura"
-                    : s.slug === "eletrica"
-                    ? "/servicos/eletrica"
-                    : "/servicos/$slug";
-                const hubParams =
-                  s.slug === "pintura" || s.slug === "eletrica" ? undefined : { slug: s.slug };
-                return (
-                  <li key={s.slug}>
-                    <Link to={hubTo} params={hubParams} className="hover:text-background transition-colors">
-                      {s.shortTitle}
-                    </Link>
-                  </li>
-                );
-              })}
+              {services.slice(0, 6).map((s) => (
+                <li key={s.slug}>
+                  {s.slug === "pintura" ? (
+                    <Link to="/servicos/pintura" className="hover:text-background transition-colors">{s.shortTitle}</Link>
+                  ) : s.slug === "eletrica" ? (
+                    <Link to="/servicos/eletrica" className="hover:text-background transition-colors">{s.shortTitle}</Link>
+                  ) : (
+                    <Link to="/servicos/$slug" params={{ slug: s.slug }} className="hover:text-background transition-colors">{s.shortTitle}</Link>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
 
