@@ -633,3 +633,233 @@ export const pinturaSubservices: PinturaSubservice[] = [
 export const getPinturaSubservice = (slug: string): PinturaSubservice | undefined =>
   pinturaSubservices.find((s) => s.slug === slug);
 
+// ============================================================================
+// Elétrica: hub + sub-páginas otimizadas para clusters de palavras-chave.
+// H1 = keyword principal; conteúdo único focado em E-E-A-T, GEO Fortaleza/CE,
+// normas NR-10 / NBR 5410 e Service + Breadcrumb + FAQPage JSON-LD.
+// ============================================================================
+
+export type EletricaSlug = "industrial" | "residencial" | "predial";
+
+export interface EletricaSubservice {
+  slug: EletricaSlug;
+  code: string;
+  h1: string;
+  shortTitle: string;
+  metaTitle: string;
+  metaDescription: string;
+  summary: string;
+  keywords: string[];
+  intro: string;
+  whenToHire: { title: string; text: string }[];
+  types: { title: string; text: string }[];
+  process: { title: string; text: string }[];
+  standards: string[];
+  trust: string[];
+  geo: string;
+  faq: { q: string; a: string }[];
+  related: EletricaSlug[];
+}
+
+export const eletricaSubservices: EletricaSubservice[] = [
+  {
+    slug: "industrial",
+    code: "EL-01",
+    h1: "Eletricista Industrial em Fortaleza",
+    shortTitle: "Industrial",
+    metaTitle: "Eletricista Industrial em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Eletricista industrial em Fortaleza com eletricistas certificados NR-10 e SEP. Empresa de elétrica para CCM, painéis, manutenção e emergência 24h.",
+    summary:
+      "Eletricista industrial certificado NR-10/SEP para painéis, CCM, motores e manutenção preventiva e corretiva em indústrias.",
+    keywords: [
+      "eletricista industrial",
+      "eletricistas certificados",
+      "empresa de elétrica",
+      "eletricista de manutenção",
+      "orçamento eletricista",
+      "eletricista emergência",
+    ],
+    intro:
+      "A Chico Resolve é uma empresa de elétrica industrial em Fortaleza com eletricistas certificados em NR-10 básico e NR-10 SEP (Sistema Elétrico de Potência). Atendemos indústrias, galpões logísticos e plantas fabris com instalação, ampliação e manutenção de painéis elétricos, CCM (Centro de Controle de Motores), barramentos, inversores de frequência, soft-starters e sistemas de aterramento. Como eletricista de manutenção, também executamos termografia, ajuste de proteções, ensaio de relés e plano de manutenção preventiva. Para emergências, mantemos plantão de eletricista emergência 24h para evitar paradas de produção em indústrias do Distrito Industrial de Maracanaú, Pecém e Pacajus.",
+    whenToHire: [
+      { title: "Parada não programada", text: "Disjuntor que desarma, motor que não parte ou painel com sinais de aquecimento — risco de incêndio e perda de produção." },
+      { title: "Ampliação de carga", text: "Nova linha de produção, máquina importada ou ampliação de galpão exige redimensionamento elétrico e ART." },
+      { title: "Adequação à NR-10", text: "Diagramas atualizados, prontuário das instalações, sinalização e EPCs para passar em auditoria." },
+      { title: "Manutenção preventiva", text: "Termografia, reaperto de conexões e teste de proteções para evitar falhas críticas." },
+    ],
+    types: [
+      { title: "Painéis e CCM", text: "Montagem, manutenção e retrofit de painéis de comando, CCM e quadros de distribuição em baixa tensão (NBR 5410) e média tensão (NBR 14039)." },
+      { title: "Motores e Acionamentos", text: "Instalação e manutenção de motores trifásicos, inversores de frequência, soft-starters e proteções térmicas." },
+      { title: "Aterramento e SPDA", text: "Malha de aterramento conforme NBR 5419, equipotencialização e instalação de para-raios para proteger ativos." },
+      { title: "Termografia e Preditiva", text: "Inspeção termográfica de painéis e conexões, gerando laudo com pontos críticos e plano de correção." },
+      { title: "Eletricista Emergência 24h", text: "Plantão para falhas críticas com tempo de resposta acordado em contrato — reduz paradas de produção." },
+    ],
+    process: [
+      { title: "Diagnóstico Técnico", text: "Inspeção do prontuário NR-10, medição de carga, termografia e levantamento de não conformidades." },
+      { title: "Projeto e Orçamento", text: "Orçamento eletricista detalhado com diagrama unifilar, lista de materiais e cronograma de parada." },
+      { title: "Execução com Permissão de Trabalho", text: "PT (Permissão de Trabalho), análise preliminar de risco, bloqueio e etiquetagem (LOTO) antes de qualquer intervenção." },
+      { title: "Testes e Comissionamento", text: "Testes de continuidade, isolamento, sequência de fase, partida controlada de motores e ajuste de proteções." },
+      { title: "Entrega com ART e Laudo", text: "Entrega com ART CREA-CE, laudo técnico, diagrama atualizado e plano de manutenção." },
+    ],
+    standards: [
+      "NR-10 (segurança em instalações elétricas)",
+      "NR-10 SEP (Sistema Elétrico de Potência)",
+      "NBR 5410 (baixa tensão)",
+      "NBR 14039 (média tensão)",
+      "NBR 5419 (SPDA)",
+      "ART CREA-CE",
+      "PT, APR e LOTO",
+    ],
+    trust: [
+      "Eletricistas certificados NR-10 e NR-10 SEP com reciclagem em dia",
+      "ART de execução assinada por engenheiro eletricista",
+      "Equipe própria CLT com PCMSO, PPRA e ASOs atualizados",
+      "Eletricista emergência 24h para clientes com contrato",
+      "Termografia e laudo técnico inclusos em contratos preventivos",
+    ],
+    geo: "Atendemos indústrias do Distrito Industrial de Maracanaú, Complexo Industrial e Portuário do Pecém (CIPP), Pacajus, Horizonte, Eusébio e plantas fabris em toda a Região Metropolitana de Fortaleza. Conhecemos a particularidade do fornecimento da ENEL Ceará e dimensionamos sistemas resistentes à corrosão pela maresia em instalações próximas ao litoral.",
+    faq: [
+      { q: "Vocês emitem ART para serviços industriais?", a: "Sim. Toda obra industrial é entregue com ART (Anotação de Responsabilidade Técnica) assinada por engenheiro eletricista registrado no CREA-CE." },
+      { q: "Quanto custa contratar um eletricista industrial em Fortaleza?", a: "Manutenções pontuais partem de R$ 350 por chamado técnico e contratos mensais variam conforme criticidade. Fazemos visita técnica gratuita para orçamento eletricista detalhado." },
+      { q: "Atendem emergência 24h?", a: "Sim. Clientes com contrato têm eletricista emergência 24h com SLA acordado, ideal para indústrias que não podem parar." },
+      { q: "Trabalham com média tensão?", a: "Sim. Nossos eletricistas têm NR-10 SEP e executamos instalações e manutenções conforme NBR 14039 para subestações até 15 kV." },
+      { q: "Fazem termografia preventiva?", a: "Sim. Termografia de painéis e conexões é parte do nosso plano de manutenção preventiva — entregamos laudo com fotos térmicas e plano de ação." },
+    ],
+    related: ["predial", "residencial"],
+  },
+  {
+    slug: "residencial",
+    code: "EL-02",
+    h1: "Eletricista Residencial em Fortaleza",
+    shortTitle: "Residencial",
+    metaTitle: "Eletricista Residencial em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Eletricista residencial em Fortaleza com eletricistas certificados e eletricista instalador. Serviço eletricista, emergência 24h e orçamento rápido.",
+    summary:
+      "Eletricista residencial certificado para instalação de quadros, tomadas, iluminação, chuveiros e atendimento de emergência em Fortaleza.",
+    keywords: [
+      "eletricista residencial",
+      "eletricistas certificados",
+      "eletricista instalador",
+      "orçamento eletricista",
+      "serviço eletricista",
+      "eletricista emergência",
+    ],
+    intro:
+      "A Chico Resolve oferece serviço eletricista residencial em Fortaleza com eletricistas certificados em NR-10 e foco em segurança da família. Atuamos como eletricista instalador (quadros de distribuição, tomadas, pontos de iluminação, chuveiros, ar-condicionado, automação básica) e como eletricista emergência para curto-circuito, queda de energia, chuveiro queimado ou ponto que aquece. Cada visita começa por diagnóstico com alicate amperímetro e checagem do quadro — antes de qualquer reparo, identificamos a causa para que o problema não volte. Trabalhamos das residências da Aldeota, Meireles e Cocó às casas de Edson Queiroz, Sapiranga e Eusébio.",
+    whenToHire: [
+      { title: "Disjuntor desarmando", text: "Disjuntor cai sempre que liga chuveiro, microondas ou ar-condicionado — sinal de sobrecarga ou curto." },
+      { title: "Tomada queimando ou aquecendo", text: "Cheiro de plástico, escurecimento ou ponto que esquenta indica conexão frouxa e risco de incêndio." },
+      { title: "Reforma ou mudança", text: "Instalação de novos pontos, troca de quadro, adição de DR/DPS e atualização à NBR 5410." },
+      { title: "Falta de energia parcial", text: "Apenas parte da casa sem luz indica falha em circuito específico, exige eletricista emergência." },
+    ],
+    types: [
+      { title: "Instalação de Quadros", text: "Eletricista instalador de quadros de distribuição com DR (proteção a choque) e DPS (proteção contra surtos), atualizando a casa à NBR 5410." },
+      { title: "Tomadas e Iluminação", text: "Novos pontos de tomada, iluminação LED, lustres pesados, fitas de LED e dimerização." },
+      { title: "Chuveiros e Ar-Condicionado", text: "Circuito dedicado, disjuntor dimensionado e cabo correto para chuveiro, split e máquina de lavar." },
+      { title: "Automação Residencial", text: "Interruptores inteligentes, cortina motorizada, iluminação por celular e integração com assistentes de voz." },
+      { title: "Eletricista Emergência 24h", text: "Atendimento rápido para falha geral, curto-circuito, ponto queimado ou risco de choque — atendemos no mesmo dia." },
+    ],
+    process: [
+      { title: "Visita Técnica com Diagnóstico", text: "Inspeção do quadro, medição de corrente e tensão, checagem de aterramento e identificação da causa raiz." },
+      { title: "Orçamento Eletricista Detalhado", text: "Proposta clara com material, mão de obra, prazo e garantia — sem custos surpresa no fim do serviço." },
+      { title: "Execução com Energia Desligada", text: "Sempre que possível, intervenção com circuito desenergizado, bloqueio e teste de ausência de tensão." },
+      { title: "Testes Funcionais", text: "Teste de DR, sequência de fase, continuidade de aterramento e medição de tensão após o serviço." },
+      { title: "Garantia e Recibo", text: "Recibo formal, nota fiscal opcional e garantia de 90 dias sobre o serviço executado." },
+    ],
+    standards: [
+      "NR-10 (segurança em instalações elétricas)",
+      "NBR 5410 (instalações elétricas de baixa tensão)",
+      "NBR 5419 (SPDA quando aplicável)",
+      "NR-6 (EPI)",
+      "Padrão de entrada ENEL Ceará",
+    ],
+    trust: [
+      "Eletricistas certificados NR-10 com curso e reciclagem documentados",
+      "Eletricista identificado com uniforme, crachá e EPI",
+      "Garantia de 90 dias por escrito sobre o serviço",
+      "Nota fiscal emitida quando solicitada",
+      "Atendimento de eletricista emergência no mesmo dia",
+    ],
+    geo: "Atendemos residências em todos os bairros de Fortaleza — Aldeota, Meireles, Cocó, Papicu, Varjota, Dionísio Torres, Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante, Praia do Futuro, Mucuripe e Beira Mar — além de Eusébio, Aquiraz, Caucaia e Maracanaú. Trabalhamos com o padrão de entrada da ENEL Ceará e dimensionamos proteções considerando a alta umidade do litoral.",
+    faq: [
+      { q: "Quanto custa um eletricista residencial em Fortaleza?", a: "Visita técnica de diagnóstico parte de R$ 150 (abatida do serviço). Serviços simples como troca de tomada partem de R$ 90; troca de quadro completa varia conforme número de circuitos. Solicite orçamento eletricista gratuito por WhatsApp." },
+      { q: "Atendem emergência no mesmo dia?", a: "Sim. Para eletricista emergência (curto-circuito, sem energia, ponto queimando) priorizamos atendimento no mesmo dia em Fortaleza." },
+      { q: "Por que preciso de DR e DPS no quadro?", a: "O DR protege contra choque elétrico, exigido pela NBR 5410 em áreas molhadas e tomadas externas. O DPS protege equipamentos contra surtos (raios, oscilações da rede). Ambos são considerados padrão moderno de segurança residencial." },
+      { q: "Vocês emitem nota fiscal?", a: "Sim. Somos empresa formalizada com CNPJ e emitimos NF de serviço quando solicitada." },
+      { q: "Trabalham com automação residencial?", a: "Sim. Instalamos interruptores inteligentes, automação de iluminação e integração com Alexa e Google Home." },
+    ],
+    related: ["predial", "industrial"],
+  },
+  {
+    slug: "predial",
+    code: "EL-03",
+    h1: "Eletricista Predial em Fortaleza",
+    shortTitle: "Predial",
+    metaTitle: "Eletricista Predial em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Eletricista predial em Fortaleza para condomínios e edifícios comerciais. Empresa de elétrica com eletricistas certificados, manutenção e emergência 24h.",
+    summary:
+      "Eletricista predial para condomínios residenciais e comerciais — barramentos, áreas comuns, bombas, iluminação e contratos de manutenção.",
+    keywords: [
+      "eletricista predial",
+      "eletricistas certificados",
+      "empresa de elétrica",
+      "eletricista de manutenção",
+      "orçamento eletricista",
+      "eletricista emergência",
+    ],
+    intro:
+      "Como empresa de elétrica especializada em condomínios e edifícios comerciais de Fortaleza, a Chico Resolve atua como eletricista predial com eletricistas certificados NR-10 para instalações coletivas: barramento blindado, prumadas, quadros de medição, áreas comuns, garagens, bombas de recalque, pressurização de escadas, iluminação de emergência e sistemas de detecção. Atendemos síndicos, administradoras e gerentes prediais com contratos de eletricista de manutenção (preventiva mensal + corretiva por chamado) e plantão de eletricista emergência 24h para falhas em elevadores, bombas e iluminação de circulação. Cada serviço gera relatório fotográfico para a administração e atende às exigências do Corpo de Bombeiros do Ceará.",
+    whenToHire: [
+      { title: "Falha em bomba de recalque", text: "Reservatório superior sem abastecer indica falha no painel, sensor de nível ou motor — afeta toda a coluna." },
+      { title: "Iluminação de emergência apagada", text: "Luminárias autônomas com bateria vencida ou painel central com falha — não conformidade com Bombeiros." },
+      { title: "Renovação do AVCB", text: "Vistoria do Corpo de Bombeiros exige instalações elétricas conformes, SPDA, iluminação e detecção operantes." },
+      { title: "Curto em área comum", text: "Garagem, hall ou corredor sem energia — eletricista emergência para isolar circuito e religar." },
+    ],
+    types: [
+      { title: "Quadros e Barramentos Prediais", text: "Manutenção e retrofit de quadros de medição, barramentos blindados e quadros de áreas comuns em condomínios." },
+      { title: "Bombas e Pressurização", text: "Painéis de comando de bombas de recalque, incêndio, drenagem e pressurização de escadas (segurança contra incêndio)." },
+      { title: "Iluminação de Emergência e Detecção", text: "Manutenção de luminárias autônomas, centrais de iluminação de emergência e detectores de fumaça para AVCB." },
+      { title: "SPDA Predial", text: "Inspeção e manutenção do Sistema de Proteção contra Descargas Atmosféricas conforme NBR 5419." },
+      { title: "Contrato de Eletricista de Manutenção", text: "Visitas mensais com checklist, relatório fotográfico ao síndico e atendimento de chamados corretivos." },
+    ],
+    process: [
+      { title: "Vistoria Inicial do Edifício", text: "Levantamento de quadros, áreas comuns, bombas, SPDA e iluminação de emergência, com checklist documentado." },
+      { title: "Plano e Orçamento", text: "Proposta de contrato com escopo, periodicidade, SLA de emergência e orçamento eletricista mensal fixo." },
+      { title: "Manutenção Preventiva Mensal", text: "Reaperto de conexões, teste de DRs, inspeção termográfica, troca de lâmpadas e verificação de baterias." },
+      { title: "Atendimento Corretivo e Emergência", text: "Chamados via WhatsApp com prioridade definida; eletricista emergência 24h para falhas críticas." },
+      { title: "Relatório ao Síndico", text: "Relatório mensal com fotos, itens executados, pendências e recomendações para a próxima assembleia." },
+    ],
+    standards: [
+      "NR-10 (segurança em instalações elétricas)",
+      "NBR 5410 (instalações de baixa tensão)",
+      "NBR 5419 (SPDA)",
+      "IT do Corpo de Bombeiros do Ceará (CBMCE)",
+      "Convenção de condomínio do edifício",
+      "ART de manutenção CREA-CE",
+    ],
+    trust: [
+      "Empresa de elétrica com CNPJ, contrato e nota fiscal",
+      "Eletricistas certificados NR-10 identificados com uniforme e crachá",
+      "Eletricista emergência 24h com SLA por escrito",
+      "Relatório fotográfico mensal para a administração",
+      "ART de manutenção para apresentar em assembleia e ao seguro predial",
+    ],
+    geo: "Atendemos edifícios residenciais e comerciais em Fortaleza inteira — incluindo prédios na Beira Mar, Aldeota, Meireles, Cocó, Guararapes, Dionísio Torres e Edson Queiroz — além de empreendimentos em Eusébio, Aquiraz e Caucaia. Conhecemos as exigências da ENEL Ceará para entrada de energia e do CBMCE para vistoria do AVCB.",
+    faq: [
+      { q: "Qual o prazo mínimo de contrato de eletricista predial?", a: "Trabalhamos com contratos a partir de 6 meses, com possibilidade de período de teste de 1 mês para o síndico avaliar o atendimento." },
+      { q: "Como funciona o eletricista emergência 24h?", a: "O síndico ou zelador aciona um WhatsApp dedicado; eletricistas certificados respondem em até 1h e comparecem conforme criticidade definida no contrato." },
+      { q: "Vocês ajudam na renovação do AVCB?", a: "Sim. Vistoriamos iluminação de emergência, detecção, SPDA e quadros, corrigimos não conformidades e emitimos laudo para a vistoria do Corpo de Bombeiros." },
+      { q: "Emitem ART de manutenção?", a: "Sim. Em contratos com responsabilidade técnica continuada, emitimos ART de manutenção registrada no CREA-CE." },
+      { q: "Atendem condomínios pequenos?", a: "Sim. Temos planos para edifícios a partir de 8 unidades com mensalidade compatível com condomínios de pequeno porte." },
+    ],
+    related: ["industrial", "residencial"],
+  },
+];
+
+export const getEletricaSubservice = (slug: string): EletricaSubservice | undefined =>
+  eletricaSubservices.find((s) => s.slug === slug);
+
+
