@@ -862,4 +862,365 @@ export const eletricaSubservices: EletricaSubservice[] = [
 export const getEletricaSubservice = (slug: string): EletricaSubservice | undefined =>
   eletricaSubservices.find((s) => s.slug === slug);
 
+// ============================================================================
+// Hidráulica: hub + sub-páginas otimizadas para clusters de palavras-chave.
+// H1 = keyword principal; conteúdo único focado em E-E-A-T, GEO Fortaleza/CE,
+// normas NBR 5626/8160 e Service + Breadcrumb + FAQPage JSON-LD.
+// ============================================================================
+
+export type HidraulicaSlug =
+  | "servico-hidraulico"
+  | "desentupidora"
+  | "desentupimento-esgoto"
+  | "encanador-residencial"
+  | "encanador-predial";
+
+export interface HidraulicaSubservice {
+  slug: HidraulicaSlug;
+  code: string;
+  h1: string;
+  shortTitle: string;
+  metaTitle: string;
+  metaDescription: string;
+  summary: string;
+  keywords: string[];
+  intro: string;
+  whenToHire: { title: string; text: string }[];
+  types: { title: string; text: string }[];
+  process: { title: string; text: string }[];
+  standards: string[];
+  trust: string[];
+  geo: string;
+  faq: { q: string; a: string }[];
+  related: HidraulicaSlug[];
+}
+
+export const hidraulicaSubservices: HidraulicaSubservice[] = [
+  {
+    slug: "servico-hidraulico",
+    code: "HD-01",
+    h1: "Serviço Hidráulico em Fortaleza",
+    shortTitle: "Serviço Hidráulico",
+    metaTitle: "Serviço Hidráulico em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Serviço hidráulico em Fortaleza com bombeiro hidráulico: conserto hidráulico, troca de válvula Hydra e sistema hidráulico industrial. Emergência 24h.",
+    summary:
+      "Conserto hidráulico completo com bombeiro hidráulico — válvulas Hydra, sistemas industriais e tubulação predial em Fortaleza.",
+    keywords: [
+      "serviço hidráulico",
+      "conserto hidráulico",
+      "bombeiro hidráulico",
+      "conserto de válvula hydra",
+      "empresas de hidráulica",
+      "sistema hidráulico industrial",
+    ],
+    intro:
+      "A Chico Resolve é uma das empresas de hidráulica de Fortaleza com bombeiro hidráulico próprio para conserto hidráulico em residências, condomínios e indústrias. Executamos desde a substituição de uma válvula Hydra ou Docol que perdeu a vedação até a montagem de sistema hidráulico industrial completo — barriletes, recalque, hidrômetros, registros de gaveta e esfera, prumadas em CPVC ou PPR e tubulação de água quente. Cada chamado começa por diagnóstico com manômetro e inspeção visual da rede; só depois entregamos orçamento por escrito. Atendemos com nota fiscal, garantia e relatório fotográfico do antes e depois.",
+    whenToHire: [
+      { title: "Válvula Hydra escapando água", text: "Descarga que não fecha, gotejamento contínuo ou vazamento pelo reparo — exige troca do kit de vedação ou da válvula completa." },
+      { title: "Conta d'água subiu sem motivo", text: "Indício de vazamento oculto na rede de água fria — exige geofone e inspeção da prumada." },
+      { title: "Pressão baixa nos chuveiros", text: "Bomba pressurizadora danificada, registro fechado ou tubulação obstruída por incrustação." },
+      { title: "Obra ou ampliação industrial", text: "Nova linha de produção, ampliação de cozinha industrial ou troca de barrilete exige projeto e bombeiro hidráulico." },
+    ],
+    types: [
+      { title: "Conserto Hidráulico em Geral", text: "Troca de torneiras, registros, sifões, flexíveis, engates, válvulas de descarga e reparos rápidos no mesmo dia." },
+      { title: "Conserto de Válvula Hydra e Docol", text: "Substituição completa ou troca do kit reparo de válvulas Hydra Master, Hydra Max, Docol Benefit e similares com vedação testada." },
+      { title: "Sistema Hidráulico Industrial", text: "Projeto e execução de barriletes, recalque, hidrômetros setoriais, ar comprimido e linhas de processo em aço carbono ou inox." },
+      { title: "Bombas e Pressurizadores", text: "Instalação e manutenção de bombas de recalque, pressurizadores residenciais e conjuntos elevatórios prediais." },
+      { title: "Emergência 24h", text: "Plantão para vazamento crítico, rompimento de prumada ou falha em bomba — atendimento imediato em Fortaleza." },
+    ],
+    process: [
+      { title: "Diagnóstico Técnico", text: "Inspeção da rede, medição de pressão com manômetro, geofone quando necessário e identificação da causa raiz." },
+      { title: "Orçamento por Escrito", text: "Proposta detalhada com material, mão de obra, prazo e garantia — sem cobrança surpresa no fim do serviço." },
+      { title: "Execução Limpa", text: "Proteção do ambiente, equipe uniformizada, ferramentas próprias e descarte adequado do entulho." },
+      { title: "Teste de Estanqueidade", text: "Pressurização da rede, verificação de cada conexão e teste com cliente presente." },
+      { title: "Entrega com Garantia", text: "Recibo formal, NF quando solicitada e garantia de 90 dias a 12 meses conforme o serviço." },
+    ],
+    standards: [
+      "NBR 5626 (instalação predial de água fria)",
+      "NBR 7198 (instalação de água quente)",
+      "NBR 5648 (PVC soldável)",
+      "NBR 15813 (PPR para água quente e fria)",
+      "NR-6 (EPI) e NR-18 (canteiro)",
+    ],
+    trust: [
+      "Empresa de hidráulica com CNPJ — emite nota fiscal e contrato",
+      "Bombeiro hidráulico CLT identificado com uniforme e crachá",
+      "Equipamentos próprios: geofone, manômetro, prensa para PPR e máquina de solda",
+      "Garantia de 90 dias a 12 meses por escrito",
+      "Atendimento de emergência hidráulica 24h",
+    ],
+    geo: "Atendemos toda Fortaleza — Aldeota, Meireles, Cocó, Papicu, Varjota, Edson Queiroz, Sapiranga, Praia do Futuro, Beira Mar — além de indústrias no Distrito Industrial de Maracanaú, Pecém e plantas em Eusébio, Aquiraz e Caucaia. Conhecemos as particularidades da pressão fornecida pela Cagece e dimensionamos sistemas resistentes à maresia em metais cromados do litoral cearense.",
+    faq: [
+      { q: "Quanto custa um conserto hidráulico em Fortaleza?", a: "Visita técnica parte de R$ 120 (abatida do serviço). Trocas pontuais (torneira, registro, sifão) partem de R$ 90 mais material. Para sistema hidráulico industrial, orçamento sob projeto." },
+      { q: "Vocês trocam válvula Hydra no mesmo dia?", a: "Sim. Conserto de válvula Hydra é executado no mesmo dia: levamos o kit reparo ou a válvula completa dependendo do estado." },
+      { q: "Atendem indústrias?", a: "Sim. Projetamos e executamos sistema hidráulico industrial — barriletes, recalque, água de processo e ar comprimido — com ART quando aplicável." },
+      { q: "Tem garantia no serviço?", a: "Sim. Garantia de 90 dias para reparos pontuais e até 12 meses para instalação de rede nova." },
+      { q: "Vocês emitem nota fiscal?", a: "Sim. Como empresa formalizada, emitimos NF de serviço sempre que solicitada." },
+    ],
+    related: ["encanador-residencial", "encanador-predial", "desentupidora"],
+  },
+  {
+    slug: "desentupidora",
+    code: "HD-02",
+    h1: "Desentupidora em Fortaleza",
+    shortTitle: "Desentupidora",
+    metaTitle: "Desentupidora em Fortaleza 24h | Chico Resolve",
+    metaDescription:
+      "Desentupidora em Fortaleza com empresa de desentupir canos e encanador urgente. Desentupir tubulação de água com hidrojato. Atendimento 24h.",
+    summary:
+      "Desentupidora com hidrojateamento e equipamento próprio para desentupir canos e tubulação de água em Fortaleza — encanador urgente 24h.",
+    keywords: [
+      "desentupidora",
+      "empresa de desentupir canos",
+      "empresa de desentupimento de cano",
+      "encanador urgente",
+      "desentupir tubulação de agua",
+    ],
+    intro:
+      "A Chico Resolve é uma desentupidora em Fortaleza com equipamento próprio para desentupir canos de cozinha, banheiro, pia, máquina de lavar e tubulação de água em residências, condomínios e empresas. Como empresa de desentupimento de cano, usamos hidrojateamento de alta pressão e máquinas rotativas (roto-rooter) que removem gordura, sabão, raízes e incrustações sem quebrar piso ou parede. Funcionamos como encanador urgente: chamado por WhatsApp, técnico no local em poucas horas, sem cobrar deslocamento dentro de Fortaleza. Cada serviço inclui teste de vazão após o desentupimento e relatório com fotos do antes e depois.",
+    whenToHire: [
+      { title: "Pia da cozinha não escoa", text: "Acúmulo de gordura no sifão e na coluna — exige hidrojato ou mola para liberar o caminho." },
+      { title: "Vaso sanitário entupido", text: "Papel, absorvente ou objeto preso — máquina rotativa resolve sem quebra do vaso." },
+      { title: "Tubulação de água com baixa vazão", text: "Incrustação calcária ou ferrugem reduzindo o fluxo — exige desentupir tubulação de água com pressão controlada." },
+      { title: "Caixa de gordura transbordando", text: "Saturação da caixa de gordura e da rede primária — sucção e hidrojato para limpeza completa." },
+    ],
+    types: [
+      { title: "Desentupir Canos de Cozinha", text: "Pia, sifão e coluna obstruídos por gordura — hidrojato e máquina rotativa para remoção completa, sem quebra." },
+      { title: "Desentupir Vaso e Banheiro", text: "Vaso sanitário, ralo de box e bidê com obstrução, incluindo retirada de objetos com câmera de inspeção." },
+      { title: "Desentupir Tubulação de Água", text: "Limpeza de tubulação obstruída por incrustação ou corpo estranho, restabelecendo vazão sem trocar a coluna." },
+      { title: "Caixa de Gordura e Inspeção", text: "Limpeza, sucção e higienização de caixa de gordura, caixa de inspeção e ralos de área externa." },
+      { title: "Encanador Urgente 24h", text: "Atendimento de emergência para vazamento, transbordo e obstrução — saída imediata em Fortaleza." },
+    ],
+    process: [
+      { title: "Atendimento por WhatsApp", text: "Cliente envia descrição e fotos — orientação inicial e janela de atendimento confirmada no mesmo contato." },
+      { title: "Vistoria no Local", text: "Identificação do ponto de obstrução, escolha do equipamento (hidrojato, mola, sucção) e orçamento fechado antes de iniciar." },
+      { title: "Desentupimento Técnico", text: "Execução com proteção do ambiente, sem quebra desnecessária e com EPIs adequados ao serviço." },
+      { title: "Teste de Vazão", text: "Liberação de água com cliente presente para confirmar restabelecimento completo do fluxo." },
+      { title: "Garantia e Recomendações", text: "Garantia de 30 a 90 dias e orientação para evitar nova obstrução (uso de tela, descarte correto de gordura)." },
+    ],
+    standards: [
+      "NBR 8160 (sistemas prediais de esgoto sanitário)",
+      "NBR 5626 (água fria)",
+      "NR-6 (EPI) e NR-33 (espaços confinados quando aplicável)",
+      "Procedimentos de biossegurança para esgoto",
+    ],
+    trust: [
+      "Empresa de desentupir canos com CNPJ, nota fiscal e contrato",
+      "Hidrojato, máquina rotativa e sucção próprios — não terceirizamos equipamento",
+      "Encanador urgente 24h via WhatsApp dedicado",
+      "Garantia de 30 a 90 dias por escrito",
+      "Sem cobrança de visita técnica em Fortaleza",
+    ],
+    geo: "Como desentupidora em Fortaleza, atendemos todos os bairros — Aldeota, Meireles, Cocó, Papicu, Varjota, Dionísio Torres, Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante, Praia do Futuro, Mucuripe e Beira Mar — além de Eusébio, Aquiraz, Caucaia e Maracanaú. Atuamos em condomínios, casas, indústrias e estabelecimentos comerciais com equipamentos compatíveis com a rede da Cagece.",
+    faq: [
+      { q: "Quanto custa uma desentupidora em Fortaleza?", a: "Desentupimentos simples (pia, vaso) partem de R$ 150. Hidrojateamento de coluna ou caixa de gordura tem orçamento por extensão e grau de obstrução. Sem taxa de visita." },
+      { q: "Vocês atendem 24h?", a: "Sim. Funcionamos como encanador urgente 24h — chamados via WhatsApp são respondidos em minutos e a equipe sai imediatamente em casos críticos." },
+      { q: "Precisa quebrar a parede para desentupir?", a: "Na maioria dos casos, não. Hidrojato e máquina rotativa entram pelos ralos e caixas de inspeção sem nenhuma quebra." },
+      { q: "Conseguem desentupir tubulação de água potável?", a: "Sim. Para tubulação de água com incrustação, usamos pressão controlada para evitar dano à rede de PVC, CPVC ou PPR." },
+      { q: "Tem garantia?", a: "Sim. Garantia de 30 a 90 dias dependendo do tipo de obstrução e da causa identificada." },
+    ],
+    related: ["desentupimento-esgoto", "encanador-residencial", "encanador-predial"],
+  },
+  {
+    slug: "desentupimento-esgoto",
+    code: "HD-03",
+    h1: "Desentupimento de Esgoto em Fortaleza",
+    shortTitle: "Desentupimento de Esgoto",
+    metaTitle: "Desentupimento de Esgoto em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Desentupimento de esgoto em Fortaleza com desentupidor de cano de esgoto, desentupimento de ralo e encanador urgente. Hidrojato e videoinspeção 24h.",
+    summary:
+      "Desentupimento de esgoto, desentupimento de ralo e desobstrução de rede com hidrojato e videoinspeção — encanador urgente em Fortaleza.",
+    keywords: [
+      "desentupimento de esgoto",
+      "desentupidor de cano de esgoto",
+      "desentupimento de ralo",
+      "encanador urgente",
+      "desentupimento esgoto",
+    ],
+    intro:
+      "Desentupimento de esgoto exige equipamento certo e técnica — não é trabalho para mola de aço alugada. A Chico Resolve atua como desentupidor de cano de esgoto em Fortaleza com hidrojato de alta pressão, máquinas rotativas profissionais e câmera de videoinspeção para localizar a causa exata da obstrução (raízes invasivas, gordura, papel, incrustação ou ruptura). Fazemos desentupimento de ralo de box, ralo sifonado, ralo de cozinha, ramal predial, caixa de gordura e ligação com a rede pública. Funcionamos como encanador urgente 24h porque desentupimento esgoto crítico não pode esperar — refluxo em condomínio, transbordo em restaurante ou esgoto na sala de casa exigem resposta imediata.",
+    whenToHire: [
+      { title: "Ralo voltando água suja", text: "Sinal clássico de obstrução na rede primária — exige hidrojato no ramal, não só no ralo." },
+      { title: "Cheiro forte de esgoto em casa", text: "Sifão seco, ralo sem fecho hídrico ou ruptura no esgoto subterrâneo." },
+      { title: "Vaso transbordando", text: "Obstrução depois do vaso, na coluna ou na caixa de inspeção — exige videoinspeção." },
+      { title: "Caixa de gordura saturada", text: "Restaurante, condomínio ou cozinha doméstica com caixa cheia precisa de sucção e hidrojato preventivo." },
+    ],
+    types: [
+      { title: "Desentupimento de Ralo", text: "Ralo de box, sifonado, de cozinha e de quintal — remoção de cabelo, gordura, fragmentos e incrustação." },
+      { title: "Desentupidor de Cano de Esgoto", text: "Coluna de esgoto vertical e ramais horizontais com máquina rotativa de cabo até 30 metros." },
+      { title: "Hidrojateamento de Esgoto", text: "Hidrojato de até 4.000 PSI que corta raízes, gordura solidificada e incrustação sem ferir a tubulação." },
+      { title: "Videoinspeção de Tubulação", text: "Câmera colorida com transmissão ao vivo para identificar trincas, rupturas e o ponto exato da obstrução." },
+      { title: "Limpeza de Caixa de Gordura e Inspeção", text: "Sucção do volume saturado, higienização e plano de manutenção preventiva mensal ou trimestral." },
+    ],
+    process: [
+      { title: "Triagem por WhatsApp", text: "Cliente descreve o problema e envia fotos; orientação inicial e janela de atendimento — encanador urgente quando crítico." },
+      { title: "Vistoria e Diagnóstico", text: "Inspeção dos ralos, caixas de passagem e prumada; uso de câmera quando necessário para localizar a obstrução." },
+      { title: "Orçamento Fechado", text: "Valor por escrito antes do início, sem alteração no fim — incluindo descarte adequado do resíduo." },
+      { title: "Execução com Biossegurança", text: "Hidrojato ou máquina rotativa com EPIs completos, proteção do ambiente e desinfecção do entorno." },
+      { title: "Teste e Garantia", text: "Vazão liberada com cliente presente, descarte adequado e garantia de 30 a 90 dias por escrito." },
+    ],
+    standards: [
+      "NBR 8160 (sistemas prediais de esgoto sanitário)",
+      "NBR 13969 (tratamento de efluentes)",
+      "NR-6 (EPI) e NR-33 (espaços confinados)",
+      "Procedimentos de biossegurança",
+      "Diretrizes Cagece para ligação na rede pública",
+    ],
+    trust: [
+      "Desentupidor de cano de esgoto com equipe própria e equipamento profissional",
+      "Hidrojato e câmera de videoinspeção próprios — sem aluguel",
+      "Encanador urgente 24h para emergência de esgoto",
+      "Descarte adequado do resíduo conforme norma ambiental",
+      "Garantia formal de 30 a 90 dias",
+    ],
+    geo: "Atendemos desentupimento esgoto em todos os bairros de Fortaleza — incluindo restaurantes da Praia do Futuro e Beira Mar, condomínios em Aldeota, Meireles e Cocó, e residências em Edson Queiroz, Sapiranga e Eng. Luciano Cavalcante — além de Eusébio, Aquiraz, Caucaia e Maracanaú. Conhecemos as particularidades da rede coletora da Cagece e do solo arenoso do litoral cearense que favorece infiltração de raízes.",
+    faq: [
+      { q: "Quanto custa o desentupimento de esgoto em Fortaleza?", a: "Desentupimento de ralo simples parte de R$ 150. Hidrojateamento de coluna de esgoto ou ramal predial é orçado por extensão e grau de obstrução, após vistoria gratuita." },
+      { q: "Qual a diferença entre máquina rotativa e hidrojato?", a: "Máquina rotativa quebra a obstrução com cabo metálico; hidrojato corta com água em alta pressão (até 4.000 PSI). Para gordura solidificada, raízes e limpeza completa, o hidrojato é superior." },
+      { q: "Vocês fazem videoinspeção?", a: "Sim. Câmera colorida com transmissão ao vivo localiza trincas, raízes e o ponto exato da obstrução, evitando quebras desnecessárias." },
+      { q: "Atendem condomínios e restaurantes?", a: "Sim. Atendemos contratos de manutenção preventiva mensal ou trimestral para caixas de gordura, ramais prediais e estação de tratamento." },
+      { q: "Atendem emergência no mesmo dia?", a: "Sim. Para esgoto transbordando ou refluxo crítico, mobilizamos encanador urgente em até 2 horas em Fortaleza." },
+    ],
+    related: ["desentupidora", "encanador-predial", "encanador-residencial"],
+  },
+  {
+    slug: "encanador-residencial",
+    code: "HD-04",
+    h1: "Encanador Residencial em Fortaleza",
+    shortTitle: "Encanador Residencial",
+    metaTitle: "Encanador Residencial em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Encanador residencial em Fortaleza com encanador profissional e urgente. Serviços hidráulicos residenciais, encanador e desentupidor com garantia.",
+    summary:
+      "Encanador hidráulico residencial profissional para vazamento, troca de tubulação, desentupimento e instalação em casas e apartamentos.",
+    keywords: [
+      "encanador residencial",
+      "encanador",
+      "serviços hidráulicos residenciais",
+      "encanador urgente",
+      "serviço de encanador",
+      "encanador hidráulico residencial",
+      "encanador profissional",
+      "encanador e desentupidor",
+      "desentupir tubulação de agua",
+    ],
+    intro:
+      "A Chico Resolve oferece serviço de encanador residencial em Fortaleza com encanador profissional CLT, uniformizado e identificado para atender casas e apartamentos com tranquilidade. Cobrimos toda a linha de serviços hidráulicos residenciais: troca de torneiras, registros e flexíveis, instalação de máquina de lavar e tanquinho, conserto de descarga, troca de tubulação aparente ou embutida, detecção de vazamento, desentupir tubulação de água e desobstrução de ralos. Como encanador e desentupidor, resolvemos numa visita problemas que outros precisariam dividir em dois chamados. Funcionamos também como encanador urgente: chamados via WhatsApp com saída imediata para vazamento, ralo transbordando ou chuveiro sem pressão.",
+    whenToHire: [
+      { title: "Vazamento na parede ou teto", text: "Mancha, bolha na pintura ou pingo — indica vazamento na tubulação embutida, exige geofone." },
+      { title: "Conta d'água alta sem motivo", text: "Possível vazamento oculto — encanador profissional faz teste de hidrômetro e localiza o ponto." },
+      { title: "Reforma de banheiro ou cozinha", text: "Reposicionamento de pontos de água, instalação de novo aquecedor, máquina de lavar ou lava-louças." },
+      { title: "Ralo voltando ou pia entupida", text: "Encanador e desentupidor numa só visita — sem precisar contratar duas empresas." },
+    ],
+    types: [
+      { title: "Reparos Rápidos", text: "Troca de torneira, registro, sifão, flexível, engate e válvula de descarga no mesmo dia." },
+      { title: "Detecção de Vazamento", text: "Geofone e câmera para localizar vazamento embutido sem quebrar piso ou parede desnecessariamente." },
+      { title: "Troca de Tubulação", text: "Substituição de coluna de água fria, água quente em PPR e ramais danificados por incrustação ou corrosão." },
+      { title: "Instalação de Equipamentos", text: "Máquina de lavar, tanquinho, lava-louças, aquecedor a gás, ducha higiênica, filtro de água e softener." },
+      { title: "Encanador e Desentupidor", text: "Desentupir tubulação de água, vasos, ralos e pias — encanador residencial completo em uma visita." },
+    ],
+    process: [
+      { title: "Agendamento por WhatsApp", text: "Cliente envia descrição e fotos; janela de atendimento confirmada e técnico chega no horário combinado." },
+      { title: "Vistoria com Orçamento", text: "Encanador profissional avalia o problema, identifica a causa e entrega orçamento por escrito antes de iniciar." },
+      { title: "Execução Limpa", text: "Proteção de móveis e piso, ferramentas próprias, descarte adequado de material e mínimo de quebra." },
+      { title: "Teste com o Cliente", text: "Abertura de água, verificação de vazamento e pressão com cliente presente." },
+      { title: "Recibo e Garantia", text: "Recibo formal, NF se solicitada e garantia de 90 dias a 12 meses conforme o serviço." },
+    ],
+    standards: [
+      "NBR 5626 (instalação predial de água fria)",
+      "NBR 7198 (água quente)",
+      "NBR 8160 (esgoto sanitário)",
+      "Padrão Cagece para ligação predial",
+      "NR-6 (EPI)",
+    ],
+    trust: [
+      "Encanador hidráulico residencial CLT, identificado com uniforme e crachá",
+      "Empresa formalizada com CNPJ, contrato e nota fiscal",
+      "Garantia de 90 dias a 12 meses por escrito",
+      "Encanador urgente 24h via WhatsApp dedicado",
+      "Geofone próprio para detecção sem quebra",
+    ],
+    geo: "Atendemos residências em todos os bairros de Fortaleza — Aldeota, Meireles, Cocó, Papicu, Varjota, Dionísio Torres, Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante, Praia do Futuro, Mucuripe e Beira Mar — além de casas em Eusébio, Aquiraz, Caucaia e Maracanaú. Trabalhamos com tubulação compatível com o padrão Cagece e tintas/vedantes resistentes à maresia em metais expostos no litoral cearense.",
+    faq: [
+      { q: "Quanto custa um encanador residencial em Fortaleza?", a: "Visita técnica parte de R$ 120 (abatida do serviço). Serviços simples como troca de torneira partem de R$ 80; detecção de vazamento sem quebra a partir de R$ 280. Orçamento gratuito por WhatsApp." },
+      { q: "Vocês conseguem detectar vazamento sem quebrar parede?", a: "Sim. Usamos geofone eletrônico, câmera de inspeção e teste de pressão para localizar o ponto exato — só quebramos o estritamente necessário." },
+      { q: "Atendem emergência?", a: "Sim. Encanador urgente 24h para vazamento, ralo transbordando ou rompimento de tubulação — saída imediata em Fortaleza." },
+      { q: "Vocês também desentopem ralos e canos?", a: "Sim. Atuamos como encanador e desentupidor — desentupir tubulação de água, vasos, ralos e pias na mesma visita." },
+      { q: "Tem garantia escrita?", a: "Sim. Garantia de 90 dias para reparos pontuais e até 12 meses para troca de tubulação ou instalação nova." },
+    ],
+    related: ["encanador-predial", "servico-hidraulico", "desentupidora"],
+  },
+  {
+    slug: "encanador-predial",
+    code: "HD-05",
+    h1: "Encanador Predial em Fortaleza",
+    shortTitle: "Encanador Predial",
+    metaTitle: "Encanador Predial em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Encanador predial em Fortaleza para condomínios e apartamentos. Empresa de encanador especializado em vazamento e detecção sem quebra. 24h.",
+    summary:
+      "Empresa de encanador predial para condomínios e edifícios — detecção de vazamento, prumadas, recalque, apartamentos e manutenção preventiva.",
+    keywords: [
+      "encanador predial",
+      "empresa de encanador",
+      "encanador especializado em vazamento",
+      "desentupir tubulação de agua",
+      "encanador para apartamento",
+      "encanador detectar vazamento",
+    ],
+    intro:
+      "Como empresa de encanador especializada em edifícios, a Chico Resolve atua como encanador predial em Fortaleza com foco em condomínios, edifícios comerciais e atendimento de encanador para apartamento. Cuidamos das instalações coletivas — prumadas de água fria e quente, barriletes, hidrômetros individualizados, bombas de recalque, reservatórios, sistema de combate a incêndio e rede de esgoto — e do que é privativo de cada unidade. Como encanador especializado em vazamento, usamos geofone, câmera termográfica e gás traçador para encanador detectar vazamento na prumada sem quebrar o apartamento do vizinho. Atendemos síndicos, administradoras e moradores com contrato de manutenção, plantão de emergência 24h e relatório fotográfico mensal para a assembleia.",
+    whenToHire: [
+      { title: "Vazamento no teto do apartamento de baixo", text: "Pode ser do vizinho de cima ou da prumada predial — exige encanador especializado em vazamento com geofone." },
+      { title: "Pressão fraca em toda a coluna", text: "Falha no recalque, registro fechado ou incrustação na prumada — afeta vários apartamentos." },
+      { title: "Conta d'água do condomínio subindo", text: "Vazamento em área comum, em prumada ou em hidrômetro descalibrado — exige inspeção completa." },
+      { title: "Renovação do AVCB", text: "Sistema de combate a incêndio exige teste de pressão, registros operantes e laudo de hidráulica." },
+    ],
+    types: [
+      { title: "Detecção de Vazamento Predial", text: "Encanador detectar vazamento com geofone, câmera termográfica e gás traçador na prumada, sem quebra desnecessária." },
+      { title: "Encanador para Apartamento", text: "Serviços hidráulicos privativos: vazamento em parede, troca de registro, conserto de válvula Hydra, instalação de aquecedor." },
+      { title: "Prumadas e Barriletes", text: "Manutenção e substituição de prumadas de água fria/quente e barriletes em CPVC, PPR ou aço galvanizado." },
+      { title: "Bombas de Recalque e Reservatórios", text: "Manutenção de bombas, boias, sensores de nível, limpeza de reservatório e desinfecção conforme Anvisa." },
+      { title: "Desentupir Tubulação de Água", text: "Desobstrução de tubulação predial por incrustação ou corpo estranho, restabelecendo vazão para a coluna afetada." },
+    ],
+    process: [
+      { title: "Vistoria Inicial", text: "Levantamento do barrilete, prumadas, recalque, reservatórios e ramais — checklist documentado para o síndico." },
+      { title: "Plano e Orçamento", text: "Proposta de contrato com escopo, periodicidade, SLA de emergência e valor mensal fixo." },
+      { title: "Manutenção Preventiva", text: "Inspeção mensal de bombas, registros, válvulas e prumadas; teste de pressão e identificação precoce de patologias." },
+      { title: "Atendimento Corretivo e Emergência", text: "Chamados via WhatsApp com prioridade; encanador urgente 24h para vazamento crítico em prumada ou recalque." },
+      { title: "Relatório ao Síndico", text: "Relatório fotográfico mensal com itens executados, pendências e recomendações para a próxima assembleia." },
+    ],
+    standards: [
+      "NBR 5626 (água fria predial)",
+      "NBR 7198 (água quente)",
+      "NBR 8160 (esgoto sanitário)",
+      "NBR 13714 (sistemas de combate a incêndio por hidrantes)",
+      "Portaria Anvisa para limpeza de reservatório",
+      "Convenção de condomínio do edifício",
+    ],
+    trust: [
+      "Empresa de encanador com CNPJ, contrato e nota fiscal",
+      "Encanador especializado em vazamento com geofone e câmera termográfica próprios",
+      "Encanador urgente 24h com SLA por escrito",
+      "Relatório fotográfico mensal para a administração",
+      "Equipe própria CLT — sem terceirização de risco",
+    ],
+    geo: "Atendemos edifícios residenciais e comerciais em Fortaleza inteira — incluindo prédios na Beira Mar, Aldeota, Meireles, Cocó, Guararapes, Dionísio Torres e Edson Queiroz — além de empreendimentos em Eusébio, Aquiraz e Caucaia. Conhecemos a particularidade da pressão da Cagece em zonas altas da cidade e dimensionamos sistemas considerando a corrosão acelerada por maresia em metais expostos.",
+    faq: [
+      { q: "Qual o prazo mínimo do contrato de encanador predial?", a: "Contratos a partir de 6 meses com possibilidade de 1 mês de teste para o síndico avaliar o atendimento." },
+      { q: "Como vocês detectam vazamento em prumada sem quebrar o apartamento do vizinho?", a: "Usamos geofone eletrônico, câmera termográfica e, em casos complexos, gás traçador — localizamos o ponto exato e quebramos o mínimo necessário." },
+      { q: "Atendem encanador para apartamento de morador, mesmo sem contrato?", a: "Sim. Atendemos chamados avulsos por unidade com orçamento por escrito antes da execução." },
+      { q: "Vocês fazem manutenção de bombas de recalque?", a: "Sim. Inspeção mensal, teste de boias e sensores, limpeza de reservatório, desinfecção e troca de selo mecânico quando necessário." },
+      { q: "Têm plantão 24h?", a: "Sim. Encanador urgente 24h via WhatsApp dedicado para vazamento em prumada, recalque parado ou rompimento crítico." },
+    ],
+    related: ["encanador-residencial", "servico-hidraulico", "desentupimento-esgoto"],
+  },
+];
+
+export const getHidraulicaSubservice = (slug: string): HidraulicaSubservice | undefined =>
+  hidraulicaSubservices.find((s) => s.slug === slug);
+
+
 

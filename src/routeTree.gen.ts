@@ -18,8 +18,10 @@ import { Route as ServicosHidraulicaRouteImport } from './routes/servicos.hidrau
 import { Route as ServicosEletricaRouteImport } from './routes/servicos.eletrica'
 import { Route as ServicosSlugRouteImport } from './routes/servicos.$slug'
 import { Route as ServicosPinturaIndexRouteImport } from './routes/servicos.pintura.index'
+import { Route as ServicosHidraulicaIndexRouteImport } from './routes/servicos.hidraulica.index'
 import { Route as ServicosEletricaIndexRouteImport } from './routes/servicos.eletrica.index'
 import { Route as ServicosPinturaPinturaSlugRouteImport } from './routes/servicos.pintura.$pinturaSlug'
+import { Route as ServicosHidraulicaHidraulicaSlugRouteImport } from './routes/servicos.hidraulica.$hidraulicaSlug'
 import { Route as ServicosEletricaEletricaSlugRouteImport } from './routes/servicos.eletrica.$eletricaSlug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -67,6 +69,11 @@ const ServicosPinturaIndexRoute = ServicosPinturaIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ServicosPinturaRoute,
 } as any)
+const ServicosHidraulicaIndexRoute = ServicosHidraulicaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicosHidraulicaRoute,
+} as any)
 const ServicosEletricaIndexRoute = ServicosEletricaIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -77,6 +84,12 @@ const ServicosPinturaPinturaSlugRoute =
     id: '/$pinturaSlug',
     path: '/$pinturaSlug',
     getParentRoute: () => ServicosPinturaRoute,
+  } as any)
+const ServicosHidraulicaHidraulicaSlugRoute =
+  ServicosHidraulicaHidraulicaSlugRouteImport.update({
+    id: '/$hidraulicaSlug',
+    path: '/$hidraulicaSlug',
+    getParentRoute: () => ServicosHidraulicaRoute,
   } as any)
 const ServicosEletricaEletricaSlugRoute =
   ServicosEletricaEletricaSlugRouteImport.update({
@@ -92,11 +105,13 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicos/$slug': typeof ServicosSlugRoute
   '/servicos/eletrica': typeof ServicosEletricaRouteWithChildren
-  '/servicos/hidraulica': typeof ServicosHidraulicaRoute
+  '/servicos/hidraulica': typeof ServicosHidraulicaRouteWithChildren
   '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/eletrica/$eletricaSlug': typeof ServicosEletricaEletricaSlugRoute
+  '/servicos/hidraulica/$hidraulicaSlug': typeof ServicosHidraulicaHidraulicaSlugRoute
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/eletrica/': typeof ServicosEletricaIndexRoute
+  '/servicos/hidraulica/': typeof ServicosHidraulicaIndexRoute
   '/servicos/pintura/': typeof ServicosPinturaIndexRoute
 }
 export interface FileRoutesByTo {
@@ -105,10 +120,11 @@ export interface FileRoutesByTo {
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicos/$slug': typeof ServicosSlugRoute
-  '/servicos/hidraulica': typeof ServicosHidraulicaRoute
   '/servicos/eletrica/$eletricaSlug': typeof ServicosEletricaEletricaSlugRoute
+  '/servicos/hidraulica/$hidraulicaSlug': typeof ServicosHidraulicaHidraulicaSlugRoute
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/eletrica': typeof ServicosEletricaIndexRoute
+  '/servicos/hidraulica': typeof ServicosHidraulicaIndexRoute
   '/servicos/pintura': typeof ServicosPinturaIndexRoute
 }
 export interface FileRoutesById {
@@ -119,11 +135,13 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicos/$slug': typeof ServicosSlugRoute
   '/servicos/eletrica': typeof ServicosEletricaRouteWithChildren
-  '/servicos/hidraulica': typeof ServicosHidraulicaRoute
+  '/servicos/hidraulica': typeof ServicosHidraulicaRouteWithChildren
   '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/eletrica/$eletricaSlug': typeof ServicosEletricaEletricaSlugRoute
+  '/servicos/hidraulica/$hidraulicaSlug': typeof ServicosHidraulicaHidraulicaSlugRoute
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/eletrica/': typeof ServicosEletricaIndexRoute
+  '/servicos/hidraulica/': typeof ServicosHidraulicaIndexRoute
   '/servicos/pintura/': typeof ServicosPinturaIndexRoute
 }
 export interface FileRouteTypes {
@@ -138,8 +156,10 @@ export interface FileRouteTypes {
     | '/servicos/hidraulica'
     | '/servicos/pintura'
     | '/servicos/eletrica/$eletricaSlug'
+    | '/servicos/hidraulica/$hidraulicaSlug'
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/eletrica/'
+    | '/servicos/hidraulica/'
     | '/servicos/pintura/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -148,10 +168,11 @@ export interface FileRouteTypes {
     | '/servicos'
     | '/sitemap.xml'
     | '/servicos/$slug'
-    | '/servicos/hidraulica'
     | '/servicos/eletrica/$eletricaSlug'
+    | '/servicos/hidraulica/$hidraulicaSlug'
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/eletrica'
+    | '/servicos/hidraulica'
     | '/servicos/pintura'
   id:
     | '__root__'
@@ -164,8 +185,10 @@ export interface FileRouteTypes {
     | '/servicos/hidraulica'
     | '/servicos/pintura'
     | '/servicos/eletrica/$eletricaSlug'
+    | '/servicos/hidraulica/$hidraulicaSlug'
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/eletrica/'
+    | '/servicos/hidraulica/'
     | '/servicos/pintura/'
   fileRoutesById: FileRoutesById
 }
@@ -241,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicosPinturaIndexRouteImport
       parentRoute: typeof ServicosPinturaRoute
     }
+    '/servicos/hidraulica/': {
+      id: '/servicos/hidraulica/'
+      path: '/'
+      fullPath: '/servicos/hidraulica/'
+      preLoaderRoute: typeof ServicosHidraulicaIndexRouteImport
+      parentRoute: typeof ServicosHidraulicaRoute
+    }
     '/servicos/eletrica/': {
       id: '/servicos/eletrica/'
       path: '/'
@@ -254,6 +284,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/servicos/pintura/$pinturaSlug'
       preLoaderRoute: typeof ServicosPinturaPinturaSlugRouteImport
       parentRoute: typeof ServicosPinturaRoute
+    }
+    '/servicos/hidraulica/$hidraulicaSlug': {
+      id: '/servicos/hidraulica/$hidraulicaSlug'
+      path: '/$hidraulicaSlug'
+      fullPath: '/servicos/hidraulica/$hidraulicaSlug'
+      preLoaderRoute: typeof ServicosHidraulicaHidraulicaSlugRouteImport
+      parentRoute: typeof ServicosHidraulicaRoute
     }
     '/servicos/eletrica/$eletricaSlug': {
       id: '/servicos/eletrica/$eletricaSlug'
@@ -278,6 +315,19 @@ const ServicosEletricaRouteChildren: ServicosEletricaRouteChildren = {
 const ServicosEletricaRouteWithChildren =
   ServicosEletricaRoute._addFileChildren(ServicosEletricaRouteChildren)
 
+interface ServicosHidraulicaRouteChildren {
+  ServicosHidraulicaHidraulicaSlugRoute: typeof ServicosHidraulicaHidraulicaSlugRoute
+  ServicosHidraulicaIndexRoute: typeof ServicosHidraulicaIndexRoute
+}
+
+const ServicosHidraulicaRouteChildren: ServicosHidraulicaRouteChildren = {
+  ServicosHidraulicaHidraulicaSlugRoute: ServicosHidraulicaHidraulicaSlugRoute,
+  ServicosHidraulicaIndexRoute: ServicosHidraulicaIndexRoute,
+}
+
+const ServicosHidraulicaRouteWithChildren =
+  ServicosHidraulicaRoute._addFileChildren(ServicosHidraulicaRouteChildren)
+
 interface ServicosPinturaRouteChildren {
   ServicosPinturaPinturaSlugRoute: typeof ServicosPinturaPinturaSlugRoute
   ServicosPinturaIndexRoute: typeof ServicosPinturaIndexRoute
@@ -295,14 +345,14 @@ const ServicosPinturaRouteWithChildren = ServicosPinturaRoute._addFileChildren(
 interface ServicosRouteChildren {
   ServicosSlugRoute: typeof ServicosSlugRoute
   ServicosEletricaRoute: typeof ServicosEletricaRouteWithChildren
-  ServicosHidraulicaRoute: typeof ServicosHidraulicaRoute
+  ServicosHidraulicaRoute: typeof ServicosHidraulicaRouteWithChildren
   ServicosPinturaRoute: typeof ServicosPinturaRouteWithChildren
 }
 
 const ServicosRouteChildren: ServicosRouteChildren = {
   ServicosSlugRoute: ServicosSlugRoute,
   ServicosEletricaRoute: ServicosEletricaRouteWithChildren,
-  ServicosHidraulicaRoute: ServicosHidraulicaRoute,
+  ServicosHidraulicaRoute: ServicosHidraulicaRouteWithChildren,
   ServicosPinturaRoute: ServicosPinturaRouteWithChildren,
 }
 
