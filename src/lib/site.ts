@@ -1222,5 +1222,416 @@ export const hidraulicaSubservices: HidraulicaSubservice[] = [
 export const getHidraulicaSubservice = (slug: string): HidraulicaSubservice | undefined =>
   hidraulicaSubservices.find((s) => s.slug === slug);
 
+// ============================================================================
+// Drywall: hub + sub-páginas otimizadas para clusters de palavras-chave.
+// H1 = keyword principal; conteúdo único focado em E-E-A-T, GEO Fortaleza/CE,
+// SEO técnico (Service + Breadcrumb + FAQPage JSON-LD).
+// ============================================================================
+
+export type DrywallSlug =
+  | "instalacao-drywall"
+  | "gesso-acartonado"
+  | "gesseiro"
+  | "forro-de-gesso"
+  | "parede-de-drywall"
+  | "divisoria-de-ambiente";
+
+export interface DrywallSubservice {
+  slug: DrywallSlug;
+  code: string;
+  h1: string;
+  shortTitle: string;
+  metaTitle: string;
+  metaDescription: string;
+  summary: string;
+  keywords: string[];
+  intro: string;
+  whenToHire: { title: string; text: string }[];
+  types: { title: string; text: string }[];
+  process: { title: string; text: string }[];
+  standards: string[];
+  trust: string[];
+  geo: string;
+  faq: { q: string; a: string }[];
+  related: DrywallSlug[];
+}
+
+export const drywallSubservices: DrywallSubservice[] = [
+  {
+    slug: "instalacao-drywall",
+    code: "DW-01",
+    h1: "Instalação de Drywall em Fortaleza",
+    shortTitle: "Instalação de Drywall",
+    metaTitle: "Instalação de Drywall em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Instalação de drywall em Fortaleza com empresa de drywall regularizada. Paredes, forros e divisórias com orçamento drywall rápido e garantia escrita.",
+    summary:
+      "Instalação de drywall completa — paredes, forros e divisórias — com perfis galvanizados, placa certificada e execução por equipe própria em Fortaleza.",
+    keywords: [
+      "instalação de drywall",
+      "empresa de drywall",
+      "orçamento drywall",
+    ],
+    intro:
+      "A Chico Resolve é uma empresa de drywall em Fortaleza com equipe própria CLT dedicada à instalação de drywall em obras novas, reformas e ampliações comerciais. Executamos a montagem completa do sistema — marcação a laser, montantes e guias galvanizados, fechamento com placa standard, RU (resistente à umidade) ou RF (resistente ao fogo), tratamento de juntas com fita microperfurada e massa em três demãos — pronto para receber pintura. Cada orçamento drywall que entregamos é detalhado por ambiente, com metragem de placa, quantidade de perfis, isolamento (lã de rocha ou de vidro), portas e nichos, sem custo escondido depois.",
+    whenToHire: [
+      { title: "Obra nova ou ampliação", text: "Dividir sala, criar suíte, fechar varanda — drywall sobe em dias, sem alvenaria pesada." },
+      { title: "Escritório ou loja comercial", text: "Layout que precisa mudar rápido sem gerar entulho ou paralisar a operação." },
+      { title: "Esconder fiação e tubulação", text: "Forro ou parede para passar elétrica, hidráulica, ar-condicionado e cabeamento estruturado." },
+      { title: "Conforto acústico", text: "Apartamento, hotel ou consultório que precisa isolar ruído entre ambientes." },
+    ],
+    types: [
+      { title: "Parede Drywall ST (Standard)", text: "Placa branca padrão para áreas secas — quartos, salas e escritórios. Espessura 12,5 mm com perfis 48, 70 ou 90 mm." },
+      { title: "Drywall RU (Verde / Umidade)", text: "Placa resistente à umidade para banheiros, cozinhas e áreas próximas ao mar — proteção contra mofo." },
+      { title: "Drywall RF (Rosa / Fogo)", text: "Placa corta-fogo para shafts, casa de máquinas e compartimentação exigida pelo Corpo de Bombeiros." },
+      { title: "Forro Drywall", text: "Forro liso, em desnível ou com sanca aberta para iluminação indireta — pronto para pintura em pouco tempo." },
+      { title: "Divisória com Isolamento", text: "Parede dupla com lã de rocha ou de vidro para isolamento acústico e térmico." },
+    ],
+    process: [
+      { title: "Visita Técnica e Medição", text: "Levantamento com trena a laser, conferência de prumo, registro de pontos elétricos e hidráulicos existentes." },
+      { title: "Orçamento Drywall Detalhado", text: "Proposta por escrito com m² de placa, perfis, isolamento, portas, prazo e garantia — em até 24h úteis." },
+      { title: "Montagem da Estrutura", text: "Marcação, fixação de guias no piso e teto, montantes a cada 40 ou 60 cm e reforço para TV, pia ou bancada." },
+      { title: "Fechamento e Massa", text: "Parafusamento das placas, tratamento de juntas com fita microperfurada e massa em três demãos com lixamento fino." },
+      { title: "Entrega Pronto para Pintura", text: "Limpeza do ambiente, vistoria conjunta e termo de garantia formal de 12 meses." },
+    ],
+    standards: [
+      "NBR 15758 (sistemas construtivos em chapas de gesso)",
+      "NBR 14715 (chapas de gesso para drywall)",
+      "NBR 15217 (perfis de aço para drywall)",
+      "NR-18 (canteiro de obras) e NR-35 (altura quando aplicável)",
+    ],
+    trust: [
+      "Empresa de drywall com CNPJ, contrato e nota fiscal",
+      "Fornecedores homologados Knauf, Placo e Gypsum",
+      "Equipe própria CLT — sem terceirização de risco",
+      "Orçamento drywall fechado, sem alteração no fim da obra",
+      "Garantia escrita de 12 meses",
+    ],
+    geo: "Atendemos instalação de drywall em toda Fortaleza — Aldeota, Meireles, Cocó, Papicu, Edson Queiroz, Sapiranga, Praia do Futuro, Beira Mar — e em obras de Eusébio, Aquiraz, Caucaia e Maracanaú. Em zonas litorâneas com maresia, recomendamos placa RU em áreas úmidas e cuidado redobrado com fixadores galvanizados para evitar corrosão acelerada típica do clima cearense.",
+    faq: [
+      { q: "Quanto custa a instalação de drywall em Fortaleza?", a: "Parede drywall simples parte de R$ 110/m² incluindo material e mão de obra; forro liso de gesso a partir de R$ 95/m². Visita técnica gratuita para orçamento drywall exato." },
+      { q: "Qual o prazo para montar uma parede de drywall?", a: "Uma parede de 10 m² fica pronta para pintura em 2 a 3 dias úteis com equipe de 2 montadores, contando massa e lixamento." },
+      { q: "Drywall serve para banheiro e cozinha?", a: "Sim, desde que use placa RU (verde, resistente à umidade) e tratamento de juntas adequado. Áreas com contato direto e contínuo com água ainda exigem impermeabilização." },
+      { q: "Vocês entregam a parede pronta para pintar?", a: "Sim. Entregamos com massa nivelada e lixamento fino — pintor pode aplicar selador no dia seguinte." },
+      { q: "Tem garantia na instalação?", a: "Sim, garantia formal de 12 meses cobrindo trincas em juntas e desnivelamento em condições normais de uso." },
+    ],
+    related: ["gesso-acartonado", "parede-de-drywall", "forro-de-gesso"],
+  },
+  {
+    slug: "gesso-acartonado",
+    code: "DW-02",
+    h1: "Gesso Acartonado em Fortaleza",
+    shortTitle: "Gesso Acartonado",
+    metaTitle: "Gesso Acartonado em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Gesso acartonado em Fortaleza com placa drywall certificada Knauf, Placo e Gypsum. Drywall ou gesso acartonado: indicação técnica e orçamento.",
+    summary:
+      "Instalação de gesso acartonado (placa drywall) para paredes, forros e revestimentos com orientação técnica sobre drywall ou gesso tradicional.",
+    keywords: [
+      "gesso acartonado",
+      "drywall ou gesso acartonado",
+      "drywood gesso acartonado",
+      "placa de gesso",
+    ],
+    intro:
+      "Gesso acartonado e drywall são o mesmo sistema construtivo: uma placa de gesso revestida por duas folhas de cartão fixada em estrutura metálica galvanizada. A Chico Resolve trabalha em Fortaleza com gesso acartonado das marcas Knauf, Placo e Gypsum (incluindo linhas tipo Drywood gesso acartonado) — todas certificadas pela ABNT NBR 14715. A dúvida \"drywall ou gesso acartonado?\" surge porque no Nordeste ainda é comum o gesso liso tradicional (em pasta, aplicado direto na alvenaria) para forros. Cada sistema tem seu uso: gesso acartonado é mais rápido, seco, leve e permite isolamento; o gesso tradicional rende em forro fixo de pequena área. Orientamos a melhor escolha por ambiente.",
+    whenToHire: [
+      { title: "Comparar drywall e gesso tradicional", text: "Antes de fechar obra, vale entender custo, prazo e desempenho de cada sistema." },
+      { title: "Obra com prazo curto", text: "Gesso acartonado dispensa cura úmida e libera o ambiente para pintura em poucos dias." },
+      { title: "Reforma sem entulho", text: "Placa drywall gera fração do entulho de alvenaria — ideal para apartamento habitado." },
+      { title: "Estrutura leve", text: "Lajes com sobrecarga limitada exigem sistema leve — gesso acartonado pesa muito menos que tijolo." },
+    ],
+    types: [
+      { title: "Placa ST (Standard)", text: "Placa de gesso branca padrão para áreas secas — parede de quarto, sala, escritório, forro residencial." },
+      { title: "Placa RU (Verde)", text: "Gesso acartonado com aditivo hidrofugante para banheiros, cozinhas, lavanderias e áreas com maresia." },
+      { title: "Placa RF (Rosa)", text: "Placa drywall corta-fogo para shafts, casa de máquinas, escadas enclausuradas e compartimentação." },
+      { title: "Placa Acústica e Performance", text: "Linhas técnicas de fabricantes como Knauf Diamond e Placo Phonique para alto desempenho acústico." },
+      { title: "Drywood Gesso Acartonado", text: "Linhas premium com maior resistência mecânica e acabamento superior — opção para projetos de alto padrão." },
+    ],
+    process: [
+      { title: "Diagnóstico do Projeto", text: "Visita técnica e levantamento da finalidade (parede, forro, divisória) para indicar o tipo certo de placa." },
+      { title: "Especificação Técnica", text: "Orçamento com marca, tipo de placa (ST, RU, RF), espessura, perfil e isolamento — sem genérico." },
+      { title: "Aquisição com Fornecedor Homologado", text: "Compra direta de revendas autorizadas Knauf, Placo, Gypsum com nota fiscal e lote rastreável." },
+      { title: "Montagem e Fechamento", text: "Estrutura metálica, parafusamento, tratamento de juntas com fita e massa em três demãos." },
+      { title: "Acabamento e Entrega", text: "Lixamento fino, limpeza e entrega pronta para selador e pintura." },
+    ],
+    standards: [
+      "NBR 14715 (chapas de gesso para drywall)",
+      "NBR 15758 (sistemas construtivos em drywall)",
+      "NBR 15217 (perfis de aço)",
+      "Certificação ABNT e selo Inmetro nas placas",
+    ],
+    trust: [
+      "Apenas placa drywall certificada — sem genérico sem origem",
+      "Fornecedores homologados Knauf, Placo, Gypsum (e linhas Drywood)",
+      "Orientação técnica honesta sobre drywall ou gesso acartonado por ambiente",
+      "Equipe própria treinada nos manuais dos fabricantes",
+      "Garantia escrita de 12 meses",
+    ],
+    geo: "Atendemos com gesso acartonado em Fortaleza inteira — Aldeota, Meireles, Cocó, Edson Queiroz, Sapiranga, Praia do Futuro — além de Eusébio, Aquiraz, Caucaia e Maracanaú. Para edifícios próximos ao mar (Beira Mar, Mucuripe, Praia de Iracema) indicamos placa drywall RU como padrão para qualquer parede em contato com fachada externa, pois a maresia acelera a deterioração de placas standard.",
+    faq: [
+      { q: "Qual a diferença entre drywall e gesso acartonado?", a: "Nenhuma. Drywall é o nome do sistema construtivo; gesso acartonado é o nome técnico da placa que compõe o sistema. Comercialmente são sinônimos." },
+      { q: "Drywall ou gesso acartonado: o que escolher?", a: "Para parede e divisória, sempre drywall (gesso acartonado). Para forro liso simples em pequena área, gesso tradicional em pasta ainda é alternativa econômica." },
+      { q: "O que é Drywood gesso acartonado?", a: "Drywood é uma das linhas premium disponíveis no mercado, com placas de maior resistência mecânica e acabamento. Trabalhamos com as principais marcas certificadas." },
+      { q: "Placa drywall verde é à prova d'água?", a: "Não é à prova d'água, é resistente à umidade. Suporta vapor e respingos, mas áreas com água direta e contínua precisam de impermeabilização." },
+      { q: "Onde aplicar placa RF (rosa)?", a: "Shafts, casa de máquinas, escadas enclausuradas, paredes de cozinha industrial e qualquer compartimentação corta-fogo exigida pelo Corpo de Bombeiros." },
+    ],
+    related: ["instalacao-drywall", "parede-de-drywall", "forro-de-gesso"],
+  },
+  {
+    slug: "gesseiro",
+    code: "DW-03",
+    h1: "Gesseiro em Fortaleza",
+    shortTitle: "Gesseiro",
+    metaTitle: "Gesseiro Profissional em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Gesseiro profissional em Fortaleza, colocador de drywall e mão de obra drywall com equipe CLT. Preço gesseiro honesto e orçamento detalhado.",
+    summary:
+      "Gesseiro profissional e colocador de drywall com equipe própria CLT para mão de obra de qualidade — preço justo e garantia escrita em Fortaleza.",
+    keywords: [
+      "gesseiro",
+      "gesseiro profissional",
+      "colocador de drywall",
+      "mão de obra drywall",
+      "preço gesseiro",
+    ],
+    intro:
+      "Encontrar gesseiro profissional confiável em Fortaleza é um dos maiores gargalos de quem reforma. A Chico Resolve mantém equipe própria de gesseiro e colocador de drywall em regime CLT, com treinamento contínuo nos manuais Knauf e Placo, EPI completo e ferramentas adequadas (nível a laser, parafusadeira de impacto, lixadeira com aspirador). Quando você contrata nossa mão de obra drywall, não recebe diarista de internet — recebe profissional identificado, com crachá, registrado, supervisionado por um responsável técnico. O preço gesseiro que apresentamos é fechado por escrito; nada de aumento no fim da obra alegando \"trabalho a mais\".",
+    whenToHire: [
+      { title: "Cansou de gesseiro que some no meio da obra", text: "Equipe CLT com supervisão garante presença diária até a entrega." },
+      { title: "Precisa de qualidade de acabamento", text: "Gesseiro profissional treinado em massa em três demãos elimina ondulação e marca de junta." },
+      { title: "Obra grande exige equipe", text: "Forro, parede e divisória em paralelo só andam com vários colocadores de drywall em sincronia." },
+      { title: "Quer preço gesseiro fechado", text: "Orçamento por escrito com escopo, prazo e forma de pagamento — sem aditivo surpresa." },
+    ],
+    types: [
+      { title: "Gesseiro para Forro Liso", text: "Forro de gesso acartonado nivelado a laser, juntas tratadas e entrega pronta para pintar." },
+      { title: "Colocador de Drywall para Paredes", text: "Montagem de estrutura, fechamento, fita e massa em paredes e divisórias internas." },
+      { title: "Gesseiro para Sanca e Detalhe", text: "Sanca aberta com fita LED, nichos, painéis e detalhes decorativos com acabamento de joalheria." },
+      { title: "Mão de Obra Drywall para Construtoras", text: "Pacotes de mão de obra por m² para empreiteiras e construtoras que precisam de equipe estável." },
+      { title: "Reparo e Manutenção", text: "Conserto pontual de trinca em junta, furo de TV e remoção de placa danificada." },
+    ],
+    process: [
+      { title: "Visita Técnica", text: "Vistoria do local, conferência do projeto e medição precisa antes de qualquer cotação." },
+      { title: "Preço Gesseiro por Escrito", text: "Orçamento detalhado com m², materiais, prazo e garantia — sem valor verbal." },
+      { title: "Equipe Identificada", text: "Gesseiro profissional CLT com uniforme, crachá e EPI; supervisor passa para checar a obra." },
+      { title: "Execução Limpa", text: "Proteção de piso e móveis, recolhimento diário de entulho e respeito ao horário de condomínio." },
+      { title: "Vistoria e Garantia", text: "Vistoria conjunta com o cliente e termo de garantia formal de 12 meses." },
+    ],
+    standards: [
+      "NBR 15758 (sistemas construtivos drywall)",
+      "NBR 14715 (chapas de gesso)",
+      "NR-6 (EPI), NR-18 (canteiro), NR-35 (altura)",
+      "Manuais técnicos Knauf e Placo",
+    ],
+    trust: [
+      "Gesseiro profissional CLT — sem diarista anônimo",
+      "Mão de obra drywall com supervisão e responsável técnico",
+      "Preço gesseiro fechado, sem aditivo surpresa",
+      "Crachá e uniforme — você sabe quem está na sua casa",
+      "Garantia escrita de 12 meses",
+    ],
+    geo: "Disponibilizamos gesseiro e colocador de drywall em toda Fortaleza — Aldeota, Meireles, Cocó, Papicu, Varjota, Dionísio Torres, Edson Queiroz, Sapiranga, Praia do Futuro, Mucuripe, Beira Mar — além de Eusébio, Aquiraz, Caucaia e Maracanaú. Conhecemos as exigências de condomínios da orla (horário, taxa de obra, uso de elevador de serviço) e operamos dentro das regras.",
+    faq: [
+      { q: "Quanto é o preço gesseiro em Fortaleza?", a: "Mão de obra drywall para parede parte de R$ 55/m² e forro liso a partir de R$ 45/m² (só mão de obra). Material à parte ou incluso conforme preferência do cliente." },
+      { q: "Vocês cobram visita técnica?", a: "Não. Visita e orçamento são gratuitos dentro de Fortaleza e região metropolitana." },
+      { q: "O gesseiro fornece o material ou o cliente?", a: "Trabalhamos das duas formas. Quando fornecemos, indicamos marcas certificadas Knauf, Placo ou Gypsum com nota fiscal e desconto de revenda." },
+      { q: "Quantos dias leva uma obra com vocês?", a: "Forro de 20 m² leva 3 a 4 dias úteis; parede de 10 m² leva 2 a 3 dias úteis. Equipe pode ser aumentada para acelerar prazos." },
+      { q: "Como é a forma de pagamento?", a: "Entrada na assinatura, parcela no meio da obra e saldo na entrega, com vistoria final. Aceitamos PIX, cartão e transferência." },
+    ],
+    related: ["instalacao-drywall", "parede-de-drywall", "forro-de-gesso"],
+  },
+  {
+    slug: "forro-de-gesso",
+    code: "DW-04",
+    h1: "Forro de Gesso em Fortaleza",
+    shortTitle: "Forro de Gesso",
+    metaTitle: "Forro de Gesso em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Forro de gesso em Fortaleza: instalação, orçamento forro de gesso e conserto de teto de gesso com equipe especializada e garantia escrita.",
+    summary:
+      "Instalação de forro de gesso liso, em desnível e com sanca, além de conserto de teto de gesso com trinca, mancha ou afundamento em Fortaleza.",
+    keywords: [
+      "forro de gesso",
+      "orçamento forro de gesso",
+      "conserto de teto de gesso",
+      "instalação forro de gesso",
+    ],
+    intro:
+      "Forro de gesso transforma o ambiente — esconde laje irregular, integra iluminação embutida, melhora acústica e valoriza o imóvel. A Chico Resolve executa instalação forro de gesso em residências, lojas, consultórios e escritórios em Fortaleza, com duas tecnologias: forro em placa de gesso acartonado (drywall) fixado em estrutura metálica e forro tradicional em gesso liso. Também atuamos no conserto de teto de gesso quando aparece trinca em junta, mancha de infiltração ou afundamento por fixação falha. Cada orçamento forro de gesso é detalhado por m², com indicação de sanca, spot, fita LED e materiais — sem valor genérico.",
+    whenToHire: [
+      { title: "Laje aparente ou irregular", text: "Forro esconde imperfeições e nivela visualmente todo o ambiente." },
+      { title: "Quer iluminação embutida", text: "Spots, fita LED e sanca aberta exigem forro com altura mínima e estrutura adequada." },
+      { title: "Teto de gesso com trinca ou mancha", text: "Trinca em junta ou mancha amarelada indica infiltração ou falha de fixação — exige conserto técnico." },
+      { title: "Ar-condicionado split a embutir", text: "Forro com recorte para evaporadora e dreno alinhado é solução comum em apartamentos novos." },
+    ],
+    types: [
+      { title: "Forro Liso de Drywall", text: "Forro em placa de gesso acartonado com perfis galvanizados — pronto para pintura, sem juntas aparentes." },
+      { title: "Forro em Desnível e Rebaixos", text: "Diferenças de altura para destacar mesa de jantar, hall de entrada ou bar — efeito arquitetônico marcante." },
+      { title: "Sanca Aberta com Fita LED", text: "Sanca perimetral aberta para fita LED indireta — cria iluminação cênica acolhedora." },
+      { title: "Sanca Fechada e Tabicado", text: "Detalhe clássico para projetos residenciais que demandam acabamento mais sóbrio." },
+      { title: "Conserto de Teto de Gesso", text: "Reparo de trinca, mancha e afundamento, com investigação da causa (infiltração, parafuso solto, vibração)." },
+    ],
+    process: [
+      { title: "Visita Técnica e Medição", text: "Levantamento de pé-direito, conferência de instalação elétrica e hidráulica acima da laje." },
+      { title: "Orçamento Forro de Gesso Detalhado", text: "Proposta com m², tipo de sanca, spots, fita LED, recorte para split e prazo — em até 24h úteis." },
+      { title: "Montagem da Estrutura", text: "Tirantes, perfis e travessas niveladas a laser, com reforço para luminárias e ar-condicionado." },
+      { title: "Fechamento e Acabamento", text: "Placas parafusadas, juntas tratadas com fita e massa em três demãos, lixamento fino." },
+      { title: "Entrega Pronta para Pintura", text: "Vistoria conjunta, limpeza do ambiente e termo de garantia formal." },
+    ],
+    standards: [
+      "NBR 15758 (sistemas drywall — forro)",
+      "NBR 14715 (chapas de gesso)",
+      "NBR 15217 (perfis de aço)",
+      "Manuais Knauf e Placo para forros",
+    ],
+    trust: [
+      "Empresa formalizada com CNPJ, contrato e nota fiscal",
+      "Equipe especializada em instalação forro de gesso e sanca",
+      "Conserto de teto de gesso com diagnóstico da causa, não só pintura disfarçada",
+      "Garantia escrita de 12 meses",
+      "Orçamento forro de gesso por escrito, sem valor verbal",
+    ],
+    geo: "Instalamos forro de gesso em apartamentos, casas e salas comerciais em Fortaleza — Aldeota, Meireles, Cocó, Papicu, Varjota, Edson Queiroz, Sapiranga, Praia do Futuro — e em Eusébio, Aquiraz, Caucaia e Maracanaú. Em apartamentos próximos ao mar, recomendamos ventilação adequada do entreforro para evitar condensação favorecida pelo clima quente e úmido de Fortaleza.",
+    faq: [
+      { q: "Quanto custa o orçamento de forro de gesso em Fortaleza?", a: "Forro liso parte de R$ 95/m² (drywall) ou R$ 75/m² (gesso tradicional), incluindo material e mão de obra. Sanca aberta com fita LED tem valor adicional por metro linear." },
+      { q: "Qual o prazo da instalação de forro de gesso?", a: "Uma sala de 20 m² fica pronta em 3 a 4 dias úteis com massa e lixamento. Apartamento completo (3 quartos + áreas comuns) leva 7 a 10 dias úteis." },
+      { q: "Vocês fazem conserto de teto de gesso?", a: "Sim. Atendemos desde reparo pontual de trinca até substituição de placa afundada por infiltração. Investigamos a causa antes do reparo." },
+      { q: "Drywall ou gesso liso para forro?", a: "Drywall (gesso acartonado) é mais rápido, leve, permite desmonte e suporta sanca e spots com facilidade. Gesso liso ainda compete em forro fixo de pequena área e custo enxuto." },
+      { q: "Posso embutir spots e fita LED depois?", a: "Recomendamos definir antes da montagem para reforço na estrutura. Após pronto, ainda é possível, mas exige recorte e retoque." },
+    ],
+    related: ["instalacao-drywall", "gesso-acartonado", "gesseiro"],
+  },
+  {
+    slug: "parede-de-drywall",
+    code: "DW-05",
+    h1: "Parede de Drywall em Fortaleza",
+    shortTitle: "Parede de Drywall",
+    metaTitle: "Parede de Drywall em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Parede de drywall em Fortaleza: instalação, reparo em parede de drywall e reforço em parede de drywall com orçamento drywall rápido e garantia.",
+    summary:
+      "Instalação, reparo e reforço em parede de drywall com fixação adequada para TV, bancada, prateleira e pia — orçamento drywall em 24h.",
+    keywords: [
+      "parede de drywall",
+      "reparo em parede de drywall",
+      "reforço em parede de drywall",
+      "orçamento drywall",
+    ],
+    intro:
+      "Parede de drywall bem executada não treme, não tem trinca em junta e suporta tudo o que precisa — TV grande, prateleira pesada, bancada de cozinha, pia de banheiro. A Chico Resolve faz instalação, reparo em parede de drywall e reforço em parede de drywall em Fortaleza com técnica correta: chapa metálica embutida na estrutura para suportar carga, bucha específica para drywall, fita microperfurada na junta e massa em três demãos. Quando o problema é trinca, furo ou afundamento, fazemos diagnóstico (estrutural ou estético?) antes de tampar. O orçamento drywall é fechado por escrito após visita técnica gratuita.",
+    whenToHire: [
+      { title: "Vai instalar TV ou prateleira pesada", text: "Sem reforço em parede de drywall, a TV cai. Reforço com chapa metálica resolve antes do problema." },
+      { title: "Apareceu trinca na junta", text: "Trinca em junta vertical ou horizontal indica fita mal aplicada, junta sem alívio ou movimentação estrutural." },
+      { title: "Furo de soco ou móvel", text: "Furo em parede de drywall tem reparo simples, sem trocar a placa inteira." },
+      { title: "Vai fixar bancada ou pia", text: "Cozinha americana, lavabo e closet exigem reforço dimensionado para a carga de uso." },
+    ],
+    types: [
+      { title: "Instalação de Parede de Drywall", text: "Parede nova com estrutura metálica, placa ST/RU/RF conforme ambiente, fita e massa em três demãos." },
+      { title: "Reparo em Parede de Drywall", text: "Conserto de furo, trinca em junta e afundamento, com massa e lixamento até desaparecer." },
+      { title: "Reforço em Parede de Drywall", text: "Chapa metálica ou madeirit embutido para suportar TV, prateleira, espelho, bancada e pia." },
+      { title: "Troca de Placa Danificada", text: "Substituição de placa molhada, com mofo ou quebrada, sem trocar a estrutura inteira." },
+      { title: "Reforço Acústico Pós-Obra", text: "Abertura controlada para inserir lã de rocha quando a parede foi montada sem isolamento." },
+    ],
+    process: [
+      { title: "Diagnóstico", text: "Identificamos se a trinca é estética (junta) ou estrutural (montante solto ou movimentação) antes de tampar." },
+      { title: "Orçamento Drywall Fechado", text: "Proposta com material, mão de obra, prazo e garantia por escrito — sem cobrança extra no fim." },
+      { title: "Execução Limpa", text: "Lonas de proteção, lixadeira com aspirador, recolhimento diário de pó e respeito ao horário do condomínio." },
+      { title: "Tratamento Técnico", text: "Fita microperfurada, massa em três demãos, lixamento fino e selador antes da pintura." },
+      { title: "Vistoria e Garantia", text: "Aprovação do cliente com luz rasante e termo de garantia formal de 12 meses." },
+    ],
+    standards: [
+      "NBR 15758 (sistemas drywall — parede)",
+      "NBR 14715 (chapas de gesso)",
+      "NBR 15217 (perfis de aço)",
+      "Manuais Knauf e Placo para reforços e fixação",
+    ],
+    trust: [
+      "Empresa de drywall com CNPJ, contrato e nota fiscal",
+      "Reforço em parede de drywall dimensionado para a carga real (não só bucha de fixação)",
+      "Reparo em parede de drywall com massa em três demãos — sem disfarce",
+      "Garantia escrita de 12 meses",
+      "Orçamento drywall em até 24h úteis após visita gratuita",
+    ],
+    geo: "Atendemos parede de drywall em todos os bairros de Fortaleza — Aldeota, Meireles, Cocó, Papicu, Dionísio Torres, Edson Queiroz, Sapiranga, Praia do Futuro, Mucuripe — além de Eusébio, Aquiraz, Caucaia e Maracanaú. Em áreas próximas ao mar (Beira Mar, Mucuripe), priorizamos parafusos com tratamento anticorrosivo e placa RU para suportar a maresia.",
+    faq: [
+      { q: "Quanto custa o orçamento drywall para parede em Fortaleza?", a: "Parede de drywall simples parte de R$ 110/m² (material + mão de obra). Reforço para TV, prateleira ou pia tem valor adicional por ponto reforçado. Visita gratuita." },
+      { q: "Posso fazer reparo em parede de drywall sem trocar a placa inteira?", a: "Sim. Furos pequenos e médios são reparados com gesso e fita; só trocamos a placa quando há mofo, ruptura grande ou afundamento estrutural." },
+      { q: "Quanto peso aguenta uma parede de drywall?", a: "Com bucha específica de drywall, cada ponto suporta entre 25 e 50 kg. Para TV grande, prateleira ou pia, fazemos reforço em parede de drywall com chapa metálica capaz de suportar 100 kg ou mais." },
+      { q: "Trinca em junta aparece de novo se eu só pintar por cima?", a: "Sim. Trinca em junta tem causa (fita mal aplicada, junta sem alívio ou movimentação). O reparo correto remove a fita, aplica fita microperfurada e massa em três demãos." },
+      { q: "Tem garantia no reparo e no reforço?", a: "Sim, garantia escrita de 12 meses cobrindo retorno de trinca e desempenho do reforço em condições normais de uso." },
+    ],
+    related: ["instalacao-drywall", "gesseiro", "divisoria-de-ambiente"],
+  },
+  {
+    slug: "divisoria-de-ambiente",
+    code: "DW-06",
+    h1: "Divisória de Ambiente em Fortaleza",
+    shortTitle: "Divisória de Ambiente",
+    metaTitle: "Divisória de Ambiente em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Divisória de ambiente em Fortaleza: ripada, drywall, placa de gesso na parede, divisórias para escritório e industrial com instalação técnica.",
+    summary:
+      "Divisória de ambiente em drywall, ripada, placa de gesso e perfilado — soluções para escritório, área externa e indústria em Fortaleza.",
+    keywords: [
+      "divisória de ambiente",
+      "divisoria de ambiente ripada",
+      "placa de gesso na parede",
+      "divisória para area externa",
+      "divisórias de ambientes para escritório",
+      "divisoria de ambiente industrial",
+    ],
+    intro:
+      "Dividir ambiente sem alvenaria é a forma mais rápida, leve e reversível de mudar um espaço. A Chico Resolve executa em Fortaleza divisória de ambiente em várias linguagens: drywall (gesso acartonado), divisória ripada de madeira para hall e sala, perfilado naval com miolo colmeia para escritórios, divisória para área externa com placa cimentícia e divisória de ambiente industrial em chapa metálica ou painel sanduíche. Cada solução vai por uso, exigência acústica, orçamento e prazo. Quando o cliente pede simplesmente \"placa de gesso na parede\" para separar a sala, mostramos o sistema correto — placa drywall em estrutura metálica é seguro, durável e reversível.",
+    whenToHire: [
+      { title: "Dividir sala ou criar suíte", text: "Drywall ou divisória ripada permitem mudar layout em dias, sem entulho de alvenaria." },
+      { title: "Escritório precisa de salas privativas", text: "Divisórias de ambientes para escritório em perfilado naval ou drywall com porta integrada." },
+      { title: "Área externa coberta ou semi-coberta", text: "Divisória para área externa exige placa cimentícia ou painel resistente à umidade e à maresia." },
+      { title: "Indústria precisa setorizar produção", text: "Divisória de ambiente industrial em chapa metálica, painel sanduíche ou drywall RF para áreas técnicas." },
+    ],
+    types: [
+      { title: "Divisória de Drywall", text: "Parede em placa drywall (gesso acartonado) com estrutura metálica, isolamento opcional e acabamento pronto para pintura." },
+      { title: "Divisória de Ambiente Ripada", text: "Ripado de madeira (cumaru, freijó ou MDF ripado) vertical para dividir sem fechar — separa visual e ventila." },
+      { title: "Placa de Gesso na Parede para Dividir", text: "Quando pedem placa de gesso na parede, executamos com sistema drywall completo — fita, massa e acabamento, não placa solta colada." },
+      { title: "Divisórias de Ambientes para Escritório", text: "Perfilado naval (eucatex/colmeia) ou drywall com porta, vidro e cabeamento estruturado embutido." },
+      { title: "Divisória para Área Externa", text: "Placa cimentícia (CRFS) sobre estrutura metálica galvanizada, resistente à umidade e maresia de Fortaleza." },
+      { title: "Divisória de Ambiente Industrial", text: "Chapa metálica, painel sanduíche, placa RF ou drywall acústico para setorizar produção, vestiário e depósito." },
+    ],
+    process: [
+      { title: "Briefing e Visita", text: "Entendemos o uso (residencial, escritório, externa, industrial), exigência acústica e estética antes de propor o sistema." },
+      { title: "Orçamento por Sistema", text: "Comparativo entre drywall, ripada, perfilado, cimentícia e metálica com prós, contras, prazo e custo." },
+      { title: "Montagem Técnica", text: "Estrutura nivelada a laser, fixação adequada ao piso e teto, isolamento e reforço conforme uso." },
+      { title: "Acabamento Final", text: "Tratamento de junta, lixamento, instalação de batente e porta, e acabamento conforme material escolhido." },
+      { title: "Entrega e Garantia", text: "Vistoria conjunta com o cliente e garantia escrita de 12 meses." },
+    ],
+    standards: [
+      "NBR 15758 (drywall — paredes e divisórias)",
+      "NBR 14715 (chapas de gesso)",
+      "NBR 11675 (divisórias leves internas moduladas)",
+      "NBR 15498 (placas cimentícias)",
+      "NR-12 e NR-18 para divisória de ambiente industrial",
+    ],
+    trust: [
+      "Empresa com CNPJ, contrato e nota fiscal",
+      "Variedade de sistemas — não empurramos drywall onde cabe ripada, cimentícia ou metálica",
+      "Equipe própria CLT, com responsável técnico em campo",
+      "Garantia escrita de 12 meses",
+      "Orçamento detalhado por sistema, sem genérico",
+    ],
+    geo: "Executamos divisória de ambiente em Fortaleza inteira — Aldeota, Meireles, Cocó, Papicu, Edson Queiroz, Sapiranga, Praia do Futuro, Mucuripe, Beira Mar — e em obras de Eusébio, Aquiraz, Caucaia e Maracanaú. Para divisória para área externa próxima ao mar, indicamos placa cimentícia sobre perfil galvanizado tratado contra maresia; para divisória de ambiente industrial em galpões do Distrito Industrial, painel sanduíche ou chapa metálica com pintura epóxi.",
+    faq: [
+      { q: "Qual divisória de ambiente é mais barata?", a: "Drywall é, em geral, a mais econômica para uso interno seco. Ripada e perfilado naval ficam em faixa parecida; cimentícia e metálica industrial saem mais caras pelo material e fixação." },
+      { q: "Divisoria de ambiente ripada bloqueia som?", a: "Não. Ripada separa visualmente e permite ventilação, mas não veda som. Para privacidade acústica, indicamos drywall com isolamento ou perfilado com miolo colmeia." },
+      { q: "Posso usar placa de gesso na parede para dividir banheiro?", a: "Sim, mas com placa drywall RU (verde, resistente à umidade) sobre estrutura metálica galvanizada e impermeabilização nas áreas de contato direto com água." },
+      { q: "Que sistema é melhor para divisória para área externa em Fortaleza?", a: "Placa cimentícia (CRFS) sobre estrutura galvanizada é o padrão para clima litorâneo — resiste à umidade, à maresia e ao sol forte." },
+      { q: "Vocês instalam divisórias de ambientes para escritório com porta e vidro?", a: "Sim. Perfilado naval e drywall com porta de madeira, vidro temperado e bandeira para iluminação são parte do nosso pacote para escritórios." },
+    ],
+    related: ["instalacao-drywall", "parede-de-drywall", "gesso-acartonado"],
+  },
+];
+
+export const getDrywallSubservice = (slug: string): DrywallSubservice | undefined =>
+  drywallSubservices.find((s) => s.slug === slug);
+
+
 
 
