@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Phone, Mail, MapPin } from "lucide-react";
-import { eletricaSubservices, pinturaSubservices, services, site, whatsappLink } from "@/lib/site";
+import { eletricaSubservices, hidraulicaSubservices, pinturaSubservices, services, site, whatsappLink } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -35,6 +35,8 @@ export function Footer() {
                     <Link to="/servicos/pintura" className="hover:text-background transition-colors">{s.shortTitle}</Link>
                   ) : s.slug === "eletrica" ? (
                     <Link to="/servicos/eletrica" className="hover:text-background transition-colors">{s.shortTitle}</Link>
+                  ) : s.slug === "hidraulica" ? (
+                    <Link to="/servicos/hidraulica" className="hover:text-background transition-colors">{s.shortTitle}</Link>
                   ) : (
                     <Link to="/servicos/$slug" params={{ slug: s.slug }} className="hover:text-background transition-colors">{s.shortTitle}</Link>
                   )}
@@ -71,6 +73,23 @@ export function Footer() {
                     className="hover:text-background transition-colors"
                   >
                     {e.shortTitle}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="font-bold uppercase text-xs tracking-widest text-accent mb-5">Hidráulica</h2>
+            <ul className="space-y-2.5 text-sm text-background/70">
+              {hidraulicaSubservices.map((h) => (
+                <li key={h.slug}>
+                  <Link
+                    to="/servicos/hidraulica/$hidraulicaSlug"
+                    params={{ hidraulicaSlug: h.slug }}
+                    className="hover:text-background transition-colors"
+                  >
+                    {h.shortTitle}
                   </Link>
                 </li>
               ))}

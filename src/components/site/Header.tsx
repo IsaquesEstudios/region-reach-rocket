@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
-import { eletricaSubservices, pinturaSubservices, services, site, whatsappLink } from "@/lib/site";
+import { eletricaSubservices, hidraulicaSubservices, pinturaSubservices, services, site, whatsappLink } from "@/lib/site";
 import logo from "@/assets/logo-chico-resolve.png";
 
 export function Header() {
@@ -53,6 +53,11 @@ export function Header() {
                           <span className="font-mono text-[10px] text-primary w-7">{s.code}</span>
                           <span>{s.shortTitle}</span>
                         </Link>
+                      ) : s.slug === "hidraulica" ? (
+                        <Link to="/servicos/hidraulica" className="flex items-center gap-3 px-3 py-2.5 text-sm hover:bg-surface rounded-xs">
+                          <span className="font-mono text-[10px] text-primary w-7">{s.code}</span>
+                          <span>{s.shortTitle}</span>
+                        </Link>
                       ) : (
                         <Link to="/servicos/$slug" params={{ slug: s.slug }} className="flex items-center gap-3 px-3 py-2.5 text-sm hover:bg-surface rounded-xs">
                           <span className="font-mono text-[10px] text-primary w-7">{s.code}</span>
@@ -76,6 +81,17 @@ export function Header() {
                             <li key={e.slug}>
                               <Link to="/servicos/eletrica/$eletricaSlug" params={{ eletricaSlug: e.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
                                 {e.shortTitle}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {s.slug === "hidraulica" && (
+                        <ul className="pl-10 pb-2 space-y-1 border-l border-border ml-4 mt-1">
+                          {hidraulicaSubservices.map((h) => (
+                            <li key={h.slug}>
+                              <Link to="/servicos/hidraulica/$hidraulicaSlug" params={{ hidraulicaSlug: h.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
+                                {h.shortTitle}
                               </Link>
                             </li>
                           ))}
@@ -137,6 +153,10 @@ export function Header() {
                     <Link to="/servicos/eletrica" onClick={() => setOpen(false)} className="block px-3 py-2 text-muted-foreground hover:text-primary">
                       <span className="font-mono text-[10px] text-primary mr-3">{s.code}</span>{s.shortTitle}
                     </Link>
+                  ) : s.slug === "hidraulica" ? (
+                    <Link to="/servicos/hidraulica" onClick={() => setOpen(false)} className="block px-3 py-2 text-muted-foreground hover:text-primary">
+                      <span className="font-mono text-[10px] text-primary mr-3">{s.code}</span>{s.shortTitle}
+                    </Link>
                   ) : (
                     <Link to="/servicos/$slug" params={{ slug: s.slug }} onClick={() => setOpen(false)} className="block px-3 py-2 text-muted-foreground hover:text-primary">
                       <span className="font-mono text-[10px] text-primary mr-3">{s.code}</span>{s.shortTitle}
@@ -159,6 +179,17 @@ export function Header() {
                         <li key={e.slug}>
                           <Link to="/servicos/eletrica/$eletricaSlug" params={{ eletricaSlug: e.slug }} onClick={() => setOpen(false)} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
                             {e.shortTitle}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {s.slug === "hidraulica" && (
+                    <ul className="pl-6 ml-3 border-l border-border space-y-1">
+                      {hidraulicaSubservices.map((h) => (
+                        <li key={h.slug}>
+                          <Link to="/servicos/hidraulica/$hidraulicaSlug" params={{ hidraulicaSlug: h.slug }} onClick={() => setOpen(false)} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
+                            {h.shortTitle}
                           </Link>
                         </li>
                       ))}
