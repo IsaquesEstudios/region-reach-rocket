@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { eletricaSubservices, pinturaSubservices, services } from "@/lib/site";
+import { eletricaSubservices, hidraulicaSubservices, pinturaSubservices, services } from "@/lib/site";
 
 // TODO: substituir com a URL do projeto quando houver domínio definido.
 const BASE_URL = "";
@@ -31,6 +31,11 @@ export const Route = createFileRoute("/sitemap.xml")({
           })),
           ...eletricaSubservices.map((s) => ({
             path: `/servicos/eletrica/${s.slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.8",
+          })),
+          ...hidraulicaSubservices.map((s) => ({
+            path: `/servicos/hidraulica/${s.slug}`,
             changefreq: "monthly" as const,
             priority: "0.8",
           })),
