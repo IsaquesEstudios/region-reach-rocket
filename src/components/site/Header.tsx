@@ -13,7 +13,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-3" aria-label={`${site.name} — início`}>
           <img
-            src={logo}
+            src={logo.url}
             alt={`Logo ${site.name}`}
             width={180}
             height={36}
