@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { drywallSubservices, eletricaSubservices, hidraulicaSubservices, pinturaSubservices, services, site, whatsappLink } from "@/lib/site";
-import logo from "@/assets/logo-chico-resolve.png";
+import logo from "@/assets/chico-resolve-logo.png.asset.json";
 
 export function Header() {
   const [open, setOpen] = useState(false);

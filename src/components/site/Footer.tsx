@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { services, site, whatsappLink } from "@/lib/site";
-import logo from "@/assets/logo-chico-resolve.png";
+import logo from "@/assets/chico-resolve-logo-branco.png.asset.json";
 
 export function Footer() {
   return (
@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-14">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <img src={logo} alt={`Logo ${site.name}`} width={200} height={40} className="h-12 w-auto mb-5 brightness-0 invert" />
+            <img src={logo.url} alt={`Logo ${site.name}`} width={200} height={40} className="h-12 w-auto mb-5" />
             <p className="text-sm text-white/70 leading-relaxed mb-6">
               Inteligência em manutenção predial em Fortaleza/CE. Engenharia técnica para condomínios, indústrias, construtoras e arquitetos.
             </p>
