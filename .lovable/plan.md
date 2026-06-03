@@ -1,101 +1,38 @@
-# Redesign global no estilo Pooluxe (paleta verde Chico Resolve)
+## Problema
 
-Aplicar a linguagem visual do template **Pooluxe** em todas as páginas do site, mantendo a logo/texto atual e substituindo a paleta atual pela nova:
+`src/routes/servicos.tsx` é simultaneamente a página `/servicos` (renderiza `ServicosHub`) e o layout pai de todas as rotas filhas (`/servicos/pintura/...`, `/servicos/eletrica/...`, `/servicos/$slug`, etc.). Como o componente não renderiza `<Outlet />`, o conteúdo do hub aparece em todas as URLs filhas, encobrindo as páginas reais.
 
-- `#147322` (verde primário)
-- `#46A637` (verde acento / CTA)
-- `#2C5925` (verde escuro / hero overlay)
-- `#97BF95` (verde claro / detalhes)
-- `#F2F2F2` (cinza claro / fundo de seções)
+## Correção
 
-A logo permanece como **wordmark de texto** (sem inserir a imagem enviada).
+Converter `servicos.tsx` em um layout puro e mover o conteúdo do hub para `servicos.index.tsx` (que é o padrão TanStack para "página da pasta").
 
-## Linguagem visual herdada do Pooluxe
+### 1. `src/routes/servicos.tsx` (vira layout)
 
-- **Hero full-bleed** com imagem de fundo (foto real), overlay verde escuro, headline grande em duas linhas com a segunda linha em cor de destaque (`#46A637`), descrição curta, CTA pill arredondado e badges de confiança (Licensed, Garantia, Preço justo). Card flutuante "Inspeção Gratuita + telefone" no canto inferior direito.
-- **Barra de stats** logo abaixo do hero, fundo claro (`#F2F2F2`), 4 colunas com ícone + número grande + label.
-- **Cards arredondados** (radius ~16-24px), sombras suaves, em vez do estilo "blueprint" reto/quadrado atual.
-- **Tipografia**: títulos em sans pesado/condensado, sem o "uppercase italic" agressivo do estilo atual. Manter Inter como família principal (já carregada), aplicar pesos 700/800 nos H1/H2.
-- **Header**: logo à esquerda (wordmark "Chico Resolve"), menu central com dropdowns (Serviços já tem subitens), botão CTA pill "Agendar Visita" à direita.
-- **Botões pill** (rounded-full) em vez de quadrados.
-- **Seções alternando** fundo branco e `#F2F2F2`.
-- **Footer** reorganizado em 4 colunas (Marca/desc, Serviços, Empresa, Contato) com fundo verde escuro (`#2C5925`) e texto claro.
+```tsx
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-## Páginas afetadas
+export const Route = createFileRoute("/servicos")({
+  component: () => <Outlet />,
+});
+```
 
-1. **Home (`src/routes/index.tsx`)** — todos os componentes filhos abaixo.
-2. **Header global** (`src/components/site/Header.tsx`).
-3. **Footer global** (`src/components/site/Footer.tsx`).
-4. **Hub `/servicos`** (`src/routes/servicos.tsx` + `ServicesGrid`).
-5. **Hubs setoriais**: `/servicos/pintura`, `/servicos/eletrica`, `/servicos/hidraulica`, `/servicos/drywall` (arquivos `*.index.tsx`).
-6. **Subpáginas dinâmicas** (componentes `PinturaSubPage`, `EletricaSubPage`, `HidraulicaSubPage`, `DrywallSubPage`, `ServicePage`).
-7. **Contato** (`src/routes/contato.tsx`).
+### 2. `src/routes/servicos.index.tsx` (novo — recebe o hub)
 
-## Trabalho a executar
+Move integralmente o `head()` (meta, canonical, og) e o componente `ServicosHub` do arquivo antigo, trocando apenas:
 
-### 1. Tokens de design (`src/styles.css`)
-- Reescrever as variáveis `--primary`, `--accent`, `--secondary`, `--muted`, `--ring`, `--surface`, `--whatsapp` em **oklch** equivalentes aos hex fornecidos.
-- Adicionar `--primary-dark` (#2C5925), `--primary-soft` (#97BF95), `--accent-strong` (#46A637) como tokens semânticos.
-- Aumentar `--radius` para `1rem` (cards/botões mais arredondados, estilo Pooluxe).
-- Adicionar utilitário `--gradient-hero` (overlay verde escuro do hero).
-- Remover estilos `uppercase italic` agressivos do CSS base se houver.
+```tsx
+export const Route = createFileRoute("/servicos/")({ ... });
+```
 
-### 2. Componentes do site
-
-**`Hero.tsx`** — reescrita completa:
-- Full-bleed (sem grid 7/5). Imagem de fundo `hero-fachada.jpg` com overlay `linear-gradient` verde escuro.
-- Conteúdo alinhado à esquerda, max-width ~700px, padding generoso.
-- H1 em duas linhas: "Manutenção Predial Inteligente." + "Para o seu imóvel." (segunda linha em `--accent-strong`).
-- CTA pill verde claro + badges ✓ inline (Licenciada NR10/NR35, Garantia, Orçamento sem custo).
-- Card flutuante "Visita Técnica · (85) ..." no canto inferior direito.
-
-**`StatsBar.tsx`** — reposicionar logo após o Hero, fundo `#F2F2F2`, ícones lucide + número grande + label.
-
-**`Pillars.tsx`** — cards arredondados com ícone em círculo verde claro.
-
-**`ServicesGrid.tsx`** — grid 3 colunas, cards arredondados com imagem topo, título, descrição curta e seta. Hover suave.
-
-**`Segments.tsx` / `Testimonials.tsx` / `CtaBanner.tsx`** — adaptar para pill buttons, cards arredondados, fundo alternado, depoimentos com avatar circular + aspas grandes.
-
-**`Header.tsx`** — wordmark "Chico Resolve" à esquerda em peso 800, nav central com chevron nos itens com dropdown (manter estrutura atual de Serviços/sub-rotas), CTA pill à direita. Mobile drawer mantido.
-
-**`Footer.tsx`** — fundo `--primary-dark`, texto claro, 4 colunas, redes sociais em ícones circulares.
-
-### 3. Páginas de serviços (templates compartilhados)
-Atualizar `PinturaSubPage`, `EletricaSubPage`, `HidraulicaSubPage`, `DrywallSubPage`, `ServicePage`:
-- Hero interno: faixa verde escura com breadcrumb + H1 + descrição (padrão Pooluxe nas inner pages).
-- Seções de conteúdo com cards arredondados.
-- Sidebar de contato com CTA pill.
-- Trocar todas as classes `uppercase italic tracking-tighter` por estilos mais suaves (peso 800, tracking normal).
-
-### 4. Páginas hub (`servicos.*.index.tsx`, `servicos.tsx`, `contato.tsx`)
-- Mesmo tratamento de hero interno verde escuro + grid de cards arredondados.
-- `contato.tsx`: layout 2 colunas (form arredondado à esquerda, info/mapa à direita).
+Nenhuma alteração de conteúdo, SEO ou layout do hub — apenas a localização do arquivo muda.
 
 ## Fora de escopo
 
-- Não alterar dados de SEO (títulos, descrições, JSON-LD, sitemap).
-- Não tocar em `src/lib/site.ts` (conteúdo permanece igual).
-- Não criar novas rotas nem alterar `routeTree.gen.ts`.
-- Não substituir a imagem do hero — apenas reusar `hero-fachada.jpg`.
-- Não inserir a imagem da logo enviada (wordmark permanece).
-- Não mexer em backend, formulário continua enviando para WhatsApp como hoje.
+- Não mexer em `Header.tsx`, `Footer.tsx`, sub-páginas, `site.ts`, sitemap nem no design.
+- Não tocar em `routeTree.gen.ts` (regenerado automaticamente).
 
-## Detalhes técnicos
+## Resultado esperado
 
-- Todas as cores aplicadas via tokens semânticos (`bg-primary`, `text-primary-foreground`, `bg-[--surface]`, etc.). Nenhum hex hardcoded em componentes — somente em `styles.css`.
-- Conversão dos hex para oklch (aproximada):
-  - `#147322` → `oklch(0.48 0.16 145)` (primary)
-  - `#46A637` → `oklch(0.64 0.18 142)` (accent)
-  - `#2C5925` → `oklch(0.37 0.10 145)` (primary-dark)
-  - `#97BF95` → `oklch(0.78 0.07 145)` (primary-soft)
-  - `#F2F2F2` → `oklch(0.96 0 0)` (surface)
-- Tipografia mantida (Inter + JetBrains Mono já carregadas).
-- Animações: manter `animate-slide-up` existente; adicionar transições suaves nos hovers de card.
-
-## Validação
-
-Após implementar:
-1. Build automático precisa passar.
-2. Verificar Home, `/servicos`, `/servicos/pintura`, uma subpágina (`/servicos/pintura/residencial`), `/contato` no preview em desktop (1502px) e mobile (375px).
-3. Confirmar contraste AA do texto sobre verde escuro e verde primário.
+- `/servicos` → hub "Todos os serviços" (igual ao de hoje).
+- `/servicos/pintura/piso-concreto` → página individual de Pintura de Piso de Concreto (já implementada, só estava encoberta).
+- O mesmo vale para todas as subpáginas de Elétrica, Hidráulica e Drywall.
