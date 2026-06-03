@@ -14,7 +14,7 @@ export function EletricaSubPage({ data, image }: Props) {
     <>
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="bg-surface border-b border-border">
-        <ol className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground">
+        <ol className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center gap-2 text-xs font-medium text-muted-foreground">
           <li><Link to="/" className="hover:text-primary">Home</Link></li>
           <li aria-hidden>/</li>
           <li><Link to="/servicos" className="hover:text-primary">Serviços</Link></li>
@@ -29,12 +29,12 @@ export function EletricaSubPage({ data, image }: Props) {
       <section className="pt-12 sm:pt-16 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-7">
-            <span className="font-mono text-xs text-primary uppercase tracking-widest">{data.code} · Elétrica · {data.shortTitle}</span>
-            <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-black uppercase italic tracking-tighter leading-[0.95] text-balance">
+            <span className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest">{data.code} · Elétrica · {data.shortTitle}</span>
+            <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-balance">
               {data.h1.replace(" em Fortaleza", "")} em <span className="text-primary">Fortaleza</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-[60ch] leading-relaxed">{data.intro}</p>
-            <div className="mt-6 inline-flex items-center gap-2 border border-primary px-4 py-2 text-[11px] font-mono uppercase tracking-widest text-primary">
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary/10 border border-primary/30 px-4 py-2 text-[11px] font-semibold uppercase tracking-widest text-primary">
               <span aria-hidden>⚡</span> Eletricista emergência 24h
             </div>
           </div>
@@ -45,7 +45,7 @@ export function EletricaSubPage({ data, image }: Props) {
               width={1280}
               height={960}
               loading="eager"
-              className="w-full aspect-[4/3] object-cover border border-border"
+              className="w-full aspect-[4/3] object-cover rounded-2xl border border-border"
             />
           </div>
         </div>
@@ -54,15 +54,15 @@ export function EletricaSubPage({ data, image }: Props) {
       {/* Quando contratar */}
       <section className="py-16 bg-surface" aria-labelledby={`quando-${data.slug}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="font-mono text-xs text-primary uppercase mb-3">Quando contratar</p>
-          <h2 id={`quando-${data.slug}`} className="text-3xl sm:text-4xl font-black uppercase italic tracking-tighter mb-10">
+          <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Quando contratar</p>
+          <h2 id={`quando-${data.slug}`} className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-10">
             Situações em que somos chamados
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
             {data.whenToHire.map((w, i) => (
               <div key={w.title} className="bg-surface p-7">
-                <span className="font-mono text-xs text-primary mb-3 block">0{i + 1}/</span>
-                <h3 className="text-base font-black uppercase mb-2 tracking-tight">{w.title}</h3>
+                <span className="text-xs font-bold text-primary mb-3 block">0{i + 1}/</span>
+                <h3 className="text-base font-extrabold mb-2 tracking-tight">{w.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{w.text}</p>
               </div>
             ))}
@@ -73,15 +73,15 @@ export function EletricaSubPage({ data, image }: Props) {
       {/* Tipos / Especialidades */}
       <section className="py-16" aria-labelledby={`tipos-${data.slug}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="font-mono text-xs text-primary uppercase mb-3">Especialidades</p>
-          <h2 id={`tipos-${data.slug}`} className="text-3xl sm:text-4xl font-black uppercase italic tracking-tighter mb-10">
+          <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Especialidades</p>
+          <h2 id={`tipos-${data.slug}`} className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-10">
             O que executamos
           </h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {data.types.map((t, i) => (
-              <div key={t.title} className="bg-card border border-border p-7">
-                <span className="font-mono text-xs text-primary mb-3 block">{String(i + 1).padStart(2, "0")}/</span>
-                <h3 className="text-lg font-black uppercase mb-3">{t.title}</h3>
+              <div key={t.title} className="rounded-2xl bg-card border border-border p-7">
+                <span className="text-xs font-bold text-primary mb-3 block">{String(i + 1).padStart(2, "0")}/</span>
+                <h3 className="text-lg font-extrabold mb-3">{t.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{t.text}</p>
               </div>
             ))}
@@ -93,14 +93,14 @@ export function EletricaSubPage({ data, image }: Props) {
       <section className="py-16 sm:py-20 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
-            <p className="font-mono text-xs text-primary uppercase mb-3">Processo Chico Resolve</p>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase italic tracking-tighter mb-10">
+            <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Processo Chico Resolve</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-10">
               Como executamos
             </h2>
             <ol className="space-y-6">
               {data.process.map((p, i) => (
                 <li key={p.title} className="flex gap-6 border-b border-border pb-6 last:border-b-0">
-                  <span className="font-mono font-bold text-primary text-lg shrink-0">{String(i + 1).padStart(2, "0")}.</span>
+                  <span className="font-extrabold text-primary text-2xl shrink-0 leading-none">{String(i + 1).padStart(2, "0")}.</span>
                   <div>
                     <h3 className="font-bold uppercase mb-1">{p.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{p.text}</p>
@@ -111,13 +111,13 @@ export function EletricaSubPage({ data, image }: Props) {
 
             {/* Normas */}
             <div className="mt-16">
-              <p className="font-mono text-xs text-primary uppercase mb-3">Normas técnicas</p>
-              <h2 className="text-2xl sm:text-3xl font-black uppercase italic tracking-tighter mb-6">
+              <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Normas técnicas</p>
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6">
                 Normas e segurança que aplicamos
               </h2>
               <ul className="grid sm:grid-cols-2 gap-2">
                 {data.standards.map((s) => (
-                  <li key={s} className="bg-card border border-border px-4 py-3 text-sm font-mono text-foreground">
+                  <li key={s} className="rounded-xl bg-card border border-border px-4 py-3 text-sm text-foreground">
                     {s}
                   </li>
                 ))}
@@ -126,8 +126,8 @@ export function EletricaSubPage({ data, image }: Props) {
 
             {/* Trust */}
             <div className="mt-16">
-              <p className="font-mono text-xs text-primary uppercase mb-3">Por que confiar</p>
-              <h2 className="text-2xl sm:text-3xl font-black uppercase italic tracking-tighter mb-6">
+              <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Por que confiar</p>
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6">
                 Diferenciais Chico Resolve
               </h2>
               <ul className="space-y-3">
@@ -142,8 +142,8 @@ export function EletricaSubPage({ data, image }: Props) {
 
             {/* GEO */}
             <div className="mt-16">
-              <p className="font-mono text-xs text-primary uppercase mb-3">Onde atendemos</p>
-              <h2 className="text-2xl sm:text-3xl font-black uppercase italic tracking-tighter mb-4">
+              <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Onde atendemos</p>
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-4">
                 Áreas atendidas em Fortaleza e região
               </h2>
               {/* TODO: confirmar bairros atendidos */}
@@ -152,13 +152,13 @@ export function EletricaSubPage({ data, image }: Props) {
 
             {/* FAQ */}
             <div className="mt-16">
-              <p className="font-mono text-xs text-primary uppercase mb-3">Perguntas frequentes</p>
-              <h2 className="text-2xl sm:text-3xl font-black uppercase italic tracking-tighter mb-6">
+              <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Perguntas frequentes</p>
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6">
                 Dúvidas comuns sobre {data.shortTitle.toLowerCase()}
               </h2>
               <div className="space-y-2">
                 {data.faq.map((f) => (
-                  <details key={f.q} className="group border border-border bg-card">
+                  <details key={f.q} className="group rounded-xl border border-border bg-card overflow-hidden">
                     <summary className="cursor-pointer list-none px-5 py-4 font-bold text-sm flex items-center justify-between uppercase tracking-tight">
                       {f.q}
                       <span className="text-primary group-open:rotate-180 transition-transform" aria-hidden>↓</span>
@@ -171,8 +171,8 @@ export function EletricaSubPage({ data, image }: Props) {
           </div>
 
           <aside className="lg:sticky lg:top-28 h-fit">
-            <div className="bg-card p-7 border border-border">
-              <h2 className="text-xl font-black uppercase mb-2">Orçamento eletricista</h2>
+            <div className="rounded-2xl bg-card p-7 border border-border">
+              <h2 className="text-xl font-extrabold mb-2">Orçamento eletricista</h2>
               <p className="text-xs text-muted-foreground mb-5">Resposta em até 24h úteis</p>
               <QuoteForm defaultService={data.h1} />
             </div>
@@ -186,7 +186,7 @@ export function EletricaSubPage({ data, image }: Props) {
             </a>
             <Link
               to="/contato"
-              className="block mt-2 border border-border text-center px-6 py-4 text-xs font-bold uppercase tracking-wider hover:border-primary hover:text-primary transition-colors"
+              className="block mt-2 rounded-full border border-border text-center px-6 py-4 text-xs font-bold hover:border-primary hover:text-primary transition-colors"
             >
               Página de Contato
             </Link>
@@ -197,25 +197,25 @@ export function EletricaSubPage({ data, image }: Props) {
       {/* Outras especialidades de elétrica */}
       <section className="py-16 border-t border-border" aria-label="Outras especialidades em elétrica">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="font-mono text-xs text-primary uppercase mb-3">Veja também</p>
-          <h2 className="text-3xl font-black uppercase italic tracking-tighter mb-10">Outras especialidades em elétrica</h2>
+          <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Veja também</p>
+          <h2 className="text-3xl font-extrabold tracking-tight mb-10">Outras especialidades em elétrica</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {related.map((s) => (
               <Link
                 key={s.slug}
                 to="/servicos/eletrica/$eletricaSlug"
                 params={{ eletricaSlug: s.slug }}
-                className="group bg-card p-6 border border-border hover:border-primary transition-colors"
+                className="group rounded-2xl bg-card p-6 border border-border hover:border-primary transition-colors"
               >
-                <span className="font-mono text-xs text-primary">{s.code}</span>
-                <h3 className="text-lg font-black uppercase mt-2 mb-2">{s.shortTitle}</h3>
+                <span className="text-xs font-bold text-primary">{s.code}</span>
+                <h3 className="text-lg font-extrabold mt-2 mb-2">{s.shortTitle}</h3>
                 <p className="text-sm text-muted-foreground line-clamp-2">{s.summary}</p>
-                <span className="text-[11px] font-mono text-primary uppercase mt-4 inline-block group-hover:underline">Saiba mais →</span>
+                <span className="text-xs font-bold text-primary mt-4 inline-block group-hover:underline">Saiba mais →</span>
               </Link>
             ))}
           </div>
           <div className="mt-10">
-            <Link to="/servicos/eletrica" className="font-mono text-xs text-primary uppercase tracking-widest hover:underline">
+            <Link to="/servicos/eletrica" className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest hover:underline">
               ← Voltar ao hub de elétrica
             </Link>
           </div>
