@@ -78,7 +78,7 @@ function PinturaHub() {
     <>
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="bg-surface border-b border-border">
-        <ol className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground">
+        <ol className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center gap-2 text-xs font-medium text-muted-foreground">
           <li><Link to="/" className="hover:text-primary">Home</Link></li>
           <li aria-hidden>/</li>
           <li><Link to="/servicos" className="hover:text-primary">Serviços</Link></li>
@@ -91,8 +91,8 @@ function PinturaHub() {
       <section className="pt-12 sm:pt-16 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-7">
-            <span className="font-mono text-xs text-primary uppercase tracking-widest">PN · Pintura</span>
-            <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-black uppercase italic tracking-tighter leading-[0.95] text-balance">
+            <span className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest">PN · Pintura</span>
+            <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-balance">
               Empresa de Pintura em <span className="text-primary">Fortaleza</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-[60ch] leading-relaxed">
@@ -103,13 +103,13 @@ function PinturaHub() {
                 href={whatsappLink("Olá! Gostaria de orçamento de pintura.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-primary text-primary-foreground px-7 py-4 text-xs font-bold uppercase tracking-wider hover:bg-foreground transition-colors"
+                className="rounded-full bg-primary text-primary-foreground px-7 py-4 text-xs font-bold hover:bg-primary-dark transition-colors"
               >
                 Orçamento no WhatsApp
               </a>
               <a
                 href={`tel:${site.phoneE164}`}
-                className="border border-border px-7 py-4 text-xs font-bold uppercase tracking-wider hover:border-primary hover:text-primary transition-colors"
+                className="rounded-full border border-border px-7 py-4 text-xs font-bold hover:border-primary hover:text-primary transition-colors"
               >
                 {site.phone}
               </a>
@@ -122,7 +122,7 @@ function PinturaHub() {
               width={1280}
               height={960}
               loading="eager"
-              className="w-full aspect-[4/3] object-cover border border-border"
+              className="w-full aspect-[4/3] object-cover rounded-2xl border border-border"
             />
           </div>
         </div>
@@ -131,8 +131,8 @@ function PinturaHub() {
       {/* Especialidades */}
       <section className="py-16 bg-surface" aria-labelledby="especialidades-pintura">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="font-mono text-xs text-primary uppercase mb-3">Especialidades</p>
-          <h2 id="especialidades-pintura" className="text-3xl sm:text-4xl font-black uppercase italic tracking-tighter mb-3">
+          <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Especialidades</p>
+          <h2 id="especialidades-pintura" className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
             Tipos de pintura que executamos
           </h2>
           <p className="text-base text-muted-foreground max-w-3xl mb-10">
@@ -144,12 +144,12 @@ function PinturaHub() {
                 key={s.slug}
                 to="/servicos/pintura/$pinturaSlug"
                 params={{ pinturaSlug: s.slug }}
-                className="group bg-card p-7 border border-border flex flex-col hover:border-primary transition-colors"
+                className="group rounded-2xl bg-card p-7 border border-border flex flex-col hover:border-primary transition-colors"
               >
-                <span className="font-mono text-xs text-primary mb-4">{s.code}</span>
-                <h3 className="text-xl font-black uppercase mb-3 tracking-tight">{s.h1}</h3>
+                <span className="text-xs font-bold text-primary mb-4">{s.code}</span>
+                <h3 className="text-xl font-extrabold mb-3 tracking-tight">{s.h1}</h3>
                 <p className="text-sm text-muted-foreground flex-grow leading-relaxed">{s.summary}</p>
-                <span className="text-[11px] font-mono text-primary uppercase mt-6 inline-block group-hover:underline">Ver detalhes →</span>
+                <span className="text-xs font-bold text-primary mt-6 inline-block group-hover:underline">Ver detalhes →</span>
               </Link>
             ))}
           </div>
@@ -160,8 +160,8 @@ function PinturaHub() {
       <section className="py-16" aria-labelledby="fachada-predial">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
-            <p className="font-mono text-xs text-primary uppercase mb-3">Destaque · Empresa de Pintura de Fachada</p>
-            <h2 id="fachada-predial" className="text-3xl sm:text-4xl font-black uppercase italic tracking-tighter mb-6">
+            <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Destaque · Empresa de Pintura de Fachada</p>
+            <h2 id="fachada-predial" className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
               Pintura de fachada predial em Fortaleza
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
@@ -190,8 +190,8 @@ function PinturaHub() {
               </Link>
             </div>
           </div>
-          <aside className="bg-card p-7 border border-border h-fit">
-            <h2 className="text-xl font-black uppercase mb-2">Orçamento de pintura</h2>
+          <aside className="rounded-2xl bg-card p-7 border border-border h-fit">
+            <h2 className="text-xl font-extrabold mb-2">Orçamento de pintura</h2>
             <p className="text-xs text-muted-foreground mb-5">Resposta em até 24h úteis</p>
             <QuoteForm defaultService="Pintura" />
           </aside>

@@ -8,10 +8,11 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: calc(var(--radius) - 4px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+  --radius-2xl: calc(var(--radius) + 16px);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -21,8 +22,11 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-soft: var(--primary-soft);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-strong: var(--accent-strong);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -37,62 +41,73 @@
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 1rem;
 
-  /* Engineering Blueprint palette — deep forest green primary + vibrant emerald accent */
-  --background: oklch(0.992 0.003 145);
-  --foreground: oklch(0.18 0.02 160);
-  --surface: oklch(0.97 0.005 150);
+  /* Chico Resolve — paleta verde da logo */
+  /* #F2F2F2 base + verdes profundos */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.20 0.03 145);
+  --surface: oklch(0.965 0.003 145);          /* #F2F2F2 */
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 160);
+  --card-foreground: oklch(0.20 0.03 145);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 160);
+  --popover-foreground: oklch(0.20 0.03 145);
 
-  /* primary ≈ #064e3b (forest green) */
-  --primary: oklch(0.36 0.07 160);
-  --primary-foreground: oklch(0.985 0.005 150);
+  /* primary #147322 (verde principal) */
+  --primary: oklch(0.49 0.16 144);
+  --primary-foreground: oklch(0.985 0.005 145);
 
-  /* accent ≈ #10b981 (emerald) */
-  --accent: oklch(0.72 0.16 160);
-  --accent-foreground: oklch(0.15 0.02 160);
+  /* accent #46A637 (verde acento / CTA) */
+  --accent: oklch(0.63 0.18 142);
+  --accent-foreground: oklch(0.15 0.02 145);
+  --accent-strong: oklch(0.63 0.18 142);
 
-  --secondary: oklch(0.96 0.005 150);
-  --secondary-foreground: oklch(0.18 0.02 160);
-  --muted: oklch(0.96 0.005 150);
-  --muted-foreground: oklch(0.5 0.015 160);
+  /* primary-dark #2C5925 — hero/footer */
+  --primary-dark: oklch(0.38 0.10 144);
 
-  --destructive: oklch(0.55 0.22 27);
-  --destructive-foreground: oklch(0.985 0.005 150);
+  /* primary-soft #97BF95 — detalhes/ícones */
+  --primary-soft: oklch(0.78 0.07 144);
 
-  --border: oklch(0.9 0.01 160);
-  --input: oklch(0.9 0.01 160);
-  --ring: oklch(0.36 0.07 160);
+  --secondary: oklch(0.965 0.003 145);
+  --secondary-foreground: oklch(0.20 0.03 145);
+  --muted: oklch(0.965 0.003 145);
+  --muted-foreground: oklch(0.45 0.02 145);
 
-  --whatsapp: oklch(0.65 0.15 150);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.985 0.005 145);
+
+  --border: oklch(0.90 0.01 145);
+  --input: oklch(0.90 0.01 145);
+  --ring: oklch(0.49 0.16 144);
+
+  --whatsapp: oklch(0.66 0.17 150);
 }
 
 .dark {
-  --background: oklch(0.15 0.015 160);
-  --foreground: oklch(0.97 0.005 150);
-  --surface: oklch(0.2 0.015 160);
-  --card: oklch(0.2 0.015 160);
-  --card-foreground: oklch(0.97 0.005 150);
-  --popover: oklch(0.2 0.015 160);
-  --popover-foreground: oklch(0.97 0.005 150);
-  --primary: oklch(0.72 0.16 160);
-  --primary-foreground: oklch(0.15 0.02 160);
-  --accent: oklch(0.72 0.16 160);
-  --accent-foreground: oklch(0.15 0.02 160);
-  --secondary: oklch(0.25 0.015 160);
-  --secondary-foreground: oklch(0.97 0.005 150);
-  --muted: oklch(0.25 0.015 160);
-  --muted-foreground: oklch(0.7 0.01 160);
-  --destructive: oklch(0.65 0.2 27);
-  --destructive-foreground: oklch(0.97 0.005 150);
+  --background: oklch(0.16 0.02 145);
+  --foreground: oklch(0.97 0.005 145);
+  --surface: oklch(0.21 0.02 145);
+  --card: oklch(0.21 0.02 145);
+  --card-foreground: oklch(0.97 0.005 145);
+  --popover: oklch(0.21 0.02 145);
+  --popover-foreground: oklch(0.97 0.005 145);
+  --primary: oklch(0.63 0.18 142);
+  --primary-foreground: oklch(0.15 0.02 145);
+  --accent: oklch(0.63 0.18 142);
+  --accent-foreground: oklch(0.15 0.02 145);
+  --accent-strong: oklch(0.63 0.18 142);
+  --primary-dark: oklch(0.30 0.08 144);
+  --primary-soft: oklch(0.78 0.07 144);
+  --secondary: oklch(0.25 0.015 145);
+  --secondary-foreground: oklch(0.97 0.005 145);
+  --muted: oklch(0.25 0.015 145);
+  --muted-foreground: oklch(0.72 0.01 145);
+  --destructive: oklch(0.65 0.20 27);
+  --destructive-foreground: oklch(0.97 0.005 145);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.72 0.16 160);
+  --ring: oklch(0.63 0.18 142);
 }
 
 @layer base {
@@ -119,7 +134,24 @@
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 
 .animate-slide-up {
   animation: slide-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out both;
+}
+
+/* Hero overlay gradient — verde escuro Chico Resolve */
+.hero-overlay {
+  background: linear-gradient(
+    100deg,
+    color-mix(in oklab, var(--primary-dark) 88%, transparent) 0%,
+    color-mix(in oklab, var(--primary-dark) 70%, transparent) 55%,
+    color-mix(in oklab, var(--primary-dark) 45%, transparent) 100%
+  );
 }

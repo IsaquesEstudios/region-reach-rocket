@@ -1,20 +1,34 @@
+import { Award, Clock, ShieldCheck, LineChart } from "lucide-react";
+
 const pillars = [
-  { n: "01", title: "Rigor Técnico", text: "Engenharia de precisão em cada etapa do processo de manutenção." },
-  { n: "02", title: "100% Prazos", text: "Cronogramas rígidos e entrega garantida para operações ininterruptas." },
-  { n: "03", title: "Segurança NR10/NR35", text: "Certificação total para trabalhos em altura e riscos elétricos." },
-  { n: "04", title: "Tecnologia em Gestão", text: "Relatórios digitais e acompanhamento em tempo real dos serviços." },
+  { icon: Award, title: "Rigor Técnico", text: "Engenharia de precisão em cada etapa do processo de manutenção." },
+  { icon: Clock, title: "100% Prazos", text: "Cronogramas rígidos e entrega garantida para operações ininterruptas." },
+  { icon: ShieldCheck, title: "Segurança NR10/NR35", text: "Certificação total para trabalhos em altura e riscos elétricos." },
+  { icon: LineChart, title: "Tecnologia em Gestão", text: "Relatórios digitais e acompanhamento em tempo real dos serviços." },
 ];
 
 export function Pillars() {
   return (
-    <section className="py-20 sm:py-24 bg-card" aria-labelledby="pillars-title">
+    <section className="py-20 sm:py-28" aria-labelledby="pillars-title">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <h2 id="pillars-title" className="sr-only">Por que escolher Chico Resolve</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-border">
+        <div className="max-w-2xl mb-14">
+          <span className="inline-block rounded-full bg-primary/10 text-primary px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest mb-4">
+            Por que a Chico Resolve
+          </span>
+          <h2 id="pillars-title" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-balance">
+            Quatro pilares que sustentam cada projeto.
+          </h2>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {pillars.map((p) => (
-            <div key={p.n} className="p-8 sm:p-10 border-b last:border-b-0 sm:border-b-0 sm:[&:nth-child(-n+2)]:border-b lg:[&:nth-child(-n+2)]:border-b-0 sm:border-r sm:[&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:last:border-r-0 border-border hover:bg-surface transition-colors">
-              <span className="font-mono text-xs text-primary mb-4 block">{p.n}/</span>
-              <h3 className="text-base font-black uppercase mb-3 tracking-tight">{p.title}</h3>
+            <div
+              key={p.title}
+              className="rounded-2xl bg-card border border-border p-7 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 transition-all"
+            >
+              <span className="inline-flex size-12 rounded-xl bg-primary/10 text-primary items-center justify-center mb-5">
+                <p.icon className="size-6" aria-hidden />
+              </span>
+              <h3 className="text-lg font-bold mb-2 tracking-tight">{p.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{p.text}</p>
             </div>
           ))}

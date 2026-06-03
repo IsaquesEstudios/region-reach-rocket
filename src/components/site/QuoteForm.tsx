@@ -20,15 +20,15 @@ Mensagem: ${data.get("message") ?? "—"}`;
     <form onSubmit={onSubmit} className="space-y-3" aria-label="Formulário de orçamento">
       <div>
         <label htmlFor="qf-name" className="sr-only">Nome completo</label>
-        <input id="qf-name" name="name" required placeholder="Nome completo" className="w-full px-4 py-3 bg-background border border-border text-sm focus:border-primary outline-none" />
+        <input id="qf-name" name="name" required placeholder="Nome completo" className="w-full px-4 py-3 rounded-xl bg-background border border-border text-sm focus:border-primary outline-none" />
       </div>
       <div>
         <label htmlFor="qf-email" className="sr-only">E-mail</label>
-        <input id="qf-email" name="email" type="email" required placeholder="E-mail" className="w-full px-4 py-3 bg-background border border-border text-sm focus:border-primary outline-none" />
+        <input id="qf-email" name="email" type="email" required placeholder="E-mail" className="w-full px-4 py-3 rounded-xl bg-background border border-border text-sm focus:border-primary outline-none" />
       </div>
       <div>
         <label htmlFor="qf-phone" className="sr-only">Telefone / WhatsApp</label>
-        <input id="qf-phone" name="phone" required placeholder="Telefone / WhatsApp" className="w-full px-4 py-3 bg-background border border-border text-sm focus:border-primary outline-none" />
+        <input id="qf-phone" name="phone" required placeholder="Telefone / WhatsApp" className="w-full px-4 py-3 rounded-xl bg-background border border-border text-sm focus:border-primary outline-none" />
       </div>
       <div>
         <label htmlFor="qf-service" className="sr-only">Serviço de interesse</label>
@@ -37,7 +37,7 @@ Mensagem: ${data.get("message") ?? "—"}`;
           name="service"
           value={service}
           onChange={(e) => setService(e.target.value)}
-          className="w-full px-4 py-3 bg-background border border-border text-sm focus:border-primary outline-none"
+          className="w-full px-4 py-3 rounded-xl bg-background border border-border text-sm focus:border-primary outline-none"
         >
           {services.map((s) => (
             <option key={s.slug} value={s.title}>{s.title}</option>
@@ -46,11 +46,11 @@ Mensagem: ${data.get("message") ?? "—"}`;
       </div>
       <div>
         <label htmlFor="qf-message" className="sr-only">Mensagem</label>
-        <textarea id="qf-message" name="message" rows={3} placeholder="Conte um pouco sobre o serviço (opcional)" className="w-full px-4 py-3 bg-background border border-border text-sm focus:border-primary outline-none resize-none" />
+        <textarea id="qf-message" name="message" rows={3} placeholder="Conte um pouco sobre o serviço (opcional)" className="w-full px-4 py-3 rounded-xl bg-background border border-border text-sm focus:border-primary outline-none resize-none" />
       </div>
       <button
         type="submit"
-        className="w-full bg-primary text-primary-foreground font-bold uppercase tracking-wider text-xs py-4 hover:bg-foreground transition-colors"
+        className="w-full rounded-full bg-primary text-primary-foreground font-bold text-xs py-4 hover:bg-primary-dark transition-colors"
       >
         Solicitar Orçamento
       </button>
