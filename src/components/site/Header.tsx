@@ -42,7 +42,7 @@ export function Header() {
               <div className="absolute left-0 top-full pt-3 w-80">
                 <ul className="bg-card border border-border shadow-xl rounded-2xl p-2 overflow-hidden">
                   {services.map((s) => (
-                    <li key={s.slug}>
+                    <li key={s.slug} className="group/item">
                       {s.slug === "pintura" ? (
                         <Link to="/servicos/pintura" className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
                           <span className="text-primary text-xs font-bold w-7">{s.code}</span>
@@ -70,7 +70,7 @@ export function Header() {
                         </Link>
                       )}
                       {s.slug === "pintura" && (
-                        <ul className="pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
+                        <ul className="hidden group-hover/item:block pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
                           {pinturaSubservices.map((p) => (
                             <li key={p.slug}>
                               <Link to="/servicos/pintura/$pinturaSlug" params={{ pinturaSlug: p.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
@@ -81,7 +81,7 @@ export function Header() {
                         </ul>
                       )}
                       {s.slug === "eletrica" && (
-                        <ul className="pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
+                        <ul className="hidden group-hover/item:block pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
                           {eletricaSubservices.map((e) => (
                             <li key={e.slug}>
                               <Link to="/servicos/eletrica/$eletricaSlug" params={{ eletricaSlug: e.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
@@ -92,7 +92,7 @@ export function Header() {
                         </ul>
                       )}
                       {s.slug === "hidraulica" && (
-                        <ul className="pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
+                        <ul className="hidden group-hover/item:block pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
                           {hidraulicaSubservices.map((h) => (
                             <li key={h.slug}>
                               <Link to="/servicos/hidraulica/$hidraulicaSlug" params={{ hidraulicaSlug: h.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
@@ -103,7 +103,7 @@ export function Header() {
                         </ul>
                       )}
                       {s.slug === "drywall" && (
-                        <ul className="pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
+                        <ul className="hidden group-hover/item:block pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
                           {drywallSubservices.map((d) => (
                             <li key={d.slug}>
                               <Link to="/servicos/drywall/$drywallSlug" params={{ drywallSlug: d.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
