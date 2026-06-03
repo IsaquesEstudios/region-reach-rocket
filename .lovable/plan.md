@@ -1,142 +1,101 @@
-## Objetivo
+# Redesign global no estilo Pooluxe (paleta verde Chico Resolve)
 
-Transformar `/servicos/drywall` em hub com 6 sub-páginas especializadas, cada uma com H1 e cluster de keywords fornecidos, otimizadas para E-E-A-T, GEO (Fortaleza/CE) e SEO on-page. Mesmo padrão já aplicado em Pintura, Elétrica e Hidráulica.
+Aplicar a linguagem visual do template **Pooluxe** em todas as páginas do site, mantendo a logo/texto atual e substituindo a paleta atual pela nova:
 
-## Mapeamento palavra-chave → página
+- `#147322` (verde primário)
+- `#46A637` (verde acento / CTA)
+- `#2C5925` (verde escuro / hero overlay)
+- `#97BF95` (verde claro / detalhes)
+- `#F2F2F2` (cinza claro / fundo de seções)
 
-| Rota | H1 (keyword principal) | Keywords secundárias |
-|---|---|---|
-| `/servicos/drywall` (hub) | Empresa de Drywall em Fortaleza | instalação de drywall, gesso acartonado, gesseiro, forro de gesso, parede de drywall, divisória de ambiente |
-| `/servicos/drywall/instalacao-drywall` | Instalação de Drywall em Fortaleza | empresa de drywall, orçamento drywall, instalação de drywall |
-| `/servicos/drywall/gesso-acartonado` | Gesso Acartonado em Fortaleza | drywall ou gesso acartonado, drywood gesso acartonado, placa de gesso |
-| `/servicos/drywall/gesseiro` | Gesseiro em Fortaleza | gesseiro profissional, colocador de drywall, mão de obra drywall, preço gesseiro |
-| `/servicos/drywall/forro-de-gesso` | Forro de Gesso em Fortaleza | orçamento forro de gesso, conserto de teto de gesso, instalação forro de gesso |
-| `/servicos/drywall/parede-de-drywall` | Parede de Drywall em Fortaleza | reparo em parede de drywall, reforço em parede de drywall, orçamento drywall |
-| `/servicos/drywall/divisoria-de-ambiente` | Divisória de Ambiente em Fortaleza | divisória de ambiente ripada, placa de gesso na parede, divisória para área externa, divisórias para escritório, divisória industrial |
+A logo permanece como **wordmark de texto** (sem inserir a imagem enviada).
 
-Conteúdo único por página. Keywords sobrepostas tratadas com ângulos distintos: instalação foca em obra nova/projeto; gesso acartonado foca em materiais e diferença vs gesso tradicional; gesseiro foca em mão de obra/preço; forro foca em teto; parede foca em reparo/reforço; divisória foca em separação de ambientes (incluindo ripada, escritório, industrial, externa).
+## Linguagem visual herdada do Pooluxe
 
-## Nova arquitetura de rotas
+- **Hero full-bleed** com imagem de fundo (foto real), overlay verde escuro, headline grande em duas linhas com a segunda linha em cor de destaque (`#46A637`), descrição curta, CTA pill arredondado e badges de confiança (Licensed, Garantia, Preço justo). Card flutuante "Inspeção Gratuita + telefone" no canto inferior direito.
+- **Barra de stats** logo abaixo do hero, fundo claro (`#F2F2F2`), 4 colunas com ícone + número grande + label.
+- **Cards arredondados** (radius ~16-24px), sombras suaves, em vez do estilo "blueprint" reto/quadrado atual.
+- **Tipografia**: títulos em sans pesado/condensado, sem o "uppercase italic" agressivo do estilo atual. Manter Inter como família principal (já carregada), aplicar pesos 700/800 nos H1/H2.
+- **Header**: logo à esquerda (wordmark "Chico Resolve"), menu central com dropdowns (Serviços já tem subitens), botão CTA pill "Agendar Visita" à direita.
+- **Botões pill** (rounded-full) em vez de quadrados.
+- **Seções alternando** fundo branco e `#F2F2F2`.
+- **Footer** reorganizado em 4 colunas (Marca/desc, Serviços, Empresa, Contato) com fundo verde escuro (`#2C5925`) e texto claro.
 
-```text
-src/routes/
-  servicos.drywall.tsx                      /servicos/drywall         (layout <Outlet />)
-  servicos.drywall.index.tsx                /servicos/drywall         (hub)
-  servicos.drywall.$drywallSlug.tsx         /servicos/drywall/:slug   (6 sub-páginas)
-```
+## Páginas afetadas
 
-`servicos.$slug.tsx` continua atendendo os 4 serviços restantes (juntas, segurança, reformas, manutenção). O slug `drywall` sai da rota dinâmica — mesmo padrão de pintura/eletrica/hidraulica.
+1. **Home (`src/routes/index.tsx`)** — todos os componentes filhos abaixo.
+2. **Header global** (`src/components/site/Header.tsx`).
+3. **Footer global** (`src/components/site/Footer.tsx`).
+4. **Hub `/servicos`** (`src/routes/servicos.tsx` + `ServicesGrid`).
+5. **Hubs setoriais**: `/servicos/pintura`, `/servicos/eletrica`, `/servicos/hidraulica`, `/servicos/drywall` (arquivos `*.index.tsx`).
+6. **Subpáginas dinâmicas** (componentes `PinturaSubPage`, `EletricaSubPage`, `HidraulicaSubPage`, `DrywallSubPage`, `ServicePage`).
+7. **Contato** (`src/routes/contato.tsx`).
 
-## Estrutura padrão de cada sub-página (E-E-A-T + GEO + SEO)
+## Trabalho a executar
 
-~600–900 palavras, sem duplicação:
+### 1. Tokens de design (`src/styles.css`)
+- Reescrever as variáveis `--primary`, `--accent`, `--secondary`, `--muted`, `--ring`, `--surface`, `--whatsapp` em **oklch** equivalentes aos hex fornecidos.
+- Adicionar `--primary-dark` (#2C5925), `--primary-soft` (#97BF95), `--accent-strong` (#46A637) como tokens semânticos.
+- Aumentar `--radius` para `1rem` (cards/botões mais arredondados, estilo Pooluxe).
+- Adicionar utilitário `--gradient-hero` (overlay verde escuro do hero).
+- Remover estilos `uppercase italic` agressivos do CSS base se houver.
 
-1. **H1** com keyword principal + "Fortaleza/CE".
-2. **Intro autoral (Experience)** — atuação local, tipologia atendida (residências Aldeota/Meireles, condomínios Cocó, escritórios Centro, indústrias Maracanaú).
-3. **Quando contratar** — sintomas/situações (long-tail: dividir sala, rebaixar teto, esconder fiação, isolamento acústico, teto com mancha/quebrado).
-4. **Tipos/Técnicas** — 4–5 cards (ex.: placa ST/RU/RF, perfis 48/70/90, isolamento lã de rocha, sancas, divisória ripada).
-5. **Processo numerado** (5 passos: medição → projeto → montagem estrutura → fechamento e massa → acabamento).
-6. **Normas (Authoritativeness)**: NBR 15217 (perfis), NBR 15758 (sistemas drywall), NBR 14715 (chapas), ABNT NBR 11675 (divisórias).
-7. **Trust**: equipe própria, fornecedores Knauf/Placo/Gypsum, garantia escrita, limpeza pós-obra.
-8. **GEO local**: bairros atendidos (Fortaleza, Maracanaú, Eusébio, Aquiraz, Caucaia), particularidades (maresia → preferir placa RU em áreas úmidas, clima quente → ventilação no forro).
-9. **FAQ 4–5 perguntas** distintas por página → JSON-LD `FAQPage`.
-10. **Links internos** para sub-páginas irmãs + hub + contato.
-11. **`QuoteForm` lateral** + CTA WhatsApp pré-preenchido.
+### 2. Componentes do site
 
-## SEO técnico por página
+**`Hero.tsx`** — reescrita completa:
+- Full-bleed (sem grid 7/5). Imagem de fundo `hero-fachada.jpg` com overlay `linear-gradient` verde escuro.
+- Conteúdo alinhado à esquerda, max-width ~700px, padding generoso.
+- H1 em duas linhas: "Manutenção Predial Inteligente." + "Para o seu imóvel." (segunda linha em `--accent-strong`).
+- CTA pill verde claro + badges ✓ inline (Licenciada NR10/NR35, Garantia, Orçamento sem custo).
+- Card flutuante "Visita Técnica · (85) ..." no canto inferior direito.
 
-Em cada `head()`:
-- `<title>` ≤ 60 chars com keyword + "Fortaleza" + marca.
-- `<meta description>` ≤ 155 chars com keyword + diferencial + CTA.
-- `og:title`, `og:description`, `og:url`, `og:type=article`, `og:image`.
-- `<link rel="canonical">` relativo.
-- JSON-LD `Service` (provider LocalBusiness Chico Resolve, areaServed Fortaleza).
-- JSON-LD `BreadcrumbList` (Home → Serviços → Drywall → Subpágina).
-- JSON-LD `FAQPage`.
+**`StatsBar.tsx`** — reposicionar logo após o Hero, fundo `#F2F2F2`, ícones lucide + número grande + label.
 
-Hub `/servicos/drywall`: JSON-LD `Service` com `hasOfferCatalog` listando as 6 sub-categorias.
+**`Pillars.tsx`** — cards arredondados com ícone em círculo verde claro.
 
-## Modelo de dados
+**`ServicesGrid.tsx`** — grid 3 colunas, cards arredondados com imagem topo, título, descrição curta e seta. Hover suave.
 
-Em `src/lib/site.ts`, adicionar (espelho de `pinturaSubservices`/`eletricaSubservices`/`hidraulicaSubservices`):
+**`Segments.tsx` / `Testimonials.tsx` / `CtaBanner.tsx`** — adaptar para pill buttons, cards arredondados, fundo alternado, depoimentos com avatar circular + aspas grandes.
 
-```ts
-export type DrywallSlug =
-  | "instalacao-drywall"
-  | "gesso-acartonado"
-  | "gesseiro"
-  | "forro-de-gesso"
-  | "parede-de-drywall"
-  | "divisoria-de-ambiente";
+**`Header.tsx`** — wordmark "Chico Resolve" à esquerda em peso 800, nav central com chevron nos itens com dropdown (manter estrutura atual de Serviços/sub-rotas), CTA pill à direita. Mobile drawer mantido.
 
-export const drywallSubservices: Array<{
-  slug: DrywallSlug;
-  code: string;                 // "D-01" … "D-06"
-  h1: string;
-  shortTitle: string;
-  metaTitle: string;
-  metaDescription: string;
-  summary: string;
-  keywords: string[];
-  intro: string;
-  whenToHire: string[];
-  types: { title: string; text: string }[];
-  process: { title: string; text: string }[];
-  standards: string[];
-  trust: string[];
-  geo: string;
-  faq: { q: string; a: string }[];
-  related: DrywallSlug[];
-}> = [ ... ]
+**`Footer.tsx`** — fundo `--primary-dark`, texto claro, 4 colunas, redes sociais em ícones circulares.
 
-export function getDrywallSubservice(slug: string) { ... }
-```
+### 3. Páginas de serviços (templates compartilhados)
+Atualizar `PinturaSubPage`, `EletricaSubPage`, `HidraulicaSubPage`, `DrywallSubPage`, `ServicePage`:
+- Hero interno: faixa verde escura com breadcrumb + H1 + descrição (padrão Pooluxe nas inner pages).
+- Seções de conteúdo com cards arredondados.
+- Sidebar de contato com CTA pill.
+- Trocar todas as classes `uppercase italic tracking-tighter` por estilos mais suaves (peso 800, tracking normal).
 
-`serviceContent.drywall` (hub) reescrito focando em "empresa de drywall" + visão geral + 6 cards.
+### 4. Páginas hub (`servicos.*.index.tsx`, `servicos.tsx`, `contato.tsx`)
+- Mesmo tratamento de hero interno verde escuro + grid de cards arredondados.
+- `contato.tsx`: layout 2 colunas (form arredondado à esquerda, info/mapa à direita).
 
-## Componente compartilhado
+## Fora de escopo
 
-Criar `src/components/site/DrywallSubPage.tsx` (variação dos templates Pintura/Elétrica/Hidráulica):
-- Breadcrumb 4 níveis (Home / Serviços / Drywall / Subpágina).
-- Mesmas seções do padrão estabelecido.
-- Reusa `QuoteForm` e WhatsApp.
+- Não alterar dados de SEO (títulos, descrições, JSON-LD, sitemap).
+- Não tocar em `src/lib/site.ts` (conteúdo permanece igual).
+- Não criar novas rotas nem alterar `routeTree.gen.ts`.
+- Não substituir a imagem do hero — apenas reusar `hero-fachada.jpg`.
+- Não inserir a imagem da logo enviada (wordmark permanece).
+- Não mexer em backend, formulário continua enviando para WhatsApp como hoje.
 
-## Navegação e descoberta
+## Detalhes técnicos
 
-- `Header.tsx`: dropdown "Serviços" → "Drywall" lista as 6 sub-categorias.
-- `Footer.tsx`: coluna de serviços com as 6 sub-páginas sob Drywall.
-- `ServicesGrid.tsx`: card "Drywall" aponta para o hub.
-- `src/routes/servicos.tsx`: card já existente, sem mudança estrutural.
-- `sitemap[.]xml.ts`: incluir as 6 novas URLs (`drywallSubservices.map(...)`).
-- Hub: seção "Especialidades" com 6 cards linkando às sub-páginas.
+- Todas as cores aplicadas via tokens semânticos (`bg-primary`, `text-primary-foreground`, `bg-[--surface]`, etc.). Nenhum hex hardcoded em componentes — somente em `styles.css`.
+- Conversão dos hex para oklch (aproximada):
+  - `#147322` → `oklch(0.48 0.16 145)` (primary)
+  - `#46A637` → `oklch(0.64 0.18 142)` (accent)
+  - `#2C5925` → `oklch(0.37 0.10 145)` (primary-dark)
+  - `#97BF95` → `oklch(0.78 0.07 145)` (primary-soft)
+  - `#F2F2F2` → `oklch(0.96 0 0)` (surface)
+- Tipografia mantida (Inter + JetBrains Mono já carregadas).
+- Animações: manter `animate-slide-up` existente; adicionar transições suaves nos hovers de card.
 
-## Imagens
+## Validação
 
-Gerar 6 imagens em `src/assets/`:
-- `drywall-instalacao.jpg` — montagem de estrutura metálica drywall.
-- `drywall-gesso-acartonado.jpg` — placas de gesso acartonado empilhadas/aplicadas.
-- `drywall-gesseiro.jpg` — gesseiro trabalhando com massa/acabamento.
-- `drywall-forro-de-gesso.jpg` — forro de gesso instalado com sanca.
-- `drywall-parede-de-drywall.jpg` — parede drywall finalizada / reparo.
-- `drywall-divisoria-ambiente.jpg` — divisória ripada/escritório.
-
-`servico-drywall.jpg` atual permanece no hub. Alt com keyword + "Fortaleza", `loading="eager"` apenas no LCP.
-
-## Conteúdo placeholder
-
-Depoimentos/números seguem como placeholders. Bairros como exemplos plausíveis com `{/* TODO: confirmar bairros atendidos */}`.
-
-## Fora deste escopo
-
-- Outros 4 serviços inalterados (juntas, segurança, reformas, manutenção).
-- Sem alteração de design system, paleta ou tipografia.
-- Sem backend (WhatsApp + mailto).
-- Sem refatorar Pintura/Elétrica/Hidráulica existentes.
-
-## Critério de pronto
-
-- 6 novas rotas + hub `/servicos/drywall` reescrito.
-- Cada rota com title/description/canonical/JSON-LD únicos.
-- H1 exato conforme keyword fornecida.
-- Sitemap, Header, Footer e Hub linkando as 6 páginas.
-- Build limpo, sem duplicação de conteúdo.
+Após implementar:
+1. Build automático precisa passar.
+2. Verificar Home, `/servicos`, `/servicos/pintura`, uma subpágina (`/servicos/pintura/residencial`), `/contato` no preview em desktop (1502px) e mobile (375px).
+3. Confirmar contraste AA do texto sobre verde escuro e verde primário.
