@@ -3,17 +3,14 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouter,
-  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { Toaster } from "sonner";
 
 import appCss from "../styles.css?url";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppFab } from "@/components/site/WhatsAppFab";
-import { AuthProvider } from "@/hooks/use-auth";
 import { site } from "@/lib/site";
 
 function NotFoundComponent() {
@@ -59,14 +56,16 @@ const organizationJsonLd = {
   url: "/",
   address: {
     "@type": "PostalAddress",
+    streetAddress: site.address.street,
     addressLocality: site.address.city,
     addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
     addressCountry: site.address.country,
   },
-  areaServed: [
-    { "@type": "City", name: "Teresina" },
-    { "@type": "AdministrativeArea", name: "Grande Teresina" },
-  ],
+  areaServed: {
+    "@type": "City",
+    name: "Fortaleza",
+  },
   sameAs: [site.instagramUrl],
   priceRange: "$$",
   serviceType: [
@@ -87,13 +86,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#064e3b" },
-      { title: `${site.name} — ${site.tagline} | Teresina` },
+      { title: `${site.name} — ${site.tagline} | Fortaleza` },
       { name: "description", content: site.description },
       { name: "author", content: site.name },
       { property: "og:site_name", content: site.name },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
+      { title: "Chico Resolve" },
+      { property: "og:title", content: "Chico Resolve" },
+      { name: "twitter:title", content: "Chico Resolve" },
+      { name: "description", content: "Reformas e projetos residencias e prediais em teresina piaui" },
+      { property: "og:description", content: "Reformas e projetos residencias e prediais em teresina piaui" },
+      { name: "twitter:description", content: "Reformas e projetos residencias e prediais em teresina piaui" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/758dbe91-a63f-4280-8705-56f1891d4922/id-preview-1a4be1ab--ce6964cb-e37b-4cd2-851d-915523b391c5.lovable.app-1780673858174.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/758dbe91-a63f-4280-8705-56f1891d4922/id-preview-1a4be1ab--ce6964cb-e37b-4cd2-851d-915523b391c5.lovable.app-1780673858174.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -133,28 +140,14 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <AppShell />
-        <Toaster richColors position="top-right" />
-      </AuthProvider>
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer />
+        <WhatsAppFab />
+      </div>
     </QueryClientProvider>
-  );
-}
-
-function AppShell() {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const isAdmin = pathname.startsWith("/admin");
-  if (isAdmin) {
-    return <Outlet />;
-  }
-  return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <main className="flex-1">
-        <Outlet />
-      </main>
-      <Footer />
-      <WhatsAppFab />
-    </div>
   );
 }
