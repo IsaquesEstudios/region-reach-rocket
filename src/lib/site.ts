@@ -8,7 +8,7 @@ export const site = {
   description:
     "Engenharia de manutenção predial em Teresina/PI: pintura, elétrica, hidráulica, drywall, juntas de dilatação, segurança e reformas com rigor técnico e prazos cumpridos.",
   city: "Teresina",
-  region: "CE",
+  region: "PI",
   country: "BR",
   phone: "(86) 98154-7477",
   phoneE164: "+5586981547477",
@@ -16,13 +16,10 @@ export const site = {
   email: "contato@chicoresolve.com.br", // TODO: confirmar email real
   instagram: "@chico.resolve",
   instagramUrl: "https://instagram.com/chico.resolve",
-  // TODO: substituir endereço placeholder
+  serviceArea: "Teresina e Grande Teresina",
   address: {
-    street: "Av. Santos Dumont, 0000",
-    neighborhood: "Jóquei",
     city: "Teresina",
-    region: "CE",
-    postalCode: "60000-000",
+    region: "PI",
     country: "BR",
   },
   // TODO: confirmar estatísticas reais antes de publicar
