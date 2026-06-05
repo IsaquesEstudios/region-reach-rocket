@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { LayoutDashboard, FileText, LogOut } from "lucide-react";
+import { LayoutDashboard, FileText, FolderOpen, Tag, Users, LogOut } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import type { ReactNode } from "react";
 
@@ -10,6 +10,9 @@ export function AdminLayout({ children }: { children: ReactNode }) {
   const navItems = [
     { to: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
     { to: "/admin/posts", label: "Posts", icon: FileText, exact: false },
+    { to: "/admin/categories", label: "Categorias", icon: FolderOpen, exact: false },
+    { to: "/admin/tags", label: "Tags", icon: Tag, exact: false },
+    { to: "/admin/users", label: "Usuários", icon: Users, exact: false },
   ];
 
   const isActive = (to: string, exact: boolean) =>
