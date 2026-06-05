@@ -59,16 +59,14 @@ const organizationJsonLd = {
   url: "/",
   address: {
     "@type": "PostalAddress",
-    streetAddress: site.address.street,
     addressLocality: site.address.city,
     addressRegion: site.address.region,
-    postalCode: site.address.postalCode,
     addressCountry: site.address.country,
   },
-  areaServed: {
-    "@type": "City",
-    name: "Fortaleza",
-  },
+  areaServed: [
+    { "@type": "City", name: "Teresina" },
+    { "@type": "AdministrativeArea", name: "Grande Teresina" },
+  ],
   sameAs: [site.instagramUrl],
   priceRange: "$$",
   serviceType: [
@@ -89,7 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#064e3b" },
-      { title: `${site.name} — ${site.tagline} | Fortaleza` },
+      { title: `${site.name} — ${site.tagline} | Teresina` },
       { name: "description", content: site.description },
       { name: "author", content: site.name },
       { property: "og:site_name", content: site.name },

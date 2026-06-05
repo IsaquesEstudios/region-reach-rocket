@@ -8,7 +8,7 @@ export function Hero() {
       {/* Background image */}
       <img
         src={heroImg}
-        alt="Manutenção predial profissional em Fortaleza — Chico Resolve"
+        alt="Manutenção predial profissional em Teresina — Chico Resolve"
         width={2400}
         height={1400}
         fetchPriority="high"
@@ -20,7 +20,7 @@ export function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-40 sm:pb-48 lg:pb-56 relative">
         <div className="max-w-3xl animate-slide-up text-primary-foreground">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest mb-7">
-            <span className="size-1.5 rounded-full bg-accent" aria-hidden /> Engenharia & Manutenção Predial · Fortaleza
+            <span className="size-1.5 rounded-full bg-accent" aria-hidden /> Engenharia & Manutenção Predial · Teresina
           </span>
 
           <h1 className="text-[2.6rem] sm:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight text-balance mb-7">
@@ -30,7 +30,7 @@ export function Hero() {
           </h1>
 
           <p className="text-base sm:text-lg text-white/85 max-w-[55ch] leading-relaxed mb-9">
-            Pintura, elétrica, hidráulica, drywall, reformas e manutenção preventiva com rigor técnico, prazos garantidos e segurança conforme NR10/NR35 — uma só empresa para toda a sua obra em Fortaleza.
+            Pintura, elétrica, hidráulica, drywall, reformas e manutenção preventiva com rigor técnico, prazos garantidos e segurança conforme NR10/NR35 — uma só empresa para toda a sua obra em Teresina.
           </p>
 
           <div className="flex flex-wrap gap-3 sm:gap-4 mb-10">

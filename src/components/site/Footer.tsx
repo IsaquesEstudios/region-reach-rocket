@@ -12,7 +12,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <img src={logo.url} alt={`Logo ${site.name}`} width={200} height={40} className="h-12 w-auto mb-5" />
             <p className="text-sm text-white/70 leading-relaxed mb-6">
-              Inteligência em manutenção predial em Fortaleza/CE. Engenharia técnica para condomínios, indústrias, construtoras e arquitetos.
+              Inteligência em manutenção predial em Teresina/PI. Engenharia técnica para condomínios, indústrias, construtoras e arquitetos.
             </p>
             <div className="flex gap-3">
               <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="inline-flex size-10 rounded-full bg-white/10 hover:bg-accent hover:text-accent-foreground items-center justify-center transition-colors">

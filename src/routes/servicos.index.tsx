@@ -5,10 +5,10 @@ import { CtaBanner } from "@/components/site/CtaBanner";
 export const Route = createFileRoute("/servicos/")({
   head: () => ({
     meta: [
-      { title: "Serviços de Manutenção Predial em Fortaleza | Chico Resolve" },
-      { name: "description", content: "Conheça todos os serviços da Chico Resolve em Fortaleza: pintura, elétrica, hidráulica, drywall, juntas de dilatação, segurança, reformas e manutenção." },
+      { title: "Serviços de Manutenção Predial em Teresina | Chico Resolve" },
+      { name: "description", content: "Conheça todos os serviços da Chico Resolve em Teresina: pintura, elétrica, hidráulica, drywall, juntas de dilatação, segurança, reformas e manutenção." },
       { property: "og:title", content: "Serviços — Chico Resolve" },
-      { property: "og:description", content: "Pintura, elétrica, hidráulica, drywall, juntas, segurança, reformas e manutenção em Fortaleza." },
+      { property: "og:description", content: "Pintura, elétrica, hidráulica, drywall, juntas, segurança, reformas e manutenção em Teresina." },
       { property: "og:url", content: "/servicos" },
     ],
     links: [{ rel: "canonical", href: "/servicos" }],
@@ -26,7 +26,7 @@ function ServicosHub() {
             Todos os <span className="text-primary">serviços</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-3xl">
-            Um único parceiro para a manutenção do seu patrimônio. Equipes próprias e multidisciplinares atendendo Fortaleza e região metropolitana.
+            Um único parceiro para a manutenção do seu patrimônio. Equipes próprias e multidisciplinares atendendo Teresina e Grande Teresina.
           </p>
         </div>
       </section>

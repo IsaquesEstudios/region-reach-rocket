@@ -38,7 +38,7 @@ export function ServicePage({ slug, image }: Props) {
           <div className="lg:col-span-5">
             <img
               src={image}
-              alt={`Serviço de ${meta.shortTitle.toLowerCase()} executado pela Chico Resolve em Fortaleza`}
+              alt={`Serviço de ${meta.shortTitle.toLowerCase()} executado pela Chico Resolve em Teresina`}
               width={1200}
               height={800}
               loading="eager"

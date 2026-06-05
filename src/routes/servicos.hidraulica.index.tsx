@@ -6,16 +6,16 @@ import hidraulicaHero from "@/assets/servico-hidraulica.jpg";
 
 const HUB_URL = "/servicos/hidraulica";
 
-const hubMetaTitle = "Empresa de Hidráulica em Fortaleza | Chico Resolve";
+const hubMetaTitle = "Empresa de Hidráulica em Teresina | Chico Resolve";
 const hubMetaDescription =
-  "Empresa de hidráulica em Fortaleza: bombeiro hidráulico, encanador, desentupidora e sistema hidráulico industrial. Emergência 24h e orçamento rápido.";
+  "Empresa de hidráulica em Teresina: bombeiro hidráulico, encanador, desentupidora e sistema hidráulico industrial. Emergência 24h e orçamento rápido.";
 
 export const Route = createFileRoute("/servicos/hidraulica/")({
   head: () => {
     const serviceJsonLd = {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "Empresa de Hidráulica em Fortaleza",
+      name: "Empresa de Hidráulica em Teresina",
       serviceType: "Serviços hidráulicos residenciais, prediais e industriais",
       description: hubMetaDescription,
       provider: {
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/servicos/hidraulica/")({
           addressCountry: site.address.country,
         },
       },
-      areaServed: { "@type": "City", name: "Fortaleza" },
+      areaServed: { "@type": "City", name: "Teresina" },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Especialidades em Hidráulica",
@@ -91,10 +91,10 @@ function HidraulicaHub() {
           <div className="lg:col-span-7">
             <span className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest">HD · Hidráulica</span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-balance">
-              Empresa de Hidráulica em <span className="text-primary">Fortaleza</span>
+              Empresa de Hidráulica em <span className="text-primary">Teresina</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-[60ch] leading-relaxed">
-              A Chico Resolve é uma empresa de hidráulica completa em Fortaleza com bombeiro hidráulico próprio, encanador profissional e desentupidora com equipamento técnico — hidrojato, geofone, câmera de videoinspeção e máquina rotativa. Atendemos residências, apartamentos, condomínios, restaurantes e indústrias com nota fiscal, garantia escrita e plantão de emergência hidráulica 24h.
+              A Chico Resolve é uma empresa de hidráulica completa em Teresina com bombeiro hidráulico próprio, encanador profissional e desentupidora com equipamento técnico — hidrojato, geofone, câmera de videoinspeção e máquina rotativa. Atendemos residências, apartamentos, condomínios, restaurantes e indústrias com nota fiscal, garantia escrita e plantão de emergência hidráulica 24h.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -119,7 +119,7 @@ function HidraulicaHub() {
           <div className="lg:col-span-5">
             <img
               src={hidraulicaHero}
-              alt="Empresa de hidráulica em Fortaleza — bombeiro hidráulico e encanador profissional da Chico Resolve"
+              alt="Empresa de hidráulica em Teresina — bombeiro hidráulico e encanador profissional da Chico Resolve"
               width={1280}
               height={960}
               loading="eager"
@@ -161,7 +161,7 @@ function HidraulicaHub() {
           <div className="lg:col-span-2">
             <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Destaque · Bombeiro Hidráulico</p>
             <h2 id="bombeiro-hidraulico" className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
-              Bombeiro hidráulico e encanador profissional em Fortaleza
+              Bombeiro hidráulico e encanador profissional em Teresina
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
               Nossa equipe é formada por bombeiro hidráulico e encanador profissional CLT, com treinamento contínuo em normas NBR 5626 (água fria), NBR 7198 (água quente) e NBR 8160 (esgoto sanitário). Como empresa de hidráulica formalizada, emitimos nota fiscal, contrato e ART quando o porte da obra exige — essencial para condomínios, restaurantes e indústrias que precisam comprovar conformidade.

@@ -6,16 +6,16 @@ import eletricaHero from "@/assets/servico-eletrica.jpg";
 
 const HUB_URL = "/servicos/eletrica";
 
-const hubMetaTitle = "Empresa de Elétrica em Fortaleza | Chico Resolve";
+const hubMetaTitle = "Empresa de Elétrica em Teresina | Chico Resolve";
 const hubMetaDescription =
-  "Empresa de elétrica em Fortaleza: eletricistas certificados NR-10 para serviço residencial, predial e industrial. Orçamento eletricista e emergência 24h.";
+  "Empresa de elétrica em Teresina: eletricistas certificados NR-10 para serviço residencial, predial e industrial. Orçamento eletricista e emergência 24h.";
 
 export const Route = createFileRoute("/servicos/eletrica/")({
   head: () => {
     const serviceJsonLd = {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "Empresa de Elétrica em Fortaleza",
+      name: "Empresa de Elétrica em Teresina",
       serviceType: "Instalação e manutenção elétrica residencial, predial e industrial",
       description: hubMetaDescription,
       provider: {
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/servicos/eletrica/")({
           addressCountry: site.address.country,
         },
       },
-      areaServed: { "@type": "City", name: "Fortaleza" },
+      areaServed: { "@type": "City", name: "Teresina" },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Especialidades em Elétrica",
@@ -93,10 +93,10 @@ function EletricaHub() {
           <div className="lg:col-span-7">
             <span className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest">EL · Elétrica</span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-balance">
-              Empresa de Elétrica em <span className="text-primary">Fortaleza</span>
+              Empresa de Elétrica em <span className="text-primary">Teresina</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-[60ch] leading-relaxed">
-              A Chico Resolve é uma empresa de elétrica completa em Fortaleza com eletricistas certificados em NR-10 e NR-10 SEP. Atendemos residências, condomínios, edifícios comerciais e indústrias com instalações novas, manutenção preventiva, ART e plantão de eletricista emergência 24h. Atuamos em toda a Região Metropolitana de Fortaleza com nota fiscal, contrato e relatório fotográfico em cada serviço.
+              A Chico Resolve é uma empresa de elétrica completa em Teresina com eletricistas certificados em NR-10 e NR-10 SEP. Atendemos residências, condomínios, edifícios comerciais e indústrias com instalações novas, manutenção preventiva, ART e plantão de eletricista emergência 24h. Atuamos em toda a Grande Teresina com nota fiscal, contrato e relatório fotográfico em cada serviço.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -121,7 +121,7 @@ function EletricaHub() {
           <div className="lg:col-span-5">
             <img
               src={eletricaHero}
-              alt="Empresa de elétrica em Fortaleza — eletricistas certificados NR-10 da Chico Resolve"
+              alt="Empresa de elétrica em Teresina — eletricistas certificados NR-10 da Chico Resolve"
               width={1280}
               height={960}
               loading="eager"
@@ -165,7 +165,7 @@ function EletricaHub() {
           <div className="lg:col-span-2">
             <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Destaque · Eletricistas Certificados</p>
             <h2 id="eletricistas-certificados" className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
-              Eletricistas certificados NR-10 em Fortaleza
+              Eletricistas certificados NR-10 em Teresina
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
               Nossa equipe é formada por eletricistas certificados em NR-10 (Segurança em Instalações e Serviços em Eletricidade) com reciclagem em dia. Para serviços em média tensão, subestações e plantas industriais, contamos com profissionais com NR-10 SEP (Sistema Elétrico de Potência). Cada intervenção segue procedimento de Permissão de Trabalho, análise preliminar de risco e bloqueio e etiquetagem (LOTO).

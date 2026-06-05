@@ -29,14 +29,14 @@ export function JuntasSubPage({ data, image }: Props) {
           <div className="lg:col-span-7">
             <span className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest">{data.code} · Juntas · {data.shortTitle}</span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-balance">
-              {data.h1.replace(" em Fortaleza", "")} em <span className="text-primary">Fortaleza</span>
+              {data.h1.replace(" em Teresina", "")} em <span className="text-primary">Teresina</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-[60ch] leading-relaxed">{data.intro}</p>
           </div>
           <div className="lg:col-span-5">
             <img
               src={image}
-              alt={`${data.h1} — Chico Resolve, empresa especializada em juntas de dilatação em Fortaleza`}
+              alt={`${data.h1} — Chico Resolve, empresa especializada em juntas de dilatação em Teresina`}
               width={1280}
               height={960}
               loading="eager"
@@ -133,7 +133,7 @@ export function JuntasSubPage({ data, image }: Props) {
             <div className="mt-16">
               <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Onde atendemos</p>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-4">
-                Áreas atendidas em Fortaleza e região
+                Áreas atendidas em Teresina e região
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">{data.geo}</p>
             </div>

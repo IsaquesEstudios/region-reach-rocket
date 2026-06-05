@@ -41,7 +41,7 @@ export const Route = createFileRoute("/servicos/pintura/$pinturaSlug")({
           addressCountry: site.address.country,
         },
       },
-      areaServed: { "@type": "City", name: "Fortaleza" },
+      areaServed: { "@type": "City", name: "Teresina" },
     };
     const breadcrumbJsonLd = {
       "@context": "https://schema.org",

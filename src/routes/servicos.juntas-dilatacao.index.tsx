@@ -6,16 +6,16 @@ import juntasHero from "@/assets/juntas-hub.jpg";
 
 const HUB_URL = "/servicos/juntas-dilatacao";
 
-const hubMetaTitle = "Empresa Especializada em Juntas de Dilatação em Fortaleza | Chico Resolve";
+const hubMetaTitle = "Empresa Especializada em Juntas de Dilatação em Teresina | Chico Resolve";
 const hubMetaDescription =
-  "Empresa especializada em juntas de dilatação em Fortaleza: tratamento, vedação de fachada, manutenção, recuperação estrutural, infiltração e impermeabilização com ART.";
+  "Empresa especializada em juntas de dilatação em Teresina: tratamento, vedação de fachada, manutenção, recuperação estrutural, infiltração e impermeabilização com ART.";
 
 export const Route = createFileRoute("/servicos/juntas-dilatacao/")({
   head: () => {
     const serviceJsonLd = {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "Empresa Especializada em Juntas de Dilatação em Fortaleza",
+      name: "Empresa Especializada em Juntas de Dilatação em Teresina",
       serviceType: "Tratamento e recuperação de juntas de dilatação",
       description: hubMetaDescription,
       provider: {
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/servicos/juntas-dilatacao/")({
           addressCountry: site.address.country,
         },
       },
-      areaServed: { "@type": "City", name: "Fortaleza" },
+      areaServed: { "@type": "City", name: "Teresina" },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Especialidades em Juntas de Dilatação",
@@ -91,10 +91,10 @@ function JuntasHub() {
           <div className="lg:col-span-7">
             <span className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest">JD · Juntas de Dilatação</span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-balance">
-              Empresa Especializada em Juntas de Dilatação em <span className="text-primary">Fortaleza</span>
+              Empresa Especializada em Juntas de Dilatação em <span className="text-primary">Teresina</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-[60ch] leading-relaxed">
-              A Chico Resolve é uma empresa especializada em juntas de dilatação em Fortaleza com equipe própria CLT certificada em NR-35, engenheiro responsável, ART de execução e selantes Sika, Mapei e Vedacit homologados. Tratamos juntas em fachadas, lajes, garagens, pisos industriais e piscinas — com diagnóstico técnico, ensaio de estanqueidade e garantia formal de 5 a 10 anos por escrito.
+              A Chico Resolve é uma empresa especializada em juntas de dilatação em Teresina com equipe própria CLT certificada em NR-35, engenheiro responsável, ART de execução e selantes Sika, Mapei e Vedacit homologados. Tratamos juntas em fachadas, lajes, garagens, pisos industriais e piscinas — com diagnóstico técnico, ensaio de estanqueidade e garantia formal de 5 a 10 anos por escrito.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -116,7 +116,7 @@ function JuntasHub() {
           <div className="lg:col-span-5">
             <img
               src={juntasHero}
-              alt="Empresa especializada em juntas de dilatação em Fortaleza — Chico Resolve, tratamento técnico de juntas com ART"
+              alt="Empresa especializada em juntas de dilatação em Teresina — Chico Resolve, tratamento técnico de juntas com ART"
               width={1280}
               height={960}
               loading="eager"
@@ -144,7 +144,7 @@ function JuntasHub() {
                 className="group rounded-2xl bg-card p-7 border border-border flex flex-col hover:border-primary transition-colors"
               >
                 <span className="text-xs font-bold text-primary mb-4">{s.code}</span>
-                <h3 className="text-xl font-extrabold mb-3 tracking-tight">{s.h1.replace(" em Fortaleza", "")}</h3>
+                <h3 className="text-xl font-extrabold mb-3 tracking-tight">{s.h1.replace(" em Teresina", "")}</h3>
                 <p className="text-sm text-muted-foreground flex-grow leading-relaxed">{s.summary}</p>
                 <span className="text-xs font-bold text-primary mt-6 inline-block group-hover:underline">Ver detalhes →</span>
               </Link>
@@ -164,7 +164,7 @@ function JuntasHub() {
               Tratar junta de dilatação não é trocar selante — é engenharia de manutenção predial. A Chico Resolve atua com protocolo técnico em cada serviço: vistoria com engenheiro estrutural, classificação da patologia conforme NBR 6118 e NBR 9575, escolha do selante e do sistema (poliuretano de alto módulo, silicone estrutural, manta asfáltica, perfil metálico de cobertura) e execução com ART de engenheiro. Cada serviço termina com ensaio de estanqueidade obrigatório e relatório fotográfico para o síndico ou gestor de facilities.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
-              Atendemos condomínios residenciais, prédios comerciais, indústrias e residências de alto padrão em Fortaleza e região metropolitana. Para edifícios litorâneos (Beira Mar, Mucuripe, Praia de Iracema, Praia do Futuro), especificamos selantes com resistência reforçada à maresia e UV intenso, que envelhecem qualquer material genérico em poucos anos.
+              Atendemos condomínios residenciais, prédios comerciais, indústrias e residências de alto padrão em Teresina e Grande Teresina. Para edifícios urbanos (Centro, Mocambinho, Satélite, Dirceu), especificamos selantes com resistência reforçada à calor e poeira e UV intenso, que envelhecem qualquer material genérico em poucos anos.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link

@@ -6,16 +6,16 @@ import pinturaHero from "@/assets/servico-pintura.jpg";
 
 const HUB_URL = "/servicos/pintura";
 
-const hubMetaTitle = "Empresa de Pintura em Fortaleza | Chico Resolve";
+const hubMetaTitle = "Empresa de Pintura em Teresina | Chico Resolve";
 const hubMetaDescription =
-  "Empresa de pintura predial em Fortaleza: pintura de fachada predial, pintura de piso epóxi, residencial, apartamento, industrial e quadras. Orçamento rápido.";
+  "Empresa de pintura predial em Teresina: pintura de fachada predial, pintura de piso epóxi, residencial, apartamento, industrial e quadras. Orçamento rápido.";
 
 export const Route = createFileRoute("/servicos/pintura/")({
   head: () => {
     const serviceJsonLd = {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "Empresa de Pintura em Fortaleza",
+      name: "Empresa de Pintura em Teresina",
       serviceType: "Pintura predial, residencial, industrial e de piso",
       description: hubMetaDescription,
       provider: {
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/servicos/pintura/")({
           addressCountry: site.address.country,
         },
       },
-      areaServed: { "@type": "City", name: "Fortaleza" },
+      areaServed: { "@type": "City", name: "Teresina" },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Especialidades em Pintura",
@@ -93,10 +93,10 @@ function PinturaHub() {
           <div className="lg:col-span-7">
             <span className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest">PN · Pintura</span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-balance">
-              Empresa de Pintura em <span className="text-primary">Fortaleza</span>
+              Empresa de Pintura em <span className="text-primary">Teresina</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-[60ch] leading-relaxed">
-              A Chico Resolve é uma empresa de pintura predial completa em Fortaleza. Executamos pintura de fachada predial, pintura de fachada residencial, pintura de piso epóxi, pintura industrial, de apartamento, de casa e de quadras poliesportivas com equipe própria, ART quando aplicável e garantia formal. Atendemos condomínios, indústrias, construtoras e residências em toda a região metropolitana.
+              A Chico Resolve é uma empresa de pintura predial completa em Teresina. Executamos pintura de fachada predial, pintura de fachada residencial, pintura de piso epóxi, pintura industrial, de apartamento, de casa e de quadras poliesportivas com equipe própria, ART quando aplicável e garantia formal. Atendemos condomínios, indústrias, construtoras e residências em toda a Grande Teresina.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -118,7 +118,7 @@ function PinturaHub() {
           <div className="lg:col-span-5">
             <img
               src={pinturaHero}
-              alt="Empresa de pintura predial em Fortaleza — Chico Resolve executando fachada"
+              alt="Empresa de pintura predial em Teresina — Chico Resolve executando fachada"
               width={1280}
               height={960}
               loading="eager"
@@ -162,10 +162,10 @@ function PinturaHub() {
           <div className="lg:col-span-2">
             <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Destaque · Empresa de Pintura de Fachada</p>
             <h2 id="fachada-predial" className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
-              Pintura de fachada predial em Fortaleza
+              Pintura de fachada predial em Teresina
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
-              A pintura de fachada é o cartão de visita do edifício e a primeira barreira contra a maresia, o sol e a chuva do litoral cearense. Como empresa de pintura de fachada com equipe certificada em NR-35 (trabalho em altura), executamos repintura completa de prédios residenciais e comerciais usando andaime fachadeiro, balancim ou rapel — sempre com tintas acrílicas premium específicas para fachadas litorâneas.
+              A pintura de fachada é o cartão de visita do edifício e a primeira barreira contra a calor e poeira, o sol e a chuva do interior do Piauí. Como empresa de pintura de fachada com equipe certificada em NR-35 (trabalho em altura), executamos repintura completa de prédios residenciais e comerciais usando andaime fachadeiro, balancim ou rapel — sempre com tintas acrílicas premium específicas para fachadas urbanas.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
               Antes de qualquer demão, fazemos hidrojateamento, tratamento de fissuras, recuperação de juntas de dilatação e selagem. Cada projeto inclui ART de execução, cronograma físico-financeiro e relatório fotográfico para a administração do condomínio.

@@ -41,7 +41,7 @@ export const Route = createFileRoute("/servicos/hidraulica/$hidraulicaSlug")({
           addressCountry: site.address.country,
         },
       },
-      areaServed: { "@type": "City", name: "Fortaleza" },
+      areaServed: { "@type": "City", name: "Teresina" },
     };
     const breadcrumbJsonLd = {
       "@context": "https://schema.org",

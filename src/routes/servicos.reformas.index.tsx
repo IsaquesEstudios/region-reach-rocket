@@ -6,16 +6,16 @@ import reformaHero from "@/assets/reforma-hub.jpg";
 
 const HUB_URL = "/servicos/reformas";
 
-const hubMetaTitle = "Empresa de Reforma em Fortaleza | Chico Resolve";
+const hubMetaTitle = "Empresa de Reforma em Teresina | Chico Resolve";
 const hubMetaDescription =
-  "Empresa de reforma em Fortaleza: reforma de apartamento, casa, comercial, banheiro, cozinha, telhado, fachada, piscina, pisos, quadras e quartos com contrato.";
+  "Empresa de reforma em Teresina: reforma de apartamento, casa, comercial, banheiro, cozinha, telhado, fachada, piscina, pisos, quadras e quartos com contrato.";
 
 export const Route = createFileRoute("/servicos/reformas/")({
   head: () => {
     const serviceJsonLd = {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "Empresa de Reforma em Fortaleza",
+      name: "Empresa de Reforma em Teresina",
       serviceType: "Reformas residenciais e comerciais",
       description: hubMetaDescription,
       provider: {
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/servicos/reformas/")({
           addressCountry: site.address.country,
         },
       },
-      areaServed: { "@type": "City", name: "Fortaleza" },
+      areaServed: { "@type": "City", name: "Teresina" },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Especialidades em Reformas",
@@ -91,10 +91,10 @@ function ReformasHub() {
           <div className="lg:col-span-7">
             <span className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest">RF · Reformas</span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-balance">
-              Empresa de Reforma em <span className="text-primary">Fortaleza</span>
+              Empresa de Reforma em <span className="text-primary">Teresina</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-[60ch] leading-relaxed">
-              A Chico Resolve é uma empresa de reforma residencial e comercial em Fortaleza com equipe própria CLT, engenheiro responsável, contrato formal e cronograma físico-financeiro. Reformamos apartamento, casa, banheiro, cozinha, telhado, fachada, piscina, pisos, quadras esportivas e quartos — em uma única empreiteira com nota fiscal e garantia formal.
+              A Chico Resolve é uma empresa de reforma residencial e comercial em Teresina com equipe própria CLT, engenheiro responsável, contrato formal e cronograma físico-financeiro. Reformamos apartamento, casa, banheiro, cozinha, telhado, fachada, piscina, pisos, quadras esportivas e quartos — em uma única empreiteira com nota fiscal e garantia formal.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -116,7 +116,7 @@ function ReformasHub() {
           <div className="lg:col-span-5">
             <img
               src={reformaHero}
-              alt="Empresa de reforma em Fortaleza — Chico Resolve, reformas residenciais e comerciais com contrato"
+              alt="Empresa de reforma em Teresina — Chico Resolve, reformas residenciais e comerciais com contrato"
               width={1280}
               height={960}
               loading="eager"
@@ -144,7 +144,7 @@ function ReformasHub() {
                 className="group rounded-2xl bg-card p-7 border border-border flex flex-col hover:border-primary transition-colors"
               >
                 <span className="text-xs font-bold text-primary mb-4">{s.code}</span>
-                <h3 className="text-xl font-extrabold mb-3 tracking-tight">{s.h1.replace(" em Fortaleza", "")}</h3>
+                <h3 className="text-xl font-extrabold mb-3 tracking-tight">{s.h1.replace(" em Teresina", "")}</h3>
                 <p className="text-sm text-muted-foreground flex-grow leading-relaxed">{s.summary}</p>
                 <span className="text-xs font-bold text-primary mt-6 inline-block group-hover:underline">Ver detalhes →</span>
               </Link>
