@@ -59,7 +59,7 @@ function CategoriesPage() {
   };
 
   const update = async (id: string, patch: { name?: string; color?: string }) => {
-    const payload: Record<string, unknown> = { ...patch };
+    const payload: { name?: string; color?: string; slug?: string } = { ...patch };
     if (patch.name) payload.slug = slugify(patch.name);
     const { error } = await supabase.from("categories").update(payload).eq("id", id);
     if (error) return toast.error(error.message);
