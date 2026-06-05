@@ -1,0 +1,243 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import { toast } from "sonner";
+import { Upload, X } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/use-auth";
+import { RichEditor } from "./RichEditor";
+import { slugify, calculateReadingTime } from "@/lib/blog/utils";
+
+interface Props {
+  postId?: string;
+}
+
+interface PostForm {
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  cover_image_url: string;
+  category_id: string | null;
+  status: "draft" | "published" | "archived";
+  featured: boolean;
+  meta_title: string;
+  meta_description: string;
+}
+
+const empty: PostForm = {
+  title: "",
+  slug: "",
+  excerpt: "",
+  content: "",
+  cover_image_url: "",
+  category_id: null,
+  status: "draft",
+  featured: false,
+  meta_title: "",
+  meta_description: "",
+};
+
+export function PostEditor({ postId }: Props) {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const [form, setForm] = useState<PostForm>(empty);
+  const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+
+  const { data: categories } = useQuery({
+    queryKey: ["categories"],
+    queryFn: async () => {
+      const { data } = await supabase.from("categories").select("id,name").order("name");
+      return data ?? [];
+    },
+  });
+
+  const { data: existing } = useQuery({
+    queryKey: ["post-edit", postId],
+    queryFn: async () => {
+      if (!postId) return null;
+      const { data, error } = await supabase.from("posts").select("*").eq("id", postId).maybeSingle();
+      if (error) throw error;
+      return data;
+    },
+    enabled: !!postId,
+  });
+
+  useEffect(() => {
+    if (existing) {
+      setForm({
+        title: existing.title ?? "",
+        slug: existing.slug ?? "",
+        excerpt: existing.excerpt ?? "",
+        content: existing.content ?? "",
+        cover_image_url: existing.cover_image_url ?? "",
+        category_id: existing.category_id,
+        status: existing.status,
+        featured: existing.featured,
+        meta_title: existing.meta_title ?? "",
+        meta_description: existing.meta_description ?? "",
+      });
+    }
+  }, [existing]);
+
+  const update = <K extends keyof PostForm>(k: K, v: PostForm[K]) => setForm((f) => ({ ...f, [k]: v }));
+
+  const onTitleChange = (v: string) => {
+    setForm((f) => ({ ...f, title: v, slug: f.slug || slugify(v) }));
+  };
+
+  const handleCoverUpload = async (file: File) => {
+    setUploading(true);
+    try {
+      const path = `covers/${Date.now()}-${file.name}`;
+      const { error } = await supabase.storage.from("blog-images").upload(path, file);
+      if (error) throw error;
+      const { data } = supabase.storage.from("blog-images").getPublicUrl(path);
+      update("cover_image_url", data.publicUrl);
+    } catch (e) {
+      toast.error((e as Error).message);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const save = async (publish?: boolean) => {
+    if (!user) return;
+    if (!form.title) return toast.error("Adicione um título");
+    setSaving(true);
+    try {
+      const status = publish ? "published" : form.status;
+      const payload = {
+        title: form.title,
+        slug: form.slug || slugify(form.title),
+        excerpt: form.excerpt || null,
+        content: form.content || null,
+        cover_image_url: form.cover_image_url || null,
+        category_id: form.category_id,
+        status,
+        featured: form.featured,
+        reading_time: calculateReadingTime(form.content),
+        published_at: status === "published" ? (existing?.published_at ?? new Date().toISOString()) : existing?.published_at ?? null,
+        meta_title: form.meta_title || null,
+        meta_description: form.meta_description || null,
+        author_id: existing?.author_id ?? user.id,
+      };
+
+      if (postId) {
+        const { error } = await supabase.from("posts").update(payload).eq("id", postId);
+        if (error) throw error;
+        toast.success("Post atualizado");
+      } else {
+        const { data, error } = await supabase.from("posts").insert(payload).select("id").maybeSingle();
+        if (error) throw error;
+        toast.success("Post criado");
+        if (data) navigate({ to: "/admin/posts/edit/$id", params: { id: data.id } });
+      }
+    } catch (e) {
+      toast.error((e as Error).message);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <div className="p-8 max-w-7xl mx-auto">
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-extrabold">{postId ? "Editar post" : "Novo post"}</h1>
+        <div className="flex gap-2">
+          <button onClick={() => save(false)} disabled={saving} className="px-4 py-2 rounded-lg border border-border font-bold text-sm disabled:opacity-50">
+            Salvar rascunho
+          </button>
+          <button onClick={() => save(true)} disabled={saving} className="px-4 py-2 rounded-lg bg-primary text-primary-foreground font-bold text-sm disabled:opacity-50">
+            Publicar
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 space-y-4">
+          <input
+            value={form.title}
+            onChange={(e) => onTitleChange(e.target.value)}
+            placeholder="Título do post"
+            className="w-full text-3xl font-extrabold bg-transparent border-0 focus:outline-none placeholder:text-muted-foreground/40"
+          />
+          <input
+            value={form.slug}
+            onChange={(e) => update("slug", slugify(e.target.value))}
+            placeholder="slug-do-post"
+            className="w-full text-sm text-muted-foreground bg-transparent border-0 focus:outline-none"
+          />
+          <textarea
+            value={form.excerpt}
+            onChange={(e) => update("excerpt", e.target.value)}
+            placeholder="Resumo curto (excerpt)…"
+            rows={2}
+            className="w-full px-3 py-2 rounded-lg border border-border bg-card text-sm"
+          />
+          <RichEditor value={form.content} onChange={(v) => update("content", v)} />
+        </div>
+
+        <aside className="space-y-4">
+          <div className="bg-card border border-border rounded-xl p-4 space-y-3">
+            <h3 className="font-bold text-sm">Publicação</h3>
+            <select
+              value={form.status}
+              onChange={(e) => update("status", e.target.value as PostForm["status"])}
+              className="w-full px-3 py-2 rounded-lg border border-border bg-background text-sm"
+            >
+              <option value="draft">Rascunho</option>
+              <option value="published">Publicado</option>
+              <option value="archived">Arquivado</option>
+            </select>
+            <label className="flex items-center gap-2 text-sm">
+              <input type="checkbox" checked={form.featured} onChange={(e) => update("featured", e.target.checked)} />
+              Marcar como destaque
+            </label>
+          </div>
+
+          <div className="bg-card border border-border rounded-xl p-4 space-y-3">
+            <h3 className="font-bold text-sm">Categoria</h3>
+            <select
+              value={form.category_id ?? ""}
+              onChange={(e) => update("category_id", e.target.value || null)}
+              className="w-full px-3 py-2 rounded-lg border border-border bg-background text-sm"
+            >
+              <option value="">Sem categoria</option>
+              {categories?.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+            </select>
+          </div>
+
+          <div className="bg-card border border-border rounded-xl p-4 space-y-3">
+            <h3 className="font-bold text-sm">Imagem de capa</h3>
+            {form.cover_image_url ? (
+              <div className="relative">
+                <img src={form.cover_image_url} alt="" className="w-full aspect-video object-cover rounded-lg" />
+                <button onClick={() => update("cover_image_url", "")} className="absolute top-2 right-2 p-1 bg-background rounded-full"><X className="size-4" /></button>
+              </div>
+            ) : (
+              <label className="flex flex-col items-center justify-center aspect-video border-2 border-dashed border-border rounded-lg cursor-pointer hover:bg-muted/50">
+                <Upload className="size-6 text-muted-foreground" />
+                <span className="text-xs text-muted-foreground mt-2">{uploading ? "Enviando…" : "Clique para enviar"}</span>
+                <input type="file" accept="image/*" className="hidden" onChange={(e) => e.target.files?.[0] && handleCoverUpload(e.target.files[0])} />
+              </label>
+            )}
+          </div>
+
+          <details className="bg-card border border-border rounded-xl p-4">
+            <summary className="font-bold text-sm cursor-pointer">SEO</summary>
+            <div className="mt-3 space-y-3">
+              <input value={form.meta_title} onChange={(e) => update("meta_title", e.target.value)} placeholder="Meta title" className="w-full px-3 py-2 rounded-lg border border-border bg-background text-sm" />
+              <textarea value={form.meta_description} onChange={(e) => update("meta_description", e.target.value)} placeholder="Meta description" rows={3} className="w-full px-3 py-2 rounded-lg border border-border bg-background text-sm" />
+            </div>
+          </details>
+
+          <div className="text-xs text-muted-foreground">
+            Tempo de leitura estimado: <span className="font-bold">{calculateReadingTime(form.content)} min</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  );
+}
