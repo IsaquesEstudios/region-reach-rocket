@@ -41,25 +41,18 @@ export function Header() {
             {servicesOpen && (
               <div className="absolute left-0 top-full pt-3 w-80">
                 <ul className="bg-card border border-border shadow-xl rounded-2xl p-2 overflow-hidden">
-                  {services.map((s) => {
-                    const hubSlugs = ["pintura", "eletrica", "hidraulica", "drywall", "juntas-dilatacao", "seguranca", "reformas"];
-                    const isHub = hubSlugs.includes(s.slug);
-                    return (
-                      <li key={s.slug}>
-                        {isHub ? (
-                          <Link to={`/servicos/${s.slug}` as string} className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
-                            <span className="text-primary text-xs font-bold w-7">{s.code}</span>
-                            <span>{s.shortTitle}</span>
-                          </Link>
-                        ) : (
-                          <Link to="/servicos/$slug" params={{ slug: s.slug }} className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
-                            <span className="text-primary text-xs font-bold w-7">{s.code}</span>
-                            <span>{s.shortTitle}</span>
-                          </Link>
-                        )}
-                      </li>
-                    );
-                  })}
+                  {services.map((s) => (
+                    <li key={s.slug}>
+                      <Link
+                        to={"/servicos/$slug" as never}
+                        params={{ slug: s.slug } as never}
+                        className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface"
+                      >
+                        <span className="text-primary text-xs font-bold w-7">{s.code}</span>
+                        <span>{s.shortTitle}</span>
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             )}
