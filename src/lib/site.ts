@@ -135,17 +135,6 @@ export const services: ServiceMeta[] = [
     metaDescription:
       "Reformas residenciais e comerciais em Fortaleza com gerenciamento técnico, equipe própria e prazos cumpridos. Solicite uma visita técnica.",
   },
-  {
-    slug: "manutencao",
-    code: "MP",
-    shortTitle: "Manutenção",
-    title: "Manutenção Preventiva",
-    summary:
-      "Contratos de manutenção preventiva e corretiva para condomínios, indústrias e empresas.",
-    metaTitle: "Manutenção Predial e de Condomínios em Fortaleza",
-    metaDescription:
-      "Manutenção preventiva e corretiva para condomínios, indústrias e empresas em Fortaleza. Relatórios técnicos e cronograma garantido.",
-  },
 ];
 
 export interface ServiceContent {
