@@ -44,8 +44,8 @@ export function Header() {
                   {services.map((s) => (
                     <li key={s.slug}>
                       <Link
-                        to={"/servicos/$slug" as never}
-                        params={{ slug: s.slug } as never}
+                        to="/servicos/$slug"
+                        params={{ slug: s.slug }}
                         className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface"
                       >
                         <span className="text-primary text-xs font-bold w-7">{s.code}</span>
