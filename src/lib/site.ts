@@ -362,7 +362,7 @@ export const pinturaSubservices: PinturaSubservice[] = [
       "Pintura de piso de concreto com epóxi e acrílico para garagens, galpões, oficinas e áreas técnicas.",
     keywords: ["pintura de piso", "pintar piso", "pintura piso concreto", "tinta epóxi para piso"],
     intro:
-      "Pintar piso de concreto exige muito mais do que aplicar tinta sobre a superfície. Na Chico Resolve executamos pintura de piso em galpões, garagens de condomínios, oficinas, áreas de serviço e laboratórios em toda Teresina e Grande Teresina. Cada projeto começa com diagnóstico de umidade, abertura de poros, correção de fissuras e seleção da tinta certa — epóxi, poliuretano ou acrílico de alto tráfego — para que o piso resista a impacto, óleos, lavagem constante e o clima quente e seco do Piauí�.",
+      "Pintar piso de concreto exige muito mais do que aplicar tinta sobre a superfície. Na Chico Resolve executamos pintura de piso em galpões, garagens de condomínios, oficinas, áreas de serviço e laboratórios em toda Teresina e Grande Teresina. Cada projeto começa com diagnóstico de umidade, abertura de poros, correção de fissuras e seleção da tinta certa — epóxi, poliuretano ou acrílico de alto tráfego — para que o piso resista a impacto, óleos, lavagem constante e o clima quente e seco do Piauí.",
     whenToHire: [
       { title: "Garagem desgastada", text: "Concreto poroso liberando pó, manchas de óleo e marcas de pneus." },
       { title: "Galpão industrial", text: "Necessidade de demarcação de áreas, sinalização e resistência química." },
@@ -557,7 +557,7 @@ export const pinturaSubservices: PinturaSubservice[] = [
       "Tintas Jotun, Sherwin-Williams Protective ou WEG",
       "Garantia formal de 24 a 60 meses conforme sistema",
     ],
-    geo: "Atendemos o Distrito Industrial de Teresina (DIT)�, Demerval Lobão, Eusébio, Pecém e parques industriais ao redor de Teresina. Já executamos serviços em galpões logísticos, fábricas têxteis, indústrias alimentícias e plantas de equipamentos metálicos do Piauí� — sempre com sistemas calibrados para o ambiente salino do litoral.",
+    geo: "Atendemos o Distrito Industrial de Teresina (DIT)�, Demerval Lobão, Eusébio, Pecém e parques industriais ao redor de Teresina. Já executamos serviços em galpões logísticos, fábricas têxteis, indústrias alimentícias e plantas de equipamentos metálicos do Piauí — sempre com sistemas calibrados para o ambiente salino do litoral.",
     faq: [
       { q: "Vocês fazem jateamento abrasivo?", a: "Sim. Trabalhamos com jateamento SA 2½ ou SA 3 conforme especificação, com equipamentos próprios e descarte regular do abrasivo." },
       { q: "Emitem ART para pintura industrial?", a: "Sim. Quando a obra exige, emitimos ART de execução assinada por engenheiro responsável." },
@@ -707,7 +707,7 @@ export const eletricaSubservices: EletricaSubservice[] = [
       "Eletricista emergência 24h para clientes com contrato",
       "Termografia e laudo técnico inclusos em contratos preventivos",
     ],
-    geo: "Atendemos indústrias do Distrito Industrial de Teresina (DIT)�, Complexo Industrial e Portuário do Pecém (DIT), Demerval Lobão, Eusébio e plantas fabris em toda a Grande Teresina. Conhecemos a particularidade do fornecimento da concessionária local Piauí� e dimensionamos sistemas resistentes à corrosão pela calor e poeira em instalações próximas ao litoral.",
+    geo: "Atendemos indústrias do Distrito Industrial de Teresina (DIT)�, Complexo Industrial e Portuário do Pecém (DIT), Demerval Lobão, Eusébio e plantas fabris em toda a Grande Teresina. Conhecemos a particularidade do fornecimento da concessionária local Piauí e dimensionamos sistemas resistentes à corrosão pela calor e poeira em instalações próximas ao litoral.",
     faq: [
       { q: "Vocês emitem ART para serviços industriais?", a: "Sim. Toda obra industrial é entregue com ART (Anotação de Responsabilidade Técnica) assinada por engenheiro eletricista registrado no CREA-CE." },
       { q: "Quanto custa contratar um eletricista industrial em Teresina?", a: "Manutenções pontuais partem de R$ 350 por chamado técnico e contratos mensais variam conforme criticidade. Fazemos visita técnica gratuita para orçamento eletricista detalhado." },
@@ -762,7 +762,7 @@ export const eletricaSubservices: EletricaSubservice[] = [
       "NBR 5410 (instalações elétricas de baixa tensão)",
       "NBR 5419 (SPDA quando aplicável)",
       "NR-6 (EPI)",
-      "Padrão de entrada concessionária local Piauí�",
+      "Padrão de entrada concessionária local Piauí",
     ],
     trust: [
       "Eletricistas certificados NR-10 com curso e reciclagem documentados",
@@ -771,7 +771,7 @@ export const eletricaSubservices: EletricaSubservice[] = [
       "Nota fiscal emitida quando solicitada",
       "Atendimento de eletricista emergência no mesmo dia",
     ],
-    geo: "Atendemos residências em todos os bairros de Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Dionísio Torres, Cabral, Noivos, Bela Vista, Dirceu, Mocambinho e Centro — além de Eusébio, Altos, José de Freitas e União�. Trabalhamos com o padrão de entrada da concessionária local Piauí� e dimensionamos proteções considerando a alta umidade do litoral.",
+    geo: "Atendemos residências em todos os bairros de Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Dionísio Torres, Cabral, Noivos, Bela Vista, Dirceu, Mocambinho e Centro — além de Eusébio, Altos, José de Freitas e União�. Trabalhamos com o padrão de entrada da concessionária local Piauí e dimensionamos proteções considerando a alta umidade do litoral.",
     faq: [
       { q: "Quanto custa um eletricista residencial em Teresina?", a: "Visita técnica de diagnóstico parte de R$ 150 (abatida do serviço). Serviços simples como troca de tomada partem de R$ 90; troca de quadro completa varia conforme número de circuitos. Solicite orçamento eletricista gratuito por WhatsApp." },
       { q: "Atendem emergência no mesmo dia?", a: "Sim. Para eletricista emergência (curto-circuito, sem energia, ponto queimando) priorizamos atendimento no mesmo dia em Teresina." },
@@ -800,7 +800,7 @@ export const eletricaSubservices: EletricaSubservice[] = [
       "eletricista emergência",
     ],
     intro:
-      "Como empresa de elétrica especializada em condomínios e edifícios comerciais de Teresina, a Chico Resolve atua como eletricista predial com eletricistas certificados NR-10 para instalações coletivas: barramento blindado, prumadas, quadros de medição, áreas comuns, garagens, bombas de recalque, pressurização de escadas, iluminação de emergência e sistemas de detecção. Atendemos síndicos, administradoras e gerentes prediais com contratos de eletricista de manutenção (preventiva mensal + corretiva por chamado) e plantão de eletricista emergência 24h para falhas em elevadores, bombas e iluminação de circulação. Cada serviço gera relatório fotográfico para a administração e atende às exigências do Corpo de Bombeiros do Piauí�.",
+      "Como empresa de elétrica especializada em condomínios e edifícios comerciais de Teresina, a Chico Resolve atua como eletricista predial com eletricistas certificados NR-10 para instalações coletivas: barramento blindado, prumadas, quadros de medição, áreas comuns, garagens, bombas de recalque, pressurização de escadas, iluminação de emergência e sistemas de detecção. Atendemos síndicos, administradoras e gerentes prediais com contratos de eletricista de manutenção (preventiva mensal + corretiva por chamado) e plantão de eletricista emergência 24h para falhas em elevadores, bombas e iluminação de circulação. Cada serviço gera relatório fotográfico para a administração e atende às exigências do Corpo de Bombeiros do Piauí.",
     whenToHire: [
       { title: "Falha em bomba de recalque", text: "Reservatório superior sem abastecer indica falha no painel, sensor de nível ou motor — afeta toda a coluna." },
       { title: "Iluminação de emergência apagada", text: "Luminárias autônomas com bateria vencida ou painel central com falha — não conformidade com Bombeiros." },
@@ -825,7 +825,7 @@ export const eletricaSubservices: EletricaSubservice[] = [
       "NR-10 (segurança em instalações elétricas)",
       "NBR 5410 (instalações de baixa tensão)",
       "NBR 5419 (SPDA)",
-      "IT do Corpo de Bombeiros do Piauí� (CBMEPI)",
+      "IT do Corpo de Bombeiros do Piauí (CBMEPI)",
       "Convenção de condomínio do edifício",
       "ART de manutenção CREA-CE",
     ],
@@ -836,7 +836,7 @@ export const eletricaSubservices: EletricaSubservice[] = [
       "Relatório fotográfico mensal para a administração",
       "ART de manutenção para apresentar em assembleia e ao seguro predial",
     ],
-    geo: "Atendemos edifícios residenciais e comerciais em Teresina inteira — incluindo prédios na Centro, Jóquei, Fátima, Ininga�, Bela Vista, Dionísio Torres e Cabral — além de empreendimentos em Eusébio, Altos e José de Freitas. Conhecemos as exigências da concessionária local Piauí� para entrada de energia e do CBMEPI para vistoria do AVCB.",
+    geo: "Atendemos edifícios residenciais e comerciais em Teresina inteira — incluindo prédios na Centro, Jóquei, Fátima, Ininga�, Bela Vista, Dionísio Torres e Cabral — além de empreendimentos em Eusébio, Altos e José de Freitas. Conhecemos as exigências da concessionária local Piauí para entrada de energia e do CBMEPI para vistoria do AVCB.",
     faq: [
       { q: "Qual o prazo mínimo de contrato de eletricista predial?", a: "Trabalhamos com contratos a partir de 6 meses, com possibilidade de período de teste de 1 mês para o síndico avaliar o atendimento." },
       { q: "Como funciona o eletricista emergência 24h?", a: "O síndico ou zelador aciona um WhatsApp dedicado; eletricistas certificados respondem em até 1h e comparecem conforme criticidade definida no contrato." },
@@ -1835,7 +1835,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       { title: "Entrega com Laudos", text: "AVCB, laudo elétrico, ART e relatório fotográfico para o cliente apresentar à vistoria." },
     ],
     standards: [
-      "NBR 9077 (saídas de emergência) e Lei do Corpo de Bombeiros do Piauí�",
+      "NBR 9077 (saídas de emergência) e Lei do Corpo de Bombeiros do Piauí",
       "RDC 216 ANVISA (restaurantes e manipulação de alimentos)",
       "NBR 9050 (acessibilidade)",
       "NR-10 (segurança em eletricidade) e NR-35 (altura)",
