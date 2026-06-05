@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { AdminGate } from "@/components/admin/AdminGate";
-import { AdminLayout } from "@/components/admin/AdminLayout";
+
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/admin/users")({

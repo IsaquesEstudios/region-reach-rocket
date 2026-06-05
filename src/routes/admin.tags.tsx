@@ -4,7 +4,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { Trash2, Plus } from "lucide-react";
 import { AdminGate } from "@/components/admin/AdminGate";
-import { AdminLayout } from "@/components/admin/AdminLayout";
+
 import { supabase } from "@/integrations/supabase/client";
 import { slugify } from "@/lib/blog/utils";
 
