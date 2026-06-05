@@ -14,6 +14,7 @@ import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicosIndexRouteImport } from './routes/servicos.index'
+import { Route as ServicosSegurancaRouteImport } from './routes/servicos.seguranca'
 import { Route as ServicosReformasRouteImport } from './routes/servicos.reformas'
 import { Route as ServicosPinturaRouteImport } from './routes/servicos.pintura'
 import { Route as ServicosJuntasDilatacaoRouteImport } from './routes/servicos.juntas-dilatacao'
@@ -21,12 +22,14 @@ import { Route as ServicosHidraulicaRouteImport } from './routes/servicos.hidrau
 import { Route as ServicosEletricaRouteImport } from './routes/servicos.eletrica'
 import { Route as ServicosDrywallRouteImport } from './routes/servicos.drywall'
 import { Route as ServicosSlugRouteImport } from './routes/servicos.$slug'
+import { Route as ServicosSegurancaIndexRouteImport } from './routes/servicos.seguranca.index'
 import { Route as ServicosReformasIndexRouteImport } from './routes/servicos.reformas.index'
 import { Route as ServicosPinturaIndexRouteImport } from './routes/servicos.pintura.index'
 import { Route as ServicosJuntasDilatacaoIndexRouteImport } from './routes/servicos.juntas-dilatacao.index'
 import { Route as ServicosHidraulicaIndexRouteImport } from './routes/servicos.hidraulica.index'
 import { Route as ServicosEletricaIndexRouteImport } from './routes/servicos.eletrica.index'
 import { Route as ServicosDrywallIndexRouteImport } from './routes/servicos.drywall.index'
+import { Route as ServicosSegurancaSegurancaSlugRouteImport } from './routes/servicos.seguranca.$segurancaSlug'
 import { Route as ServicosReformasReformaSlugRouteImport } from './routes/servicos.reformas.$reformaSlug'
 import { Route as ServicosPinturaPinturaSlugRouteImport } from './routes/servicos.pintura.$pinturaSlug'
 import { Route as ServicosJuntasDilatacaoJuntaSlugRouteImport } from './routes/servicos.juntas-dilatacao.$juntaSlug'
@@ -57,6 +60,11 @@ const IndexRoute = IndexRouteImport.update({
 const ServicosIndexRoute = ServicosIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => ServicosRoute,
+} as any)
+const ServicosSegurancaRoute = ServicosSegurancaRouteImport.update({
+  id: '/seguranca',
+  path: '/seguranca',
   getParentRoute: () => ServicosRoute,
 } as any)
 const ServicosReformasRoute = ServicosReformasRouteImport.update({
@@ -94,6 +102,11 @@ const ServicosSlugRoute = ServicosSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ServicosRoute,
 } as any)
+const ServicosSegurancaIndexRoute = ServicosSegurancaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicosSegurancaRoute,
+} as any)
 const ServicosReformasIndexRoute = ServicosReformasIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -125,6 +138,12 @@ const ServicosDrywallIndexRoute = ServicosDrywallIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ServicosDrywallRoute,
 } as any)
+const ServicosSegurancaSegurancaSlugRoute =
+  ServicosSegurancaSegurancaSlugRouteImport.update({
+    id: '/$segurancaSlug',
+    path: '/$segurancaSlug',
+    getParentRoute: () => ServicosSegurancaRoute,
+  } as any)
 const ServicosReformasReformaSlugRoute =
   ServicosReformasReformaSlugRouteImport.update({
     id: '/$reformaSlug',
@@ -174,6 +193,7 @@ export interface FileRoutesByFullPath {
   '/servicos/juntas-dilatacao': typeof ServicosJuntasDilatacaoRouteWithChildren
   '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/reformas': typeof ServicosReformasRouteWithChildren
+  '/servicos/seguranca': typeof ServicosSegurancaRouteWithChildren
   '/servicos/': typeof ServicosIndexRoute
   '/servicos/drywall/$drywallSlug': typeof ServicosDrywallDrywallSlugRoute
   '/servicos/eletrica/$eletricaSlug': typeof ServicosEletricaEletricaSlugRoute
@@ -181,12 +201,14 @@ export interface FileRoutesByFullPath {
   '/servicos/juntas-dilatacao/$juntaSlug': typeof ServicosJuntasDilatacaoJuntaSlugRoute
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/reformas/$reformaSlug': typeof ServicosReformasReformaSlugRoute
+  '/servicos/seguranca/$segurancaSlug': typeof ServicosSegurancaSegurancaSlugRoute
   '/servicos/drywall/': typeof ServicosDrywallIndexRoute
   '/servicos/eletrica/': typeof ServicosEletricaIndexRoute
   '/servicos/hidraulica/': typeof ServicosHidraulicaIndexRoute
   '/servicos/juntas-dilatacao/': typeof ServicosJuntasDilatacaoIndexRoute
   '/servicos/pintura/': typeof ServicosPinturaIndexRoute
   '/servicos/reformas/': typeof ServicosReformasIndexRoute
+  '/servicos/seguranca/': typeof ServicosSegurancaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -200,12 +222,14 @@ export interface FileRoutesByTo {
   '/servicos/juntas-dilatacao/$juntaSlug': typeof ServicosJuntasDilatacaoJuntaSlugRoute
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/reformas/$reformaSlug': typeof ServicosReformasReformaSlugRoute
+  '/servicos/seguranca/$segurancaSlug': typeof ServicosSegurancaSegurancaSlugRoute
   '/servicos/drywall': typeof ServicosDrywallIndexRoute
   '/servicos/eletrica': typeof ServicosEletricaIndexRoute
   '/servicos/hidraulica': typeof ServicosHidraulicaIndexRoute
   '/servicos/juntas-dilatacao': typeof ServicosJuntasDilatacaoIndexRoute
   '/servicos/pintura': typeof ServicosPinturaIndexRoute
   '/servicos/reformas': typeof ServicosReformasIndexRoute
+  '/servicos/seguranca': typeof ServicosSegurancaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -220,6 +244,7 @@ export interface FileRoutesById {
   '/servicos/juntas-dilatacao': typeof ServicosJuntasDilatacaoRouteWithChildren
   '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/reformas': typeof ServicosReformasRouteWithChildren
+  '/servicos/seguranca': typeof ServicosSegurancaRouteWithChildren
   '/servicos/': typeof ServicosIndexRoute
   '/servicos/drywall/$drywallSlug': typeof ServicosDrywallDrywallSlugRoute
   '/servicos/eletrica/$eletricaSlug': typeof ServicosEletricaEletricaSlugRoute
@@ -227,12 +252,14 @@ export interface FileRoutesById {
   '/servicos/juntas-dilatacao/$juntaSlug': typeof ServicosJuntasDilatacaoJuntaSlugRoute
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/reformas/$reformaSlug': typeof ServicosReformasReformaSlugRoute
+  '/servicos/seguranca/$segurancaSlug': typeof ServicosSegurancaSegurancaSlugRoute
   '/servicos/drywall/': typeof ServicosDrywallIndexRoute
   '/servicos/eletrica/': typeof ServicosEletricaIndexRoute
   '/servicos/hidraulica/': typeof ServicosHidraulicaIndexRoute
   '/servicos/juntas-dilatacao/': typeof ServicosJuntasDilatacaoIndexRoute
   '/servicos/pintura/': typeof ServicosPinturaIndexRoute
   '/servicos/reformas/': typeof ServicosReformasIndexRoute
+  '/servicos/seguranca/': typeof ServicosSegurancaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -248,6 +275,7 @@ export interface FileRouteTypes {
     | '/servicos/juntas-dilatacao'
     | '/servicos/pintura'
     | '/servicos/reformas'
+    | '/servicos/seguranca'
     | '/servicos/'
     | '/servicos/drywall/$drywallSlug'
     | '/servicos/eletrica/$eletricaSlug'
@@ -255,12 +283,14 @@ export interface FileRouteTypes {
     | '/servicos/juntas-dilatacao/$juntaSlug'
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/reformas/$reformaSlug'
+    | '/servicos/seguranca/$segurancaSlug'
     | '/servicos/drywall/'
     | '/servicos/eletrica/'
     | '/servicos/hidraulica/'
     | '/servicos/juntas-dilatacao/'
     | '/servicos/pintura/'
     | '/servicos/reformas/'
+    | '/servicos/seguranca/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -274,12 +304,14 @@ export interface FileRouteTypes {
     | '/servicos/juntas-dilatacao/$juntaSlug'
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/reformas/$reformaSlug'
+    | '/servicos/seguranca/$segurancaSlug'
     | '/servicos/drywall'
     | '/servicos/eletrica'
     | '/servicos/hidraulica'
     | '/servicos/juntas-dilatacao'
     | '/servicos/pintura'
     | '/servicos/reformas'
+    | '/servicos/seguranca'
   id:
     | '__root__'
     | '/'
@@ -293,6 +325,7 @@ export interface FileRouteTypes {
     | '/servicos/juntas-dilatacao'
     | '/servicos/pintura'
     | '/servicos/reformas'
+    | '/servicos/seguranca'
     | '/servicos/'
     | '/servicos/drywall/$drywallSlug'
     | '/servicos/eletrica/$eletricaSlug'
@@ -300,12 +333,14 @@ export interface FileRouteTypes {
     | '/servicos/juntas-dilatacao/$juntaSlug'
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/reformas/$reformaSlug'
+    | '/servicos/seguranca/$segurancaSlug'
     | '/servicos/drywall/'
     | '/servicos/eletrica/'
     | '/servicos/hidraulica/'
     | '/servicos/juntas-dilatacao/'
     | '/servicos/pintura/'
     | '/servicos/reformas/'
+    | '/servicos/seguranca/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -350,6 +385,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/servicos/'
       preLoaderRoute: typeof ServicosIndexRouteImport
+      parentRoute: typeof ServicosRoute
+    }
+    '/servicos/seguranca': {
+      id: '/servicos/seguranca'
+      path: '/seguranca'
+      fullPath: '/servicos/seguranca'
+      preLoaderRoute: typeof ServicosSegurancaRouteImport
       parentRoute: typeof ServicosRoute
     }
     '/servicos/reformas': {
@@ -401,6 +443,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicosSlugRouteImport
       parentRoute: typeof ServicosRoute
     }
+    '/servicos/seguranca/': {
+      id: '/servicos/seguranca/'
+      path: '/'
+      fullPath: '/servicos/seguranca/'
+      preLoaderRoute: typeof ServicosSegurancaIndexRouteImport
+      parentRoute: typeof ServicosSegurancaRoute
+    }
     '/servicos/reformas/': {
       id: '/servicos/reformas/'
       path: '/'
@@ -442,6 +491,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/servicos/drywall/'
       preLoaderRoute: typeof ServicosDrywallIndexRouteImport
       parentRoute: typeof ServicosDrywallRoute
+    }
+    '/servicos/seguranca/$segurancaSlug': {
+      id: '/servicos/seguranca/$segurancaSlug'
+      path: '/$segurancaSlug'
+      fullPath: '/servicos/seguranca/$segurancaSlug'
+      preLoaderRoute: typeof ServicosSegurancaSegurancaSlugRouteImport
+      parentRoute: typeof ServicosSegurancaRoute
     }
     '/servicos/reformas/$reformaSlug': {
       id: '/servicos/reformas/$reformaSlug'
@@ -572,6 +628,19 @@ const ServicosReformasRouteChildren: ServicosReformasRouteChildren = {
 const ServicosReformasRouteWithChildren =
   ServicosReformasRoute._addFileChildren(ServicosReformasRouteChildren)
 
+interface ServicosSegurancaRouteChildren {
+  ServicosSegurancaSegurancaSlugRoute: typeof ServicosSegurancaSegurancaSlugRoute
+  ServicosSegurancaIndexRoute: typeof ServicosSegurancaIndexRoute
+}
+
+const ServicosSegurancaRouteChildren: ServicosSegurancaRouteChildren = {
+  ServicosSegurancaSegurancaSlugRoute: ServicosSegurancaSegurancaSlugRoute,
+  ServicosSegurancaIndexRoute: ServicosSegurancaIndexRoute,
+}
+
+const ServicosSegurancaRouteWithChildren =
+  ServicosSegurancaRoute._addFileChildren(ServicosSegurancaRouteChildren)
+
 interface ServicosRouteChildren {
   ServicosSlugRoute: typeof ServicosSlugRoute
   ServicosDrywallRoute: typeof ServicosDrywallRouteWithChildren
@@ -580,6 +649,7 @@ interface ServicosRouteChildren {
   ServicosJuntasDilatacaoRoute: typeof ServicosJuntasDilatacaoRouteWithChildren
   ServicosPinturaRoute: typeof ServicosPinturaRouteWithChildren
   ServicosReformasRoute: typeof ServicosReformasRouteWithChildren
+  ServicosSegurancaRoute: typeof ServicosSegurancaRouteWithChildren
   ServicosIndexRoute: typeof ServicosIndexRoute
 }
 
@@ -591,6 +661,7 @@ const ServicosRouteChildren: ServicosRouteChildren = {
   ServicosJuntasDilatacaoRoute: ServicosJuntasDilatacaoRouteWithChildren,
   ServicosPinturaRoute: ServicosPinturaRouteWithChildren,
   ServicosReformasRoute: ServicosReformasRouteWithChildren,
+  ServicosSegurancaRoute: ServicosSegurancaRouteWithChildren,
   ServicosIndexRoute: ServicosIndexRoute,
 }
 
