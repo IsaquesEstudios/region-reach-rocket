@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
-import { drywallSubservices, eletricaSubservices, hidraulicaSubservices, juntaSubservices, pinturaSubservices, services, site, whatsappLink } from "@/lib/site";
+import { drywallSubservices, eletricaSubservices, hidraulicaSubservices, juntaSubservices, pinturaSubservices, segurancaSubservices, services, site, whatsappLink } from "@/lib/site";
 import logo from "@/assets/chico-resolve-logo.png.asset.json";
 
 export function Header() {
@@ -68,6 +68,11 @@ export function Header() {
                           <span className="text-primary text-xs font-bold w-7">{s.code}</span>
                           <span>{s.shortTitle}</span>
                         </Link>
+                      ) : s.slug === "seguranca" ? (
+                        <Link to="/servicos/seguranca" className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
+                          <span className="text-primary text-xs font-bold w-7">{s.code}</span>
+                          <span>{s.shortTitle}</span>
+                        </Link>
                       ) : (
                         <Link to="/servicos/$slug" params={{ slug: s.slug }} className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
                           <span className="text-primary text-xs font-bold w-7">{s.code}</span>
@@ -124,6 +129,17 @@ export function Header() {
                             <li key={j.slug}>
                               <Link to="/servicos/juntas-dilatacao/$juntaSlug" params={{ juntaSlug: j.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
                                 {j.shortTitle}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {s.slug === "seguranca" && (
+                        <ul className="hidden group-hover/item:block pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
+                          {segurancaSubservices.map((g) => (
+                            <li key={g.slug}>
+                              <Link to="/servicos/seguranca/$segurancaSlug" params={{ segurancaSlug: g.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
+                                {g.shortTitle}
                               </Link>
                             </li>
                           ))}
@@ -194,6 +210,10 @@ export function Header() {
                     </Link>
                   ) : s.slug === "juntas-dilatacao" ? (
                     <Link to="/servicos/juntas-dilatacao" onClick={() => setOpen(false)} className="block px-3 py-2 text-muted-foreground hover:text-primary">
+                      <span className="text-primary text-xs font-bold mr-3">{s.code}</span>{s.shortTitle}
+                    </Link>
+                  ) : s.slug === "seguranca" ? (
+                    <Link to="/servicos/seguranca" onClick={() => setOpen(false)} className="block px-3 py-2 text-muted-foreground hover:text-primary">
                       <span className="text-primary text-xs font-bold mr-3">{s.code}</span>{s.shortTitle}
                     </Link>
                   ) : (
