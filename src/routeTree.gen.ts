@@ -14,6 +14,8 @@ import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicosIndexRouteImport } from './routes/servicos.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as ServicosSegurancaRouteImport } from './routes/servicos.seguranca'
 import { Route as ServicosReformasRouteImport } from './routes/servicos.reformas'
 import { Route as ServicosPinturaRouteImport } from './routes/servicos.pintura'
@@ -22,6 +24,8 @@ import { Route as ServicosHidraulicaRouteImport } from './routes/servicos.hidrau
 import { Route as ServicosEletricaRouteImport } from './routes/servicos.eletrica'
 import { Route as ServicosDrywallRouteImport } from './routes/servicos.drywall'
 import { Route as ServicosSlugRouteImport } from './routes/servicos.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as ServicosSegurancaIndexRouteImport } from './routes/servicos.seguranca.index'
 import { Route as ServicosReformasIndexRouteImport } from './routes/servicos.reformas.index'
 import { Route as ServicosPinturaIndexRouteImport } from './routes/servicos.pintura.index'
@@ -29,6 +33,7 @@ import { Route as ServicosJuntasDilatacaoIndexRouteImport } from './routes/servi
 import { Route as ServicosHidraulicaIndexRouteImport } from './routes/servicos.hidraulica.index'
 import { Route as ServicosEletricaIndexRouteImport } from './routes/servicos.eletrica.index'
 import { Route as ServicosDrywallIndexRouteImport } from './routes/servicos.drywall.index'
+import { Route as AdminPostsIndexRouteImport } from './routes/admin.posts.index'
 import { Route as ServicosSegurancaSegurancaSlugRouteImport } from './routes/servicos.seguranca.$segurancaSlug'
 import { Route as ServicosReformasReformaSlugRouteImport } from './routes/servicos.reformas.$reformaSlug'
 import { Route as ServicosPinturaPinturaSlugRouteImport } from './routes/servicos.pintura.$pinturaSlug'
@@ -36,6 +41,8 @@ import { Route as ServicosJuntasDilatacaoJuntaSlugRouteImport } from './routes/s
 import { Route as ServicosHidraulicaHidraulicaSlugRouteImport } from './routes/servicos.hidraulica.$hidraulicaSlug'
 import { Route as ServicosEletricaEletricaSlugRouteImport } from './routes/servicos.eletrica.$eletricaSlug'
 import { Route as ServicosDrywallDrywallSlugRouteImport } from './routes/servicos.drywall.$drywallSlug'
+import { Route as AdminPostsNewRouteImport } from './routes/admin.posts.new'
+import { Route as AdminPostsEditIdRouteImport } from './routes/admin.posts.edit.$id'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -61,6 +68,16 @@ const ServicosIndexRoute = ServicosIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ServicosRoute,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicosSegurancaRoute = ServicosSegurancaRouteImport.update({
   id: '/seguranca',
@@ -102,6 +119,16 @@ const ServicosSlugRoute = ServicosSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ServicosRoute,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicosSegurancaIndexRoute = ServicosSegurancaIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -137,6 +164,11 @@ const ServicosDrywallIndexRoute = ServicosDrywallIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ServicosDrywallRoute,
+} as any)
+const AdminPostsIndexRoute = AdminPostsIndexRouteImport.update({
+  id: '/admin/posts/',
+  path: '/admin/posts/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicosSegurancaSegurancaSlugRoute =
   ServicosSegurancaSegurancaSlugRouteImport.update({
@@ -180,12 +212,24 @@ const ServicosDrywallDrywallSlugRoute =
     path: '/$drywallSlug',
     getParentRoute: () => ServicosDrywallRoute,
   } as any)
+const AdminPostsNewRoute = AdminPostsNewRouteImport.update({
+  id: '/admin/posts/new',
+  path: '/admin/posts/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPostsEditIdRoute = AdminPostsEditIdRouteImport.update({
+  id: '/admin/posts/edit/$id',
+  path: '/admin/posts/edit/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/servicos/$slug': typeof ServicosSlugRoute
   '/servicos/drywall': typeof ServicosDrywallRouteWithChildren
   '/servicos/eletrica': typeof ServicosEletricaRouteWithChildren
@@ -194,7 +238,10 @@ export interface FileRoutesByFullPath {
   '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/reformas': typeof ServicosReformasRouteWithChildren
   '/servicos/seguranca': typeof ServicosSegurancaRouteWithChildren
+  '/admin/': typeof AdminIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/servicos/': typeof ServicosIndexRoute
+  '/admin/posts/new': typeof AdminPostsNewRoute
   '/servicos/drywall/$drywallSlug': typeof ServicosDrywallDrywallSlugRoute
   '/servicos/eletrica/$eletricaSlug': typeof ServicosEletricaEletricaSlugRoute
   '/servicos/hidraulica/$hidraulicaSlug': typeof ServicosHidraulicaHidraulicaSlugRoute
@@ -202,6 +249,7 @@ export interface FileRoutesByFullPath {
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/reformas/$reformaSlug': typeof ServicosReformasReformaSlugRoute
   '/servicos/seguranca/$segurancaSlug': typeof ServicosSegurancaSegurancaSlugRoute
+  '/admin/posts/': typeof AdminPostsIndexRoute
   '/servicos/drywall/': typeof ServicosDrywallIndexRoute
   '/servicos/eletrica/': typeof ServicosEletricaIndexRoute
   '/servicos/hidraulica/': typeof ServicosHidraulicaIndexRoute
@@ -209,13 +257,19 @@ export interface FileRoutesByFullPath {
   '/servicos/pintura/': typeof ServicosPinturaIndexRoute
   '/servicos/reformas/': typeof ServicosReformasIndexRoute
   '/servicos/seguranca/': typeof ServicosSegurancaIndexRoute
+  '/admin/posts/edit/$id': typeof AdminPostsEditIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/servicos/$slug': typeof ServicosSlugRoute
+  '/admin': typeof AdminIndexRoute
+  '/blog': typeof BlogIndexRoute
   '/servicos': typeof ServicosIndexRoute
+  '/admin/posts/new': typeof AdminPostsNewRoute
   '/servicos/drywall/$drywallSlug': typeof ServicosDrywallDrywallSlugRoute
   '/servicos/eletrica/$eletricaSlug': typeof ServicosEletricaEletricaSlugRoute
   '/servicos/hidraulica/$hidraulicaSlug': typeof ServicosHidraulicaHidraulicaSlugRoute
@@ -223,6 +277,7 @@ export interface FileRoutesByTo {
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/reformas/$reformaSlug': typeof ServicosReformasReformaSlugRoute
   '/servicos/seguranca/$segurancaSlug': typeof ServicosSegurancaSegurancaSlugRoute
+  '/admin/posts': typeof AdminPostsIndexRoute
   '/servicos/drywall': typeof ServicosDrywallIndexRoute
   '/servicos/eletrica': typeof ServicosEletricaIndexRoute
   '/servicos/hidraulica': typeof ServicosHidraulicaIndexRoute
@@ -230,6 +285,7 @@ export interface FileRoutesByTo {
   '/servicos/pintura': typeof ServicosPinturaIndexRoute
   '/servicos/reformas': typeof ServicosReformasIndexRoute
   '/servicos/seguranca': typeof ServicosSegurancaIndexRoute
+  '/admin/posts/edit/$id': typeof AdminPostsEditIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -237,6 +293,8 @@ export interface FileRoutesById {
   '/contato': typeof ContatoRoute
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/servicos/$slug': typeof ServicosSlugRoute
   '/servicos/drywall': typeof ServicosDrywallRouteWithChildren
   '/servicos/eletrica': typeof ServicosEletricaRouteWithChildren
@@ -245,7 +303,10 @@ export interface FileRoutesById {
   '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/reformas': typeof ServicosReformasRouteWithChildren
   '/servicos/seguranca': typeof ServicosSegurancaRouteWithChildren
+  '/admin/': typeof AdminIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/servicos/': typeof ServicosIndexRoute
+  '/admin/posts/new': typeof AdminPostsNewRoute
   '/servicos/drywall/$drywallSlug': typeof ServicosDrywallDrywallSlugRoute
   '/servicos/eletrica/$eletricaSlug': typeof ServicosEletricaEletricaSlugRoute
   '/servicos/hidraulica/$hidraulicaSlug': typeof ServicosHidraulicaHidraulicaSlugRoute
@@ -253,6 +314,7 @@ export interface FileRoutesById {
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/reformas/$reformaSlug': typeof ServicosReformasReformaSlugRoute
   '/servicos/seguranca/$segurancaSlug': typeof ServicosSegurancaSegurancaSlugRoute
+  '/admin/posts/': typeof AdminPostsIndexRoute
   '/servicos/drywall/': typeof ServicosDrywallIndexRoute
   '/servicos/eletrica/': typeof ServicosEletricaIndexRoute
   '/servicos/hidraulica/': typeof ServicosHidraulicaIndexRoute
@@ -260,6 +322,7 @@ export interface FileRoutesById {
   '/servicos/pintura/': typeof ServicosPinturaIndexRoute
   '/servicos/reformas/': typeof ServicosReformasIndexRoute
   '/servicos/seguranca/': typeof ServicosSegurancaIndexRoute
+  '/admin/posts/edit/$id': typeof AdminPostsEditIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -268,6 +331,8 @@ export interface FileRouteTypes {
     | '/contato'
     | '/servicos'
     | '/sitemap.xml'
+    | '/admin/login'
+    | '/blog/$slug'
     | '/servicos/$slug'
     | '/servicos/drywall'
     | '/servicos/eletrica'
@@ -276,7 +341,10 @@ export interface FileRouteTypes {
     | '/servicos/pintura'
     | '/servicos/reformas'
     | '/servicos/seguranca'
+    | '/admin/'
+    | '/blog/'
     | '/servicos/'
+    | '/admin/posts/new'
     | '/servicos/drywall/$drywallSlug'
     | '/servicos/eletrica/$eletricaSlug'
     | '/servicos/hidraulica/$hidraulicaSlug'
@@ -284,6 +352,7 @@ export interface FileRouteTypes {
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/reformas/$reformaSlug'
     | '/servicos/seguranca/$segurancaSlug'
+    | '/admin/posts/'
     | '/servicos/drywall/'
     | '/servicos/eletrica/'
     | '/servicos/hidraulica/'
@@ -291,13 +360,19 @@ export interface FileRouteTypes {
     | '/servicos/pintura/'
     | '/servicos/reformas/'
     | '/servicos/seguranca/'
+    | '/admin/posts/edit/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/contato'
     | '/sitemap.xml'
+    | '/admin/login'
+    | '/blog/$slug'
     | '/servicos/$slug'
+    | '/admin'
+    | '/blog'
     | '/servicos'
+    | '/admin/posts/new'
     | '/servicos/drywall/$drywallSlug'
     | '/servicos/eletrica/$eletricaSlug'
     | '/servicos/hidraulica/$hidraulicaSlug'
@@ -305,6 +380,7 @@ export interface FileRouteTypes {
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/reformas/$reformaSlug'
     | '/servicos/seguranca/$segurancaSlug'
+    | '/admin/posts'
     | '/servicos/drywall'
     | '/servicos/eletrica'
     | '/servicos/hidraulica'
@@ -312,12 +388,15 @@ export interface FileRouteTypes {
     | '/servicos/pintura'
     | '/servicos/reformas'
     | '/servicos/seguranca'
+    | '/admin/posts/edit/$id'
   id:
     | '__root__'
     | '/'
     | '/contato'
     | '/servicos'
     | '/sitemap.xml'
+    | '/admin/login'
+    | '/blog/$slug'
     | '/servicos/$slug'
     | '/servicos/drywall'
     | '/servicos/eletrica'
@@ -326,7 +405,10 @@ export interface FileRouteTypes {
     | '/servicos/pintura'
     | '/servicos/reformas'
     | '/servicos/seguranca'
+    | '/admin/'
+    | '/blog/'
     | '/servicos/'
+    | '/admin/posts/new'
     | '/servicos/drywall/$drywallSlug'
     | '/servicos/eletrica/$eletricaSlug'
     | '/servicos/hidraulica/$hidraulicaSlug'
@@ -334,6 +416,7 @@ export interface FileRouteTypes {
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/reformas/$reformaSlug'
     | '/servicos/seguranca/$segurancaSlug'
+    | '/admin/posts/'
     | '/servicos/drywall/'
     | '/servicos/eletrica/'
     | '/servicos/hidraulica/'
@@ -341,6 +424,7 @@ export interface FileRouteTypes {
     | '/servicos/pintura/'
     | '/servicos/reformas/'
     | '/servicos/seguranca/'
+    | '/admin/posts/edit/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -348,6 +432,13 @@ export interface RootRouteChildren {
   ContatoRoute: typeof ContatoRoute
   ServicosRoute: typeof ServicosRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+  AdminPostsNewRoute: typeof AdminPostsNewRoute
+  AdminPostsIndexRoute: typeof AdminPostsIndexRoute
+  AdminPostsEditIdRoute: typeof AdminPostsEditIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -386,6 +477,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/servicos/'
       preLoaderRoute: typeof ServicosIndexRouteImport
       parentRoute: typeof ServicosRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/servicos/seguranca': {
       id: '/servicos/seguranca'
@@ -443,6 +548,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicosSlugRouteImport
       parentRoute: typeof ServicosRoute
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servicos/seguranca/': {
       id: '/servicos/seguranca/'
       path: '/'
@@ -492,6 +611,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicosDrywallIndexRouteImport
       parentRoute: typeof ServicosDrywallRoute
     }
+    '/admin/posts/': {
+      id: '/admin/posts/'
+      path: '/admin/posts'
+      fullPath: '/admin/posts/'
+      preLoaderRoute: typeof AdminPostsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servicos/seguranca/$segurancaSlug': {
       id: '/servicos/seguranca/$segurancaSlug'
       path: '/$segurancaSlug'
@@ -540,6 +666,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/servicos/drywall/$drywallSlug'
       preLoaderRoute: typeof ServicosDrywallDrywallSlugRouteImport
       parentRoute: typeof ServicosDrywallRoute
+    }
+    '/admin/posts/new': {
+      id: '/admin/posts/new'
+      path: '/admin/posts/new'
+      fullPath: '/admin/posts/new'
+      preLoaderRoute: typeof AdminPostsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/posts/edit/$id': {
+      id: '/admin/posts/edit/$id'
+      path: '/admin/posts/edit/$id'
+      fullPath: '/admin/posts/edit/$id'
+      preLoaderRoute: typeof AdminPostsEditIdRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -674,6 +814,13 @@ const rootRouteChildren: RootRouteChildren = {
   ContatoRoute: ContatoRoute,
   ServicosRoute: ServicosRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  BlogIndexRoute: BlogIndexRoute,
+  AdminPostsNewRoute: AdminPostsNewRoute,
+  AdminPostsIndexRoute: AdminPostsIndexRoute,
+  AdminPostsEditIdRoute: AdminPostsEditIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
