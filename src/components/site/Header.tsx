@@ -1,8 +1,39 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
-import { services, site, whatsappLink } from "@/lib/site";
+import { Menu, X, Phone, ChevronDown, ChevronRight } from "lucide-react";
+import {
+  services,
+  site,
+  whatsappLink,
+  pinturaSubservices,
+  eletricaSubservices,
+  hidraulicaSubservices,
+  drywallSubservices,
+  juntaSubservices,
+  segurancaSubservices,
+  reformaSubservices,
+} from "@/lib/site";
 import logo from "@/assets/chico-resolve-logo.png.asset.json";
+
+const subservicesBySlug: Record<string, { slug: string; shortTitle: string; code: string }[]> = {
+  pintura: pinturaSubservices,
+  eletrica: eletricaSubservices,
+  hidraulica: hidraulicaSubservices,
+  drywall: drywallSubservices,
+  "juntas-dilatacao": juntaSubservices,
+  seguranca: segurancaSubservices,
+  reformas: reformaSubservices,
+};
+
+const subRouteBySlug: Record<string, string> = {
+  pintura: "/servicos/pintura/",
+  eletrica: "/servicos/eletrica/",
+  hidraulica: "/servicos/hidraulica/",
+  drywall: "/servicos/drywall/",
+  "juntas-dilatacao": "/servicos/juntas-dilatacao/",
+  seguranca: "/servicos/seguranca/",
+  reformas: "/servicos/reformas/",
+};
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -39,20 +70,41 @@ export function Header() {
               <ChevronDown className="size-3.5" aria-hidden />
             </Link>
             {servicesOpen && (
-              <div className="absolute left-0 top-full pt-3 w-80">
-                <ul className="bg-card border border-border shadow-xl rounded-2xl p-2 overflow-hidden">
-                  {services.map((s) => (
-                    <li key={s.slug}>
-                      <Link
-                        to="/servicos/$slug"
-                        params={{ slug: s.slug }}
-                        className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface"
-                      >
-                        <span className="text-primary text-xs font-bold w-7">{s.code}</span>
-                        <span>{s.shortTitle}</span>
-                      </Link>
-                    </li>
-                  ))}
+              <div className="absolute left-0 top-full pt-3 w-72">
+                <ul className="bg-card border border-border shadow-xl rounded-2xl p-2 overflow-visible">
+                  {services.map((s) => {
+                    const subs = subservicesBySlug[s.slug];
+                    const subHref = subRouteBySlug[s.slug];
+                    return (
+                      <li key={s.slug} className="relative group/item">
+                        <a
+                          href={subHref ?? `/servicos/${s.slug}`}
+                          className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface"
+                        >
+                          <span className="text-primary text-xs font-bold w-7">{s.code}</span>
+                          <span className="flex-1">{s.shortTitle}</span>
+                          {subs && subs.length > 0 && <ChevronRight className="size-3.5 text-muted-foreground" aria-hidden />}
+                        </a>
+                        {subs && subs.length > 0 && (
+                          <div className="hidden group-hover/item:block absolute left-full top-0 pl-2 w-72">
+                            <ul className="bg-card border border-border shadow-xl rounded-2xl p-2 max-h-[70vh] overflow-y-auto">
+                              {subs.map((sub) => (
+                                <li key={sub.slug}>
+                                  <a
+                                    href={`${subHref}${sub.slug}`}
+                                    className="flex items-center gap-3 px-3 py-2 text-sm rounded-xl hover:bg-surface"
+                                  >
+                                    <span className="text-primary text-[10px] font-bold w-12">{sub.code}</span>
+                                    <span>{sub.shortTitle}</span>
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             )}
