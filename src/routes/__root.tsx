@@ -59,16 +59,14 @@ const organizationJsonLd = {
   url: "/",
   address: {
     "@type": "PostalAddress",
-    streetAddress: site.address.street,
     addressLocality: site.address.city,
     addressRegion: site.address.region,
-    postalCode: site.address.postalCode,
     addressCountry: site.address.country,
   },
-  areaServed: {
-    "@type": "City",
-    name: "Teresina",
-  },
+  areaServed: [
+    { "@type": "City", name: "Teresina" },
+    { "@type": "AdministrativeArea", name: "Grande Teresina" },
+  ],
   sameAs: [site.instagramUrl],
   priceRange: "$$",
   serviceType: [
