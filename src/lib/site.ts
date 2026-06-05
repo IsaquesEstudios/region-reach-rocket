@@ -388,7 +388,7 @@ export const pinturaSubservices: PinturaSubservice[] = [
       "Relatório fotográfico de cada etapa do serviço",
       "Tintas de marcas homologadas (Sherwin-Williams, WEG, Eucatex)",
     ],
-    geo: "Atendemos toda Teresina, com obras concluídas em galpões do Distrito Industrial, garagens de condomínios na Jóquei, Fátima e Ininga�, e áreas técnicas em Eusébio, União� e José de Freitas. Trabalhamos com sistemas resistentes à calor e poeira típica do interior do Piauí.",
+    geo: "Atendemos toda Teresina, com obras concluídas em galpões do Distrito Industrial, garagens de condomínios na Jóquei, Fátima e Ininga, e áreas técnicas em Eusébio, União e José de Freitas. Trabalhamos com sistemas resistentes à calor e poeira típica do interior do Piauí.",
     faq: [
       { q: "Quanto custa pintar piso de concreto em Teresina?", a: "O valor depende do sistema (acrílico, epóxi ou poliuretano) e da metragem. Pintura acrílica parte de R$ 35/m² e epóxi autonivelante a partir de R$ 95/m². Fazemos visita técnica gratuita para orçamento exato." },
       { q: "Preciso esperar o concreto curar antes de pintar?", a: "Sim. Concretos novos precisam de no mínimo 28 dias de cura, e o teste de umidade deve indicar abaixo de 4% antes da aplicação de epóxi." },
@@ -418,7 +418,7 @@ export const pinturaSubservices: PinturaSubservice[] = [
       "pinturas residenciais e comerciais",
     ],
     intro:
-      "A Chico Resolve é uma empresa de pintura residencial em Teresina com equipe própria, CLT e treinamento contínuo. Executamos pintura de casa, pintura de parede interna e externa, repintura de fachada e acabamentos especiais (textura, grafiato, efeito cimento queimado). Nosso serviço de pintura residencial nasceu da experiência atendendo bairros como Jóquei, Fátima, Ininga�, Cabral e Noivos — onde umidade do mar, sol forte e poeira exigem preparação rigorosa e tintas certas. Cada pintor de casa da nossa equipe é treinado em técnicas modernas (lixamento, massa corrida, selagem com fundo preparador) para um acabamento durável e sem retoques.",
+      "A Chico Resolve é uma empresa de pintura residencial em Teresina com equipe própria, CLT e treinamento contínuo. Executamos pintura de casa, pintura de parede interna e externa, repintura de fachada e acabamentos especiais (textura, grafiato, efeito cimento queimado). Nosso serviço de pintura residencial nasceu da experiência atendendo bairros como Jóquei, Fátima, Ininga, Cabral e Noivos — onde umidade do mar, sol forte e poeira exigem preparação rigorosa e tintas certas. Cada pintor de casa da nossa equipe é treinado em técnicas modernas (lixamento, massa corrida, selagem com fundo preparador) para um acabamento durável e sem retoques.",
     whenToHire: [
       { title: "Mudou de casa", text: "Antes de instalar móveis, é mais barato e rápido pintar com a casa vazia." },
       { title: "Parede manchada ou descascando", text: "Sinal de infiltração ou tinta vencida — exige tratamento antes da nova demão." },
@@ -446,7 +446,7 @@ export const pinturaSubservices: PinturaSubservice[] = [
       "Antes/depois fotografado em todos os projetos",
       "Atendimento pelo mesmo profissional do início ao fim",
     ],
-    geo: "Nosso serviço de pintura residencial atende todos os bairros de Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Dionísio Torres, Cabral, Noivos, Bela Vista, Dirceu — e cidades da Grande Teresina como Eusébio, Altos, José de Freitas e União�. Como atendemos pinturas residenciais e comerciais, indicamos a tinta certa para o clima quente e seco: anti-mofo nos ambientes internos e acrílico premium nas fachadas.",
+    geo: "Nosso serviço de pintura residencial atende todos os bairros de Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Dionísio Torres, Cabral, Noivos, Bela Vista, Dirceu — e cidades da Grande Teresina como Eusébio, Altos, José de Freitas e União. Como atendemos pinturas residenciais e comerciais, indicamos a tinta certa para o clima quente e seco: anti-mofo nos ambientes internos e acrílico premium nas fachadas.",
     faq: [
       { q: "Quanto custa pintar uma casa em Teresina?", a: "Em média R$ 20 a R$ 45 por m² incluindo mão de obra e material básico. O orçamento de pintura residencial varia conforme estado das paredes, número de demãos e tipo de tinta. Fazemos visita gratuita." },
       { q: "Em quanto tempo vocês entregam a pintura de uma casa de 100 m²?", a: "Uma casa de 100 m² com paredes em bom estado leva de 4 a 6 dias úteis com equipe de 2 pintores." },
@@ -501,7 +501,7 @@ export const pinturaSubservices: PinturaSubservice[] = [
       "Cobertura de seguro contra danos a terceiros",
       "Pagamento parcelado em até 6x sem juros",
     ],
-    geo: "Atendemos edifícios em Teresina inteira — incluindo prédios na Centro, Mocambinho, Satélite, Jóquei, Fátima, Ininga�, Bela Vista e Dionísio Torres — além de empreendimentos em Eusébio, Altos e José de Freitas. Trabalhamos com tintas resistentes à umidade típica de apartamentos em zona urbana.",
+    geo: "Atendemos edifícios em Teresina inteira — incluindo prédios na Centro, Mocambinho, Satélite, Jóquei, Fátima, Ininga, Bela Vista e Dionísio Torres — além de empreendimentos em Eusébio, Altos e José de Freitas. Trabalhamos com tintas resistentes à umidade típica de apartamentos em zona urbana.",
     faq: [
       { q: "Quanto custa pintar um apartamento de 70 m² em Teresina?", a: "Em média de R$ 2.500 a R$ 5.500 incluindo material e mão de obra, dependendo do estado das paredes e tipo de tinta. Fazemos visita gratuita para orçamento exato." },
       { q: "Vocês respeitam horário de condomínio?", a: "Sim. Cumprimos rigorosamente o horário definido pelo síndico, geralmente das 8h às 17h em dias úteis." },
@@ -557,7 +557,7 @@ export const pinturaSubservices: PinturaSubservice[] = [
       "Tintas Jotun, Sherwin-Williams Protective ou WEG",
       "Garantia formal de 24 a 60 meses conforme sistema",
     ],
-    geo: "Atendemos o Distrito Industrial de Teresina (DIT)�, Demerval Lobão, Eusébio, Pecém e parques industriais ao redor de Teresina. Já executamos serviços em galpões logísticos, fábricas têxteis, indústrias alimentícias e plantas de equipamentos metálicos do Piauí — sempre com sistemas calibrados para o ambiente salino do litoral.",
+    geo: "Atendemos o Distrito Industrial de Teresina (DIT), Demerval Lobão, Eusébio, Pecém e parques industriais ao redor de Teresina. Já executamos serviços em galpões logísticos, fábricas têxteis, indústrias alimentícias e plantas de equipamentos metálicos do Piauí — sempre com sistemas calibrados para o ambiente salino do litoral.",
     faq: [
       { q: "Vocês fazem jateamento abrasivo?", a: "Sim. Trabalhamos com jateamento SA 2½ ou SA 3 conforme especificação, com equipamentos próprios e descarte regular do abrasivo." },
       { q: "Emitem ART para pintura industrial?", a: "Sim. Quando a obra exige, emitimos ART de execução assinada por engenheiro responsável." },
@@ -607,7 +607,7 @@ export const pinturaSubservices: PinturaSubservice[] = [
       "Tintas técnicas de fabricantes nacionais homologados",
       "Registro fotográfico antes/durante/depois",
     ],
-    geo: "Pintamos quadras em escolas particulares e municipais, condomínios residenciais, clubes e prefeituras de Teresina, Eusébio, Altos, José de Freitas, União� e cidades vizinhas. Trabalhamos com sistemas resistentes ao sol intenso e chuvas concentradas do clima piauiense.",
+    geo: "Pintamos quadras em escolas particulares e municipais, condomínios residenciais, clubes e prefeituras de Teresina, Eusébio, Altos, José de Freitas, União e cidades vizinhas. Trabalhamos com sistemas resistentes ao sol intenso e chuvas concentradas do clima piauiense.",
     faq: [
       { q: "Quanto custa pintar uma quadra poliesportiva em Teresina?", a: "O valor médio varia de R$ 60 a R$ 130 por m² incluindo preparação, pintura e demarcação. Quadras cobertas com sistema epóxi/PU custam mais. Solicite visita técnica." },
       { q: "A demarcação segue medidas oficiais?", a: "Sim. Trabalhamos com as medidas das confederações brasileiras (CBFS, CBV, CBB) para que a quadra possa receber competições oficiais e escolares." },
@@ -670,7 +670,7 @@ export const eletricaSubservices: EletricaSubservice[] = [
       "eletricista emergência",
     ],
     intro:
-      "A Chico Resolve é uma empresa de elétrica industrial em Teresina com eletricistas certificados em NR-10 básico e NR-10 SEP (Sistema Elétrico de Potência). Atendemos indústrias, galpões logísticos e plantas fabris com instalação, ampliação e manutenção de painéis elétricos, CCM (Centro de Controle de Motores), barramentos, inversores de frequência, soft-starters e sistemas de aterramento. Como eletricista de manutenção, também executamos termografia, ajuste de proteções, ensaio de relés e plano de manutenção preventiva. Para emergências, mantemos plantão de eletricista emergência 24h para evitar paradas de produção em indústrias do Distrito Industrial de Teresina (DIT)�, Pecém e Demerval Lobão.",
+      "A Chico Resolve é uma empresa de elétrica industrial em Teresina com eletricistas certificados em NR-10 básico e NR-10 SEP (Sistema Elétrico de Potência). Atendemos indústrias, galpões logísticos e plantas fabris com instalação, ampliação e manutenção de painéis elétricos, CCM (Centro de Controle de Motores), barramentos, inversores de frequência, soft-starters e sistemas de aterramento. Como eletricista de manutenção, também executamos termografia, ajuste de proteções, ensaio de relés e plano de manutenção preventiva. Para emergências, mantemos plantão de eletricista emergência 24h para evitar paradas de produção em indústrias do Distrito Industrial de Teresina (DIT), Pecém e Demerval Lobão.",
     whenToHire: [
       { title: "Parada não programada", text: "Disjuntor que desarma, motor que não parte ou painel com sinais de aquecimento — risco de incêndio e perda de produção." },
       { title: "Ampliação de carga", text: "Nova linha de produção, máquina importada ou ampliação de galpão exige redimensionamento elétrico e ART." },
@@ -707,7 +707,7 @@ export const eletricaSubservices: EletricaSubservice[] = [
       "Eletricista emergência 24h para clientes com contrato",
       "Termografia e laudo técnico inclusos em contratos preventivos",
     ],
-    geo: "Atendemos indústrias do Distrito Industrial de Teresina (DIT)�, Complexo Industrial e Portuário do Pecém (DIT), Demerval Lobão, Eusébio e plantas fabris em toda a Grande Teresina. Conhecemos a particularidade do fornecimento da concessionária local Piauí e dimensionamos sistemas resistentes à corrosão pela calor e poeira em instalações próximas ao litoral.",
+    geo: "Atendemos indústrias do Distrito Industrial de Teresina (DIT), Complexo Industrial e Portuário do Pecém (DIT), Demerval Lobão, Eusébio e plantas fabris em toda a Grande Teresina. Conhecemos a particularidade do fornecimento da concessionária local Piauí e dimensionamos sistemas resistentes à corrosão pela calor e poeira em instalações próximas ao litoral.",
     faq: [
       { q: "Vocês emitem ART para serviços industriais?", a: "Sim. Toda obra industrial é entregue com ART (Anotação de Responsabilidade Técnica) assinada por engenheiro eletricista registrado no CREA-CE." },
       { q: "Quanto custa contratar um eletricista industrial em Teresina?", a: "Manutenções pontuais partem de R$ 350 por chamado técnico e contratos mensais variam conforme criticidade. Fazemos visita técnica gratuita para orçamento eletricista detalhado." },
@@ -736,7 +736,7 @@ export const eletricaSubservices: EletricaSubservice[] = [
       "eletricista emergência",
     ],
     intro:
-      "A Chico Resolve oferece serviço eletricista residencial em Teresina com eletricistas certificados em NR-10 e foco em segurança da família. Atuamos como eletricista instalador (quadros de distribuição, tomadas, pontos de iluminação, chuveiros, ar-condicionado, automação básica) e como eletricista emergência para curto-circuito, queda de energia, chuveiro queimado ou ponto que aquece. Cada visita começa por diagnóstico com alicate amperímetro e checagem do quadro — antes de qualquer reparo, identificamos a causa para que o problema não volte. Trabalhamos das residências da Jóquei, Fátima e Ininga� às casas de Cabral, Noivos e Eusébio.",
+      "A Chico Resolve oferece serviço eletricista residencial em Teresina com eletricistas certificados em NR-10 e foco em segurança da família. Atuamos como eletricista instalador (quadros de distribuição, tomadas, pontos de iluminação, chuveiros, ar-condicionado, automação básica) e como eletricista emergência para curto-circuito, queda de energia, chuveiro queimado ou ponto que aquece. Cada visita começa por diagnóstico com alicate amperímetro e checagem do quadro — antes de qualquer reparo, identificamos a causa para que o problema não volte. Trabalhamos das residências da Jóquei, Fátima e Ininga às casas de Cabral, Noivos e Eusébio.",
     whenToHire: [
       { title: "Disjuntor desarmando", text: "Disjuntor cai sempre que liga chuveiro, microondas ou ar-condicionado — sinal de sobrecarga ou curto." },
       { title: "Tomada queimando ou aquecendo", text: "Cheiro de plástico, escurecimento ou ponto que esquenta indica conexão frouxa e risco de incêndio." },
@@ -771,7 +771,7 @@ export const eletricaSubservices: EletricaSubservice[] = [
       "Nota fiscal emitida quando solicitada",
       "Atendimento de eletricista emergência no mesmo dia",
     ],
-    geo: "Atendemos residências em todos os bairros de Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Dionísio Torres, Cabral, Noivos, Bela Vista, Dirceu, Mocambinho e Centro — além de Eusébio, Altos, José de Freitas e União�. Trabalhamos com o padrão de entrada da concessionária local Piauí e dimensionamos proteções considerando a alta umidade do litoral.",
+    geo: "Atendemos residências em todos os bairros de Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Dionísio Torres, Cabral, Noivos, Bela Vista, Dirceu, Mocambinho e Centro — além de Eusébio, Altos, José de Freitas e União. Trabalhamos com o padrão de entrada da concessionária local Piauí e dimensionamos proteções considerando a alta umidade do litoral.",
     faq: [
       { q: "Quanto custa um eletricista residencial em Teresina?", a: "Visita técnica de diagnóstico parte de R$ 150 (abatida do serviço). Serviços simples como troca de tomada partem de R$ 90; troca de quadro completa varia conforme número de circuitos. Solicite orçamento eletricista gratuito por WhatsApp." },
       { q: "Atendem emergência no mesmo dia?", a: "Sim. Para eletricista emergência (curto-circuito, sem energia, ponto queimando) priorizamos atendimento no mesmo dia em Teresina." },
@@ -836,7 +836,7 @@ export const eletricaSubservices: EletricaSubservice[] = [
       "Relatório fotográfico mensal para a administração",
       "ART de manutenção para apresentar em assembleia e ao seguro predial",
     ],
-    geo: "Atendemos edifícios residenciais e comerciais em Teresina inteira — incluindo prédios na Centro, Jóquei, Fátima, Ininga�, Bela Vista, Dionísio Torres e Cabral — além de empreendimentos em Eusébio, Altos e José de Freitas. Conhecemos as exigências da concessionária local Piauí para entrada de energia e do CBMEPI para vistoria do AVCB.",
+    geo: "Atendemos edifícios residenciais e comerciais em Teresina inteira — incluindo prédios na Centro, Jóquei, Fátima, Ininga, Bela Vista, Dionísio Torres e Cabral — além de empreendimentos em Eusébio, Altos e José de Freitas. Conhecemos as exigências da concessionária local Piauí para entrada de energia e do CBMEPI para vistoria do AVCB.",
     faq: [
       { q: "Qual o prazo mínimo de contrato de eletricista predial?", a: "Trabalhamos com contratos a partir de 6 meses, com possibilidade de período de teste de 1 mês para o síndico avaliar o atendimento." },
       { q: "Como funciona o eletricista emergência 24h?", a: "O síndico ou zelador aciona um WhatsApp dedicado; eletricistas certificados respondem em até 1h e comparecem conforme criticidade definida no contrato." },
@@ -939,7 +939,7 @@ export const hidraulicaSubservices: HidraulicaSubservice[] = [
       "Garantia de 90 dias a 12 meses por escrito",
       "Atendimento de emergência hidráulica 24h",
     ],
-    geo: "Atendemos toda Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Cabral, Noivos, Dirceu, Centro — além de indústrias no Distrito Industrial de Teresina (DIT)�, Pecém e plantas em Eusébio, Altos e José de Freitas. Conhecemos as particularidades da pressão fornecida pela rede de água local e dimensionamos sistemas resistentes à calor e poeira em metais cromados do interior do Piauí.",
+    geo: "Atendemos toda Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Cabral, Noivos, Dirceu, Centro — além de indústrias no Distrito Industrial de Teresina (DIT), Pecém e plantas em Eusébio, Altos e José de Freitas. Conhecemos as particularidades da pressão fornecida pela rede de água local e dimensionamos sistemas resistentes à calor e poeira em metais cromados do interior do Piauí.",
     faq: [
       { q: "Quanto custa um conserto hidráulico em Teresina?", a: "Visita técnica parte de R$ 120 (abatida do serviço). Trocas pontuais (torneira, registro, sifão) partem de R$ 90 mais material. Para sistema hidráulico industrial, orçamento sob projeto." },
       { q: "Vocês trocam válvula Hydra no mesmo dia?", a: "Sim. Conserto de válvula Hydra é executado no mesmo dia: levamos o kit reparo ou a válvula completa dependendo do estado." },
@@ -1001,7 +1001,7 @@ export const hidraulicaSubservices: HidraulicaSubservice[] = [
       "Garantia de 30 a 90 dias por escrito",
       "Sem cobrança de visita técnica em Teresina",
     ],
-    geo: "Como desentupidora em Teresina, atendemos todos os bairros — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Dionísio Torres, Cabral, Noivos, Bela Vista, Dirceu, Mocambinho e Centro — além de Eusébio, Altos, José de Freitas e União�. Atuamos em condomínios, casas, indústrias e estabelecimentos comerciais com equipamentos compatíveis com a rede da rede de água local.",
+    geo: "Como desentupidora em Teresina, atendemos todos os bairros — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Dionísio Torres, Cabral, Noivos, Bela Vista, Dirceu, Mocambinho e Centro — além de Eusébio, Altos, José de Freitas e União. Atuamos em condomínios, casas, indústrias e estabelecimentos comerciais com equipamentos compatíveis com a rede da rede de água local.",
     faq: [
       { q: "Quanto custa uma desentupidora em Teresina?", a: "Desentupimentos simples (pia, vaso) partem de R$ 150. Hidrojateamento de coluna ou caixa de gordura tem orçamento por extensão e grau de obstrução. Sem taxa de visita." },
       { q: "Vocês atendem 24h?", a: "Sim. Funcionamos como encanador urgente 24h — chamados via WhatsApp são respondidos em minutos e a equipe sai imediatamente em casos críticos." },
@@ -1064,7 +1064,7 @@ export const hidraulicaSubservices: HidraulicaSubservice[] = [
       "Descarte adequado do resíduo conforme norma ambiental",
       "Garantia formal de 30 a 90 dias",
     ],
-    geo: "Atendemos desentupimento esgoto em todos os bairros de Teresina — incluindo restaurantes da Dirceu e Centro, condomínios em Jóquei, Fátima e Ininga�, e residências em Cabral, Noivos e Bela Vista — além de Eusébio, Altos, José de Freitas e União�. Conhecemos as particularidades da rede coletora da rede de água local e do solo arenoso do interior do Piauí que favorece infiltração de raízes.",
+    geo: "Atendemos desentupimento esgoto em todos os bairros de Teresina — incluindo restaurantes da Dirceu e Centro, condomínios em Jóquei, Fátima e Ininga, e residências em Cabral, Noivos e Bela Vista — além de Eusébio, Altos, José de Freitas e União. Conhecemos as particularidades da rede coletora da rede de água local e do solo arenoso do interior do Piauí que favorece infiltração de raízes.",
     faq: [
       { q: "Quanto custa o desentupimento de esgoto em Teresina?", a: "Desentupimento de ralo simples parte de R$ 150. Hidrojateamento de coluna de esgoto ou ramal predial é orçado por extensão e grau de obstrução, após vistoria gratuita." },
       { q: "Qual a diferença entre máquina rotativa e hidrojato?", a: "Máquina rotativa quebra a obstrução com cabo metálico; hidrojato corta com água em alta pressão (até 4.000 PSI). Para gordura solidificada, raízes e limpeza completa, o hidrojato é superior." },
@@ -1131,7 +1131,7 @@ export const hidraulicaSubservices: HidraulicaSubservice[] = [
       "Encanador urgente 24h via WhatsApp dedicado",
       "Geofone próprio para detecção sem quebra",
     ],
-    geo: "Atendemos residências em todos os bairros de Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Dionísio Torres, Cabral, Noivos, Bela Vista, Dirceu, Mocambinho e Centro — além de casas em Eusébio, Altos, José de Freitas e União�. Trabalhamos com tubulação compatível com o padrão rede de água local e tintas/vedantes resistentes à calor e poeira em metais expostos no interior do Piauí.",
+    geo: "Atendemos residências em todos os bairros de Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Dionísio Torres, Cabral, Noivos, Bela Vista, Dirceu, Mocambinho e Centro — além de casas em Eusébio, Altos, José de Freitas e União. Trabalhamos com tubulação compatível com o padrão rede de água local e tintas/vedantes resistentes à calor e poeira em metais expostos no interior do Piauí.",
     faq: [
       { q: "Quanto custa um encanador residencial em Teresina?", a: "Visita técnica parte de R$ 120 (abatida do serviço). Serviços simples como troca de torneira partem de R$ 80; detecção de vazamento sem quebra a partir de R$ 280. Orçamento gratuito por WhatsApp." },
       { q: "Vocês conseguem detectar vazamento sem quebrar parede?", a: "Sim. Usamos geofone eletrônico, câmera de inspeção e teste de pressão para localizar o ponto exato — só quebramos o estritamente necessário." },
@@ -1196,7 +1196,7 @@ export const hidraulicaSubservices: HidraulicaSubservice[] = [
       "Relatório fotográfico mensal para a administração",
       "Equipe própria CLT — sem terceirização de risco",
     ],
-    geo: "Atendemos edifícios residenciais e comerciais em Teresina inteira — incluindo prédios na Centro, Jóquei, Fátima, Ininga�, Bela Vista, Dionísio Torres e Cabral — além de empreendimentos em Eusébio, Altos e José de Freitas. Conhecemos a particularidade da pressão da rede de água local em zonas altas da cidade e dimensionamos sistemas considerando a corrosão acelerada por calor e poeira em metais expostos.",
+    geo: "Atendemos edifícios residenciais e comerciais em Teresina inteira — incluindo prédios na Centro, Jóquei, Fátima, Ininga, Bela Vista, Dionísio Torres e Cabral — além de empreendimentos em Eusébio, Altos e José de Freitas. Conhecemos a particularidade da pressão da rede de água local em zonas altas da cidade e dimensionamos sistemas considerando a corrosão acelerada por calor e poeira em metais expostos.",
     faq: [
       { q: "Qual o prazo mínimo do contrato de encanador predial?", a: "Contratos a partir de 6 meses com possibilidade de 1 mês de teste para o síndico avaliar o atendimento." },
       { q: "Como vocês detectam vazamento em prumada sem quebrar o apartamento do vizinho?", a: "Usamos geofone eletrônico, câmera termográfica e, em casos complexos, gás traçador — localizamos o ponto exato e quebramos o mínimo necessário." },
@@ -1296,7 +1296,7 @@ export const drywallSubservices: DrywallSubservice[] = [
       "Orçamento drywall fechado, sem alteração no fim da obra",
       "Garantia escrita de 12 meses",
     ],
-    geo: "Atendemos instalação de drywall em toda Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Cabral, Noivos, Dirceu, Centro — e em obras de Eusébio, Altos, José de Freitas e União�. Em zonas litorâneas com calor e poeira, recomendamos placa RU em áreas úmidas e cuidado redobrado com fixadores galvanizados para evitar corrosão acelerada típica do clima piauiense.",
+    geo: "Atendemos instalação de drywall em toda Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Cabral, Noivos, Dirceu, Centro — e em obras de Eusébio, Altos, José de Freitas e União. Em zonas litorâneas com calor e poeira, recomendamos placa RU em áreas úmidas e cuidado redobrado com fixadores galvanizados para evitar corrosão acelerada típica do clima piauiense.",
     faq: [
       { q: "Quanto custa a instalação de drywall em Teresina?", a: "Parede drywall simples parte de R$ 110/m² incluindo material e mão de obra; forro liso de gesso a partir de R$ 95/m². Visita técnica gratuita para orçamento drywall exato." },
       { q: "Qual o prazo para montar uma parede de drywall?", a: "Uma parede de 10 m² fica pronta para pintura em 2 a 3 dias úteis com equipe de 2 montadores, contando massa e lixamento." },
@@ -1357,7 +1357,7 @@ export const drywallSubservices: DrywallSubservice[] = [
       "Equipe própria treinada nos manuais dos fabricantes",
       "Garantia escrita de 12 meses",
     ],
-    geo: "Atendemos com gesso acartonado em Teresina inteira — Jóquei, Fátima, Ininga�, Cabral, Noivos, Dirceu — além de Eusébio, Altos, José de Freitas e União�. Para edifícios em zona urbana (Centro, Mocambinho, Satélite) indicamos placa drywall RU como padrão para qualquer parede em contato com fachada externa, pois a calor e poeira acelera a deterioração de placas standard.",
+    geo: "Atendemos com gesso acartonado em Teresina inteira — Jóquei, Fátima, Ininga, Cabral, Noivos, Dirceu — além de Eusébio, Altos, José de Freitas e União. Para edifícios em zona urbana (Centro, Mocambinho, Satélite) indicamos placa drywall RU como padrão para qualquer parede em contato com fachada externa, pois a calor e poeira acelera a deterioração de placas standard.",
     faq: [
       { q: "Qual a diferença entre drywall e gesso acartonado?", a: "Nenhuma. Drywall é o nome do sistema construtivo; gesso acartonado é o nome técnico da placa que compõe o sistema. Comercialmente são sinônimos." },
       { q: "Drywall ou gesso acartonado: o que escolher?", a: "Para parede e divisória, sempre drywall (gesso acartonado). Para forro liso simples em pequena área, gesso tradicional em pasta ainda é alternativa econômica." },
@@ -1419,7 +1419,7 @@ export const drywallSubservices: DrywallSubservice[] = [
       "Crachá e uniforme — você sabe quem está na sua casa",
       "Garantia escrita de 12 meses",
     ],
-    geo: "Disponibilizamos gesseiro e colocador de drywall em toda Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Dionísio Torres, Cabral, Noivos, Dirceu, Mocambinho, Centro — além de Eusébio, Altos, José de Freitas e União�. Conhecemos as exigências de condomínios do Centro (horário, taxa de obra, uso de elevador de serviço) e operamos dentro das regras.",
+    geo: "Disponibilizamos gesseiro e colocador de drywall em toda Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Dionísio Torres, Cabral, Noivos, Dirceu, Mocambinho, Centro — além de Eusébio, Altos, José de Freitas e União. Conhecemos as exigências de condomínios do Centro (horário, taxa de obra, uso de elevador de serviço) e operamos dentro das regras.",
     faq: [
       { q: "Quanto é o preço gesseiro em Teresina?", a: "Mão de obra drywall para parede parte de R$ 55/m² e forro liso a partir de R$ 45/m² (só mão de obra). Material à parte ou incluso conforme preferência do cliente." },
       { q: "Vocês cobram visita técnica?", a: "Não. Visita e orçamento são gratuitos dentro de Teresina e Grande Teresina." },
@@ -1480,7 +1480,7 @@ export const drywallSubservices: DrywallSubservice[] = [
       "Garantia escrita de 12 meses",
       "Orçamento forro de gesso por escrito, sem valor verbal",
     ],
-    geo: "Instalamos forro de gesso em apartamentos, casas e salas comerciais em Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Cabral, Noivos, Dirceu — e em Eusébio, Altos, José de Freitas e União�. Em apartamentos em zona urbana, recomendamos ventilação adequada do entreforro para evitar condensação favorecida pelo clima quente e úmido de Teresina.",
+    geo: "Instalamos forro de gesso em apartamentos, casas e salas comerciais em Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Cabral, Noivos, Dirceu — e em Eusébio, Altos, José de Freitas e União. Em apartamentos em zona urbana, recomendamos ventilação adequada do entreforro para evitar condensação favorecida pelo clima quente e úmido de Teresina.",
     faq: [
       { q: "Quanto custa o orçamento de forro de gesso em Teresina?", a: "Forro liso parte de R$ 95/m² (drywall) ou R$ 75/m² (gesso tradicional), incluindo material e mão de obra. Sanca aberta com fita LED tem valor adicional por metro linear." },
       { q: "Qual o prazo da instalação de forro de gesso?", a: "Uma sala de 20 m² fica pronta em 3 a 4 dias úteis com massa e lixamento. Apartamento completo (3 quartos + áreas comuns) leva 7 a 10 dias úteis." },
@@ -1541,7 +1541,7 @@ export const drywallSubservices: DrywallSubservice[] = [
       "Garantia escrita de 12 meses",
       "Orçamento drywall em até 24h úteis após visita gratuita",
     ],
-    geo: "Atendemos parede de drywall em todos os bairros de Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Dionísio Torres, Cabral, Noivos, Dirceu, Mocambinho — além de Eusébio, Altos, José de Freitas e União�. Em áreas próximas ao mar (Centro, Mocambinho), priorizamos parafusos com tratamento anticorrosivo e placa RU para suportar a calor e poeira.",
+    geo: "Atendemos parede de drywall em todos os bairros de Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Dionísio Torres, Cabral, Noivos, Dirceu, Mocambinho — além de Eusébio, Altos, José de Freitas e União. Em áreas próximas ao mar (Centro, Mocambinho), priorizamos parafusos com tratamento anticorrosivo e placa RU para suportar a calor e poeira.",
     faq: [
       { q: "Quanto custa o orçamento drywall para parede em Teresina?", a: "Parede de drywall simples parte de R$ 110/m² (material + mão de obra). Reforço para TV, prateleira ou pia tem valor adicional por ponto reforçado. Visita gratuita." },
       { q: "Posso fazer reparo em parede de drywall sem trocar a placa inteira?", a: "Sim. Furos pequenos e médios são reparados com gesso e fita; só trocamos a placa quando há mofo, ruptura grande ou afundamento estrutural." },
@@ -1606,7 +1606,7 @@ export const drywallSubservices: DrywallSubservice[] = [
       "Garantia escrita de 12 meses",
       "Orçamento detalhado por sistema, sem genérico",
     ],
-    geo: "Executamos divisória de ambiente em Teresina inteira — Jóquei, Fátima, Ininga�, São Cristóvão, Cabral, Noivos, Dirceu, Mocambinho, Centro — e em obras de Eusébio, Altos, José de Freitas e União�. Para divisória para área externa em zona urbana, indicamos placa cimentícia sobre perfil galvanizado tratado contra calor e poeira; para divisória de ambiente industrial em galpões do Distrito Industrial, painel sanduíche ou chapa metálica com pintura epóxi.",
+    geo: "Executamos divisória de ambiente em Teresina inteira — Jóquei, Fátima, Ininga, São Cristóvão, Cabral, Noivos, Dirceu, Mocambinho, Centro — e em obras de Eusébio, Altos, José de Freitas e União. Para divisória para área externa em zona urbana, indicamos placa cimentícia sobre perfil galvanizado tratado contra calor e poeira; para divisória de ambiente industrial em galpões do Distrito Industrial, painel sanduíche ou chapa metálica com pintura epóxi.",
     faq: [
       { q: "Qual divisória de ambiente é mais barata?", a: "Drywall é, em geral, a mais econômica para uso interno seco. Ripada e perfilado naval ficam em faixa parecida; cimentícia e metálica industrial saem mais caras pelo material e fixação." },
       { q: "Divisoria de ambiente ripada bloqueia som?", a: "Não. Ripada separa visualmente e permite ventilação, mas não veda som. Para privacidade acústica, indicamos drywall com isolamento ou perfilado com miolo colmeia." },
@@ -1718,7 +1718,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       "Cronograma físico-financeiro com multa contratual em caso de atraso",
       "Garantia de 12 meses sobre execução conforme NBR 16280",
     ],
-    geo: "Atendemos reforma de apartamento em todos os edifícios de Teresina — Centro, Mocambinho, Satélite, Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Dionísio Torres, Bela Vista, Cabral e Noivos — além de empreendimentos em Eusébio, Altos e José de Freitas. Para reforma predial em prédios litorâneos, usamos materiais resistentes à calor e poeira (parafusos galvanizados, tintas acrílicas premium e selantes poliuretânicos).",
+    geo: "Atendemos reforma de apartamento em todos os edifícios de Teresina — Centro, Mocambinho, Satélite, Jóquei, Fátima, Ininga, São Cristóvão, Horto, Dionísio Torres, Bela Vista, Cabral e Noivos — além de empreendimentos em Eusébio, Altos e José de Freitas. Para reforma predial em prédios litorâneos, usamos materiais resistentes à calor e poeira (parafusos galvanizados, tintas acrílicas premium e selantes poliuretânicos).",
     faq: [
       { q: "Quanto custa uma reforma de apartamento em Teresina?", a: "Reformas parciais (cozinha ou banheiro) partem de R$ 25 mil; reformas completas variam de R$ 1.200 a R$ 2.800 por m² conforme padrão de acabamento. Fazemos visita técnica gratuita e orçamento detalhado em até 5 dias." },
       { q: "Vocês atendem reforma de apartamento pequeno (até 50 m²)?", a: "Sim. Reforma de apartamento pequeno é uma das nossas especialidades — integração sala/cozinha, marcenaria sob medida e otimização do layout para ganhar área útil." },
@@ -1782,7 +1782,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       "Cobertura de seguro de obra para danos a terceiros",
       "Garantia formal de 12 a 60 meses conforme o item executado",
     ],
-    geo: "Como empresa de reformas residenciais atendemos toda Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Cabral, Noivos, Bela Vista, Dirceu, Mocambinho e Centro — e cidades da Grande Teresina: Eusébio, Altos, José de Freitas, União� e Pacatuba. Para reformas em geral próximas ao litoral, ajustamos os materiais ao clima de calor e poeira.",
+    geo: "Como empresa de reformas residenciais atendemos toda Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Cabral, Noivos, Bela Vista, Dirceu, Mocambinho e Centro — e cidades da Grande Teresina: Eusébio, Altos, José de Freitas, União e Pacatuba. Para reformas em geral próximas ao litoral, ajustamos os materiais ao clima de calor e poeira.",
     faq: [
       { q: "Vocês são uma empresa de reforma formalizada?", a: "Sim. Somos empresa de construção e reforma com CNPJ ativo, alvará de funcionamento, NF de serviço, engenheiro responsável e ART quando o escopo exige." },
       { q: "Trabalham com pequenas reformas?", a: "Sim. Somos empresa especializada em pequenas reformas — pintura de um cômodo, troca de piso, instalação de bancada, reforma de um banheiro." },
@@ -1848,7 +1848,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       "Engenheiro responsável e ART para entrega ao corpo de bombeiros",
       "Pacote completo: civil, elétrica, hidráulica, exaustão, climatização e laudos",
     ],
-    geo: "Atendemos reforma comercial em Teresina inteira — Centro, Jóquei, Fátima, Ininga�, São Cristóvão, Joaquim Távora, Satélite, Centro — e em shoppings como Iguatemi, RioMar Teresina, RioMar Kennedy, North Shopping Jóquei, North Shopping União�, Parangaba e Via Sul. Para reformas de restaurantes e adequação de imóvel comercial em Grande Teresina (Eusébio, Altos, José de Freitas), seguimos as exigências específicas de cada município.",
+    geo: "Atendemos reforma comercial em Teresina inteira — Centro, Jóquei, Fátima, Ininga, São Cristóvão, Joaquim Távora, Satélite, Centro — e em shoppings como Iguatemi, RioMar Teresina, RioMar Kennedy, North Shopping Jóquei, North Shopping União, Parangaba e Via Sul. Para reformas de restaurantes e adequação de imóvel comercial em Grande Teresina (Eusébio, Altos, José de Freitas), seguimos as exigências específicas de cada município.",
     faq: [
       { q: "Quanto tempo demora a reforma de loja em shopping?", a: "Lojas de até 80 m² geralmente saem em 20 a 30 dias corridos com equipe em turno noturno. Pacotes de reforma comercial rápida para inauguração agendada são acordados em contrato com multa por atraso." },
       { q: "Vocês entregam AVCB e laudo dos bombeiros?", a: "Sim. Como empreiteira para loja de shopping fazemos toda adequação de imóvel comercial (extintores, sinalização, saídas, sprinklers quando exigido) e acompanhamos a vistoria do corpo de bombeiros." },
@@ -1914,7 +1914,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       "Cronograma físico-financeiro com pagamento por etapa entregue",
       "Garantia de 12 meses sobre execução conforme NBR 16280 e 5 anos sobre estrutura",
     ],
-    geo: "Atuamos em reforma de casa em todos os bairros de Teresina — Jóquei, Fátima, Ininga�, Cabral, Noivos, Bela Vista, Cidade dos Funcionários, Salinas, Cambeba, Messejana, Lagoa Redonda, Dirceu — e em Grande Teresina: Eusébio, Altos (Porto das Dunas), José de Freitas, Pacatuba e União�. Para reforma residencial litorânea aplicamos materiais e técnicas anti-calor e poeira (esquadrias de alumínio anodizado, ferragens em inox, tintas acrílicas premium).",
+    geo: "Atuamos em reforma de casa em todos os bairros de Teresina — Jóquei, Fátima, Ininga, Cabral, Noivos, Bela Vista, Cidade dos Funcionários, Salinas, Cambeba, Messejana, Lagoa Redonda, Dirceu — e em Grande Teresina: Eusébio, Altos (Porto das Dunas), José de Freitas, Pacatuba e União. Para reforma residencial litorânea aplicamos materiais e técnicas anti-calor e poeira (esquadrias de alumínio anodizado, ferragens em inox, tintas acrílicas premium).",
     faq: [
       { q: "Qual a ampliação de casa preço médio?", a: "Ampliação de casa varia de R$ 2.500 a R$ 4.500 por m² conforme padrão de acabamento, fundação necessária e cobertura. Visita técnica gratuita." },
       { q: "Vocês fazem execução de projeto residencial de outro arquiteto?", a: "Sim. Como empresa de reforma de casas executamos projetos de qualquer arquiteto ou designer, mantendo total fidelidade ao desenho aprovado." },
@@ -1975,7 +1975,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       "Garantia de 12 meses sobre execução e 5 anos sobre impermeabilização",
       "Materiais de marcas referência (Deca, Roca, Eliane, Portobello, Vedacit)",
     ],
-    geo: "Atendemos reforma de banheiro em todos os bairros de Teresina, com foco em edifícios litorâneos (Centro, Mocambinho, Satélite, Fátima) onde a umidade ataca rejunte e selantes mais rápido. Em Grande Teresina atendemos Eusébio, Altos, José de Freitas e União�. Para imóveis perto do mar indicamos rejunte epóxi e ferragens em inox 316.",
+    geo: "Atendemos reforma de banheiro em todos os bairros de Teresina, com foco em edifícios litorâneos (Centro, Mocambinho, Satélite, Fátima) onde a umidade ataca rejunte e selantes mais rápido. Em Grande Teresina atendemos Eusébio, Altos, José de Freitas e União. Para imóveis perto do mar indicamos rejunte epóxi e ferragens em inox 316.",
     faq: [
       { q: "Quanto custa uma reforma simples de banheiro em Teresina?", a: "Reforma de banheiro simples (sem mexer em hidráulica oculta) parte de R$ 6 mil para banheiro de 4 m². Reforma completa fica entre R$ 12 mil e R$ 30 mil dependendo do acabamento." },
       { q: "Quanto tempo demora a reforma de banheiro?", a: "Reforma simples: 5 a 8 dias úteis. Reforma completa com hidráulica nova: 15 a 25 dias úteis incluindo cura da impermeabilização." },
@@ -2040,7 +2040,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       "Calhas e rufos em aço galvanizado pintado com 5 anos de garantia",
       "Relatório fotográfico antes/depois e laudo técnico para vistoria",
     ],
-    geo: "Atendemos reforma de telhado residencial em todos os bairros de Teresina — Jóquei, Fátima, Ininga�, Cabral, Noivos, Lagoa Redonda, Cidade dos Funcionários, Bela Vista, Messejana, Cambeba — e em casas de praia em Eusébio, Altos (Porto das Dunas), José de Freitas (Cumbuco), Pacatuba e União�. Para reforma de telhados residenciais litorâneos usamos parafusos em inox e telhas com tratamento UV reforçado.",
+    geo: "Atendemos reforma de telhado residencial em todos os bairros de Teresina — Jóquei, Fátima, Ininga, Cabral, Noivos, Lagoa Redonda, Cidade dos Funcionários, Bela Vista, Messejana, Cambeba — e em casas de praia em Eusébio, Altos (Porto das Dunas), José de Freitas (Cumbuco), Pacatuba e União. Para reforma de telhados residenciais litorâneos usamos parafusos em inox e telhas com tratamento UV reforçado.",
     faq: [
       { q: "Quanto custa uma reforma de telhado em Teresina?", a: "Manutenção telhado pontual parte de R$ 1.500. Troca completa de telhado residencial fica entre R$ 180 e R$ 380 por m² conforme telha (cerâmica, fibrocimento, metálica) e estado do madeiramento." },
       { q: "Vocês trabalham com manutenção de telhados preventiva?", a: "Sim. Oferecemos contrato anual de manutenção telhado: limpeza de calhas, troca de telhas quebradas, vedação de cumeeiras e relatório fotográfico — ideal antes do inverno." },
@@ -2101,7 +2101,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       "Mapeamento fotográfico de patologias por pavimento antes da obra",
       "Plano de gerenciamento de risco para pedestres e veículos no entorno",
     ],
-    geo: "Atendemos reforma de fachada predial em prédios da Centro, Mocambinho, Satélite, Fátima, Jóquei, Ininga�, São Cristóvão, Horto, Dionísio Torres, Cabral e Noivos. Para reforma de fachada residencial atuamos em toda Teresina e Grande Teresina (Eusébio, Altos, José de Freitas, União�). Em prédios litorâneos especificamos sistema de pintura acrílico com primer fixador e tratamento adicional de juntas com selante poliuretânico.",
+    geo: "Atendemos reforma de fachada predial em prédios da Centro, Mocambinho, Satélite, Fátima, Jóquei, Ininga, São Cristóvão, Horto, Dionísio Torres, Cabral e Noivos. Para reforma de fachada residencial atuamos em toda Teresina e Grande Teresina (Eusébio, Altos, José de Freitas, União). Em prédios litorâneos especificamos sistema de pintura acrílico com primer fixador e tratamento adicional de juntas com selante poliuretânico.",
     faq: [
       { q: "Quanto custa uma reforma de fachada predial em Teresina?", a: "Pintura de fachada parte de R$ 45 por m² de área aplicada; recuperação estrutural fica entre R$ 80 e R$ 250 por m² conforme patologia. Mapeamento e orçamento são gratuitos." },
       { q: "Quanto tempo dura a pintura de fachada?", a: "Em Teresina, com tinta acrílica premium e preparação correta, a pintura de fachada dura de 5 a 8 anos. Prédios na Centro costumam pedir repintura no menor intervalo por causa da calor e poeira." },
@@ -2164,7 +2164,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       "Rejunte epóxi nas áreas submersas (resistente a cloro)",
       "Teste de estanqueidade de 7 dias antes da liberação para uso",
     ],
-    geo: "Atendemos reforma de piscina em Teresina inteira — Jóquei, Fátima, Ininga�, Cabral, Noivos, Cidade dos Funcionários, Cambeba — e em casas de praia e condomínios em Eusébio, Altos (Porto das Dunas), José de Freitas (Cumbuco, Icaraí), Pacatuba e União�. Em piscinas próximas ao mar usamos rejunte epóxi e fixadores em inox 316 por causa da insolação intensa.",
+    geo: "Atendemos reforma de piscina em Teresina inteira — Jóquei, Fátima, Ininga, Cabral, Noivos, Cidade dos Funcionários, Cambeba — e em casas de praia e condomínios em Eusébio, Altos (Porto das Dunas), José de Freitas (Cumbuco, Icaraí), Pacatuba e União. Em piscinas próximas ao mar usamos rejunte epóxi e fixadores em inox 316 por causa da insolação intensa.",
     faq: [
       { q: "Como saber se a piscina tem vazamento?", a: "Marque o nível, cubra para evitar evaporação e meça em 24h. Perda acima de 5 mm/dia indica vazamento. Fazemos teste de evaporação técnico gratuito." },
       { q: "Quanto custa impermeabilização de piscina com vazamento?", a: "Depende da metragem e do sistema. Impermeabilização com argamassa polimérica + nova pastilha parte de R$ 280 por m² de espelho d'água. Conserto de vazamento pontual fica entre R$ 1.500 e R$ 5.000." },
@@ -2226,7 +2226,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       "Equipe própria CLT — sem subempreitar montadores",
       "Garantia formal de 12 meses sobre instalação de piso vinílico, laminado, cerâmica e porcelanato",
     ],
-    geo: "Atendemos reforma de pisos em todo Teresina — Jóquei, Fátima, Ininga�, Cabral, Noivos, Bela Vista, Cidade dos Funcionários, Cambeba, Messejana, Dirceu, Centro e Mocambinho — e em Eusébio, Altos, José de Freitas, Pacatuba e União�. Em apartamentos litorâneos indicamos porcelanato técnico de baixa absorção e rejunte epóxi nas áreas molhadas.",
+    geo: "Atendemos reforma de pisos em todo Teresina — Jóquei, Fátima, Ininga, Cabral, Noivos, Bela Vista, Cidade dos Funcionários, Cambeba, Messejana, Dirceu, Centro e Mocambinho — e em Eusébio, Altos, José de Freitas, Pacatuba e União. Em apartamentos litorâneos indicamos porcelanato técnico de baixa absorção e rejunte epóxi nas áreas molhadas.",
     faq: [
       { q: "Quanto custa instalação de piso vinílico em Teresina?", a: "Instalação de piso vinílico click parte de R$ 35/m² (mão de obra) + material. Régua colada fica em torno de R$ 45/m². Visita técnica e orçamento para trocar piso são gratuitos." },
       { q: "Quanto tempo demora uma reforma de piso laminado?", a: "Em uma sala de 30 m², a reforma de piso laminado leva 1 a 2 dias úteis, sem quebra-quebra e com mínimo de barulho." },
@@ -2294,7 +2294,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       "Garantia de 12 meses sobre execução e 5 anos sobre impermeabilização",
       "Empreiteiro para fazer cozinha CLT — sem subempreitar marceneiro de aplicativo",
     ],
-    geo: "Atendemos reforma de cozinha em todos os edifícios e casas de Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Cabral, Noivos, Bela Vista, Centro, Mocambinho e Dirceu — e em Eusébio, Altos, José de Freitas, Pacatuba e União�. Em cozinhas litorâneas indicamos puxadores e ferragens em inox 304/316 e bancadas em quartzo para resistir à calor e poeira.",
+    geo: "Atendemos reforma de cozinha em todos os edifícios e casas de Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Cabral, Noivos, Bela Vista, Centro, Mocambinho e Dirceu — e em Eusébio, Altos, José de Freitas, Pacatuba e União. Em cozinhas litorâneas indicamos puxadores e ferragens em inox 304/316 e bancadas em quartzo para resistir à calor e poeira.",
     faq: [
       { q: "Qual a remodelação de cozinha preço médio em Teresina?", a: "Reforma de cozinha simples (sem mexer em hidráulica) parte de R$ 12 mil. Reforma de cozinha pequena completa fica entre R$ 25 mil e R$ 45 mil. Cozinha gourmet com ilha varia de R$ 60 mil a R$ 150 mil." },
       { q: "Vocês fazem reforma hidráulica de cozinha completa?", a: "Sim. Trocamos prumadas internas, redimensionamos pontos para máquina de lavar louças, filtro, gelo, dispenser e coifa. Teste de estanqueidade obrigatório antes do revestimento." },
@@ -2361,7 +2361,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       "Grama sintética esportiva monofilamento de fabricantes homologados (8+ anos de durabilidade)",
       "Garantia de 24 a 60 meses conforme o sistema aplicado",
     ],
-    geo: "Atendemos reforma de quadras em condomínios, clubes e escolas em Teresina — Jóquei, Ininga�, Cabral, Noivos, Bela Vista, Cidade dos Funcionários, Cambeba, Messejana, Dirceu, Centro — e em Eusébio, Altos, José de Freitas, Pacatuba e União�. Para quadras próximas ao mar especificamos tela de alambrado revestida em PVC e estrutura galvanizada a fogo contra calor e poeira.",
+    geo: "Atendemos reforma de quadras em condomínios, clubes e escolas em Teresina — Jóquei, Ininga, Cabral, Noivos, Bela Vista, Cidade dos Funcionários, Cambeba, Messejana, Dirceu, Centro — e em Eusébio, Altos, José de Freitas, Pacatuba e União. Para quadras próximas ao mar especificamos tela de alambrado revestida em PVC e estrutura galvanizada a fogo contra calor e poeira.",
     faq: [
       { q: "Qual o preço médio de uma reforma de quadras esportivas em Teresina?", a: "Pintura epóxi para quadra esportiva parte de R$ 95/m². Revitalização de quadra de Society fica entre R$ 180 e R$ 280/m² incluindo brita, manta e grama. Visita e orçamento reforma quadra condomínio são gratuitos." },
       { q: "Vocês fazem conserto de piso de quadra trincado?", a: "Sim. Conserto de piso de quadra trincado com selagem flexível de fissura, regularização e novo sistema de pintura epóxi." },
@@ -2423,7 +2423,7 @@ export const reformaSubservices: ReformaSubservice[] = [
       "Garantia formal de 12 meses sobre execução conforme NBR 16280",
       "Atendimento pós-obra para ajustes finos por até 90 dias",
     ],
-    geo: "Atendemos reforma de quarto em apartamentos e casas em Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Cabral, Noivos, Bela Vista, Cidade dos Funcionários, Cambeba, Messejana, Dirceu, Centro e Mocambinho — e em Eusébio, Altos, José de Freitas, Pacatuba e União�. Em quartos em zona urbana especificamos tinta acrílica premium antimofo e ferragens em inox para a marcenaria.",
+    geo: "Atendemos reforma de quarto em apartamentos e casas em Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Cabral, Noivos, Bela Vista, Cidade dos Funcionários, Cambeba, Messejana, Dirceu, Centro e Mocambinho — e em Eusébio, Altos, José de Freitas, Pacatuba e União. Em quartos em zona urbana especificamos tinta acrílica premium antimofo e ferragens em inox para a marcenaria.",
     faq: [
       { q: "Quanto custa uma reforma de quarto em Teresina?", a: "Reforma de quarto simples (piso, pintura, ponto de ar-condicionado) parte de R$ 8 mil. Suíte do casal completa com closet e banheiro fica entre R$ 35 mil e R$ 70 mil." },
       { q: "Quanto tempo demora uma reforma de quarto?", a: "Quarto padrão (12 m²) com troca de piso, pintura e marcenaria: 5 a 10 dias úteis. Suíte completa com banheiro: 20 a 35 dias úteis." },
@@ -2526,7 +2526,7 @@ export const juntaSubservices: JuntaSubservice[] = [
       "Garantia formal de 5 anos sobre o selante aplicado",
       "Relatório fotográfico antes/durante/depois para prestação de contas ao síndico",
     ],
-    geo: "Atendemos tratamento de juntas de dilatação em prédios residenciais e comerciais de toda Teresina — Centro, Mocambinho, Satélite, Fátima, Jóquei, Ininga�, São Cristóvão, Horto, Dionísio Torres, Bela Vista, Cabral e Noivos — e em Eusébio, Altos e José de Freitas. Para prédios litorâneos, especificamos selante poliuretânico de alta resistência à calor e poeira e UV intenso típicos do clima de Teresina.",
+    geo: "Atendemos tratamento de juntas de dilatação em prédios residenciais e comerciais de toda Teresina — Centro, Mocambinho, Satélite, Fátima, Jóquei, Ininga, São Cristóvão, Horto, Dionísio Torres, Bela Vista, Cabral e Noivos — e em Eusébio, Altos e José de Freitas. Para prédios litorâneos, especificamos selante poliuretânico de alta resistência à calor e poeira e UV intenso típicos do clima de Teresina.",
     faq: [
       { q: "Qual a diferença entre rachadura e junta de dilatação?", a: "Junta de dilatação é um vão técnico previsto em projeto para acomodar movimentação; rachadura é uma patologia não prevista. O tratamento é diferente para cada caso e começa com diagnóstico técnico." },
       { q: "Quanto tempo dura o selante de junta em Teresina?", a: "Selante poliuretânico de qualidade aplicado por equipe técnica dura de 8 a 12 anos em Teresina, considerando a exposição à calor e poeira e ao UV intenso." },
@@ -2587,7 +2587,7 @@ export const juntaSubservices: JuntaSubservice[] = [
       "Selantes Sikaflex 11FC, Sikaflex Pro 3 ou Mapeflex PU45 — marcas homologadas",
       "Garantia formal de 5 anos com vistoria anual gratuita opcional",
     ],
-    geo: "Atendemos selamento de junta predial em fachadas de edifícios residenciais e comerciais em toda Teresina — Centro, Mocambinho, Fátima, Jóquei, Satélite, Ininga�, São Cristóvão, Horto, Cabral, Noivos, Bela Vista, Cambeba — e Eusébio, Altos, José de Freitas. Em prédios da Centro e Dirceu especificamos selantes com resistência reforçada à calor e poeira.",
+    geo: "Atendemos selamento de junta predial em fachadas de edifícios residenciais e comerciais em toda Teresina — Centro, Mocambinho, Fátima, Jóquei, Satélite, Ininga, São Cristóvão, Horto, Cabral, Noivos, Bela Vista, Cambeba — e Eusébio, Altos, José de Freitas. Em prédios da Centro e Dirceu especificamos selantes com resistência reforçada à calor e poeira.",
     faq: [
       { q: "Vocês trabalham em prédio alto?", a: "Sim. Atendemos edifícios de até 40 pavimentos com equipe certificada em NR-35 e ART de execução, em rapel ou andaime suspenso." },
       { q: "Precisa parar o uso do prédio?", a: "Não. Os serviços de vedação de juntas de fachada são feitos pelo lado externo, sem interferir na rotina dos condôminos. Apenas comunicamos os apartamentos da fachada trabalhada no dia." },
@@ -2648,7 +2648,7 @@ export const juntaSubservices: JuntaSubservice[] = [
       "Contratos anuais com SLA de atendimento corretivo",
       "Relatórios técnicos compatíveis com Lei de Inspeção Predial",
     ],
-    geo: "Atendemos manutenção de junta de movimentação em condomínios residenciais e prédios comerciais de Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Centro, Satélite, Cabral, Bela Vista — e em galpões e indústrias na Grande Teresina (Pacatuba, União�, José de Freitas, Eusébio) com piso de concreto e juntas de movimentação industrial.",
+    geo: "Atendemos manutenção de junta de movimentação em condomínios residenciais e prédios comerciais de Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Centro, Satélite, Cabral, Bela Vista — e em galpões e indústrias na Grande Teresina (Pacatuba, União, José de Freitas, Eusébio) com piso de concreto e juntas de movimentação industrial.",
     faq: [
       { q: "Qual a periodicidade ideal da manutenção de juntas?", a: "Inspeção visual anual e renovação completa do selante a cada 8 a 12 anos. Indústrias com piso de concreto exigem inspeção semestral." },
       { q: "O contrato cobre atendimento emergencial?", a: "Sim. Contratos anuais incluem SLA de atendimento corretivo em 48h para falhas críticas." },
@@ -2709,7 +2709,7 @@ export const juntaSubservices: JuntaSubservice[] = [
       "Equipe CLT com EPIs e treinamento em NR-35 quando em altura",
       "Garantia formal de 5 a 10 anos conforme o método aplicado",
     ],
-    geo: "Atendemos recuperação de junta estrutural em condomínios residenciais e prédios comerciais em toda Teresina, com foco em edifícios litorâneos (Centro, Mocambinho, Satélite, Dirceu), Fátima, Jóquei, Ininga�, São Cristóvão, Horto, Cabral e Noivos — onde a calor e poeira acelera a corrosão da armadura. Também atendemos Eusébio, Altos e José de Freitas.",
+    geo: "Atendemos recuperação de junta estrutural em condomínios residenciais e prédios comerciais em toda Teresina, com foco em edifícios litorâneos (Centro, Mocambinho, Satélite, Dirceu), Fátima, Jóquei, Ininga, São Cristóvão, Horto, Cabral e Noivos — onde a calor e poeira acelera a corrosão da armadura. Também atendemos Eusébio, Altos e José de Freitas.",
     faq: [
       { q: "Como fazer um orçamento de recuperação de junta estrutural?", a: "Solicite uma visita técnica gratuita. Em até 5 dias úteis entregamos laudo com diagnóstico, método proposto, ART, materiais especificados e orçamento detalhado." },
       { q: "Vazamento na junta sempre é estrutural?", a: "Nem sempre. Muitos vazamentos são apenas selante envelhecido. Mas se houve corrosão de armadura ou fissuração no entorno, o tratamento precisa ser estrutural — não cosmético." },
@@ -2770,7 +2770,7 @@ export const juntaSubservices: JuntaSubservice[] = [
       "Relatório fotográfico antes/durante/depois para o síndico ou seguradora",
       "Garantia formal de 5 anos com vistoria opcional anual",
     ],
-    geo: "Atendemos reparo de infiltração em junta de dilatação em apartamentos e prédios de toda Teresina — Centro, Mocambinho, Satélite, Fátima, Jóquei, Ininga�, São Cristóvão, Horto, Cabral, Noivos, Dirceu — e em Eusébio, Altos e José de Freitas. Em apartamentos de cobertura em prédios litorâneos, é onde mais atendemos infiltração em junta térmica de laje.",
+    geo: "Atendemos reparo de infiltração em junta de dilatação em apartamentos e prédios de toda Teresina — Centro, Mocambinho, Satélite, Fátima, Jóquei, Ininga, São Cristóvão, Horto, Cabral, Noivos, Dirceu — e em Eusébio, Altos e José de Freitas. Em apartamentos de cobertura em prédios litorâneos, é onde mais atendemos infiltração em junta térmica de laje.",
     faq: [
       { q: "Como sei se a infiltração é da junta ou da tubulação?", a: "Geralmente a infiltração de junta intensifica em dias de chuva, e a de tubulação é constante. Fazemos teste de aspersão para confirmar antes de orçar." },
       { q: "Vocês resolvem o problema em uma visita?", a: "Na maioria dos casos sim — para infiltrações simples em junta de cobertura ou fachada, o serviço é executado em 1 ou 2 dias." },
@@ -2831,7 +2831,7 @@ export const juntaSubservices: JuntaSubservice[] = [
       "Ensaio de estanqueidade obrigatório por 72h antes da entrega",
       "Garantia formal de 5 a 10 anos conforme o sistema escolhido",
     ],
-    geo: "Atendemos impermeabilização de junta de dilatação em prédios e residências de toda Teresina — Centro, Mocambinho, Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Satélite, Dirceu, Cabral, Noivos, Bela Vista — e em Eusébio, Altos e José de Freitas. Em prédios litorâneos, especificamos sistemas resistentes à calor e poeira e UV intenso.",
+    geo: "Atendemos impermeabilização de junta de dilatação em prédios e residências de toda Teresina — Centro, Mocambinho, Jóquei, Fátima, Ininga, São Cristóvão, Horto, Satélite, Dirceu, Cabral, Noivos, Bela Vista — e em Eusébio, Altos e José de Freitas. Em prédios litorâneos, especificamos sistemas resistentes à calor e poeira e UV intenso.",
     faq: [
       { q: "Selante e impermeabilização são a mesma coisa?", a: "Não. Selante garante elasticidade da junta; impermeabilização é um sistema completo conforme NBR 9574 que combina selante com manta ou poliuretano líquido para áreas críticas." },
       { q: "Qual o melhor sistema para minha junta?", a: "Depende do tipo (cobertura, garagem, piscina), do movimento esperado e da exposição. Fazemos visita técnica gratuita e indicamos o sistema correto." },
@@ -2892,7 +2892,7 @@ export const juntaSubservices: JuntaSubservice[] = [
       "Equipe NR-35 para selagem em altura entre torres",
       "Garantia formal de 5 a 10 anos conforme o sistema aplicado",
     ],
-    geo: "Atendemos reparo de rachadura entre prédios em condomínios de Teresina com múltiplas torres — Jóquei, Fátima, Ininga�, São Cristóvão, Cabral, Bela Vista, Cambeba, Cidade dos Funcionários — e em condomínios novos na Grande Teresina (Eusébio, Altos, José de Freitas). Em condomínios litorâneos da Centro e Mocambinho, usamos sistemas reforçados contra calor e poeira.",
+    geo: "Atendemos reparo de rachadura entre prédios em condomínios de Teresina com múltiplas torres — Jóquei, Fátima, Ininga, São Cristóvão, Cabral, Bela Vista, Cambeba, Cidade dos Funcionários — e em condomínios novos na Grande Teresina (Eusébio, Altos, José de Freitas). Em condomínios litorâneos da Centro e Mocambinho, usamos sistemas reforçados contra calor e poeira.",
     faq: [
       { q: "É rachadura ou junta de dilatação entre os prédios?", a: "Quase sempre é a junta estrutural projetada para separar os blocos. Confirmamos no diagnóstico com engenheiro antes de qualquer intervenção." },
       { q: "Posso fechar com cimento?", a: "Não. Fechar com cimento uma junta de movimentação causa fissuração no entorno e pode comprometer a estrutura. O correto é selante elástico." },
@@ -2953,7 +2953,7 @@ export const juntaSubservices: JuntaSubservice[] = [
       "Selantes Sikaflex 11FC, Sikaflex Pro 3 ou Mapeflex PU45 homologados",
       "Garantia formal de 5 anos sobre os pontos selados",
     ],
-    geo: "Atendemos conserto de vazamento em fachada predial em toda Teresina, com foco em prédios litorâneos onde a calor e poeira acelera a falha de selantes — Centro, Mocambinho, Satélite, Fátima, Jóquei, Ininga�, São Cristóvão, Horto, Dirceu — e em Cabral, Noivos, Bela Vista e na Grande Teresina (Eusébio, Altos, José de Freitas).",
+    geo: "Atendemos conserto de vazamento em fachada predial em toda Teresina, com foco em prédios litorâneos onde a calor e poeira acelera a falha de selantes — Centro, Mocambinho, Satélite, Fátima, Jóquei, Ininga, São Cristóvão, Horto, Dirceu — e em Cabral, Noivos, Bela Vista e na Grande Teresina (Eusébio, Altos, José de Freitas).",
     faq: [
       { q: "Vocês resolvem em uma visita?", a: "Para vazamentos pontuais, sim, em 1 ou 2 dias. Para fachadas inteiras com múltiplos pontos críticos, planejamos cronograma de 1 a 4 semanas conforme a metragem." },
       { q: "É preciso desocupar o apartamento?", a: "Não. O serviço é feito pelo lado externo, apenas comunicamos os apartamentos da fachada trabalhada no dia para fechar janelas." },
@@ -3062,7 +3062,7 @@ export const segurancaSubservices: SegurancaSubservice[] = [
       "Garantia formal de 12 meses sobre serviço + garantia de fábrica nos equipamentos",
       "Treinamento do cliente no app e suporte remoto pós-instalação",
     ],
-    geo: "Atendemos serviços de cameras de segurança em residências, condomínios e comércios em toda Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Centro, Satélite, Mocambinho, Dionísio Torres, Bela Vista, Cabral, Bela Vista, Cambeba, Noivos e Messejana — e em Eusébio, Altos e José de Freitas. Para imóveis litorâneos da Centro e Dirceu especificamos câmeras IP66/IP67 com tratamento anticalor e poeira para garantir vida útil em ambiente salino.",
+    geo: "Atendemos serviços de cameras de segurança em residências, condomínios e comércios em toda Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Centro, Satélite, Mocambinho, Dionísio Torres, Bela Vista, Cabral, Bela Vista, Cambeba, Noivos e Messejana — e em Eusébio, Altos e José de Freitas. Para imóveis litorâneos da Centro e Dirceu especificamos câmeras IP66/IP67 com tratamento anticalor e poeira para garantir vida útil em ambiente salino.",
     faq: [
       { q: "Quantas câmeras preciso para uma casa?", a: "Depende da planta, mas a média para casa de 3 quartos em Teresina fica entre 4 e 8 câmeras: portão, garagem, lateral, quintal e áreas internas estratégicas. A visita técnica gratuita define o número exato." },
       { q: "Consigo ver as imagens pelo celular?", a: "Sim. Instalamos câmeras IP com acesso remoto via app do fabricante (iSIC, iVMS, DMSS), com login seguro e notificação por detecção de movimento." },
@@ -3130,7 +3130,7 @@ export const segurancaSubservices: SegurancaSubservice[] = [
       "App no celular com notificação push em tempo real",
       "Garantia formal de 12 meses sobre serviço + garantia de fábrica nos equipamentos",
     ],
-    geo: "Atendemos instalação de alarme residencial, comercial e predial em toda Teresina — Jóquei, Fátima, Ininga�, São Cristóvão, Horto, Centro, Mocambinho, Satélite, Cabral, Noivos, Messejana, Cambeba, Bela Vista — e em Eusébio, Altos e José de Freitas. Para casas litorâneas e comércios próximos à orla recomendamos sirene externa com tratamento anticorrosivo e bateria reforçada por causa das oscilações frequentes da rede elétrica.",
+    geo: "Atendemos instalação de alarme residencial, comercial e predial em toda Teresina — Jóquei, Fátima, Ininga, São Cristóvão, Horto, Centro, Mocambinho, Satélite, Cabral, Noivos, Messejana, Cambeba, Bela Vista — e em Eusébio, Altos e José de Freitas. Para casas litorâneas e comércios próximos à orla recomendamos sirene externa com tratamento anticorrosivo e bateria reforçada por causa das oscilações frequentes da rede elétrica.",
     faq: [
       { q: "Qual o preço da instalação de alarme residencial?", a: "Depende do número de portas, janelas e áreas a cobrir. O kit básico (central, 4 sensores, sirene e app) parte de uma faixa acessível; após visita técnica gratuita entregamos orçamento por escrito com instalação de alarme residencial preço fechado." },
       { q: "O alarme funciona se faltar energia?", a: "Sim. Toda instalação inclui bateria selada de 12V com autonomia de até 12h, garantindo proteção mesmo nas quedas comuns da rede em Teresina." },
