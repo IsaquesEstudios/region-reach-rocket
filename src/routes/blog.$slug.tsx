@@ -1,11 +1,62 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { Clock, Eye, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { formatDate } from "@/lib/blog/utils";
 
 export const Route = createFileRoute("/blog/$slug")({
+  loader: async ({ params }) => {
+    const { data, error } = await supabase
+      .from("posts")
+      .select("id,title,slug,content,excerpt,cover_image_url,reading_time,published_at,updated_at,views,meta_title,meta_description,og_image_url,category:categories(name,slug,color),author:profiles(full_name,avatar_url,bio)")
+      .eq("slug", params.slug)
+      .eq("status", "published")
+      .maybeSingle();
+    if (error) throw error;
+    if (!data) throw notFound();
+    return data;
+  },
+  head: ({ loaderData, params }) => {
+    if (!loaderData) return {};
+    const title = loaderData.meta_title || loaderData.title;
+    const description = loaderData.meta_description || loaderData.excerpt || "";
+    const image = loaderData.og_image_url || loaderData.cover_image_url || undefined;
+    const url = `/blog/${params.slug}`;
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
+        ...(image ? [{ property: "og:image", content: image }, { name: "twitter:image", content: image }] : []),
+        { name: "twitter:card", content: image ? "summary_large_image" : "summary" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        ...(loaderData.author?.full_name ? [{ name: "author", content: loaderData.author.full_name }] : []),
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: loaderData.title,
+            description,
+            image: image ? [image] : undefined,
+            datePublished: loaderData.published_at,
+            dateModified: loaderData.updated_at ?? loaderData.published_at,
+            author: loaderData.author?.full_name
+              ? { "@type": "Person", name: loaderData.author.full_name }
+              : undefined,
+            articleSection: loaderData.category?.name,
+          }),
+        },
+      ],
+    };
+  },
   component: PostPage,
   errorComponent: ({ error }) => (
     <div className="max-w-3xl mx-auto py-20 px-4 text-center">
@@ -22,28 +73,12 @@ export const Route = createFileRoute("/blog/$slug")({
 });
 
 function PostPage() {
-  const { slug } = Route.useParams();
-
-  const { data: post, isLoading } = useQuery({
-    queryKey: ["post", slug],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("posts")
-        .select("id,title,slug,content,excerpt,cover_image_url,reading_time,published_at,views,category:categories(name,slug,color),author:profiles(full_name,avatar_url,bio)")
-        .eq("slug", slug)
-        .eq("status", "published")
-        .maybeSingle();
-      if (error) throw error;
-      if (!data) throw notFound();
-      return data;
-    },
-  });
+  const post = Route.useLoaderData();
 
   useEffect(() => {
     if (post?.slug) supabase.rpc("increment_post_views", { post_slug: post.slug });
   }, [post?.slug]);
 
-  if (isLoading) return <div className="max-w-3xl mx-auto py-20 px-4">Carregando…</div>;
   if (!post) return null;
 
   return (
@@ -97,6 +132,14 @@ function PostPage() {
           className="prose prose-lg max-w-none mt-8 prose-headings:font-bold prose-a:text-primary prose-img:rounded-xl"
           dangerouslySetInnerHTML={{ __html: post.content ?? "" }}
         />
+
+        {post.author?.bio && (
+          <div className="mt-12 p-6 bg-card border border-border rounded-xl">
+            <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Sobre o autor</p>
+            <p className="font-bold">{post.author.full_name}</p>
+            <p className="text-sm text-muted-foreground mt-1">{post.author.bio}</p>
+          </div>
+        )}
       </div>
     </article>
   );
