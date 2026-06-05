@@ -165,7 +165,7 @@ function PinturaHub() {
               Pintura de fachada predial em Teresina
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
-              A pintura de fachada é o cartão de visita do edifício e a primeira barreira contra a calor e poeira, o sol e a chuva do interior do Piauí. Como empresa de pintura de fachada com equipe certificada em NR-35 (trabalho em altura), executamos repintura completa de prédios residenciais e comerciais usando andaime fachadeiro, balancim ou rapel — sempre com tintas acrílicas premium específicas para fachadas litorâneas.
+              A pintura de fachada é o cartão de visita do edifício e a primeira barreira contra a calor e poeira, o sol e a chuva do interior do Piauí. Como empresa de pintura de fachada com equipe certificada em NR-35 (trabalho em altura), executamos repintura completa de prédios residenciais e comerciais usando andaime fachadeiro, balancim ou rapel — sempre com tintas acrílicas premium específicas para fachadas urbanas.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
               Antes de qualquer demão, fazemos hidrojateamento, tratamento de fissuras, recuperação de juntas de dilatação e selagem. Cada projeto inclui ART de execução, cronograma físico-financeiro e relatório fotográfico para a administração do condomínio.

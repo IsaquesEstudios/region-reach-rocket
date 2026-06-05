@@ -164,7 +164,7 @@ function SegurancaHub() {
               Instalar câmera ou alarme não é furar parede e ligar cabo — é projeto de segurança eletrônica. A Chico Resolve atua com protocolo técnico: visita técnica gratuita, levantamento de pontos cegos, dimensionamento de gravador (DVR/NVR), HD de vigilância dedicado, cabeamento estruturado em conduíte conforme NBR 14565, fonte estabilizada com DPS e integração ao app do cliente. Para alarmes, dimensionamos sensores PIR com imunidade a pets, sensores magnéticos em portas e janelas, sirene interna e externa de alta potência e bateria de backup para falta de energia — comum em Teresina.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
-              Para imóveis litorâneos da Centro, Mocambinho e Dirceu, especificamos câmeras IP66/IP67 com tratamento anticalor e poeira e sirenes com acabamento anticorrosivo, evitando que a insolação intensa reduza a vida útil do sistema. Atendemos pacotes integrados de instalação de alarmes e câmeras — mesmo app, mesma notificação e custo otimizado em relação a instalações separadas.
+              Para imóveis urbanos da Centro, Mocambinho e Dirceu, especificamos câmeras IP66/IP67 com tratamento anticalor e poeira e sirenes com acabamento anticorrosivo, evitando que a insolação intensa reduza a vida útil do sistema. Atendemos pacotes integrados de instalação de alarmes e câmeras — mesmo app, mesma notificação e custo otimizado em relação a instalações separadas.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link

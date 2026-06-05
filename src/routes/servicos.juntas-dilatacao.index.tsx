@@ -164,7 +164,7 @@ function JuntasHub() {
               Tratar junta de dilatação não é trocar selante — é engenharia de manutenção predial. A Chico Resolve atua com protocolo técnico em cada serviço: vistoria com engenheiro estrutural, classificação da patologia conforme NBR 6118 e NBR 9575, escolha do selante e do sistema (poliuretano de alto módulo, silicone estrutural, manta asfáltica, perfil metálico de cobertura) e execução com ART de engenheiro. Cada serviço termina com ensaio de estanqueidade obrigatório e relatório fotográfico para o síndico ou gestor de facilities.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
-              Atendemos condomínios residenciais, prédios comerciais, indústrias e residências de alto padrão em Teresina e Grande Teresina. Para edifícios litorâneos (Centro, Mocambinho, Satélite, Dirceu), especificamos selantes com resistência reforçada à calor e poeira e UV intenso, que envelhecem qualquer material genérico em poucos anos.
+              Atendemos condomínios residenciais, prédios comerciais, indústrias e residências de alto padrão em Teresina e Grande Teresina. Para edifícios urbanos (Centro, Mocambinho, Satélite, Dirceu), especificamos selantes com resistência reforçada à calor e poeira e UV intenso, que envelhecem qualquer material genérico em poucos anos.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
