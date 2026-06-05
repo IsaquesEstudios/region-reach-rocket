@@ -1,8 +1,39 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
-import { services, site, whatsappLink } from "@/lib/site";
+import { Menu, X, Phone, ChevronDown, ChevronRight } from "lucide-react";
+import {
+  services,
+  site,
+  whatsappLink,
+  pinturaSubservices,
+  eletricaSubservices,
+  hidraulicaSubservices,
+  drywallSubservices,
+  juntaSubservices,
+  segurancaSubservices,
+  reformaSubservices,
+} from "@/lib/site";
 import logo from "@/assets/chico-resolve-logo.png.asset.json";
+
+const subservicesBySlug: Record<string, { slug: string; shortTitle: string; code: string }[]> = {
+  pintura: pinturaSubservices,
+  eletrica: eletricaSubservices,
+  hidraulica: hidraulicaSubservices,
+  drywall: drywallSubservices,
+  "juntas-dilatacao": juntaSubservices,
+  seguranca: segurancaSubservices,
+  reformas: reformaSubservices,
+};
+
+const subRouteBySlug: Record<string, string> = {
+  pintura: "/servicos/pintura/",
+  eletrica: "/servicos/eletrica/",
+  hidraulica: "/servicos/hidraulica/",
+  drywall: "/servicos/drywall/",
+  "juntas-dilatacao": "/servicos/juntas-dilatacao/",
+  seguranca: "/servicos/seguranca/",
+  reformas: "/servicos/reformas/",
+};
 
 export function Header() {
   const [open, setOpen] = useState(false);
