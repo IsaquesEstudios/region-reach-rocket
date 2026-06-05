@@ -2983,3 +2983,176 @@ export const getJuntaSubservice = (slug: string): JuntaSubservice | undefined =>
 
 
 
+
+// ============================================================================
+// SEGURANÇA — Sub-serviços
+// ============================================================================
+
+export type SegurancaSlug = "instalacao-cameras" | "instalacao-alarmes";
+
+export interface SegurancaSubservice {
+  slug: SegurancaSlug;
+  code: string;
+  h1: string;
+  shortTitle: string;
+  metaTitle: string;
+  metaDescription: string;
+  summary: string;
+  keywords: string[];
+  intro: string;
+  whenToHire: { title: string; text: string }[];
+  types: { title: string; text: string }[];
+  process: { title: string; text: string }[];
+  standards: string[];
+  trust: string[];
+  geo: string;
+  faq: { q: string; a: string }[];
+  related: SegurancaSlug[];
+}
+
+export const segurancaSubservices: SegurancaSubservice[] = [
+  {
+    slug: "instalacao-cameras",
+    code: "SG-01",
+    h1: "Instalação de Câmeras de Segurança em Fortaleza",
+    shortTitle: "Instalação de Câmeras",
+    metaTitle: "Instalação de Câmeras de Segurança em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Empresa de instalação de câmeras de segurança em Fortaleza: câmeras IP, monitoramento, videovigilância residencial, predial e comercial com projeto, NF e ART.",
+    summary:
+      "Instalação técnica de câmeras de segurança, monitoramento e videovigilância para residências, prédios e comércios em Fortaleza, com projeto, NF e garantia.",
+    keywords: [
+      "instalação de cameras de segurança",
+      "instalar camera de segurança",
+      "instalador de câmera residencial",
+      "orçamento cameras de segurança",
+      "empresa de instalação de câmeras de segurança",
+      "instalação de cameras de monitoramento",
+      "empresa instalação de câmeras",
+      "instalacao de camera externa",
+      "serviços de cameras de segurança",
+      "instalação de cameras de vigilância",
+      "instalação de videovigilância",
+      "instalação de cameras predial",
+    ],
+    intro:
+      "Câmera de segurança bem instalada começa antes do furo na parede: começa com projeto. A Chico Resolve atua como empresa de instalação de câmeras de segurança em Fortaleza com projeto técnico do CFTV (campo de visão, ângulo, lux mínimo, posicionamento sem ponto-cego), dimensionamento de gravador (DVR/NVR), HD de vigilância (não use HD comum — queima em meses), cabeamento estruturado em conduíte e fonte estabilizada com proteção contra surto. Atendemos instalação de câmeras residencial, predial e comercial, com câmeras IP Full HD ou 4K, infravermelho real para visão noturna, áudio bidirecional, reconhecimento facial e acesso remoto pelo celular via app do fabricante (Intelbras, Hikvision, Dahua). Cada instalação termina com configuração de gravação contínua + detecção de movimento, treinamento do cliente no app e nota fiscal com garantia.",
+    whenToHire: [
+      { title: "Casa ou apartamento sem CFTV", text: "Cobertura completa de portões, garagem, áreas externas e perímetro com câmeras IP e gravação 24h." },
+      { title: "Prédio residencial ou comercial", text: "Projeto de CFTV predial conforme assembleia, integração com portaria e gravação centralizada." },
+      { title: "Comércio com risco de furto", text: "Cobertura de caixas, depósito, fachada e área de cliente — imagens com qualidade jurídica para BO." },
+      { title: "Substituição de sistema antigo", text: "Migração de câmeras analógicas (HD-TVI/AHD) para IP Full HD/4K com mais nitidez e acesso remoto." },
+    ],
+    types: [
+      { title: "Câmeras Residenciais", text: "Instalação de câmera externa e interna para casas e apartamentos, com app no celular e gravação em nuvem opcional." },
+      { title: "Câmeras Prediais e Condomínios", text: "Instalação de câmeras predial integrada à portaria, com gravador de alta capacidade e backup." },
+      { title: "Câmeras Comerciais e Lojas", text: "Cobertura de PDV, depósito, fachada e estoque, com imagens em qualidade probatória para BO e seguradora." },
+      { title: "Câmeras de Monitoramento Externo", text: "Instalação de cameras externa IP67/IP66 com infravermelho real de longo alcance para perímetro, fachada e estacionamento." },
+      { title: "Videovigilância com Análise Inteligente", text: "Instalação de videovigilância com detecção de pessoas, veículos, cerca virtual e reconhecimento facial." },
+      { title: "Sistemas Híbridos e Substituição", text: "Aproveitamento de cabeamento existente em sistemas mistos (IP + analógico) para reduzir custo da troca." },
+    ],
+    process: [
+      { title: "Visita Técnica e Projeto", text: "Levantamento da planta, mapeamento de pontos cegos, projeto de CFTV com campo de visão de cada câmera e orçamento detalhado." },
+      { title: "Dimensionamento do Gravador", text: "Cálculo de capacidade do DVR/NVR, HD de vigilância (Purple/Skyhawk) e taxa de gravação conforme dias de retenção desejados." },
+      { title: "Infraestrutura e Cabeamento", text: "Passagem de cabo UTP CAT5e/CAT6 ou coaxial em conduíte, eletrocalha ou canaleta, com fonte estabilizada e DPS." },
+      { title: "Instalação e Fixação", text: "Fixação das câmeras com bucha e parafuso adequados ao substrato, calibração de foco, ângulo e infravermelho." },
+      { title: "Configuração e Treinamento", text: "Configuração do gravador, gravação contínua + detecção, acesso remoto no app do cliente, NF e treinamento de uso." },
+    ],
+    standards: [
+      "NBR 5410 (instalações elétricas de baixa tensão)",
+      "NBR 14565 (cabeamento estruturado)",
+      "NR-35 (trabalho em altura) quando aplicável",
+      "LGPD (Lei nº 13.709/2018) — sinalização, retenção e tratamento de imagens",
+      "Manuais técnicos Intelbras, Hikvision e Dahua",
+    ],
+    trust: [
+      "Empresa de instalação de câmeras de segurança com CNPJ, NF e ART quando aplicável",
+      "Câmeras de marcas homologadas Anatel: Intelbras, Hikvision, Dahua",
+      "Cabeamento em conduíte e HD de vigilância (Western Digital Purple / Seagate Skyhawk)",
+      "Projeto de CFTV entregue ao cliente com posicionamento e campo de visão de cada câmera",
+      "Garantia formal de 12 meses sobre serviço + garantia de fábrica nos equipamentos",
+      "Treinamento do cliente no app e suporte remoto pós-instalação",
+    ],
+    geo: "Atendemos serviços de cameras de segurança em residências, condomínios e comércios em toda Fortaleza — Aldeota, Meireles, Cocó, Papicu, Varjota, Beira Mar, Praia de Iracema, Mucuripe, Dionísio Torres, Guararapes, Edson Queiroz, Eng. Luciano Cavalcante, Cambeba, Sapiranga e Messejana — e em Eusébio, Aquiraz e Caucaia. Para imóveis litorâneos da Beira Mar e Praia do Futuro especificamos câmeras IP66/IP67 com tratamento antimaresia para garantir vida útil em ambiente salino.",
+    faq: [
+      { q: "Quantas câmeras preciso para uma casa?", a: "Depende da planta, mas a média para casa de 3 quartos em Fortaleza fica entre 4 e 8 câmeras: portão, garagem, lateral, quintal e áreas internas estratégicas. A visita técnica gratuita define o número exato." },
+      { q: "Consigo ver as imagens pelo celular?", a: "Sim. Instalamos câmeras IP com acesso remoto via app do fabricante (iSIC, iVMS, DMSS), com login seguro e notificação por detecção de movimento." },
+      { q: "Por quantos dias as câmeras ficam gravando?", a: "Dimensionamos o HD para 15, 30 ou 60 dias de gravação contínua + eventos. O padrão recomendado pelas seguradoras é 30 dias." },
+      { q: "Preciso de internet para o CFTV funcionar?", a: "Não. A gravação local no DVR/NVR funciona sem internet. A internet só é necessária para acesso remoto pelo celular." },
+      { q: "Vocês fazem orçamento de cameras de segurança gratuito?", a: "Sim. Fazemos visita técnica gratuita em Fortaleza, entregamos projeto com posicionamento de cada câmera e orçamento detalhado por escrito, sem compromisso." },
+      { q: "Câmera externa aguenta sol e chuva de Fortaleza?", a: "Sim, quando especificada corretamente. Usamos câmeras IP66/IP67 e em região de maresia adicionamos modelos com tratamento anticorrosivo reforçado." },
+    ],
+    related: ["instalacao-alarmes"],
+  },
+  {
+    slug: "instalacao-alarmes",
+    code: "SG-02",
+    h1: "Instalação de Alarmes em Fortaleza",
+    shortTitle: "Instalação de Alarmes",
+    metaTitle: "Instalação de Alarmes em Fortaleza | Residencial, Comercial e Predial",
+    metaDescription:
+      "Instalação de alarmes residencial, comercial e predial em Fortaleza: central, sensores, sirene, app no celular e integração com câmeras. Orçamento e preço sob medida.",
+    summary:
+      "Instalação de alarme residencial, comercial e predial com central, sensores sem fio, sirene e integração com câmeras e app no celular.",
+    keywords: [
+      "instalação de alarmes comerciais",
+      "instalação de alarme residencial preço",
+      "instalação de alarmes e cameras",
+      "instalação de alarme residencial",
+      "instalação de alarme predial",
+      "instalação de alarme comercial",
+    ],
+    intro:
+      "Alarme bem instalado é prevenção: dissuade o invasor antes de entrar e aciona resposta imediata se a perimetria for violada. A Chico Resolve faz instalação de alarme residencial, comercial e predial em Fortaleza com centrais Intelbras AMT, JFL Active e PPA, sensores de presença (infravermelho passivo) com imunidade a pets, sensores de abertura magnéticos em portas e janelas, sensores de quebra de vidro em áreas envidraçadas, sirene interna e externa de alta potência e bateria de backup para falta de energia. Integração total com app no celular para armar/desarmar à distância, notificação por evento e integração com câmeras IP para gravação automática quando o alarme dispara. Atendemos instalação de alarmes e câmeras em pacote único — sistema integrado com o mesmo app e custo otimizado. Trabalhamos com instalação de alarme residencial preço justo e orçamento por escrito, considerando metragem, número de aberturas e nível de segurança desejado.",
+    whenToHire: [
+      { title: "Casa ou apartamento sem proteção", text: "Cobertura de perimetria (portas, janelas, áreas externas) com sensores e sirene de alta potência." },
+      { title: "Comércio com risco fora do expediente", text: "Instalação de alarmes comerciais com sensores de presença, abertura e quebra de vidro nos pontos críticos." },
+      { title: "Prédio residencial ou condomínio", text: "Instalação de alarme predial em áreas comuns, casa de máquinas, depósito e portaria com central monitorada." },
+      { title: "Integração com câmeras existentes", text: "Instalação de alarmes e câmeras no mesmo app — quando o alarme dispara, a câmera grava o evento." },
+    ],
+    types: [
+      { title: "Alarme Residencial", text: "Instalação de alarme residencial com central, teclado, sensores sem fio em portas e janelas, sirene e app no celular." },
+      { title: "Alarme Comercial", text: "Instalação de alarme comercial para lojas, escritórios, depósitos e clínicas, com sensores em pontos de risco e gravação de eventos." },
+      { title: "Alarme Predial", text: "Instalação de alarme predial em áreas comuns de condomínios, casa de máquinas, garagens e portaria integrado à interfonia." },
+      { title: "Alarme + Câmeras Integrados", text: "Instalação de alarmes e câmeras no mesmo sistema, com gravação automática no disparo e notificação por evento." },
+      { title: "Alarme com Monitoramento 24h", text: "Integração com central de monitoramento terceirizada para resposta humana 24h em caso de disparo." },
+      { title: "Alarme com Bateria de Backup", text: "Operação contínua mesmo na falta de energia, com bateria 12V selada — fundamental em Fortaleza pelas quedas de rede." },
+    ],
+    process: [
+      { title: "Vistoria e Plano de Cobertura", text: "Mapeamento de portas, janelas, áreas envidraçadas e pontos cegos; definição do número de sensores e tipo (PIR pet, magnético, quebra de vidro)." },
+      { title: "Orçamento com Preço Detalhado", text: "Proposta com instalação de alarme residencial preço por equipamento e mão de obra, sem custos surpresa." },
+      { title: "Instalação da Central e Sensores", text: "Fixação da central em local protegido, sensores sem fio nas aberturas, sirene interna e externa." },
+      { title: "Configuração e App", text: "Configuração de partições (noite, ausente, presente), códigos de usuário, notificações no celular e integração com câmeras." },
+      { title: "Treinamento e Entrega", text: "Simulação de armar/desarmar com o cliente, manual prático e NF com garantia de 12 meses." },
+    ],
+    standards: [
+      "NBR 5410 (instalações elétricas de baixa tensão)",
+      "Resoluções Anatel sobre equipamentos rádio (centrais sem fio homologadas)",
+      "LGPD (Lei nº 13.709/2018) — tratamento de dados de notificação",
+      "Manuais técnicos Intelbras AMT, JFL Active e PPA",
+      "Boas práticas de segurança eletrônica ABESE",
+    ],
+    trust: [
+      "Empresa com CNPJ, NF e ART quando aplicável",
+      "Centrais e sensores de marcas homologadas Anatel: Intelbras, JFL, PPA",
+      "Sensores PIR com imunidade a pets (até 25kg) — evita disparo falso",
+      "Sirene de alta potência interna + externa com bateria própria",
+      "Bateria selada de backup dimensionada para 12h de autonomia",
+      "App no celular com notificação push em tempo real",
+      "Garantia formal de 12 meses sobre serviço + garantia de fábrica nos equipamentos",
+    ],
+    geo: "Atendemos instalação de alarme residencial, comercial e predial em toda Fortaleza — Aldeota, Meireles, Cocó, Papicu, Varjota, Beira Mar, Mucuripe, Praia de Iracema, Edson Queiroz, Sapiranga, Messejana, Cambeba, Eng. Luciano Cavalcante — e em Eusébio, Aquiraz e Caucaia. Para casas litorâneas e comércios próximos à orla recomendamos sirene externa com tratamento anticorrosivo e bateria reforçada por causa das oscilações frequentes da rede elétrica.",
+    faq: [
+      { q: "Qual o preço da instalação de alarme residencial?", a: "Depende do número de portas, janelas e áreas a cobrir. O kit básico (central, 4 sensores, sirene e app) parte de uma faixa acessível; após visita técnica gratuita entregamos orçamento por escrito com instalação de alarme residencial preço fechado." },
+      { q: "O alarme funciona se faltar energia?", a: "Sim. Toda instalação inclui bateria selada de 12V com autonomia de até 12h, garantindo proteção mesmo nas quedas comuns da rede em Fortaleza." },
+      { q: "Posso integrar alarmes e câmeras no mesmo app?", a: "Sim. Fazemos instalação de alarmes e câmeras integrados — quando o alarme dispara, a câmera grava o evento e o cliente recebe notificação no celular." },
+      { q: "Os sensores disparam por causa do meu pet?", a: "Não. Usamos sensores PIR com imunidade a pets até 25kg, calibrados para ignorar animais e detectar apenas pessoas." },
+      { q: "Vocês fazem instalação de alarmes comerciais em loja pequena?", a: "Sim. Fazemos instalação de alarme comercial para qualquer porte, do quiosque ao galpão, com solução dimensionada para o risco e o orçamento." },
+      { q: "Tem monitoramento 24h?", a: "Opcional. Integramos com central terceirizada certificada para resposta humana 24h, vigilante e acionamento da PM em caso de invasão confirmada." },
+    ],
+    related: ["instalacao-cameras"],
+  },
+];
+
+export const getSegurancaSubservice = (slug: string): SegurancaSubservice | undefined =>
+  segurancaSubservices.find((s) => s.slug === slug);
