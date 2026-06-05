@@ -3,7 +3,12 @@ import { useNavigate } from "@tanstack/react-router";
 import { useAuth } from "@/hooks/use-auth";
 import { AdminLayout } from "./AdminLayout";
 
-export function AdminGate({ children }: { children: ReactNode }) {
+interface AdminGateProps {
+  children: ReactNode;
+  requireRole?: "admin" | "author";
+}
+
+export function AdminGate({ children, requireRole }: AdminGateProps) {
   const { user, role, loading } = useAuth();
   const navigate = useNavigate();
 
@@ -17,16 +22,25 @@ export function AdminGate({ children }: { children: ReactNode }) {
     return <div className="min-h-screen flex items-center justify-center text-muted-foreground">Carregando…</div>;
   }
   if (!user) return null;
-  if (role !== "admin" && role !== "author") {
+
+  const allowed = requireRole === "admin"
+    ? role === "admin"
+    : role === "admin" || role === "author";
+
+  if (!allowed) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-6">
-        <div className="max-w-md text-center">
-          <h1 className="text-2xl font-bold">Acesso negado</h1>
-          <p className="text-muted-foreground mt-2">
-            Sua conta não tem permissão para acessar o painel. Solicite acesso ao administrador.
-          </p>
+      <AdminLayout>
+        <div className="min-h-screen flex items-center justify-center p-6">
+          <div className="max-w-md text-center">
+            <h1 className="text-2xl font-bold">Acesso negado</h1>
+            <p className="text-muted-foreground mt-2">
+              {requireRole === "admin"
+                ? "Apenas administradores podem acessar esta área."
+                : "Sua conta não tem permissão para acessar o painel."}
+            </p>
+          </div>
         </div>
-      </div>
+      </AdminLayout>
     );
   }
   return <AdminLayout>{children}</AdminLayout>;
