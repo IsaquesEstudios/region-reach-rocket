@@ -8,9 +8,9 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/admin/users")({
   component: () => (
     <AdminGate requireRole="admin">
-      <AdminLayout>
+
         <UsersPage />
-      </AdminLayout>
+
     </AdminGate>
   ),
 });

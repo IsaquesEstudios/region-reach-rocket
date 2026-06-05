@@ -11,9 +11,9 @@ import { slugify } from "@/lib/blog/utils";
 export const Route = createFileRoute("/admin/categories")({
   component: () => (
     <AdminGate requireRole="admin">
-      <AdminLayout>
+
         <CategoriesPage />
-      </AdminLayout>
+
     </AdminGate>
   ),
 });
