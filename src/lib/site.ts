@@ -2449,6 +2449,536 @@ export const reformaSubservices: ReformaSubservice[] = [
 export const getReformaSubservice = (slug: string): ReformaSubservice | undefined =>
   reformaSubservices.find((s) => s.slug === slug);
 
+// ============================================================================
+// JUNTAS DE DILATAÇÃO — Hub + sub-páginas otimizadas para EEAT, GEO Fortaleza
+// e SEO técnico (Service + Breadcrumb + FAQPage JSON-LD).
+// ============================================================================
+
+export type JuntaSlug =
+  | "tratamento-dilatacao"
+  | "vedacao-fachada"
+  | "manutencao-movimentacao"
+  | "recuperacao-estrutural"
+  | "infiltracao"
+  | "impermeabilizacao"
+  | "rachadura-entre-predios"
+  | "vazamento-fachada";
+
+export interface JuntaSubservice {
+  slug: JuntaSlug;
+  code: string;
+  h1: string;
+  shortTitle: string;
+  metaTitle: string;
+  metaDescription: string;
+  summary: string;
+  keywords: string[];
+  intro: string;
+  whenToHire: { title: string; text: string }[];
+  types: { title: string; text: string }[];
+  process: { title: string; text: string }[];
+  standards: string[];
+  trust: string[];
+  geo: string;
+  faq: { q: string; a: string }[];
+  related: JuntaSlug[];
+}
+
+export const juntaSubservices: JuntaSubservice[] = [
+  {
+    slug: "tratamento-dilatacao",
+    code: "JD-01",
+    h1: "Tratamento de Juntas de Dilatação em Fortaleza",
+    shortTitle: "Tratamento de Juntas",
+    metaTitle: "Tratamento de Juntas de Dilatação em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Empresa especializada em tratamento de juntas de dilatação em Fortaleza: remoção do selante envelhecido, primer, backer rod e selante poliuretânico com garantia.",
+    summary:
+      "Tratamento técnico completo de juntas de dilatação em lajes, pisos, fachadas e garagens, com diagnóstico, remoção controlada e selante de alta durabilidade.",
+    keywords: [
+      "tratamento de juntas de dilatação",
+      "tratamento de junta de dilatação",
+      "empresa de tratamento de juntas",
+      "selante para junta de dilatação",
+      "junta de dilatação tratamento técnico",
+    ],
+    intro:
+      "Junta de dilatação não é uma rachadura — é um espaço técnico previsto em projeto para acomodar a movimentação natural do concreto por variação térmica, retração de cura e cargas dinâmicas. Quando o selante envelhece, racha ou descola, a junta deixa de ser estanque e passa a ser a principal porta de entrada para infiltrações, corrosão de armadura e patologias estruturais. A Chico Resolve faz tratamento de juntas de dilatação em Fortaleza com protocolo técnico completo: vistoria, classificação da patologia, remoção controlada do selante envelhecido, limpeza do substrato, aplicação de primer compatível, instalação de cordão de apoio (backer rod) no diâmetro correto e aplicação de selante poliuretânico ou silicone estrutural conforme a exposição (fachada exposta à maresia, laje sob sol direto, piso de garagem com tráfego pesado). Cada serviço sai com relatório fotográfico, ficha técnica dos materiais aplicados e garantia formal por escrito.",
+    whenToHire: [
+      { title: "Selante descolado ou rachado", text: "Quando o cordão de selante perde aderência, abre fendas ou apresenta fissuras visíveis a olho nu." },
+      { title: "Infiltração logo abaixo da junta", text: "Manchas de umidade no teto do andar inferior alinhadas com a junta da laje ou da fachada." },
+      { title: "Junta com mais de 8 anos sem manutenção", text: "Vida útil do selante poliuretânico em Fortaleza varia de 8 a 12 anos por causa da maresia e UV intenso." },
+      { title: "Obra nova com selagem mal executada", text: "Bolhas, descontinuidade, falta de primer ou ausência de backer rod — refazemos conforme NBR." },
+    ],
+    types: [
+      { title: "Tratamento em Lajes de Cobertura", text: "Junta de dilatação de cobertura com selante poliuretânico de alto módulo, resistente a UV e variação térmica." },
+      { title: "Tratamento em Fachadas", text: "Selagem vertical em fachadas pré-moldadas, ACM ou alvenaria com selante e cordão dimensionados para o movimento esperado." },
+      { title: "Tratamento em Pisos e Garagens", text: "Selante poliuretânico de alta dureza para juntas com tráfego de veículos, áreas de carga e descarga." },
+      { title: "Tratamento em Áreas Molhadas", text: "Piscinas, reservatórios, sacadas e varandas com selante estrutural compatível com imersão e produtos químicos." },
+    ],
+    process: [
+      { title: "Vistoria Técnica", text: "Classificação da patologia (envelhecimento, descolamento, fissuração, infiltração) e mapa de juntas com fotos." },
+      { title: "Remoção Controlada", text: "Retirada do selante envelhecido com ferramenta adequada, sem danificar bordas do concreto." },
+      { title: "Limpeza e Primer", text: "Limpeza com escova, ar comprimido e álcool isopropílico; aplicação de primer compatível com o substrato." },
+      { title: "Cordão de Apoio e Selante", text: "Backer rod de polietileno dimensionado e selante poliuretânico ou silicone estrutural aplicado em cordão contínuo." },
+      { title: "Acabamento e Inspeção", text: "Alisamento com espátula, ensaio de estanqueidade por aspersão e relatório fotográfico entregue ao cliente." },
+    ],
+    standards: [
+      "NBR 9575 (impermeabilização — projeto)",
+      "NBR 9574 (execução de impermeabilização)",
+      "NBR 15575 (desempenho de edificações)",
+      "NR-35 (trabalho em altura)",
+      "Manual técnico do fabricante do selante (Sika, Mapei, Vedacit, Hey'di)",
+    ],
+    trust: [
+      "Empresa especializada em tratamento de juntas com CNPJ ativo e nota fiscal",
+      "Equipe CLT certificada em NR-35 para tratamento em fachada e altura",
+      "Materiais de marcas homologadas: Sikaflex, Mapeflex, Vedaflex",
+      "Garantia formal de 5 anos sobre o selante aplicado",
+      "Relatório fotográfico antes/durante/depois para prestação de contas ao síndico",
+    ],
+    geo: "Atendemos tratamento de juntas de dilatação em prédios residenciais e comerciais de toda Fortaleza — Beira Mar, Mucuripe, Praia de Iracema, Meireles, Aldeota, Cocó, Papicu, Varjota, Dionísio Torres, Guararapes, Edson Queiroz e Sapiranga — e em Eusébio, Aquiraz e Caucaia. Para prédios litorâneos, especificamos selante poliuretânico de alta resistência à maresia e UV intenso típicos do clima de Fortaleza.",
+    faq: [
+      { q: "Qual a diferença entre rachadura e junta de dilatação?", a: "Junta de dilatação é um vão técnico previsto em projeto para acomodar movimentação; rachadura é uma patologia não prevista. O tratamento é diferente para cada caso e começa com diagnóstico técnico." },
+      { q: "Quanto tempo dura o selante de junta em Fortaleza?", a: "Selante poliuretânico de qualidade aplicado por equipe técnica dura de 8 a 12 anos em Fortaleza, considerando a exposição à maresia e ao UV intenso." },
+      { q: "Posso usar silicone comum para tratar a junta?", a: "Não. Silicone comum não tem módulo de elasticidade adequado nem resistência ao UV. O correto é selante poliuretânico ou silicone estrutural compatível com a movimentação esperada." },
+      { q: "Vocês entregam laudo do serviço?", a: "Sim. Entregamos relatório fotográfico antes/durante/depois, ficha técnica do material aplicado e garantia formal por 5 anos." },
+    ],
+    related: ["vedacao-fachada", "infiltracao", "impermeabilizacao"],
+  },
+  {
+    slug: "vedacao-fachada",
+    code: "JD-02",
+    h1: "Empresa de Vedação de Juntas de Fachada em Fortaleza",
+    shortTitle: "Vedação de Fachada",
+    metaTitle: "Vedação de Juntas de Fachada em Fortaleza | Selamento Predial",
+    metaDescription:
+      "Empresa de vedação de juntas de fachada e selamento de junta predial em Fortaleza: rapel, andaime, selante poliuretânico e equipe NR-35 com ART.",
+    summary:
+      "Vedação de juntas de fachada e selamento de junta predial executados em rapel ou andaime, com equipe NR-35, selante estrutural e ART de execução.",
+    keywords: [
+      "empresa de vedação de juntas de fachada",
+      "vedação de juntas de fachada",
+      "selamento de junta predial",
+      "selante para fachada predial",
+      "vedação de fachada de edifício",
+    ],
+    intro:
+      "A fachada é o componente do prédio que mais sofre — chuva, sol, vento e maresia atuam o ano inteiro sobre as juntas verticais e horizontais. Em Fortaleza, com sol direto a maior parte do ano e ar carregado de sal, o selante de fachada envelhece mais rápido do que em outras capitais. A Chico Resolve atua como empresa de vedação de juntas de fachada e selamento de junta predial em edifícios residenciais e comerciais, com equipe própria CLT, certificação NR-35 para rapel e andaime suspenso, ART de execução assinada por engenheiro e selante poliuretânico de marca homologada. Atendemos prédios novos (correção de selagem mal executada pela construtora) e prédios antigos com 10, 20 ou 30 anos que nunca passaram por manutenção técnica das juntas — o que costuma estar por trás de manchas, mofo nos apartamentos do último andar e infiltrações que aparecem a cada chuva forte.",
+    whenToHire: [
+      { title: "Fachada com mais de 8 anos sem manutenção", text: "Selante perde elasticidade e começa a falhar — momento certo para revisão geral antes de surgir infiltração." },
+      { title: "Manchas escuras alinhadas com a junta", text: "Indicam que a água está penetrando pela junta e contornando a fachada por trás do revestimento." },
+      { title: "Infiltração em apartamento de último andar", text: "Frequentemente causada por junta horizontal de cobertura ou junta vertical no encontro de blocos." },
+      { title: "Reforma de fachada predial", text: "Vedação de juntas é etapa obrigatória antes da pintura externa para garantir durabilidade do acabamento." },
+    ],
+    types: [
+      { title: "Selamento Predial em Rapel", text: "Acesso por cordas conforme NR-35 para edifícios sem balanço — método mais ágil e menos invasivo." },
+      { title: "Vedação com Andaime Suspenso", text: "Para serviços extensos ou que envolvam mais materiais; mais produtivo em fachadas inteiras." },
+      { title: "Vedação Entre Painéis ACM ou Pré-Moldados", text: "Selagem técnica nas juntas entre painéis com selante específico para o tipo de revestimento." },
+      { title: "Selagem em Janelas, Esquadrias e Pingadeiras", text: "Pontos críticos de infiltração que costumam ser ignorados — selamos com silicone neutro estrutural." },
+    ],
+    process: [
+      { title: "Inspeção em Altura", text: "Vistoria visual em rapel para mapear cada junta da fachada e classificar a patologia." },
+      { title: "Plano de Execução", text: "Definição de método (rapel ou andaime), cronograma e plano de comunicação aos condôminos." },
+      { title: "Remoção e Limpeza", text: "Retirada do selante antigo, escovação, ar comprimido e desengordurante no substrato." },
+      { title: "Aplicação Técnica", text: "Backer rod dimensionado e selante poliuretânico aplicado em cordão contínuo, alisado com espátula." },
+      { title: "Ensaio e Entrega", text: "Teste de estanqueidade por aspersão, relatório fotográfico e ART de execução para o síndico." },
+    ],
+    standards: [
+      "NR-35 (trabalho em altura)",
+      "NR-18 (canteiro de obras)",
+      "NBR 15812 (rapel industrial — quando aplicável)",
+      "NBR 9574 e NBR 9575 (impermeabilização)",
+      "Ficha técnica do fabricante (Sika, Mapei, Vedacit)",
+    ],
+    trust: [
+      "Empresa de vedação de juntas de fachada com CNPJ, NF e ART de execução",
+      "Equipe própria CLT certificada em NR-35, com ASOs atualizados",
+      "Seguro de responsabilidade civil para trabalho em altura",
+      "Selantes Sikaflex 11FC, Sikaflex Pro 3 ou Mapeflex PU45 — marcas homologadas",
+      "Garantia formal de 5 anos com vistoria anual gratuita opcional",
+    ],
+    geo: "Atendemos selamento de junta predial em fachadas de edifícios residenciais e comerciais em toda Fortaleza — Beira Mar, Mucuripe, Meireles, Aldeota, Praia de Iracema, Cocó, Papicu, Varjota, Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante, Cambeba — e Eusébio, Aquiraz, Caucaia. Em prédios da Beira Mar e Praia do Futuro especificamos selantes com resistência reforçada à maresia.",
+    faq: [
+      { q: "Vocês trabalham em prédio alto?", a: "Sim. Atendemos edifícios de até 40 pavimentos com equipe certificada em NR-35 e ART de execução, em rapel ou andaime suspenso." },
+      { q: "Precisa parar o uso do prédio?", a: "Não. Os serviços de vedação de juntas de fachada são feitos pelo lado externo, sem interferir na rotina dos condôminos. Apenas comunicamos os apartamentos da fachada trabalhada no dia." },
+      { q: "Qual a diferença para a pintura de fachada?", a: "Pintura é estética e proteção superficial; vedação de juntas é estanqueidade. As duas se complementam — a vedação deve ser feita antes da pintura para garantir durabilidade do acabamento." },
+      { q: "O síndico precisa apresentar algo em assembleia?", a: "Sim, recomenda-se apresentar memorial descritivo, orçamento e ART. Entregamos todo o material técnico necessário para aprovação em assembleia." },
+    ],
+    related: ["tratamento-dilatacao", "vazamento-fachada", "infiltracao"],
+  },
+  {
+    slug: "manutencao-movimentacao",
+    code: "JD-03",
+    h1: "Manutenção de Junta de Movimentação em Fortaleza",
+    shortTitle: "Manutenção de Junta",
+    metaTitle: "Manutenção de Junta de Movimentação em Fortaleza | Contrato",
+    metaDescription:
+      "Manutenção preventiva e corretiva de junta de movimentação em prédios, lajes e pisos industriais em Fortaleza com contrato anual e laudo técnico.",
+    summary:
+      "Contrato de manutenção preventiva e corretiva de juntas de movimentação em prédios, pisos industriais e estruturas com laudo técnico anual.",
+    keywords: [
+      "manutenção de junta de movimentação",
+      "manutenção de junta de dilatação",
+      "contrato de manutenção de juntas",
+      "manutenção predial juntas",
+      "inspeção de juntas de movimentação",
+    ],
+    intro:
+      "Junta de movimentação não é serviço de uma vez só — é um componente que envelhece e exige inspeção periódica como qualquer outra parte do prédio. A NBR 15575 (norma de desempenho) e a NBR 5674 (manutenção predial) recomendam vistoria técnica das juntas no mínimo a cada 12 meses e renovação do selante a cada 8 a 12 anos. A Chico Resolve oferece contrato de manutenção de junta de movimentação para condomínios, empresas e indústrias em Fortaleza, com vistoria anual fotografada, plano de manutenção plurianual conforme NBR 5674, atendimento prioritário em correções emergenciais (chuva pesada, infiltração súbita) e relatório técnico para apresentação em assembleia e ao corpo de bombeiros quando aplicável. Atendemos manutenção em juntas estruturais (entre torres), juntas de assentamento (entre térreo e subsolo), juntas térmicas (cobertura) e juntas de construção (entre etapas de concretagem) — cada tipo exige material e técnica específicos.",
+    whenToHire: [
+      { title: "Condomínio sem plano de manutenção", text: "NBR 5674 exige plano de manutenção predial; juntas são item obrigatório de inspeção." },
+      { title: "Pós-temporada de chuvas", text: "Em Fortaleza, pós-chuvas de março a junho é o melhor momento para inspecionar juntas." },
+      { title: "Indústria com piso de concreto", text: "Juntas de pisos industriais sofrem com tráfego pesado e produtos químicos — inspeção semestral é o ideal." },
+      { title: "Prédio em garantia construtora", text: "Vistoria técnica antes do fim da garantia para acionar a construtora pelo que não está conforme." },
+    ],
+    types: [
+      { title: "Manutenção Preventiva Anual", text: "Vistoria visual, classificação por criticidade e plano de intervenção plurianual." },
+      { title: "Manutenção Corretiva", text: "Reparos pontuais em juntas que falharam — atendimento priorizado em contrato." },
+      { title: "Inspeção Pós-Sinistro", text: "Vistoria após chuva forte, vendaval ou movimentação estrutural com laudo técnico." },
+      { title: "Manutenção em Pisos Industriais", text: "Inspeção semestral de juntas em galpões, centros logísticos e indústrias com piso de concreto." },
+    ],
+    process: [
+      { title: "Diagnóstico Inicial", text: "Mapa de juntas, classificação por tipo (estrutural, térmica, assentamento, construção) e estado." },
+      { title: "Plano de Manutenção", text: "Cronograma plurianual conforme NBR 5674 com criticidade, custo estimado e janela ideal." },
+      { title: "Vistoria Anual Fotografada", text: "Inspeção em campo com fichas individualizadas por junta e relatório consolidado." },
+      { title: "Intervenções Programadas", text: "Execução de correções em janelas planejadas para minimizar transtorno." },
+      { title: "Relatório para Síndico/Gestor", text: "Documento final para apresentação em assembleia, gestor de facilities ou corpo de bombeiros." },
+    ],
+    standards: [
+      "NBR 5674 (manutenção de edificações — gestão)",
+      "NBR 15575 (desempenho de edificações)",
+      "NBR 16280 (reforma em edificações)",
+      "NBR 5675 (manutenção — inspeção)",
+      "Lei Municipal de Inspeção Predial (quando aplicável)",
+    ],
+    trust: [
+      "Engenheiro responsável e ART para o plano de manutenção",
+      "Vistoria fotografada com ficha individualizada por junta",
+      "Equipe NR-35 para manutenção em fachada e altura",
+      "Contratos anuais com SLA de atendimento corretivo",
+      "Relatórios técnicos compatíveis com Lei de Inspeção Predial",
+    ],
+    geo: "Atendemos manutenção de junta de movimentação em condomínios residenciais e prédios comerciais de Fortaleza — Aldeota, Meireles, Cocó, Papicu, Varjota, Beira Mar, Praia de Iracema, Edson Queiroz, Eng. Luciano Cavalcante — e em galpões e indústrias na região metropolitana (Pacatuba, Maracanaú, Caucaia, Eusébio) com piso de concreto e juntas de movimentação industrial.",
+    faq: [
+      { q: "Qual a periodicidade ideal da manutenção de juntas?", a: "Inspeção visual anual e renovação completa do selante a cada 8 a 12 anos. Indústrias com piso de concreto exigem inspeção semestral." },
+      { q: "O contrato cobre atendimento emergencial?", a: "Sim. Contratos anuais incluem SLA de atendimento corretivo em 48h para falhas críticas." },
+      { q: "Vocês emitem ART?", a: "Sim. Emitimos ART de execução para o plano anual de manutenção, exigido pela Lei de Inspeção Predial em diversos municípios." },
+      { q: "Atendem indústrias?", a: "Sim. Manutenção de juntas em pisos industriais é uma das nossas linhas — galpões logísticos, indústrias químicas e centros de distribuição." },
+    ],
+    related: ["tratamento-dilatacao", "recuperacao-estrutural", "vedacao-fachada"],
+  },
+  {
+    slug: "recuperacao-estrutural",
+    code: "JD-04",
+    h1: "Recuperação de Junta Estrutural em Fortaleza",
+    shortTitle: "Recuperação Estrutural",
+    metaTitle: "Recuperação de Junta Estrutural em Fortaleza | Orçamento",
+    metaDescription:
+      "Orçamento de recuperação de junta estrutural em Fortaleza: vazamento junta estrutural prédio, reforço com epóxi, ART e laudo técnico de engenheiro.",
+    summary:
+      "Recuperação técnica de juntas estruturais e correção de vazamento em junta estrutural de prédio com diagnóstico, ART e laudo de engenheiro.",
+    keywords: [
+      "orçamento recuperação de junta estrutural",
+      "recuperação de junta estrutural",
+      "vazamento junta estrutural prédio",
+      "reforço de junta estrutural",
+      "laudo de junta estrutural",
+    ],
+    intro:
+      "Junta estrutural é a junta de maior responsabilidade do prédio — é ela que separa duas torres, dois blocos ou duas etapas construtivas, e que precisa absorver movimentação diferencial sem comprometer a estrutura. Quando uma junta estrutural falha, o problema vai muito além de uma mancha no teto: começa com vazamento em junta estrutural de prédio, evolui para corrosão da armadura, perda de cobrimento do concreto e, em casos graves, comprometimento da capacidade portante. A Chico Resolve faz recuperação de junta estrutural em Fortaleza com protocolo de engenharia: vistoria com engenheiro estrutural, classificação da patologia conforme NBR 6118 e NBR 14931, escolha de método (selagem com poliuretano de alta resistência, injeção de epóxi estrutural, reforço com chumbamento ou tratamento da armadura corroída) e execução com ART. O orçamento inclui laudo técnico, plano de execução, ART, materiais homologados e garantia formal — sem improviso e sem terceirização descontrolada.",
+    whenToHire: [
+      { title: "Vazamento recorrente em junta de prédio", text: "Quando o vazamento volta toda chuva forte mesmo após reparos superficiais — sinal de falha estrutural." },
+      { title: "Manchas escuras profundas na junta", text: "Indício de corrosão da armadura por penetração de cloretos (especialmente em prédios litorâneos)." },
+      { title: "Trincas evolutivas no entorno da junta", text: "Fissuras que aumentam ao longo do tempo merecem investigação estrutural imediata." },
+      { title: "Laudo exigido pela construtora ou seguradora", text: "Recuperação estrutural com ART e laudo de engenheiro para acionamento de garantia ou seguro." },
+    ],
+    types: [
+      { title: "Recuperação com Poliuretano Estrutural", text: "Selagem de junta estrutural com selante poliuretânico de alto módulo e resistência mecânica." },
+      { title: "Injeção de Epóxi Estrutural", text: "Para juntas com microfissuras estruturais associadas — preenche e reestabelece a continuidade." },
+      { title: "Reforço com Chumbamento", text: "Reposicionamento de elementos com chumbador químico quando há perda de ancoragem." },
+      { title: "Tratamento de Armadura Corroída", text: "Limpeza mecânica, passivador, argamassa polimérica e reposição do cobrimento de concreto." },
+    ],
+    process: [
+      { title: "Vistoria com Engenheiro", text: "Inspeção em campo com engenheiro estrutural e classificação da patologia conforme NBR 6118." },
+      { title: "Diagnóstico e Orçamento", text: "Laudo técnico, plano de execução, ART e orçamento detalhado com prazo." },
+      { title: "Preparação Estrutural", text: "Remoção de concreto comprometido, escarificação, tratamento da armadura e limpeza." },
+      { title: "Aplicação Estrutural", text: "Selante poliuretânico de alto módulo, injeção de epóxi ou argamassa polimérica conforme o caso." },
+      { title: "Ensaio e Entrega", text: "Teste de estanqueidade, relatório fotográfico e ART de execução para registro do condomínio." },
+    ],
+    standards: [
+      "NBR 6118 (projeto de estruturas de concreto)",
+      "NBR 14931 (execução de estruturas de concreto)",
+      "NBR 5674 (manutenção de edificações)",
+      "NBR 9575 e NBR 9574 (impermeabilização)",
+      "Resolução CONFEA/CREA para emissão de ART",
+    ],
+    trust: [
+      "Vistoria e laudo por engenheiro civil/estrutural com CREA ativo",
+      "ART de projeto e ART de execução para recuperação estrutural",
+      "Materiais homologados: Sika, Mapei, Hey'di, Vedacit, BASF",
+      "Equipe CLT com EPIs e treinamento em NR-35 quando em altura",
+      "Garantia formal de 5 a 10 anos conforme o método aplicado",
+    ],
+    geo: "Atendemos recuperação de junta estrutural em condomínios residenciais e prédios comerciais em toda Fortaleza, com foco em edifícios litorâneos (Beira Mar, Mucuripe, Praia de Iracema, Praia do Futuro), Meireles, Aldeota, Cocó, Papicu, Varjota, Edson Queiroz e Sapiranga — onde a maresia acelera a corrosão da armadura. Também atendemos Eusébio, Aquiraz e Caucaia.",
+    faq: [
+      { q: "Como fazer um orçamento de recuperação de junta estrutural?", a: "Solicite uma visita técnica gratuita. Em até 5 dias úteis entregamos laudo com diagnóstico, método proposto, ART, materiais especificados e orçamento detalhado." },
+      { q: "Vazamento na junta sempre é estrutural?", a: "Nem sempre. Muitos vazamentos são apenas selante envelhecido. Mas se houve corrosão de armadura ou fissuração no entorno, o tratamento precisa ser estrutural — não cosmético." },
+      { q: "Vocês emitem laudo?", a: "Sim. Laudo técnico assinado por engenheiro com CREA ativo, descrição da patologia, método proposto e ART de projeto e execução." },
+      { q: "Qual a garantia da recuperação?", a: "5 a 10 anos conforme o método aplicado, com vistoria anual gratuita opcional para acompanhamento." },
+    ],
+    related: ["rachadura-entre-predios", "tratamento-dilatacao", "manutencao-movimentacao"],
+  },
+  {
+    slug: "infiltracao",
+    code: "JD-05",
+    h1: "Infiltração em Junta de Dilatação em Fortaleza",
+    shortTitle: "Infiltração em Junta",
+    metaTitle: "Infiltração em Junta de Dilatação em Fortaleza | Reparo",
+    metaDescription:
+      "Reparo de infiltração em junta de dilatação em Fortaleza: diagnóstico, remoção, reselagem com poliuretano e teste de estanqueidade com garantia.",
+    summary:
+      "Diagnóstico e correção de infiltração em junta de dilatação em apartamentos, fachadas, lajes e garagens com teste de estanqueidade.",
+    keywords: [
+      "infiltração em junta de dilatação",
+      "infiltração junta de dilatação fachada",
+      "reparo de infiltração em junta",
+      "infiltração no teto junta de dilatação",
+      "como resolver infiltração em junta",
+    ],
+    intro:
+      "Infiltração em junta de dilatação é, disparado, a principal causa de manchas no teto e nas paredes de apartamentos de cobertura e dos andares logo abaixo de juntas estruturais em Fortaleza. O sintoma típico é uma mancha amarelada ou esverdeada que escurece a cada chuva forte, geralmente alinhada com a junta da laje superior ou da fachada. A causa, na imensa maioria dos casos, é envelhecimento do selante: ele racha, descola, ou simplesmente nunca foi corretamente aplicado pela construtora. A Chico Resolve resolve infiltração em junta de dilatação em Fortaleza com protocolo técnico: diagnóstico para confirmar a origem (existem casos em que a infiltração vem de tubulação, não da junta), remoção do selante envelhecido, limpeza do substrato, aplicação de primer, instalação de cordão de apoio e reselagem com selante poliuretânico de alto módulo. Cada serviço termina com ensaio de estanqueidade por aspersão e relatório fotográfico — sem isso, não há como ter certeza de que a infiltração foi efetivamente resolvida.",
+    whenToHire: [
+      { title: "Mancha amarelada no teto que volta a cada chuva", text: "Sinal clássico de infiltração por junta de dilatação na laje superior." },
+      { title: "Apartamento de cobertura com mofo", text: "Cobertura é a área mais vulnerável — junta térmica da laje exposta ao sol e à chuva direta." },
+      { title: "Infiltração em parede de fachada", text: "Geralmente associada a junta vertical entre painéis ou ao encontro com janela." },
+      { title: "Garagem com gotejamento em junta", text: "Infiltração em junta de laje de garagem traz risco de corrosão da armadura — exige atenção rápida." },
+    ],
+    types: [
+      { title: "Infiltração em Laje de Cobertura", text: "Junta térmica que abre e fecha conforme o sol — exige selante de alta elasticidade." },
+      { title: "Infiltração em Fachada", text: "Junta vertical entre painéis ou no encontro com janela — exige selamento em altura com rapel." },
+      { title: "Infiltração em Junta de Garagem", text: "Junta de assentamento que sofre tráfego de veículos — exige selante de alta dureza Shore A." },
+      { title: "Infiltração em Sacada/Varanda", text: "Junta de cobertura combinada com impermeabilização do piso — exige tratamento integrado." },
+    ],
+    process: [
+      { title: "Diagnóstico da Origem", text: "Vistoria visual e ensaio de aspersão para confirmar que a infiltração vem da junta, não de tubulação." },
+      { title: "Remoção do Selante Velho", text: "Retirada do selante envelhecido com ferramenta correta, sem danificar bordas do concreto." },
+      { title: "Preparação do Substrato", text: "Limpeza com escova, ar comprimido e álcool isopropílico; aplicação de primer adequado." },
+      { title: "Reselagem Técnica", text: "Backer rod de polietileno dimensionado e selante poliuretânico aplicado em cordão contínuo." },
+      { title: "Teste de Estanqueidade", text: "Ensaio de aspersão de água por 30 minutos para confirmar que a infiltração foi resolvida." },
+    ],
+    standards: [
+      "NBR 9574 (execução de impermeabilização)",
+      "NBR 9575 (projeto de impermeabilização)",
+      "NBR 15575 (desempenho de edificações)",
+      "NR-35 (trabalho em altura)",
+      "Ficha técnica do fabricante (Sika, Mapei, Vedacit)",
+    ],
+    trust: [
+      "Ensaio de estanqueidade por aspersão antes da entrega — sem isso não há garantia real",
+      "Selante poliuretânico Sikaflex ou Mapeflex de alto módulo",
+      "Equipe CLT com NR-35 para infiltração em altura",
+      "Relatório fotográfico antes/durante/depois para o síndico ou seguradora",
+      "Garantia formal de 5 anos com vistoria opcional anual",
+    ],
+    geo: "Atendemos reparo de infiltração em junta de dilatação em apartamentos e prédios de toda Fortaleza — Beira Mar, Mucuripe, Praia de Iracema, Meireles, Aldeota, Cocó, Papicu, Varjota, Edson Queiroz, Sapiranga, Praia do Futuro — e em Eusébio, Aquiraz e Caucaia. Em apartamentos de cobertura em prédios litorâneos, é onde mais atendemos infiltração em junta térmica de laje.",
+    faq: [
+      { q: "Como sei se a infiltração é da junta ou da tubulação?", a: "Geralmente a infiltração de junta intensifica em dias de chuva, e a de tubulação é constante. Fazemos teste de aspersão para confirmar antes de orçar." },
+      { q: "Vocês resolvem o problema em uma visita?", a: "Na maioria dos casos sim — para infiltrações simples em junta de cobertura ou fachada, o serviço é executado em 1 ou 2 dias." },
+      { q: "Qual a garantia do reparo?", a: "Garantia formal de 5 anos sobre o selante aplicado, com vistoria anual gratuita opcional." },
+      { q: "Atendem em finais de semana?", a: "Sim, para emergências (infiltração ativa em apartamento) atendemos finais de semana mediante agendamento." },
+    ],
+    related: ["impermeabilizacao", "vazamento-fachada", "tratamento-dilatacao"],
+  },
+  {
+    slug: "impermeabilizacao",
+    code: "JD-06",
+    h1: "Impermeabilização de Junta de Dilatação em Fortaleza",
+    shortTitle: "Impermeabilização",
+    metaTitle: "Impermeabilização de Junta de Dilatação em Fortaleza | NBR 9574",
+    metaDescription:
+      "Impermeabilização de junta de dilatação em Fortaleza conforme NBR 9574: manta asfáltica, poliuretano líquido e selante estrutural com garantia.",
+    summary:
+      "Impermeabilização técnica de juntas de dilatação em lajes, coberturas e áreas molhadas conforme NBR 9574 com mantas, poliuretano e selantes.",
+    keywords: [
+      "impermeabilização de junta de dilatação",
+      "impermeabilização junta dilatação laje",
+      "impermeabilização junta cobertura",
+      "manta para junta de dilatação",
+      "poliuretano para junta de dilatação",
+    ],
+    intro:
+      "Impermeabilização de junta de dilatação é serviço técnico distinto do selamento simples — combina selante elástico com sistema impermeabilizante (manta asfáltica autoadesiva, manta de PVC ou poliuretano líquido) para garantir estanqueidade durável em áreas críticas como lajes de cobertura, jardins suspensos, piscinas, reservatórios e sacadas. A NBR 9574 define o sistema correto para cada situação, e a NBR 9575 estabelece o projeto: não basta passar manta — o sistema precisa ser dimensionado para o movimento esperado da junta. A Chico Resolve impermeabiliza juntas de dilatação em Fortaleza seguindo o protocolo: cálculo da movimentação prevista, escolha do sistema (selante + manta, selante + poliuretano líquido, ou sistema híbrido com chapa metálica de cobertura), preparação do substrato, aplicação do selante de fundo, instalação do impermeabilizante e proteção mecânica. Cada projeto é entregue com ART, ensaio de estanqueidade obrigatório e garantia por escrito.",
+    whenToHire: [
+      { title: "Junta de cobertura com infiltração recorrente", text: "Selante simples não basta — exige sistema impermeabilizante completo conforme NBR 9574." },
+      { title: "Junta em jardim suspenso ou ajardinado", text: "Combina selante, manta antirraiz e proteção mecânica para evitar dano por raízes." },
+      { title: "Junta em piscina, reservatório ou sauna", text: "Selantes especiais para imersão permanente e contato com cloro e produtos químicos." },
+      { title: "Junta em sacada ou varanda", text: "Sistema integrado com impermeabilização do piso e ralo, exige projeto integrado." },
+    ],
+    types: [
+      { title: "Impermeabilização com Manta Asfáltica", text: "Sistema com manta autoadesiva sobre o selante poliuretânico, ideal para junta de cobertura plana." },
+      { title: "Impermeabilização com Poliuretano Líquido", text: "Sistema sem emendas, ideal para juntas com geometria complexa e áreas curvas." },
+      { title: "Sistema com Perfil Metálico de Cobertura", text: "Tampa de alumínio ou inox sobre selante para juntas de grande abertura e tráfego." },
+      { title: "Impermeabilização em Junta Imersa", text: "Para piscina e reservatório com selante estrutural resistente a imersão e cloro." },
+    ],
+    process: [
+      { title: "Cálculo de Movimentação", text: "Dimensionamento do selante e do sistema impermeabilizante para o movimento esperado." },
+      { title: "Preparação Estrutural", text: "Regularização das bordas, criação de meia-cana, escarificação e limpeza do substrato." },
+      { title: "Aplicação do Selante de Fundo", text: "Backer rod e selante poliuretânico como primeira barreira elástica." },
+      { title: "Sistema Impermeabilizante", text: "Manta asfáltica, manta de PVC ou poliuretano líquido conforme projeto." },
+      { title: "Ensaio e Proteção Mecânica", text: "Ensaio de estanqueidade por 72h e camada de proteção (argamassa, contrapiso ou perfil metálico)." },
+    ],
+    standards: [
+      "NBR 9574 (execução de impermeabilização)",
+      "NBR 9575 (projeto de impermeabilização)",
+      "NBR 9952 (manta asfáltica)",
+      "NBR 15812 e ABNT NBR 13321",
+      "Ficha técnica do fabricante (Sika, Vedacit, Hey'di, Denver)",
+    ],
+    trust: [
+      "Projeto de impermeabilização conforme NBR 9575 com engenheiro responsável",
+      "ART de projeto e ART de execução para o sistema completo",
+      "Materiais Sika, Vedacit, Denver ou Hey'di homologados",
+      "Ensaio de estanqueidade obrigatório por 72h antes da entrega",
+      "Garantia formal de 5 a 10 anos conforme o sistema escolhido",
+    ],
+    geo: "Atendemos impermeabilização de junta de dilatação em prédios e residências de toda Fortaleza — Beira Mar, Mucuripe, Aldeota, Meireles, Cocó, Papicu, Varjota, Praia de Iracema, Praia do Futuro, Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante — e em Eusébio, Aquiraz e Caucaia. Em prédios litorâneos, especificamos sistemas resistentes à maresia e UV intenso.",
+    faq: [
+      { q: "Selante e impermeabilização são a mesma coisa?", a: "Não. Selante garante elasticidade da junta; impermeabilização é um sistema completo conforme NBR 9574 que combina selante com manta ou poliuretano líquido para áreas críticas." },
+      { q: "Qual o melhor sistema para minha junta?", a: "Depende do tipo (cobertura, garagem, piscina), do movimento esperado e da exposição. Fazemos visita técnica gratuita e indicamos o sistema correto." },
+      { q: "Vocês emitem ART de impermeabilização?", a: "Sim. ART de projeto e ART de execução para o sistema completo, exigido em condomínios e obras formais." },
+      { q: "Qual a garantia do sistema?", a: "5 a 10 anos conforme o sistema aplicado, com vistoria anual gratuita opcional." },
+    ],
+    related: ["tratamento-dilatacao", "infiltracao", "vazamento-fachada"],
+  },
+  {
+    slug: "rachadura-entre-predios",
+    code: "JD-07",
+    h1: "Reparo de Rachadura Entre Prédios em Fortaleza",
+    shortTitle: "Rachadura Entre Prédios",
+    metaTitle: "Reparo de Rachadura Entre Prédios em Fortaleza | Junta Estrutural",
+    metaDescription:
+      "Reparo de rachadura entre prédios em Fortaleza: diagnóstico de junta estrutural, selante poliuretânico, perfil metálico e ART de engenheiro.",
+    summary:
+      "Reparo técnico de rachadura entre prédios e correção da junta estrutural com diagnóstico, selante poliuretânico e ART em Fortaleza.",
+    keywords: [
+      "reparo de rachadura entre prédios",
+      "rachadura entre torres",
+      "rachadura na junta estrutural",
+      "junta entre prédios geminados",
+      "rachadura entre blocos do condomínio",
+    ],
+    intro:
+      "A rachadura entre dois prédios geminados (ou entre duas torres do mesmo condomínio) raramente é uma rachadura no sentido patológico — quase sempre é a junta estrutural projetada para separar os blocos e absorver movimentação diferencial. Quando o selante dessa junta envelhece, descola ou nunca foi corretamente executado pela construtora, o espaço entre os blocos vira porta de entrada de água, vento e infestação. Pior: o leigo confunde com rachadura estrutural e contrata pedreiro para 'fechar' a junta com cimento — o que pisa numa armadilha, porque enrijecer uma junta de movimentação causa fissuração no entorno e pode comprometer a estrutura. A Chico Resolve faz reparo de rachadura entre prédios em Fortaleza com diagnóstico correto: confirma que se trata de junta estrutural projetada (e não de patologia), classifica a movimentação, remove material errado se houver, e executa selamento técnico com selante poliuretânico de alto módulo e, quando necessário, perfil metálico de cobertura para juntas de grande abertura.",
+    whenToHire: [
+      { title: "Espaço aberto entre dois blocos", text: "Quando é possível ver luz ou ar passando entre as torres — junta estrutural sem selante." },
+      { title: "Infiltração em apartamento de borda", text: "Apartamentos colados na junta entre torres frequentemente sofrem infiltração lateral." },
+      { title: "Tentativa anterior de fechar com cimento", text: "Erro crítico — precisa ser removido e refeito com selante elástico." },
+      { title: "Rachadura nova após chuva forte", text: "Pode indicar movimentação maior do que a junta consegue absorver — exige diagnóstico." },
+    ],
+    types: [
+      { title: "Selagem Convencional Entre Torres", text: "Backer rod e selante poliuretânico de alto módulo em juntas de até 30mm." },
+      { title: "Junta com Perfil Metálico de Cobertura", text: "Para juntas acima de 30mm, perfil de alumínio extrudado ou inox sobre o selante." },
+      { title: "Recuperação de Junta com Cimento Aplicado", text: "Remoção do material rígido errado e reselagem com selante elástico — protocolo técnico completo." },
+      { title: "Junta em Marquise ou Pergolado Entre Blocos", text: "Selagem técnica com proteção mecânica para áreas com tráfego de pedestre." },
+    ],
+    process: [
+      { title: "Diagnóstico com Engenheiro", text: "Vistoria para confirmar que se trata de junta estrutural projetada e não de fissura patológica." },
+      { title: "Remoção de Material Indevido", text: "Quando há cimento, argamassa ou material rígido aplicado erroneamente, removemos antes." },
+      { title: "Preparação das Bordas", text: "Limpeza, escarificação leve e regularização para receber o sistema de selagem." },
+      { title: "Selagem Técnica", text: "Backer rod dimensionado, primer e selante poliuretânico em cordão contínuo." },
+      { title: "Acabamento e Inspeção", text: "Quando aplicável, instalação de perfil metálico, ensaio de estanqueidade e relatório com ART." },
+    ],
+    standards: [
+      "NBR 6118 (projeto de estruturas de concreto)",
+      "NBR 14931 (execução de estruturas de concreto)",
+      "NBR 9574 e NBR 9575 (impermeabilização)",
+      "NR-35 (trabalho em altura)",
+      "Ficha técnica do fabricante (Sika, Mapei, Vedacit)",
+    ],
+    trust: [
+      "Diagnóstico assinado por engenheiro estrutural com CREA ativo",
+      "ART de execução para serviço em junta estrutural",
+      "Selantes Sikaflex Pro 3, Mapeflex PU45 ou similar homologado",
+      "Equipe NR-35 para selagem em altura entre torres",
+      "Garantia formal de 5 a 10 anos conforme o sistema aplicado",
+    ],
+    geo: "Atendemos reparo de rachadura entre prédios em condomínios de Fortaleza com múltiplas torres — Aldeota, Meireles, Cocó, Papicu, Edson Queiroz, Eng. Luciano Cavalcante, Cambeba, Cidade dos Funcionários — e em condomínios novos na região metropolitana (Eusébio, Aquiraz, Caucaia). Em condomínios litorâneos da Beira Mar e Mucuripe, usamos sistemas reforçados contra maresia.",
+    faq: [
+      { q: "É rachadura ou junta de dilatação entre os prédios?", a: "Quase sempre é a junta estrutural projetada para separar os blocos. Confirmamos no diagnóstico com engenheiro antes de qualquer intervenção." },
+      { q: "Posso fechar com cimento?", a: "Não. Fechar com cimento uma junta de movimentação causa fissuração no entorno e pode comprometer a estrutura. O correto é selante elástico." },
+      { q: "Vocês emitem ART?", a: "Sim, ART de execução assinada por engenheiro com CREA ativo, exigida pela maioria dos condomínios." },
+      { q: "A intervenção vai parar o uso do condomínio?", a: "Não. O serviço é feito pelo lado externo, com rapel ou andaime suspenso, sem interferir na rotina." },
+    ],
+    related: ["recuperacao-estrutural", "vedacao-fachada", "tratamento-dilatacao"],
+  },
+  {
+    slug: "vazamento-fachada",
+    code: "JD-08",
+    h1: "Conserto de Vazamento em Fachada Predial em Fortaleza",
+    shortTitle: "Vazamento em Fachada",
+    metaTitle: "Conserto de Vazamento em Fachada Predial em Fortaleza | NR-35",
+    metaDescription:
+      "Conserto de vazamento em fachada predial em Fortaleza: diagnóstico, selagem em rapel ou andaime, equipe NR-35, ART e garantia formal.",
+    summary:
+      "Conserto técnico de vazamento em fachada predial com diagnóstico da origem, equipe NR-35 em rapel ou andaime e selagem com selante poliuretânico.",
+    keywords: [
+      "conserto de vazamento em fachada predial",
+      "vazamento em fachada",
+      "vazamento na parede externa do prédio",
+      "infiltração em fachada predial",
+      "empresa de conserto de fachada",
+    ],
+    intro:
+      "Vazamento em fachada predial é um dos problemas que mais geram chamados de síndico em Fortaleza — combina o clima úmido, o sol forte e a maresia, que envelhecem precocemente qualquer selante mal especificado. Os pontos críticos são sempre os mesmos: junta vertical entre painéis, encontro de janela com alvenaria, peitoril, pingadeira, junta horizontal de cobertura e perímetro de unidades de ar-condicionado mal instaladas. A Chico Resolve faz conserto de vazamento em fachada predial em Fortaleza com diagnóstico em rapel (vistoria visual da fachada inteira para identificar todos os pontos críticos, não apenas o que está vazando hoje), execução com equipe NR-35 em rapel ou andaime suspenso, selagem com selante poliuretânico de alto módulo e ensaio de aspersão para validar a estanqueidade antes de fechar o serviço. Cada conserto sai com ART, relatório fotográfico, garantia formal por 5 anos e plano de manutenção opcional para evitar recorrência.",
+    whenToHire: [
+      { title: "Apartamento com infiltração lateral", text: "Mancha na parede externa ou no encontro da janela após chuva forte." },
+      { title: "Pingadeira ou peitoril descolando", text: "Pontos clássicos onde a água contorna e entra na parede interna." },
+      { title: "Ar-condicionado mal instalado", text: "Furo na fachada sem selamento técnico vira ponto de infiltração permanente." },
+      { title: "Pré-vistoria para pintura externa", text: "Antes de repintar a fachada é obrigatório resolver vazamentos para não comprometer a tinta nova." },
+    ],
+    types: [
+      { title: "Vazamento em Junta Vertical de Fachada", text: "Selagem entre painéis pré-moldados, ACM ou alvenaria com selante poliuretânico." },
+      { title: "Vazamento em Encontro de Janela", text: "Selagem perimetral entre esquadria de alumínio e alvenaria com silicone neutro estrutural." },
+      { title: "Vazamento em Pingadeira/Peitoril", text: "Refixação, calafetagem e selagem técnica do peitoril com proteção do pingo." },
+      { title: "Vazamento em Saída de Ar-Condicionado", text: "Reselagem do furo de passagem do tubo e do dreno, com proteção da fachada." },
+    ],
+    process: [
+      { title: "Vistoria em Rapel", text: "Inspeção visual de toda a fachada para mapear todos os pontos críticos." },
+      { title: "Diagnóstico e Plano", text: "Classificação por criticidade, cronograma e proposta com orçamento por ponto e total." },
+      { title: "Execução com NR-35", text: "Equipe certificada com rapel ou andaime suspenso, com plano de comunicação aos condôminos." },
+      { title: "Selagem Técnica", text: "Remoção do selante velho, primer, backer rod e selante poliuretânico de alto módulo." },
+      { title: "Ensaio de Aspersão", text: "Teste de estanqueidade por aspersão para validar antes de finalizar o serviço." },
+    ],
+    standards: [
+      "NR-35 (trabalho em altura)",
+      "NR-18 (canteiro de obras)",
+      "NBR 9574 e NBR 9575 (impermeabilização)",
+      "NBR 15575 (desempenho de edificações)",
+      "Ficha técnica do fabricante (Sika, Mapei, Vedacit)",
+    ],
+    trust: [
+      "Empresa de conserto de fachada com CNPJ ativo e ART de execução",
+      "Equipe própria CLT certificada em NR-35 com ASOs atualizados",
+      "Seguro de responsabilidade civil para trabalho em altura",
+      "Selantes Sikaflex 11FC, Sikaflex Pro 3 ou Mapeflex PU45 homologados",
+      "Garantia formal de 5 anos sobre os pontos selados",
+    ],
+    geo: "Atendemos conserto de vazamento em fachada predial em toda Fortaleza, com foco em prédios litorâneos onde a maresia acelera a falha de selantes — Beira Mar, Mucuripe, Praia de Iracema, Meireles, Aldeota, Cocó, Papicu, Varjota, Praia do Futuro — e em Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante e na região metropolitana (Eusébio, Aquiraz, Caucaia).",
+    faq: [
+      { q: "Vocês resolvem em uma visita?", a: "Para vazamentos pontuais, sim, em 1 ou 2 dias. Para fachadas inteiras com múltiplos pontos críticos, planejamos cronograma de 1 a 4 semanas conforme a metragem." },
+      { q: "É preciso desocupar o apartamento?", a: "Não. O serviço é feito pelo lado externo, apenas comunicamos os apartamentos da fachada trabalhada no dia para fechar janelas." },
+      { q: "Qual a garantia do serviço?", a: "5 anos sobre os pontos selados, com vistoria anual gratuita opcional para acompanhamento." },
+      { q: "Vocês emitem ART?", a: "Sim, ART de execução assinada por engenheiro com CREA ativo, exigida pela maioria dos condomínios para aprovação em assembleia." },
+    ],
+    related: ["vedacao-fachada", "infiltracao", "rachadura-entre-predios"],
+  },
+];
+
+export const getJuntaSubservice = (slug: string): JuntaSubservice | undefined =>
+  juntaSubservices.find((s) => s.slug === slug);
+
+
 
 
 
