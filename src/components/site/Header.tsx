@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
-import { drywallSubservices, eletricaSubservices, hidraulicaSubservices, juntaSubservices, pinturaSubservices, segurancaSubservices, services, site, whatsappLink } from "@/lib/site";
+import { services, site, whatsappLink } from "@/lib/site";
 import logo from "@/assets/chico-resolve-logo.png.asset.json";
 
 export function Header() {
@@ -41,112 +41,25 @@ export function Header() {
             {servicesOpen && (
               <div className="absolute left-0 top-full pt-3 w-80">
                 <ul className="bg-card border border-border shadow-xl rounded-2xl p-2 overflow-hidden">
-                  {services.map((s) => (
-                    <li key={s.slug} className="group/item">
-                      {s.slug === "pintura" ? (
-                        <Link to="/servicos/pintura" className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
-                          <span className="text-primary text-xs font-bold w-7">{s.code}</span>
-                          <span>{s.shortTitle}</span>
-                        </Link>
-                      ) : s.slug === "eletrica" ? (
-                        <Link to="/servicos/eletrica" className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
-                          <span className="text-primary text-xs font-bold w-7">{s.code}</span>
-                          <span>{s.shortTitle}</span>
-                        </Link>
-                      ) : s.slug === "hidraulica" ? (
-                        <Link to="/servicos/hidraulica" className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
-                          <span className="text-primary text-xs font-bold w-7">{s.code}</span>
-                          <span>{s.shortTitle}</span>
-                        </Link>
-                      ) : s.slug === "drywall" ? (
-                        <Link to="/servicos/drywall" className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
-                          <span className="text-primary text-xs font-bold w-7">{s.code}</span>
-                          <span>{s.shortTitle}</span>
-                        </Link>
-                      ) : s.slug === "juntas-dilatacao" ? (
-                        <Link to="/servicos/juntas-dilatacao" className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
-                          <span className="text-primary text-xs font-bold w-7">{s.code}</span>
-                          <span>{s.shortTitle}</span>
-                        </Link>
-                      ) : s.slug === "seguranca" ? (
-                        <Link to="/servicos/seguranca" className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
-                          <span className="text-primary text-xs font-bold w-7">{s.code}</span>
-                          <span>{s.shortTitle}</span>
-                        </Link>
-                      ) : (
-                        <Link to="/servicos/$slug" params={{ slug: s.slug }} className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
-                          <span className="text-primary text-xs font-bold w-7">{s.code}</span>
-                          <span>{s.shortTitle}</span>
-                        </Link>
-                      )}
-                      {s.slug === "pintura" && (
-                        <ul className="hidden group-hover/item:block pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
-                          {pinturaSubservices.map((p) => (
-                            <li key={p.slug}>
-                              <Link to="/servicos/pintura/$pinturaSlug" params={{ pinturaSlug: p.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
-                                {p.shortTitle}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {s.slug === "eletrica" && (
-                        <ul className="hidden group-hover/item:block pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
-                          {eletricaSubservices.map((e) => (
-                            <li key={e.slug}>
-                              <Link to="/servicos/eletrica/$eletricaSlug" params={{ eletricaSlug: e.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
-                                {e.shortTitle}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {s.slug === "hidraulica" && (
-                        <ul className="hidden group-hover/item:block pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
-                          {hidraulicaSubservices.map((h) => (
-                            <li key={h.slug}>
-                              <Link to="/servicos/hidraulica/$hidraulicaSlug" params={{ hidraulicaSlug: h.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
-                                {h.shortTitle}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {s.slug === "drywall" && (
-                        <ul className="hidden group-hover/item:block pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
-                          {drywallSubservices.map((d) => (
-                            <li key={d.slug}>
-                              <Link to="/servicos/drywall/$drywallSlug" params={{ drywallSlug: d.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
-                                {d.shortTitle}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {s.slug === "juntas-dilatacao" && (
-                        <ul className="hidden group-hover/item:block pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
-                          {juntaSubservices.map((j) => (
-                            <li key={j.slug}>
-                              <Link to="/servicos/juntas-dilatacao/$juntaSlug" params={{ juntaSlug: j.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
-                                {j.shortTitle}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {s.slug === "seguranca" && (
-                        <ul className="hidden group-hover/item:block pl-10 pb-2 space-y-0.5 border-l border-border ml-4 mt-1">
-                          {segurancaSubservices.map((g) => (
-                            <li key={g.slug}>
-                              <Link to="/servicos/seguranca/$segurancaSlug" params={{ segurancaSlug: g.slug }} className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-primary">
-                                {g.shortTitle}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
+                  {services.map((s) => {
+                    const hubSlugs = ["pintura", "eletrica", "hidraulica", "drywall", "juntas-dilatacao", "seguranca", "reformas"];
+                    const isHub = hubSlugs.includes(s.slug);
+                    return (
+                      <li key={s.slug}>
+                        {isHub ? (
+                          <Link to={`/servicos/${s.slug}` as string} className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
+                            <span className="text-primary text-xs font-bold w-7">{s.code}</span>
+                            <span>{s.shortTitle}</span>
+                          </Link>
+                        ) : (
+                          <Link to="/servicos/$slug" params={{ slug: s.slug }} className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl hover:bg-surface">
+                            <span className="text-primary text-xs font-bold w-7">{s.code}</span>
+                            <span>{s.shortTitle}</span>
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             )}
