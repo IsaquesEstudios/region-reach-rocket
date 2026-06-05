@@ -9,7 +9,7 @@ export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "Blog — Chico Resolve" },
-      { name: "description", content: "Artigos, dicas e novidades sobre manutenção predial, reformas e tendências em Fortaleza." },
+      { name: "description", content: "Artigos, dicas e novidades sobre manutenção predial, reformas e tendências em Teresina." },
       { property: "og:title", content: "Blog — Chico Resolve" },
       { property: "og:description", content: "Conteúdo especializado em manutenção predial e reformas." },
     ],

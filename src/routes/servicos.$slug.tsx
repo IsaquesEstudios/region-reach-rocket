@@ -40,7 +40,7 @@ export const Route = createFileRoute("/servicos/$slug")({
       name: meta.title,
       description: meta.metaDescription,
       provider: { "@type": "LocalBusiness", name: "Chico Resolve" },
-      areaServed: { "@type": "City", name: "Fortaleza" },
+      areaServed: { "@type": "City", name: "Teresina" },
     };
     const breadcrumbJsonLd = {
       "@context": "https://schema.org",

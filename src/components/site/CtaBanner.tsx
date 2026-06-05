@@ -15,7 +15,7 @@ export function CtaBanner() {
             Tem um projeto em mente?
           </h2>
           <p className="text-lg text-white/85 max-w-xl leading-relaxed">
-            Fale com um especialista agora. Visita técnica e orçamento gratuitos em Fortaleza e região metropolitana.
+            Fale com um especialista agora. Visita técnica e orçamento gratuitos em Teresina e Grande Teresina.
           </p>
         </div>
         <div className="relative flex flex-col sm:flex-row gap-4 lg:justify-end">

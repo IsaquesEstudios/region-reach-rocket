@@ -3,17 +3,17 @@ import { Star, Quote } from "lucide-react";
 const items = [
   {
     name: "Eng. Responsável",
-    role: "Construtora Parceira · Fortaleza",
+    role: "Construtora Parceira · Teresina",
     text: "A Chico Resolve tornou-se nossa parceira estratégica pela precisão técnica e, principalmente, pelo cumprimento rigoroso dos cronogramas, algo raro no setor.",
   },
   {
     name: "Síndico",
-    role: "Condomínio Edifício Aldeota",
+    role: "Condomínio Edifício Jóquei",
     text: "Resolveram infiltrações antigas que outras empresas não conseguiram identificar. Relatório fotográfico mensal facilita a prestação de contas para os moradores.",
   },
   {
     name: "Gerente de Facilities",
-    role: "Indústria · Região Metropolitana",
+    role: "Indústria · Grande Teresina",
     text: "Manutenção que respeita nossa produção. Janelas programadas, conformidade NR10 e zero retrabalho desde que assumiram o contrato.",
   },
 ];

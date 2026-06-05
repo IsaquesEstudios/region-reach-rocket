@@ -67,7 +67,7 @@ const organizationJsonLd = {
   },
   areaServed: {
     "@type": "City",
-    name: "Fortaleza",
+    name: "Teresina",
   },
   sameAs: [site.instagramUrl],
   priceRange: "$$",
@@ -89,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#064e3b" },
-      { title: `${site.name} — ${site.tagline} | Fortaleza` },
+      { title: `${site.name} — ${site.tagline} | Teresina` },
       { name: "description", content: site.description },
       { name: "author", content: site.name },
       { property: "og:site_name", content: site.name },

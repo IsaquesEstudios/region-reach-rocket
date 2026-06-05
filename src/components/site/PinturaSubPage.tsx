@@ -38,7 +38,7 @@ export function PinturaSubPage({ data, image }: Props) {
           <div className="lg:col-span-5">
             <img
               src={image}
-              alt={`${data.h1} executada pela Chico Resolve em Fortaleza`}
+              alt={`${data.h1} executada pela Chico Resolve em Teresina`}
               width={1280}
               height={960}
               loading="eager"
@@ -141,7 +141,7 @@ export function PinturaSubPage({ data, image }: Props) {
             <div className="mt-16">
               <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Onde atendemos</p>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-4">
-                Áreas atendidas em Fortaleza e região
+                Áreas atendidas em Teresina e região
               </h2>
               {/* TODO: confirmar bairros atendidos */}
               <p className="text-base text-muted-foreground leading-relaxed">{data.geo}</p>

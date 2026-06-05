@@ -6,10 +6,10 @@ import { QuoteForm } from "@/components/site/QuoteForm";
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Contato — Chico Resolve | Manutenção Predial Fortaleza" },
-      { name: "description", content: "Fale com a Chico Resolve em Fortaleza/CE. WhatsApp (86) 98154-7477, email contato@chicoresolve.com.br ou Instagram @chico.resolve. Visita técnica gratuita." },
+      { title: "Contato — Chico Resolve | Manutenção Predial Teresina" },
+      { name: "description", content: "Fale com a Chico Resolve em Teresina/PI. WhatsApp (86) 98154-7477, email contato@chicoresolve.com.br ou Instagram @chico.resolve. Visita técnica gratuita." },
       { property: "og:title", content: "Contato — Chico Resolve" },
-      { property: "og:description", content: "WhatsApp, email e visita técnica gratuita em Fortaleza." },
+      { property: "og:description", content: "WhatsApp, email e visita técnica gratuita em Teresina." },
       { property: "og:url", content: "/contato" },
     ],
     links: [{ rel: "canonical", href: "/contato" }],
@@ -27,7 +27,7 @@ function ContatoPage() {
             Vamos <span className="text-primary">conversar</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-            Visita técnica e orçamento gratuitos em Fortaleza e região metropolitana. Resposta em até 24h úteis.
+            Visita técnica e orçamento gratuitos em Teresina e Grande Teresina. Resposta em até 24h úteis.
           </p>
         </div>
       </section>
@@ -63,7 +63,7 @@ function ContatoPage() {
             <div className="sm:col-span-2 bg-surface border border-border p-6">
               <MapPin className="size-7 text-primary mb-4" aria-hidden />
               <h2 className="font-extrabold mb-2">Atendimento</h2>
-              <p className="text-sm text-muted-foreground">{site.city}, {site.region} — Brasil. Atendemos toda a região metropolitana de Fortaleza.</p>
+              <p className="text-sm text-muted-foreground">{site.city}, {site.region} — Brasil. Atendemos toda a Grande Teresina.</p>
             </div>
           </div>
 

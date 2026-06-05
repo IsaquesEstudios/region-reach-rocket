@@ -6,16 +6,16 @@ import drywallHero from "@/assets/servico-drywall.jpg";
 
 const HUB_URL = "/servicos/drywall";
 
-const hubMetaTitle = "Empresa de Drywall em Fortaleza | Chico Resolve";
+const hubMetaTitle = "Empresa de Drywall em Teresina | Chico Resolve";
 const hubMetaDescription =
-  "Empresa de drywall em Fortaleza: instalação de drywall, gesso acartonado, forro de gesso, divisória e parede de drywall com gesseiro profissional.";
+  "Empresa de drywall em Teresina: instalação de drywall, gesso acartonado, forro de gesso, divisória e parede de drywall com gesseiro profissional.";
 
 export const Route = createFileRoute("/servicos/drywall/")({
   head: () => {
     const serviceJsonLd = {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "Empresa de Drywall em Fortaleza",
+      name: "Empresa de Drywall em Teresina",
       serviceType: "Instalação de drywall, gesso acartonado e divisórias",
       description: hubMetaDescription,
       provider: {
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/servicos/drywall/")({
           addressCountry: site.address.country,
         },
       },
-      areaServed: { "@type": "City", name: "Fortaleza" },
+      areaServed: { "@type": "City", name: "Teresina" },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Especialidades em Drywall",
@@ -91,10 +91,10 @@ function DrywallHub() {
           <div className="lg:col-span-7">
             <span className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest">DW · Drywall</span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-balance">
-              Empresa de Drywall em <span className="text-primary">Fortaleza</span>
+              Empresa de Drywall em <span className="text-primary">Teresina</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-[60ch] leading-relaxed">
-              A Chico Resolve é uma empresa de drywall em Fortaleza com gesseiro profissional próprio e colocadores de drywall CLT. Executamos instalação de drywall, forro de gesso, parede e divisória de ambiente com placa certificada (Knauf, Placo e Gypsum), perfis galvanizados e acabamento pronto para pintura — com orçamento drywall por escrito, nota fiscal e garantia formal de 12 meses.
+              A Chico Resolve é uma empresa de drywall em Teresina com gesseiro profissional próprio e colocadores de drywall CLT. Executamos instalação de drywall, forro de gesso, parede e divisória de ambiente com placa certificada (Knauf, Placo e Gypsum), perfis galvanizados e acabamento pronto para pintura — com orçamento drywall por escrito, nota fiscal e garantia formal de 12 meses.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -116,7 +116,7 @@ function DrywallHub() {
           <div className="lg:col-span-5">
             <img
               src={drywallHero}
-              alt="Empresa de drywall em Fortaleza — gesseiro profissional e colocador de drywall da Chico Resolve"
+              alt="Empresa de drywall em Teresina — gesseiro profissional e colocador de drywall da Chico Resolve"
               width={1280}
               height={960}
               loading="eager"
@@ -158,13 +158,13 @@ function DrywallHub() {
           <div className="lg:col-span-2">
             <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Destaque · Empresa de Drywall</p>
             <h2 id="empresa-drywall" className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
-              Gesseiro profissional e colocador de drywall em Fortaleza
+              Gesseiro profissional e colocador de drywall em Teresina
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
               Nossa equipe é formada por gesseiro profissional e colocador de drywall CLT — não diarista anônimo de plataforma. Treinamento contínuo nos manuais Knauf e Placo, EPI completo e ferramentas próprias (nível a laser, parafusadeira de impacto, lixadeira com aspirador) garantem mão de obra drywall com qualidade de joalheria: massa em três demãos, juntas sem trinca e fixação correta para TV, prateleira e bancada.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed mb-4">
-              Trabalhamos com placa drywall certificada — ST (standard), RU (resistente à umidade, indicada para banheiros e áreas próximas ao mar) e RF (corta-fogo, para shafts e casa de máquinas). Em Fortaleza, onde a maresia ataca rapidamente fixadores comuns, usamos parafusos galvanizados e indicamos RU em qualquer parede ligada à fachada externa.
+              Trabalhamos com placa drywall certificada — ST (standard), RU (resistente à umidade, indicada para banheiros e áreas próximas ao mar) e RF (corta-fogo, para shafts e casa de máquinas). Em Teresina, onde a calor e poeira ataca rapidamente fixadores comuns, usamos parafusos galvanizados e indicamos RU em qualquer parede ligada à fachada externa.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed">
               Para construtoras, empreiteiras e arquitetos, oferecemos pacotes de mão de obra drywall por m² com cronograma físico-financeiro e responsável técnico em campo.
