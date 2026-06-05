@@ -1632,6 +1632,824 @@ export const drywallSubservices: DrywallSubservice[] = [
 export const getDrywallSubservice = (slug: string): DrywallSubservice | undefined =>
   drywallSubservices.find((s) => s.slug === slug);
 
+// ============================================================================
+// Reformas: hub + sub-páginas otimizadas para clusters de palavras-chave
+// (apartamento, empresa de reforma, comercial, casa, banheiro, telhado,
+//  fachada, piscina, pisos, cozinha, quadras esportivas e quarto).
+// Cada sub-página tem H1 = keyword principal + conteúdo único focado em
+// E-E-A-T (Experience, Expertise, Authoritativeness, Trust), GEO local
+// Fortaleza/CE e SEO técnico (Service + Breadcrumb + FAQPage JSON-LD).
+// ============================================================================
+
+export type ReformaSlug =
+  | "apartamento"
+  | "empresa-de-reforma"
+  | "comercial"
+  | "casa"
+  | "banheiro"
+  | "telhado"
+  | "fachada"
+  | "piscina"
+  | "pisos"
+  | "cozinha"
+  | "quadras-esportivas"
+  | "quarto";
+
+export interface ReformaSubservice {
+  slug: ReformaSlug;
+  code: string;
+  h1: string;
+  shortTitle: string;
+  metaTitle: string;
+  metaDescription: string;
+  summary: string;
+  keywords: string[];
+  intro: string;
+  whenToHire: { title: string; text: string }[];
+  types: { title: string; text: string }[];
+  process: { title: string; text: string }[];
+  standards: string[];
+  trust: string[];
+  geo: string;
+  faq: { q: string; a: string }[];
+  related: ReformaSlug[];
+}
+
+export const reformaSubservices: ReformaSubservice[] = [
+  {
+    slug: "apartamento",
+    code: "RF-01",
+    h1: "Reforma de Apartamento em Fortaleza",
+    shortTitle: "Apartamento",
+    metaTitle: "Reforma de Apartamento em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Empresa de reforma de apartamento em Fortaleza: reforma predial, apartamento pequeno, antigo e renovação de cozinha de apartamento com cronograma cumprido.",
+    summary:
+      "Reforma de apartamento completa ou parcial com gerenciamento técnico, equipe própria CLT e respeito às normas do condomínio.",
+    keywords: [
+      "reforma de apartamento",
+      "empresa de reforma de apartamento",
+      "reforma predial",
+      "reforma de apartamento pequeno",
+      "reforma apartamento antigo",
+      "renovação de cozinha apartamento",
+    ],
+    intro:
+      "A Chico Resolve é uma empresa de reforma de apartamento em Fortaleza com mais de 500 obras entregues — de reforma de apartamento pequeno de 40 m² na Praia de Iracema até reforma apartamento antigo de 220 m² na Aldeota. Atuamos em reforma predial completa: demolição controlada, alvenaria, hidráulica, elétrica, drywall, pintura, marcenaria sob medida e renovação de cozinha apartamento com bancada nova, hidráulica realocada e instalação de coifa. Cada projeto entra com responsável técnico em campo, ART quando exigida pelo síndico, ASOs da equipe e cronograma físico-financeiro semanal — porque reformar no 12º andar de um prédio na Beira Mar é muito diferente de reformar em casa térrea.",
+    whenToHire: [
+      { title: "Apartamento recém-adquirido", text: "Personalizar acabamentos antes de mobiliar, com a unidade vazia, reduz custo em até 30%." },
+      { title: "Apartamento antigo (20+ anos)", text: "Prumadas hidráulicas, fiação e janelas precisam ser revistas para evitar prejuízo futuro." },
+      { title: "Reforma de apartamento pequeno", text: "Otimização de layout, marcenaria sob medida e integração de ambientes para ganhar área útil." },
+      { title: "Renovação de cozinha apartamento", text: "Troca de bancada, revestimento, instalação de coifa e nova rede de gás/elétrica." },
+    ],
+    types: [
+      { title: "Reforma Completa", text: "Demolição, alvenaria, instalações novas, acabamentos, pintura e entrega com chave na mão." },
+      { title: "Reforma Parcial", text: "Cozinha, banheiros, área de serviço ou suíte com o restante do apartamento habitado." },
+      { title: "Reforma Predial em Áreas Comuns", text: "Halls, fachada, garagem, salão de festas e áreas de lazer contratadas pelo condomínio." },
+      { title: "Renovação de Cozinha de Apartamento", text: "Bancada em quartzo/silestone, revestimento, marcenaria planejada e instalações novas." },
+    ],
+    process: [
+      { title: "Visita Técnica e Briefing", text: "Levantamento da planta, conferência das normas do condomínio e entendimento do estilo desejado." },
+      { title: "Orçamento Detalhado", text: "Proposta por etapa (demolição, instalações, acabamentos) com cronograma físico-financeiro." },
+      { title: "Documentação ao Síndico", text: "Contrato, ART quando aplicável, ASOs e plano de gerenciamento de resíduos entregues à administração." },
+      { title: "Execução com Mestre de Obras", text: "Equipe própria com mestre responsável, controle de horário e proteção de áreas comuns." },
+      { title: "Entrega Chave na Mão", text: "Limpeza fina, vistoria conjunta, manual do proprietário e garantia formal por escrito." },
+    ],
+    standards: [
+      "NBR 16280 (reformas em edificações)",
+      "NBR 5410 (instalações elétricas)",
+      "NBR 5626 (instalações hidráulicas)",
+      "NR-35 (trabalho em altura)",
+      "Convenção e regimento do condomínio",
+    ],
+    trust: [
+      "Empresa de reforma de apartamento com CNPJ ativo e nota fiscal",
+      "ART de execução com engenheiro responsável quando exigido",
+      "Mestre de obras CLT em tempo integral no canteiro",
+      "Cronograma físico-financeiro com multa contratual em caso de atraso",
+      "Garantia de 12 meses sobre execução conforme NBR 16280",
+    ],
+    geo: "Atendemos reforma de apartamento em todos os edifícios de Fortaleza — Beira Mar, Mucuripe, Praia de Iracema, Aldeota, Meireles, Cocó, Papicu, Varjota, Dionísio Torres, Guararapes, Edson Queiroz e Sapiranga — além de empreendimentos em Eusébio, Aquiraz e Caucaia. Para reforma predial em prédios litorâneos, usamos materiais resistentes à maresia (parafusos galvanizados, tintas acrílicas premium e selantes poliuretânicos).",
+    faq: [
+      { q: "Quanto custa uma reforma de apartamento em Fortaleza?", a: "Reformas parciais (cozinha ou banheiro) partem de R$ 25 mil; reformas completas variam de R$ 1.200 a R$ 2.800 por m² conforme padrão de acabamento. Fazemos visita técnica gratuita e orçamento detalhado em até 5 dias." },
+      { q: "Vocês atendem reforma de apartamento pequeno (até 50 m²)?", a: "Sim. Reforma de apartamento pequeno é uma das nossas especialidades — integração sala/cozinha, marcenaria sob medida e otimização do layout para ganhar área útil." },
+      { q: "Como funciona a reforma de apartamento antigo?", a: "Reforma apartamento antigo exige diagnóstico de prumadas, fiação e janelas. Fazemos sondagem inicial sem custo e indicamos o escopo necessário para evitar retrabalho." },
+      { q: "Reforma predial em áreas comuns precisa de assembleia?", a: "Sim, intervenções estruturais ou estéticas em áreas comuns exigem aprovação em assembleia. Entregamos memorial descritivo, orçamento e ART para o síndico apresentar." },
+      { q: "Qual o prazo de uma renovação de cozinha apartamento?", a: "Em média 25 a 45 dias úteis, incluindo demolição, hidráulica, elétrica, revestimento, marcenaria e instalação de eletrodomésticos." },
+    ],
+    related: ["casa", "cozinha", "banheiro"],
+  },
+  {
+    slug: "empresa-de-reforma",
+    code: "RF-02",
+    h1: "Empresa de Reforma em Fortaleza",
+    shortTitle: "Empresa de Reforma",
+    metaTitle: "Empresa de Reforma em Fortaleza | Chico Resolve",
+    metaDescription:
+      "Empresa de reforma residencial em Fortaleza: reformas e construções, empresa de construção e reforma, especializada em pequenas reformas e reformas em geral.",
+    summary:
+      "Empresa de reforma residencial e construção com equipe multidisciplinar, contrato formal e gestão integrada de obra em Fortaleza.",
+    keywords: [
+      "empresa de reforma",
+      "empresa de reforma residencial",
+      "reformas e construções",
+      "empresa de reformas residenciais",
+      "empresa especializada em pequenas reformas",
+      "empresa de construção e reforma",
+      "reformas em geral",
+    ],
+    intro:
+      "A Chico Resolve é uma empresa de reforma residencial em Fortaleza estruturada como prestadora de reformas e construções, com CNPJ ativo, NF de serviço, mestre de obras CLT, engenheiro responsável e cobertura de seguro de obra. Para clientes que procuram uma empresa de reformas residenciais para um projeto único e para clientes que precisam de uma empresa especializada em pequenas reformas (troca de piso, pintura de uma sala, instalação de bancada), temos pacotes desenhados para cada porte. Como empresa de construção e reforma fazemos reformas em geral — pintura, elétrica, hidráulica, drywall, alvenaria, marcenaria, esquadrias e impermeabilização — sob um único responsável técnico, evitando o caos de contratar profissionais separados.",
+    whenToHire: [
+      { title: "Reforma sem dor de cabeça", text: "Um único contrato, um responsável técnico e um cronograma — sem terceirizar decisões para o cliente." },
+      { title: "Pequenos reparos urgentes", text: "Empresa especializada em pequenas reformas: trocar piso de um cômodo, refazer um banheiro, instalar bancada." },
+      { title: "Reformas e construções de ampliação", text: "Quarto novo, suíte, lavabo, área gourmet — projeto, execução e legalização em um só fornecedor." },
+      { title: "Cliente corporativo ou condomínio", text: "Contratos com NF, ART, garantia e relatórios fotográficos para prestação de contas." },
+    ],
+    types: [
+      { title: "Reformas Residenciais", text: "Apartamentos, casas e coberturas — completas ou parciais, com gerenciamento integrado." },
+      { title: "Pequenas Reformas", text: "Serviços rápidos: pintura, troca de piso, instalações pontuais, marcenaria e reparos." },
+      { title: "Reformas e Construções", text: "Ampliações, garagens, áreas de lazer, lavabos e suítes novas." },
+      { title: "Reformas em Geral para Condomínios", text: "Halls, fachadas, salões de festas, áreas técnicas e adequação para vistoria." },
+    ],
+    process: [
+      { title: "Atendimento e Visita", text: "Conversa para entender o objetivo, visita técnica gratuita e levantamento inicial." },
+      { title: "Proposta com Escopo Claro", text: "Orçamento por etapa, prazo realista e forma de pagamento parcelada." },
+      { title: "Contrato e Cronograma", text: "Contrato com obrigações, garantia, multa por atraso e cronograma físico-financeiro." },
+      { title: "Execução Acompanhada", text: "Mestre de obras CLT, relatório fotográfico semanal por WhatsApp e visitas técnicas do engenheiro." },
+      { title: "Entrega e Pós-Obra", text: "Vistoria conjunta, limpeza fina, manual de garantia e atendimento pós-obra por 12 meses." },
+    ],
+    standards: [
+      "NBR 16280 (reformas em edificações)",
+      "NBR 5410 (elétrica) e NBR 5626 (hidráulica)",
+      "NR-18 (canteiro de obras) e NR-6 (EPI)",
+      "Gestão de resíduos conforme CONAMA 307",
+      "Código de Defesa do Consumidor para serviços contratados",
+    ],
+    trust: [
+      "Empresa de reforma residencial com CNPJ ativo e nota fiscal eletrônica",
+      "Engenheiro responsável e ART para obras com intervenção estrutural",
+      "Equipe própria CLT — sem subcontratar pedreiro de aplicativo",
+      "Cobertura de seguro de obra para danos a terceiros",
+      "Garantia formal de 12 a 60 meses conforme o item executado",
+    ],
+    geo: "Como empresa de reformas residenciais atendemos toda Fortaleza — Aldeota, Meireles, Cocó, Papicu, Varjota, Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante, Praia do Futuro, Mucuripe e Beira Mar — e cidades da região metropolitana: Eusébio, Aquiraz, Caucaia, Maracanaú e Pacatuba. Para reformas em geral próximas ao litoral, ajustamos os materiais ao clima de maresia.",
+    faq: [
+      { q: "Vocês são uma empresa de reforma formalizada?", a: "Sim. Somos empresa de construção e reforma com CNPJ ativo, alvará de funcionamento, NF de serviço, engenheiro responsável e ART quando o escopo exige." },
+      { q: "Trabalham com pequenas reformas?", a: "Sim. Somos empresa especializada em pequenas reformas — pintura de um cômodo, troca de piso, instalação de bancada, reforma de um banheiro." },
+      { q: "Como funciona o contrato em reformas e construções?", a: "Contrato com objeto, escopo, prazo, forma de pagamento parcelada, garantia formal e multa contratual em caso de atraso." },
+      { q: "Atendem reformas em geral em condomínios?", a: "Sim. Entregamos toda documentação ao síndico (ART, ASOs, plano de gerenciamento de resíduos) e respeitamos horário e regras internas." },
+      { q: "Vocês fazem orçamento gratuito?", a: "Sim. A visita técnica e o orçamento detalhado são gratuitos para Fortaleza e região metropolitana." },
+    ],
+    related: ["apartamento", "casa", "comercial"],
+  },
+  {
+    slug: "comercial",
+    code: "RF-03",
+    h1: "Reforma Comercial em Fortaleza",
+    shortTitle: "Comercial",
+    metaTitle: "Reforma Comercial em Fortaleza | Lojas, Escritórios e Restaurantes",
+    metaDescription:
+      "Reforma comercial em Fortaleza: reforma de loja em shopping, escritórios, restaurantes e retrofit comercial com empreiteira de prazo garantido.",
+    summary:
+      "Reforma comercial completa para lojas, escritórios, restaurantes e adequação de imóvel comercial com prazo garantido em contrato.",
+    keywords: [
+      "reforma comercial",
+      "reformas de escritórios",
+      "reformas de restaurantes",
+      "empreiteira para loja de shopping",
+      "retrofit comercial",
+      "reforma de loja em shopping",
+      "adequação de imóvel comercial",
+      "reforma comercial rápida",
+      "empreiteira obra comercial prazo garantido",
+    ],
+    intro:
+      "A Chico Resolve executa reforma comercial em Fortaleza com a urgência que o varejo exige — reforma de loja em shopping em janelas noturnas, reformas de escritórios entre sexta e segunda, reformas de restaurantes em paradas técnicas curtas e retrofit comercial completo de salas corporativas e lajes inteiras. Atuamos como empreiteira para loja de shopping atendendo padrões de Iguatemi, RioMar e North Shopping (horário, ruído, descarte de entulho, alvarás internos) e como empreiteira obra comercial prazo garantido para franquias com inauguração agendada. Cuidamos de adequação de imóvel comercial: piso epóxi para área técnica, divisórias drywall acústicas, forro modular, exaustão para cozinha industrial, ar-condicionado VRF, sprinklers, alarme de incêndio e laudo do corpo de bombeiros.",
+    whenToHire: [
+      { title: "Abertura ou troca de ponto", text: "Reforma de loja em shopping ou rua com prazo curto e fiscalização rigorosa." },
+      { title: "Adequação para vistoria", text: "Bombeiros, vigilância sanitária, acessibilidade NBR 9050 — adequação de imóvel comercial completa." },
+      { title: "Retrofit corporativo", text: "Retrofit comercial de andares inteiros: piso elevado, forro modular, ar-condicionado VRF e cabeamento estruturado." },
+      { title: "Reformas de restaurantes", text: "Exaustão de coifa, gordura, piso antiderrapante, área de manipulação e adequação à RDC ANVISA." },
+    ],
+    types: [
+      { title: "Reforma de Loja em Shopping", text: "Execução em horário noturno (22h-6h) respeitando regras do condomínio do shopping." },
+      { title: "Reformas de Escritórios", text: "Open space, salas privativas, recepção e sala de reuniões — entrega pronta para operar." },
+      { title: "Reformas de Restaurantes", text: "Cozinha, salão, sanitários, exaustão, gordura e adequação para alvará da ANVISA." },
+      { title: "Retrofit Comercial", text: "Atualização de fachada, instalações, climatização e sistemas prediais em prédios comerciais." },
+    ],
+    process: [
+      { title: "Briefing e Visita Técnica", text: "Entendimento do uso, prazo de inauguração e exigências de shopping/condomínio." },
+      { title: "Orçamento e Cronograma com Multa", text: "Empreiteira obra comercial prazo garantido — cronograma com multa contratual em caso de atraso." },
+      { title: "Aprovações e Alvarás", text: "Memorial descritivo para administração do shopping, bombeiros e vigilância sanitária." },
+      { title: "Execução em Janelas Curtas", text: "Equipes em turnos para reforma comercial rápida sem perda de faturamento do cliente." },
+      { title: "Entrega com Laudos", text: "AVCB, laudo elétrico, ART e relatório fotográfico para o cliente apresentar à vistoria." },
+    ],
+    standards: [
+      "NBR 9077 (saídas de emergência) e Lei do Corpo de Bombeiros do Ceará",
+      "RDC 216 ANVISA (restaurantes e manipulação de alimentos)",
+      "NBR 9050 (acessibilidade)",
+      "NR-10 (segurança em eletricidade) e NR-35 (altura)",
+      "Regimento interno do shopping ou condomínio comercial",
+    ],
+    trust: [
+      "Empreiteira para loja de shopping com experiência em horário noturno",
+      "Empreiteira obra comercial prazo garantido com multa em contrato",
+      "Equipes em dois turnos para reforma comercial rápida",
+      "Engenheiro responsável e ART para entrega ao corpo de bombeiros",
+      "Pacote completo: civil, elétrica, hidráulica, exaustão, climatização e laudos",
+    ],
+    geo: "Atendemos reforma comercial em Fortaleza inteira — Centro, Aldeota, Meireles, Cocó, Papicu, Joaquim Távora, Praia de Iracema, Beira Mar — e em shoppings como Iguatemi, RioMar Fortaleza, RioMar Kennedy, North Shopping Jóquei, North Shopping Maracanaú, Parangaba e Via Sul. Para reformas de restaurantes e adequação de imóvel comercial em região metropolitana (Eusébio, Aquiraz, Caucaia), seguimos as exigências específicas de cada município.",
+    faq: [
+      { q: "Quanto tempo demora a reforma de loja em shopping?", a: "Lojas de até 80 m² geralmente saem em 20 a 30 dias corridos com equipe em turno noturno. Pacotes de reforma comercial rápida para inauguração agendada são acordados em contrato com multa por atraso." },
+      { q: "Vocês entregam AVCB e laudo dos bombeiros?", a: "Sim. Como empreiteira para loja de shopping fazemos toda adequação de imóvel comercial (extintores, sinalização, saídas, sprinklers quando exigido) e acompanhamos a vistoria do corpo de bombeiros." },
+      { q: "Fazem reformas de escritórios sem parar a operação?", a: "Sim. Reformas de escritórios são feitas por blocos ou em horário noturno para não interromper a empresa." },
+      { q: "O que entra no retrofit comercial?", a: "Retrofit comercial inclui atualização de fachada, climatização (VRF/VRV), piso elevado, forro modular, iluminação LED, automação predial e adequação às normas atuais." },
+      { q: "Atendem reformas de restaurantes com cozinha em operação?", a: "Sim, com paradas técnicas programadas (segundas-feiras, períodos de baixa) e adequação total à RDC 216 da ANVISA." },
+    ],
+    related: ["empresa-de-reforma", "cozinha", "fachada"],
+  },
+  {
+    slug: "casa",
+    code: "RF-04",
+    h1: "Reforma de Casa em Fortaleza",
+    shortTitle: "Casa",
+    metaTitle: "Reforma de Casa em Fortaleza | Reforma Residencial Completa",
+    metaDescription:
+      "Empresa de reforma de casas em Fortaleza: reforma residencial completa, retrofit residencial, ampliação de casa, execução de projeto com contrato.",
+    summary:
+      "Reforma residencial completa de casas — execução de projeto, retrofit, ampliação e empreiteira com contrato em Fortaleza.",
+    keywords: [
+      "reforma de casa",
+      "reforma residencial",
+      "reformas residenciais",
+      "empresa de reforma de casas",
+      "reforma de residência",
+      "execução de projeto residencial",
+      "retrofit residencial",
+      "ampliação de casa preço",
+      "empreiteira com contrato para reforma",
+    ],
+    intro:
+      "A Chico Resolve é uma empresa de reforma de casas em Fortaleza especializada em reforma residencial completa, retrofit residencial de imóveis com 20+ anos e ampliação de casa (quarto, suíte, garagem, área gourmet) com cronograma físico-financeiro. Como empreiteira com contrato para reforma, formalizamos toda obra: contrato com escopo, prazo, garantia e multa por atraso. Trabalhamos com execução de projeto residencial de arquitetos parceiros ou desenvolvemos o projeto com nosso escritório técnico. Reformas residenciais executadas pela Chico Resolve incluem fundações reforçadas, alvenaria, cobertura, instalações novas (elétrica NBR 5410, hidráulica NBR 5626), drywall, esquadrias, pintura premium e paisagismo.",
+    whenToHire: [
+      { title: "Casa antiga precisando de reforma", text: "Retrofit residencial completo: fiação, hidráulica, telhado, esquadrias e fachada renovadas." },
+      { title: "Ampliação de área", text: "Quarto novo, suíte, escritório, garagem ou área gourmet executados sob projeto." },
+      { title: "Reforma de residência herdada", text: "Adequação para morar, vender ou alugar — orçamento detalhado e prazo definido." },
+      { title: "Execução de projeto residencial", text: "Você tem o projeto pronto do arquiteto — entregamos a casa construída conforme planta." },
+    ],
+    types: [
+      { title: "Reforma Residencial Completa", text: "Demolição, fundações, alvenaria, cobertura, instalações e acabamentos." },
+      { title: "Retrofit Residencial", text: "Atualização de instalações, esquadrias, cobertura e estética em casas antigas." },
+      { title: "Ampliação de Casa", text: "Quartos novos, suítes, garagem e área de lazer com fundação e cobertura próprias." },
+      { title: "Execução de Projeto de Arquiteto", text: "Casa entregue exatamente conforme planta, com responsável técnico em campo." },
+    ],
+    process: [
+      { title: "Visita Técnica e Levantamento", text: "Sondagem da estrutura existente, fundação, instalações e cobertura." },
+      { title: "Orçamento e Cronograma", text: "Orçamento detalhado por etapa, com cronograma físico-financeiro semanal." },
+      { title: "Contrato com Garantia", text: "Empreiteira com contrato para reforma: objeto, escopo, prazo, multa e garantia formal." },
+      { title: "Execução com Engenheiro", text: "Mestre de obras CLT em tempo integral e visitas semanais do engenheiro responsável." },
+      { title: "Entrega Chave na Mão", text: "Limpeza fina, vistoria conjunta com habite-se, manual e garantia de 12 meses sobre execução." },
+    ],
+    standards: [
+      "NBR 16280 (reformas) e NBR 12721 (orçamento)",
+      "NBR 5410 (elétrica), NBR 5626 (hidráulica), NBR 13714 (incêndio em residências)",
+      "Código de Obras do Município de Fortaleza",
+      "NR-18 (canteiro de obras) e NR-35 (altura)",
+      "Plano Diretor e legislação de uso do solo",
+    ],
+    trust: [
+      "Empresa de reforma de casas com CNPJ ativo e nota fiscal",
+      "Empreiteira com contrato para reforma — modelo formal, registrado em cartório se desejado",
+      "Engenheiro responsável e ART para qualquer intervenção estrutural",
+      "Cronograma físico-financeiro com pagamento por etapa entregue",
+      "Garantia de 12 meses sobre execução conforme NBR 16280 e 5 anos sobre estrutura",
+    ],
+    geo: "Atuamos em reforma de casa em todos os bairros de Fortaleza — Aldeota, Meireles, Cocó, Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante, Cidade dos Funcionários, Salinas, Cambeba, Messejana, Lagoa Redonda, Praia do Futuro — e em região metropolitana: Eusébio, Aquiraz (Porto das Dunas), Caucaia, Pacatuba e Maracanaú. Para reforma residencial litorânea aplicamos materiais e técnicas anti-maresia (esquadrias de alumínio anodizado, ferragens em inox, tintas acrílicas premium).",
+    faq: [
+      { q: "Qual a ampliação de casa preço médio?", a: "Ampliação de casa varia de R$ 2.500 a R$ 4.500 por m² conforme padrão de acabamento, fundação necessária e cobertura. Visita técnica gratuita." },
+      { q: "Vocês fazem execução de projeto residencial de outro arquiteto?", a: "Sim. Como empresa de reforma de casas executamos projetos de qualquer arquiteto ou designer, mantendo total fidelidade ao desenho aprovado." },
+      { q: "Trabalham com contrato registrado?", a: "Sim. Somos empreiteira com contrato para reforma — modelo formal com escopo, prazo, garantia e multa por atraso. Pode ser registrado em cartório se preferir." },
+      { q: "Qual a diferença entre reforma residencial e retrofit residencial?", a: "Reforma residencial muda layout/acabamento; retrofit residencial moderniza instalações, esquadrias, cobertura e estética sem mexer na estrutura principal." },
+      { q: "Reformas residenciais têm garantia?", a: "Sim. 12 meses sobre execução (NBR 16280) e 5 anos sobre solidez e segurança estrutural conforme Código Civil." },
+    ],
+    related: ["apartamento", "telhado", "fachada"],
+  },
+  {
+    slug: "banheiro",
+    code: "RF-05",
+    h1: "Reforma de Banheiro em Fortaleza",
+    shortTitle: "Banheiro",
+    metaTitle: "Reforma de Banheiro em Fortaleza | Simples e Completa",
+    metaDescription:
+      "Reforma de banheiro em Fortaleza: reforma simples de banheiro, construção e reforma com hidráulica nova, impermeabilização e acabamento premium.",
+    summary:
+      "Reforma de banheiro completa ou reforma simples de banheiro com troca de revestimento, louças, hidráulica e impermeabilização técnica.",
+    keywords: [
+      "reforma de banheiro",
+      "construção e reforma",
+      "reforma de banheiro simples",
+      "reforma simples de banheiro",
+    ],
+    intro:
+      "Reforma de banheiro é o serviço de construção e reforma mais pedido em Fortaleza — e o que mais gera retrabalho quando feito por mão de obra sem qualificação. A Chico Resolve executa reforma de banheiro simples (troca de revestimento, louças e metais com hidráulica preservada) e reforma completa (demolição até a estrutura, nova rede hidráulica, impermeabilização com manta asfáltica ou argamassa polimérica, cerâmica de piso e parede, marcenaria sob medida e louças suspensas). Como cuidamos da hidráulica, impermeabilização e revestimento sob o mesmo contrato, eliminamos o famoso problema da goteira no vizinho de baixo seis meses depois da obra.",
+    whenToHire: [
+      { title: "Banheiro com infiltração", text: "Manchas no teto do vizinho ou descolamento de azulejos indicam falha de impermeabilização." },
+      { title: "Atualização estética", text: "Reforma simples de banheiro só com troca de revestimento, louças e metais." },
+      { title: "Reforma completa", text: "Demolição até a contrapiso, nova rede hidráulica e impermeabilização do zero." },
+      { title: "Suíte do casal", text: "Box ampliado, banheira, ducha higiênica, iluminação cênica e marcenaria planejada." },
+    ],
+    types: [
+      { title: "Reforma de Banheiro Simples", text: "Troca de piso/parede, louças, metais e bancada, sem mexer na hidráulica oculta." },
+      { title: "Reforma Completa", text: "Demolição total, hidráulica nova, impermeabilização, revestimento e acabamentos." },
+      { title: "Banheiro Acessível", text: "Adequação conforme NBR 9050 — barras de apoio, box sem desnível, vaso acessível." },
+      { title: "Lavabo Sob Medida", text: "Bancada esculpida, cuba de apoio, iluminação cênica e revestimento de destaque." },
+    ],
+    process: [
+      { title: "Vistoria e Diagnóstico", text: "Identificação de vazamentos ocultos, estado da impermeabilização e ralos." },
+      { title: "Projeto Hidráulico", text: "Definição da nova posição de pontos hidráulicos, ralos e caimento do piso." },
+      { title: "Demolição e Impermeabilização", text: "Demolição controlada, regularização do contrapiso e aplicação de manta ou argamassa polimérica." },
+      { title: "Revestimento e Acabamentos", text: "Assentamento de cerâmica/porcelanato com rejunte epóxi nas áreas molhadas." },
+      { title: "Teste de Estanqueidade", text: "Teste de 72h com água acumulada e entrega com termo de garantia formal." },
+    ],
+    standards: [
+      "NBR 5626 (hidráulica predial)",
+      "NBR 9575 (impermeabilização)",
+      "NBR 13818 (cerâmica para revestimento)",
+      "NBR 9050 (acessibilidade quando aplicável)",
+      "NBR 16280 (reformas em edificações)",
+    ],
+    trust: [
+      "Hidráulica e impermeabilização sob o mesmo contrato — fim do empurra-empurra",
+      "Teste de estanqueidade de 72h documentado em fotos",
+      "Rejunte epóxi nas áreas molhadas para evitar mofo",
+      "Garantia de 12 meses sobre execução e 5 anos sobre impermeabilização",
+      "Materiais de marcas referência (Deca, Roca, Eliane, Portobello, Vedacit)",
+    ],
+    geo: "Atendemos reforma de banheiro em todos os bairros de Fortaleza, com foco em edifícios litorâneos (Beira Mar, Mucuripe, Praia de Iracema, Meireles) onde a umidade ataca rejunte e selantes mais rápido. Em região metropolitana atendemos Eusébio, Aquiraz, Caucaia e Maracanaú. Para imóveis perto do mar indicamos rejunte epóxi e ferragens em inox 316.",
+    faq: [
+      { q: "Quanto custa uma reforma simples de banheiro em Fortaleza?", a: "Reforma de banheiro simples (sem mexer em hidráulica oculta) parte de R$ 6 mil para banheiro de 4 m². Reforma completa fica entre R$ 12 mil e R$ 30 mil dependendo do acabamento." },
+      { q: "Quanto tempo demora a reforma de banheiro?", a: "Reforma simples: 5 a 8 dias úteis. Reforma completa com hidráulica nova: 15 a 25 dias úteis incluindo cura da impermeabilização." },
+      { q: "Vocês fazem impermeabilização com garantia?", a: "Sim. Aplicamos manta asfáltica ou argamassa polimérica conforme NBR 9575 e damos garantia de 5 anos com teste de estanqueidade documentado." },
+      { q: "Posso usar o banheiro durante a obra?", a: "Em apartamentos com 2 banheiros, isolamos o reformado e mantemos o outro em uso. Em casas com 1 só banheiro, planejamos a obra para minimizar o tempo sem uso." },
+      { q: "Trabalham com construção e reforma de banheiros acessíveis?", a: "Sim. Executamos banheiro acessível conforme NBR 9050 — barras de apoio, box nivelado, vaso com altura adequada e área de manobra para cadeira." },
+    ],
+    related: ["apartamento", "cozinha", "pisos"],
+  },
+  {
+    slug: "telhado",
+    code: "RF-06",
+    h1: "Reforma de Telhado em Fortaleza",
+    shortTitle: "Telhado",
+    metaTitle: "Reforma de Telhado em Fortaleza | Manutenção de Telhados",
+    metaDescription:
+      "Reforma de telhado residencial em Fortaleza: manutenção de telhados, troca de telhas, calhas, rufos e empresas de telhados e coberturas com NR-35.",
+    summary:
+      "Reforma e manutenção de telhados residenciais com troca de telhas, calhas, rufos e impermeabilização, com equipe certificada NR-35.",
+    keywords: [
+      "reforma de telhado",
+      "construção e reforma",
+      "reforma de telhados",
+      "manutenção de telhados",
+      "reforma de telhado residencial",
+      "reforma de telhados residenciais",
+      "empresas de telhados e coberturas",
+      "manutenção telhado",
+    ],
+    intro:
+      "A Chico Resolve está entre as empresas de telhados e coberturas mais procuradas em Fortaleza para reforma de telhado residencial e manutenção telhado preventiva. Atuamos em construção e reforma de coberturas: troca completa de telhas cerâmicas, telhas de fibrocimento ou telhas metálicas, substituição de madeiramento (caibros, ripas, terças), instalação de manta térmica e subcobertura, calhas e rufos em aço galvanizado pintado, e impermeabilização de lajes técnicas. Toda nossa equipe é certificada em NR-35 (trabalho em altura) com cinto, talabarte, linha de vida e plano de resgate antes de subir no telhado.",
+    whenToHire: [
+      { title: "Goteira ou infiltração", text: "Manchas no forro e pingos no inverno são sinais claros de manutenção telhado urgente." },
+      { title: "Telhas envelhecidas (15+ anos)", text: "Telhas cerâmicas vencidas perdem porosidade e absorvem mais água do que escoam." },
+      { title: "Compra de imóvel", text: "Vistoria pré-compra com laudo técnico do estado da cobertura antes de fechar negócio." },
+      { title: "Manutenção preventiva anual", text: "Limpeza de calhas, troca de telhas quebradas e reaperto de fixadores antes do inverno." },
+    ],
+    types: [
+      { title: "Troca Completa de Telhado", text: "Remoção do telhado existente, revisão ou troca do madeiramento, instalação de subcobertura e telhas novas." },
+      { title: "Manutenção de Telhados", text: "Troca de telhas quebradas, limpeza de calhas, reaperto de cumeeiras, impermeabilização localizada." },
+      { title: "Calhas, Rufos e Condutores", text: "Calhas em aço galvanizado pintado, rufos de acabamento e tubos de queda com dimensionamento correto." },
+      { title: "Coberturas Industriais e Comerciais", text: "Telha sanduíche, telha termoacústica, policarbonato e galvalume para galpões e lojas." },
+    ],
+    process: [
+      { title: "Vistoria Técnica", text: "Inspeção do telhado, madeiramento, calhas e rufos com fotos do antes." },
+      { title: "Orçamento Detalhado", text: "Proposta com escopo (madeiramento, telha, calha, rufo, manta), prazo e forma de pagamento." },
+      { title: "Montagem com NR-35", text: "Linha de vida, andaimes ou plataforma, equipe com cinto e talabarte certificados." },
+      { title: "Execução e Acabamento", text: "Troca/revisão do madeiramento, subcobertura, telhas, cumeeiras, calhas e rufos." },
+      { title: "Teste e Garantia", text: "Teste com mangueira em pontos críticos, relatório fotográfico do depois e garantia formal." },
+    ],
+    standards: [
+      "NBR 15310 (telha cerâmica)",
+      "NBR 8039 (projeto e execução de telhados com telha cerâmica)",
+      "NBR 7196 (telhas de fibrocimento)",
+      "NR-35 (trabalho em altura) e NR-18 (canteiro de obras)",
+      "ABNT NBR 10844 (drenagem pluvial)",
+    ],
+    trust: [
+      "Empresas de telhados e coberturas com equipe própria certificada em NR-35",
+      "Linha de vida e plano de resgate antes de qualquer trabalho em altura",
+      "Madeira tratada com cupinicida e impermeabilização garantida por escrito",
+      "Calhas e rufos em aço galvanizado pintado com 5 anos de garantia",
+      "Relatório fotográfico antes/depois e laudo técnico para vistoria",
+    ],
+    geo: "Atendemos reforma de telhado residencial em todos os bairros de Fortaleza — Aldeota, Meireles, Cocó, Edson Queiroz, Sapiranga, Lagoa Redonda, Cidade dos Funcionários, Eng. Luciano Cavalcante, Messejana, Cambeba — e em casas de praia em Eusébio, Aquiraz (Porto das Dunas), Caucaia (Cumbuco), Pacatuba e Maracanaú. Para reforma de telhados residenciais litorâneos usamos parafusos em inox e telhas com tratamento UV reforçado.",
+    faq: [
+      { q: "Quanto custa uma reforma de telhado em Fortaleza?", a: "Manutenção telhado pontual parte de R$ 1.500. Troca completa de telhado residencial fica entre R$ 180 e R$ 380 por m² conforme telha (cerâmica, fibrocimento, metálica) e estado do madeiramento." },
+      { q: "Vocês trabalham com manutenção de telhados preventiva?", a: "Sim. Oferecemos contrato anual de manutenção telhado: limpeza de calhas, troca de telhas quebradas, vedação de cumeeiras e relatório fotográfico — ideal antes do inverno." },
+      { q: "Trocam o madeiramento podre por cupim?", a: "Sim. Identificamos peças comprometidas, substituímos por madeira tratada (autoclave) e aplicamos cupinicida na estrutura remanescente." },
+      { q: "Trabalham com construção e reforma de telhado novo?", a: "Sim. Em obras de ampliação ou construção, executamos todo o telhado — estrutura, subcobertura, telha, calha e rufo." },
+      { q: "Qual telha indicar para casa em Fortaleza?", a: "Para clima quente e litorâneo indicamos telha cerâmica esmaltada (térmica) ou telha sanduíche com isolamento. Para custo-benefício, fibrocimento com manta térmica." },
+    ],
+    related: ["fachada", "casa", "empresa-de-reforma"],
+  },
+  {
+    slug: "fachada",
+    code: "RF-07",
+    h1: "Reforma de Fachada em Fortaleza",
+    shortTitle: "Fachada",
+    metaTitle: "Reforma de Fachada em Fortaleza | Predial e Residencial",
+    metaDescription:
+      "Reforma de fachada predial e residencial em Fortaleza: construção e reforma de fachadas com pintura, revestimento, juntas e impermeabilização.",
+    summary:
+      "Reforma de fachada predial e residencial — pintura, revestimento, juntas de dilatação e impermeabilização com equipe NR-35.",
+    keywords: [
+      "reforma de fachada",
+      "reforma de fachada predial",
+      "construção e reforma",
+      "reforma de fachada residencial",
+    ],
+    intro:
+      "A reforma de fachada é, em Fortaleza, um serviço de engenharia: maresia, vento, sol forte e chuva concentrada agridem a pele do edifício mais do que em qualquer outra capital. A Chico Resolve executa reforma de fachada predial e reforma de fachada residencial cobrindo lavagem técnica, recuperação de fissuras, tratamento de juntas de dilatação, troca de revestimento cerâmico quando necessário, impermeabilização de platibandas, pintura com tintas acrílicas premium (Sherwin-Williams, Suvinil, Coral) e instalação ou substituição de ACM e pastilhas. Toda obra de construção e reforma de fachada conta com plano de resgate NR-35, montagem certificada de balancim ou andaime fachadeiro, sinalização e gerenciamento de risco para terceiros.",
+    whenToHire: [
+      { title: "Pintura descascando ou desbotada", text: "Sinal de tinta vencida ou aplicação sobre substrato úmido — exige diagnóstico antes de repintar." },
+      { title: "Fissuras na fachada", text: "Trincas em torno de janelas, sacadas ou juntas precisam de tratamento antes da pintura." },
+      { title: "Infiltração em apartamento", text: "Mancha interna em parede de fachada quase sempre vem de junta de dilatação envelhecida." },
+      { title: "Valorização do imóvel", text: "Fachada renovada valoriza prédios em até 20% e acelera vendas de unidades." },
+    ],
+    types: [
+      { title: "Pintura de Fachada", text: "Lavagem, tratamento de pontos críticos, selador e duas demãos de tinta acrílica premium." },
+      { title: "Tratamento de Juntas de Dilatação", text: "Remoção do selante envelhecido e aplicação de poliuretano estrutural com cordão de apoio." },
+      { title: "Recuperação Estrutural", text: "Reparo de cobrimento de concreto, ferragens corroídas e fissuras com argamassa polimérica." },
+      { title: "Troca de Revestimento", text: "Substituição de pastilhas, cerâmicas ou aplicação de ACM em fachadas modernas." },
+    ],
+    process: [
+      { title: "Vistoria e Mapeamento", text: "Mapeamento da fachada com fotos por pavimento, identificando patologias por trecho." },
+      { title: "Memorial Descritivo", text: "Memorial com sistema construtivo, marcas de material e cronograma para apresentar à assembleia." },
+      { title: "Montagem NR-35", text: "Balancim, cadeira suspensa ou andaime fachadeiro com ART de montagem e plano de resgate." },
+      { title: "Execução por Pavimento", text: "Lavagem, tratamento, primer e pintura/colocação de revestimento pavimento a pavimento." },
+      { title: "Inspeção e Garantia", text: "Inspeção conjunta com síndico e termo de garantia formal por etapa do serviço." },
+    ],
+    standards: [
+      "NBR 13245 (pintura de edificações)",
+      "NBR 15575 (desempenho de edificações)",
+      "NBR 9575 (impermeabilização)",
+      "NR-35 (trabalho em altura) e NR-18 (canteiro)",
+      "ART de montagem de balancim/andaime fachadeiro",
+    ],
+    trust: [
+      "Equipe própria CLT certificada em NR-35 com reciclagem anual",
+      "ART de montagem de balancim ou andaime fachadeiro emitida por engenheiro",
+      "Tintas acrílicas premium com 8 anos de garantia em fachada externa",
+      "Mapeamento fotográfico de patologias por pavimento antes da obra",
+      "Plano de gerenciamento de risco para pedestres e veículos no entorno",
+    ],
+    geo: "Atendemos reforma de fachada predial em prédios da Beira Mar, Mucuripe, Praia de Iracema, Meireles, Aldeota, Cocó, Papicu, Varjota, Dionísio Torres, Edson Queiroz e Sapiranga. Para reforma de fachada residencial atuamos em toda Fortaleza e região metropolitana (Eusébio, Aquiraz, Caucaia, Maracanaú). Em prédios litorâneos especificamos sistema de pintura acrílico com primer fixador e tratamento adicional de juntas com selante poliuretânico.",
+    faq: [
+      { q: "Quanto custa uma reforma de fachada predial em Fortaleza?", a: "Pintura de fachada parte de R$ 45 por m² de área aplicada; recuperação estrutural fica entre R$ 80 e R$ 250 por m² conforme patologia. Mapeamento e orçamento são gratuitos." },
+      { q: "Quanto tempo dura a pintura de fachada?", a: "Em Fortaleza, com tinta acrílica premium e preparação correta, a pintura de fachada dura de 5 a 8 anos. Prédios na Beira Mar costumam pedir repintura no menor intervalo por causa da maresia." },
+      { q: "Vocês trabalham com construção e reforma de fachada residencial?", a: "Sim. Reforma de fachada residencial inclui pintura, recuperação de revestimentos, cobogós, esquadrias e ACM em casas e sobrados." },
+      { q: "Como funciona a aprovação da obra na assembleia?", a: "Entregamos memorial descritivo, orçamento detalhado, ART do engenheiro e cronograma para o síndico convocar assembleia. Acompanhamos a reunião se necessário." },
+      { q: "Atendem prédios altos?", a: "Sim. Trabalhamos com balancim elétrico, cadeira suspensa e andaime fachadeiro em prédios de até 30 pavimentos com plano de resgate NR-35." },
+    ],
+    related: ["telhado", "casa", "comercial"],
+  },
+  {
+    slug: "piscina",
+    code: "RF-08",
+    h1: "Reforma de Piscina em Fortaleza",
+    shortTitle: "Piscina",
+    metaTitle: "Reforma de Piscina em Fortaleza | Vazamento e Impermeabilização",
+    metaDescription:
+      "Reforma de piscina de alvenaria e azulejo em Fortaleza: impermeabilização de piscina com vazamento, conserto e reparo estrutural com garantia.",
+    summary:
+      "Reforma de piscina de alvenaria e azulejo, impermeabilização, conserto de vazamento e reparo estrutural com teste de estanqueidade.",
+    keywords: [
+      "reforma piscina",
+      "reforma de piscina de alvenaria",
+      "reforma de piscina de azulejo",
+      "impermeabilização de piscina com vazamento",
+      "conserto de vazamento de piscina",
+      "reparo estrutural em piscina",
+    ],
+    intro:
+      "Reforma de piscina em Fortaleza envolve três frentes técnicas: reparo estrutural em piscina (trinca em parede, recalque diferencial, fissura no fundo), impermeabilização de piscina com vazamento (argamassa polimérica, manta líquida acrílica ou sistema epóxi) e troca de revestimento (pastilha cerâmica, pastilha de vidro, vinil ou pintura epóxi). A Chico Resolve executa reforma de piscina de alvenaria e reforma de piscina de azulejo com diagnóstico técnico do vazamento (teste de evaporação e teste de pressão hidrostática nas tubulações), conserto de vazamento de piscina com localização precisa, e entrega com teste de estanqueidade de 7 dias antes da liberação para uso.",
+    whenToHire: [
+      { title: "Nível da água baixando", text: "Mais de 5 mm/dia além da evaporação normal indica vazamento. Diagnóstico técnico antes de quebrar." },
+      { title: "Pastilhas soltando", text: "Pastilhas caindo sinalizam falha de argamassa colante ou impermeabilização vencida." },
+      { title: "Trinca estrutural", text: "Trinca de mais de 1 mm exige reparo estrutural em piscina com tratamento técnico." },
+      { title: "Piscina antiga sem uso", text: "Reativação envolve laudo estrutural, nova impermeabilização e revestimento." },
+    ],
+    types: [
+      { title: "Reforma de Piscina de Alvenaria", text: "Reparo estrutural, impermeabilização e revestimento novo em piscinas de concreto armado." },
+      { title: "Reforma de Piscina de Azulejo", text: "Troca de pastilha cerâmica ou de vidro com rejunte epóxi para áreas submersas." },
+      { title: "Impermeabilização com Vazamento", text: "Localização do vazamento, reparo estrutural e nova impermeabilização com sistema certificado." },
+      { title: "Conserto de Vazamento", text: "Teste de evaporação, teste de pressão nas tubulações e reparo localizado quando viável." },
+    ],
+    process: [
+      { title: "Diagnóstico do Vazamento", text: "Teste de evaporação de 48h e teste de pressão hidrostática nas tubulações de recalque e retorno." },
+      { title: "Esvaziamento e Vistoria", text: "Esvaziamento controlado, vistoria estrutural e relatório técnico com fotos." },
+      { title: "Reparo Estrutural", text: "Tratamento de trincas, recomposição de ferragens e regularização da superfície." },
+      { title: "Impermeabilização Técnica", text: "Argamassa polimérica em duas demãos cruzadas ou manta líquida conforme o sistema da piscina." },
+      { title: "Revestimento e Estanqueidade", text: "Assentamento de pastilha com rejunte epóxi, teste de estanqueidade de 7 dias e laudo de entrega." },
+    ],
+    standards: [
+      "NBR 9575 e NBR 9574 (impermeabilização)",
+      "NBR 10821 (piscinas — requisitos)",
+      "NBR 6118 (estruturas de concreto)",
+      "NR-18 e NR-35 quando aplicável",
+      "FDS dos produtos químicos aplicados",
+    ],
+    trust: [
+      "Diagnóstico do vazamento com teste técnico documentado",
+      "Reparo estrutural em piscina com argamassa polimérica e tela de fibra de vidro",
+      "Impermeabilização com sistema certificado e 5 anos de garantia formal",
+      "Rejunte epóxi nas áreas submersas (resistente a cloro)",
+      "Teste de estanqueidade de 7 dias antes da liberação para uso",
+    ],
+    geo: "Atendemos reforma de piscina em Fortaleza inteira — Aldeota, Meireles, Cocó, Edson Queiroz, Sapiranga, Cidade dos Funcionários, Cambeba — e em casas de praia e condomínios em Eusébio, Aquiraz (Porto das Dunas), Caucaia (Cumbuco, Icaraí), Pacatuba e Maracanaú. Em piscinas próximas ao mar usamos rejunte epóxi e fixadores em inox 316 por causa da salinidade.",
+    faq: [
+      { q: "Como saber se a piscina tem vazamento?", a: "Marque o nível, cubra para evitar evaporação e meça em 24h. Perda acima de 5 mm/dia indica vazamento. Fazemos teste de evaporação técnico gratuito." },
+      { q: "Quanto custa impermeabilização de piscina com vazamento?", a: "Depende da metragem e do sistema. Impermeabilização com argamassa polimérica + nova pastilha parte de R$ 280 por m² de espelho d'água. Conserto de vazamento pontual fica entre R$ 1.500 e R$ 5.000." },
+      { q: "Vocês fazem reforma de piscina de azulejo antiga?", a: "Sim. Removemos o revestimento antigo, tratamos a estrutura, reimpermeabilizamos e aplicamos pastilha nova com rejunte epóxi." },
+      { q: "Quanto tempo demora uma reforma de piscina de alvenaria?", a: "De 15 a 30 dias úteis dependendo do tamanho, sistema de impermeabilização e tempo de cura entre etapas." },
+      { q: "Tem garantia?", a: "Sim. 5 anos sobre impermeabilização e reparo estrutural, e 12 meses sobre execução de revestimento conforme NBR 16280." },
+    ],
+    related: ["banheiro", "casa", "fachada"],
+  },
+  {
+    slug: "pisos",
+    code: "RF-09",
+    h1: "Reforma de Pisos em Fortaleza",
+    shortTitle: "Pisos",
+    metaTitle: "Reforma de Pisos em Fortaleza | Laminado, Vinílico e Porcelanato",
+    metaDescription:
+      "Reforma de pisos em Fortaleza: instalação de piso laminado e vinílico, empresa de instalação de pisos com orçamento para trocar piso e garantia.",
+    summary:
+      "Reforma e instalação de pisos — laminado, vinílico, porcelanato e cerâmica — com nivelamento técnico e garantia formal.",
+    keywords: [
+      "reforma de pisos",
+      "reforma de piso laminado",
+      "orçamento para trocar piso",
+      "empresa de instalação de pisos",
+      "instalação de piso vinílico",
+    ],
+    intro:
+      "A Chico Resolve é uma empresa de instalação de pisos em Fortaleza que executa reforma de pisos em apartamento habitado, casas, lojas e escritórios. Trabalhamos com instalação de piso vinílico (cola, click ou colado em manta), reforma de piso laminado (HDF 8 a 12 mm), porcelanato 60×120 cm e 90×90 cm, cerâmica, piso de madeira engenheirada e piso elevado modular. Todo orçamento para trocar piso começa com avaliação do contrapiso (umidade, planicidade, nivelamento) — sem essa etapa, qualquer piso novo soa oco, levanta nas pontas ou trinca em até 12 meses. Por isso garantimos por escrito o nivelamento com autonivelante quando necessário.",
+    whenToHire: [
+      { title: "Piso descolando ou trincado", text: "Cerâmica oca, porcelanato rachado ou laminado inflado indicam contrapiso comprometido." },
+      { title: "Atualização estética", text: "Trocar carpete por piso vinílico, cerâmica antiga por porcelanato grande formato." },
+      { title: "Pré-mudança", text: "Aproveitar o imóvel vazio para trocar o piso de toda a área social em poucos dias." },
+      { title: "Apartamento na planta", text: "Substituir o piso padrão da construtora antes de receber as chaves." },
+    ],
+    types: [
+      { title: "Instalação de Piso Vinílico", text: "Manta, régua colada ou click — ideal para apartamento habitado, rápido e sem quebra-quebra." },
+      { title: "Reforma de Piso Laminado", text: "HDF de 8 a 12 mm com manta acústica, ideal para quartos e áreas secas." },
+      { title: "Porcelanato Grande Formato", text: "60×120, 90×90 e 120×120 cm com rejunte mínimo, ideal para sala e cozinha." },
+      { title: "Cerâmica e Porcelanato Externo", text: "Revestimentos para áreas externas, varandas e áreas de piscina com superfície antiderrapante." },
+    ],
+    process: [
+      { title: "Visita Técnica e Medição", text: "Medição da área, avaliação do contrapiso e teste de umidade para indicar o sistema correto." },
+      { title: "Orçamento para Trocar Piso", text: "Orçamento detalhado com material, mão de obra, retirada de entulho e rodapés." },
+      { title: "Preparação do Contrapiso", text: "Remoção do piso antigo, regularização e aplicação de autonivelante quando necessário." },
+      { title: "Assentamento Técnico", text: "Assentamento com argamassa AC-III, dupla colagem em porcelanato grande formato, rejunte adequado." },
+      { title: "Acabamento e Limpeza", text: "Rodapé, soleira, limpeza pós-obra e termo de garantia formal sobre instalação." },
+    ],
+    standards: [
+      "NBR 13753 (cerâmica para piso)",
+      "NBR 13753 / 13816 (revestimento cerâmico)",
+      "NBR 14081 (argamassa colante)",
+      "NBR 9050 (acessibilidade em soleiras)",
+      "FDS da argamassa e do rejunte aplicados",
+    ],
+    trust: [
+      "Empresa de instalação de pisos com CNPJ ativo e nota fiscal",
+      "Orçamento para trocar piso detalhado e gratuito em até 48h",
+      "Nivelamento com autonivelante quando o contrapiso exigir",
+      "Equipe própria CLT — sem subempreitar montadores",
+      "Garantia formal de 12 meses sobre instalação de piso vinílico, laminado, cerâmica e porcelanato",
+    ],
+    geo: "Atendemos reforma de pisos em todo Fortaleza — Aldeota, Meireles, Cocó, Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante, Cidade dos Funcionários, Cambeba, Messejana, Praia do Futuro, Beira Mar e Mucuripe — e em Eusébio, Aquiraz, Caucaia, Pacatuba e Maracanaú. Em apartamentos litorâneos indicamos porcelanato técnico de baixa absorção e rejunte epóxi nas áreas molhadas.",
+    faq: [
+      { q: "Quanto custa instalação de piso vinílico em Fortaleza?", a: "Instalação de piso vinílico click parte de R$ 35/m² (mão de obra) + material. Régua colada fica em torno de R$ 45/m². Visita técnica e orçamento para trocar piso são gratuitos." },
+      { q: "Quanto tempo demora uma reforma de piso laminado?", a: "Em uma sala de 30 m², a reforma de piso laminado leva 1 a 2 dias úteis, sem quebra-quebra e com mínimo de barulho." },
+      { q: "Vocês retiram o piso antigo?", a: "Sim. Removemos o piso existente, descartamos o entulho conforme CONAMA 307 e regularizamos o contrapiso antes do novo." },
+      { q: "Posso colocar piso vinílico sobre cerâmica?", a: "Sim, desde que a cerâmica esteja firme (sem peças ocas), nivelada e seca. Avaliamos o substrato durante a visita técnica." },
+      { q: "Trabalham com porcelanato grande formato?", a: "Sim. Instalamos porcelanato 60×120, 90×90, 120×120 e 120×240 cm com dupla colagem e técnica de assentamento específica para grandes peças." },
+    ],
+    related: ["banheiro", "cozinha", "apartamento"],
+  },
+  {
+    slug: "cozinha",
+    code: "RF-10",
+    h1: "Reforma de Cozinha em Fortaleza",
+    shortTitle: "Cozinha",
+    metaTitle: "Reforma de Cozinha em Fortaleza | Pequena, Simples e Completa",
+    metaDescription:
+      "Reforma de cozinha em Fortaleza: reforma de cozinha pequena e simples, empreiteira para reforma de cozinha, troca de revestimento e hidráulica.",
+    summary:
+      "Reforma de cozinha pequena, simples ou completa com retrofit, troca de revestimento, porcelanato e reforma hidráulica.",
+    keywords: [
+      "reforma de cozinha",
+      "reforma de cozinha pequena",
+      "reforma de cozinha simples",
+      "empreiteira para reforma de cozinha",
+      "orçamento para obra na cozinha",
+      "remodelação de cozinha preço",
+      "empresa de retrofit de cozinha",
+      "empreiteiro para fazer cozinha",
+      "troca de revestimento de cozinha",
+      "colocação de porcelanato cozinha",
+      "reforma hidráulica de cozinha",
+    ],
+    intro:
+      "A Chico Resolve é empreiteira para reforma de cozinha em Fortaleza com pacote completo: reforma hidráulica de cozinha (nova rede de água quente e fria, esgoto, pia, máquina de lavar louças, filtro), troca de revestimento de cozinha (porcelanato de piso, revestimento de parede, faixa decorativa), colocação de porcelanato cozinha grande formato com dupla colagem, instalação elétrica nova com circuito exclusivo para forno, micro-ondas e coifa, marcenaria sob medida em MDF/MDP com puxadores embutidos, bancada em quartzo, silestone ou granito, e adequação da coifa com tubulação até a fachada. Tanto reforma de cozinha pequena (5–8 m²) quanto reforma de cozinha simples ou retrofit completo entram com orçamento para obra na cozinha detalhado e prazo em contrato.",
+    whenToHire: [
+      { title: "Cozinha apertada", text: "Reforma de cozinha pequena com integração à sala, marcenaria sob medida e ganho de bancada." },
+      { title: "Atualização estética", text: "Reforma de cozinha simples com troca de revestimento, pintura e novo armário planejado." },
+      { title: "Vazamento ou má pressão", text: "Reforma hidráulica de cozinha completa, com nova prumada e pontos certos para cada equipamento." },
+      { title: "Cozinha gourmet", text: "Empresa de retrofit de cozinha: cooktop, forno embutido, coifa exaustora, ilha e adega." },
+    ],
+    types: [
+      { title: "Reforma de Cozinha Pequena", text: "Otimização de layout, marcenaria planejada e iluminação para ganhar funcionalidade." },
+      { title: "Reforma de Cozinha Simples", text: "Pintura, troca de revestimento e atualização de pia, torneira e armário sem mexer em hidráulica." },
+      { title: "Retrofit de Cozinha", text: "Hidráulica, elétrica, gás, revestimento, marcenaria e bancada novas — chave na mão." },
+      { title: "Cozinha Gourmet", text: "Ilha, bancada de pedra, coifa exaustora e integração com varanda ou sala." },
+    ],
+    process: [
+      { title: "Visita Técnica", text: "Levantamento de medidas, ponto de hidráulica/elétrica/gás e entendimento da rotina da família." },
+      { title: "Orçamento para Obra na Cozinha", text: "Orçamento detalhado por etapa (demolição, instalações, revestimento, marcenaria, bancada)." },
+      { title: "Demolição Controlada", text: "Demolição com proteção do restante do apartamento, descarte conforme CONAMA 307." },
+      { title: "Instalações Novas", text: "Reforma hidráulica de cozinha completa, circuitos elétricos dedicados e ponto de gás verificado." },
+      { title: "Revestimento e Acabamento", text: "Colocação de porcelanato cozinha, revestimento de parede, marcenaria, bancada e instalação dos eletros." },
+    ],
+    standards: [
+      "NBR 5626 (hidráulica) e NBR 5410 (elétrica)",
+      "NBR 13103 (instalações internas de gás GLP)",
+      "NBR 13753 (assentamento de cerâmica)",
+      "NBR 16280 (reformas em edificações)",
+      "RDC 216 ANVISA para cozinhas comerciais",
+    ],
+    trust: [
+      "Empreiteira para reforma de cozinha com hidráulica, elétrica e gás sob o mesmo contrato",
+      "Empresa de retrofit de cozinha com engenheiro responsável e ART",
+      "Colocação de porcelanato cozinha com dupla colagem em peças grandes",
+      "Garantia de 12 meses sobre execução e 5 anos sobre impermeabilização",
+      "Empreiteiro para fazer cozinha CLT — sem subempreitar marceneiro de aplicativo",
+    ],
+    geo: "Atendemos reforma de cozinha em todos os edifícios e casas de Fortaleza — Aldeota, Meireles, Cocó, Papicu, Varjota, Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante, Beira Mar, Mucuripe e Praia do Futuro — e em Eusébio, Aquiraz, Caucaia, Pacatuba e Maracanaú. Em cozinhas litorâneas indicamos puxadores e ferragens em inox 304/316 e bancadas em quartzo para resistir à maresia.",
+    faq: [
+      { q: "Qual a remodelação de cozinha preço médio em Fortaleza?", a: "Reforma de cozinha simples (sem mexer em hidráulica) parte de R$ 12 mil. Reforma de cozinha pequena completa fica entre R$ 25 mil e R$ 45 mil. Cozinha gourmet com ilha varia de R$ 60 mil a R$ 150 mil." },
+      { q: "Vocês fazem reforma hidráulica de cozinha completa?", a: "Sim. Trocamos prumadas internas, redimensionamos pontos para máquina de lavar louças, filtro, gelo, dispenser e coifa. Teste de estanqueidade obrigatório antes do revestimento." },
+      { q: "Quanto custa a colocação de porcelanato cozinha grande formato?", a: "Mão de obra para colocação de porcelanato cozinha 60×120 ou 90×90 parte de R$ 80/m² com dupla colagem e rejunte epóxi. Visita técnica e orçamento para obra na cozinha são gratuitos." },
+      { q: "Vocês fazem troca de revestimento de cozinha sem mexer no resto?", a: "Sim. Reforma de cozinha simples só com troca de revestimento e pintura, mantendo armários e bancada existentes." },
+      { q: "Quanto tempo dura uma reforma de cozinha?", a: "Reforma simples: 7 a 12 dias. Reforma completa com hidráulica e marcenaria nova: 30 a 45 dias úteis." },
+    ],
+    related: ["apartamento", "banheiro", "pisos"],
+  },
+  {
+    slug: "quadras-esportivas",
+    code: "RF-11",
+    h1: "Reforma de Quadras Esportivas em Fortaleza",
+    shortTitle: "Quadras Esportivas",
+    metaTitle: "Reforma de Quadras Esportivas em Fortaleza | Poliesportiva e Society",
+    metaDescription:
+      "Reforma de quadras esportivas em Fortaleza: empreiteira para quadra poliesportiva, revitalização de Society, pintura epóxi, grama sintética e alambrado.",
+    summary:
+      "Reforma e revitalização de quadras esportivas — poliesportiva, Society, society, com pintura epóxi, grama sintética e alambrado.",
+    keywords: [
+      "reforma de quadras esportivas",
+      "reforma de quadras",
+      "orçamento reforma quadra condomínio",
+      "empreiteira para quadra poliesportiva",
+      "empresa de reforma de quadra esportiva",
+      "revitalização de quadra de Society",
+      "pintura epóxi para quadra esportiva",
+      "instalação de grama sintética esportiva",
+      "troca de alambrado de quadra",
+      "conserto de piso de quadra trincado",
+    ],
+    intro:
+      "A Chico Resolve é empreiteira para quadra poliesportiva e empresa de reforma de quadra esportiva em Fortaleza com obras entregues em condomínios, clubes, escolas e centros de treinamento. Executamos reforma de quadras esportivas em piso de concreto (conserto de piso de quadra trincado com tratamento de fissura ativa), pintura epóxi para quadra esportiva (sistema epóxi à base d'água, demarcação oficial conforme FIBA/CBF), revitalização de quadra de Society (substituição de grama sintética, manta de absorção de impacto, drenagem perimetral), instalação de grama sintética esportiva monofilamento, troca de alambrado de quadra (postes galvanizados, tela revestida em PVC) e troca de iluminação por LED. Orçamento reforma quadra condomínio entregue com memorial descritivo para apresentação em assembleia.",
+    whenToHire: [
+      { title: "Piso trincado", text: "Conserto de piso de quadra trincado com selagem de fissura e novo sistema de pintura." },
+      { title: "Grama sintética desgastada", text: "Revitalização de quadra de Society com nova manta, brita de drenagem e grama monofilamento." },
+      { title: "Alambrado oxidado", text: "Troca de alambrado de quadra com postes galvanizados e tela revestida em PVC anti-maresia." },
+      { title: "Pintura desbotada", text: "Pintura epóxi para quadra esportiva com nova demarcação oficial e lacre de proteção UV." },
+    ],
+    types: [
+      { title: "Quadra Poliesportiva", text: "Empreiteira para quadra poliesportiva: piso, pintura epóxi, demarcação oficial, alambrado e iluminação." },
+      { title: "Quadra de Society", text: "Revitalização de quadra de Society com brita, manta, grama sintética monofilamento e drenagem." },
+      { title: "Reforma de Piso", text: "Conserto de piso de quadra trincado, regularização, primer e novo sistema de pintura esportiva." },
+      { title: "Estrutura e Alambrado", text: "Troca de alambrado de quadra, traves, postes de iluminação, redes e bancos de reserva." },
+    ],
+    process: [
+      { title: "Vistoria e Diagnóstico", text: "Avaliação do piso, fissuras, drenagem, alambrado, iluminação e demarcações existentes." },
+      { title: "Memorial e Orçamento", text: "Orçamento reforma quadra condomínio com memorial para assembleia e ART." },
+      { title: "Preparação do Piso", text: "Lavagem, regularização, selagem de fissuras e primer epóxi penetrante." },
+      { title: "Sistema Esportivo", text: "Pintura epóxi para quadra esportiva ou instalação de grama sintética esportiva conforme tipo." },
+      { title: "Entrega com Demarcação", text: "Demarcação oficial das modalidades (futsal, vôlei, basquete, handebol) e termo de garantia." },
+    ],
+    standards: [
+      "NBR 16071 (pisos esportivos)",
+      "Regulamentos FIBA, FIVB, CBF e CBFS para demarcação oficial",
+      "NBR 5410 (iluminação) e iluminância conforme NBR 8995",
+      "NBR 16280 (reformas em edificações)",
+      "ART de execução com engenheiro responsável",
+    ],
+    trust: [
+      "Empresa de reforma de quadra esportiva com obras em condomínios e escolas em Fortaleza",
+      "Memorial descritivo gratuito para apresentação em assembleia",
+      "Pintura epóxi para quadra esportiva à base d'água, com proteção UV e demarcação oficial",
+      "Grama sintética esportiva monofilamento de fabricantes homologados (8+ anos de durabilidade)",
+      "Garantia de 24 a 60 meses conforme o sistema aplicado",
+    ],
+    geo: "Atendemos reforma de quadras em condomínios, clubes e escolas em Fortaleza — Aldeota, Cocó, Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante, Cidade dos Funcionários, Cambeba, Messejana, Praia do Futuro, Beira Mar — e em Eusébio, Aquiraz, Caucaia, Pacatuba e Maracanaú. Para quadras próximas ao mar especificamos tela de alambrado revestida em PVC e estrutura galvanizada a fogo contra maresia.",
+    faq: [
+      { q: "Qual o preço médio de uma reforma de quadras esportivas em Fortaleza?", a: "Pintura epóxi para quadra esportiva parte de R$ 95/m². Revitalização de quadra de Society fica entre R$ 180 e R$ 280/m² incluindo brita, manta e grama. Visita e orçamento reforma quadra condomínio são gratuitos." },
+      { q: "Vocês fazem conserto de piso de quadra trincado?", a: "Sim. Conserto de piso de quadra trincado com selagem flexível de fissura, regularização e novo sistema de pintura epóxi." },
+      { q: "Quanto tempo demora a instalação de grama sintética esportiva?", a: "Quadra de Society padrão (20×40 m): 7 a 12 dias úteis incluindo preparo da base, drenagem, manta e instalação da grama monofilamento." },
+      { q: "Trocam alambrado oxidado?", a: "Sim. Troca de alambrado de quadra com postes galvanizados a fogo, tela revestida em PVC e portões de acesso reforçados." },
+      { q: "Atendem condomínios com orçamento para assembleia?", a: "Sim. Entregamos orçamento reforma quadra condomínio com memorial descritivo, fotos, prazo e ART para o síndico apresentar em assembleia." },
+    ],
+    related: ["pisos", "empresa-de-reforma", "comercial"],
+  },
+  {
+    slug: "quarto",
+    code: "RF-12",
+    h1: "Reforma de Quarto em Fortaleza",
+    shortTitle: "Quarto",
+    metaTitle: "Reforma de Quarto em Fortaleza | Suíte e Quarto Infantil",
+    metaDescription:
+      "Reforma de quarto em Fortaleza: suíte do casal, quarto infantil e home office com troca de piso, pintura, marcenaria sob medida e instalações elétricas.",
+    summary:
+      "Reforma de quarto, suíte e home office com troca de piso, pintura, marcenaria sob medida, iluminação cênica e instalações novas.",
+    keywords: [
+      "reforma de quarto",
+      "reforma de suíte",
+      "reforma de quarto de casal",
+      "reforma de quarto infantil",
+      "reforma de home office",
+    ],
+    intro:
+      "A reforma de quarto é o serviço mais rápido e com melhor retorno estético na rotina da casa: em 5 a 10 dias úteis, um cômodo sai do mofo, da pintura desbotada e do piso vencido e vira ambiente novo. A Chico Resolve executa reforma de quarto em apartamento e casa em Fortaleza com pacote completo: troca de piso (laminado, vinílico ou porcelanato), pintura com tinta antimofo, marcenaria sob medida (guarda-roupa, painel de TV, escrivaninha), iluminação cênica em LED com dimmer, ponto de tomada USB, ar-condicionado split inverter e isolamento acústico em drywall quando necessário. Atendemos suíte do casal, quarto infantil com regras de segurança (NBR 14725 para pintura, mobiliário sem cantos vivos) e home office com cabeamento estruturado para internet.",
+    whenToHire: [
+      { title: "Mudança de filho ou casamento", text: "Adaptar quarto infantil para adolescente ou criar suíte do casal antes da mudança." },
+      { title: "Pintura ou piso vencidos", text: "Reforma rápida com troca de piso, pintura e marcenaria — ambiente novo em uma semana." },
+      { title: "Home office", text: "Adequação acústica, iluminação adequada, ponto de internet e marcenaria com escrivaninha." },
+      { title: "Suíte do casal", text: "Integração com banheiro, closet planejado, iluminação cênica e isolamento acústico." },
+    ],
+    types: [
+      { title: "Suíte do Casal", text: "Reforma do quarto + banheiro + closet com integração visual e iluminação cênica." },
+      { title: "Quarto Infantil", text: "Tinta antimofo lavável, mobiliário sem cantos vivos e iluminação dimerizável." },
+      { title: "Home Office", text: "Isolamento acústico em drywall, cabeamento estruturado, iluminação adequada e marcenaria." },
+      { title: "Quarto de Hóspedes", text: "Reforma multiuso com sofá-cama, marcenaria sob medida e closet/guarda-roupa." },
+    ],
+    process: [
+      { title: "Visita Técnica e Briefing", text: "Levantamento de medidas, conversa sobre uso do quarto e preferências estéticas." },
+      { title: "Orçamento e Prazo", text: "Orçamento detalhado por etapa (demolição, piso, pintura, marcenaria, instalações)." },
+      { title: "Proteção e Demolição", text: "Cobertura plástica do restante do apartamento, demolição controlada e descarte regular." },
+      { title: "Execução Integrada", text: "Piso, pintura, marcenaria, elétrica e ar-condicionado executados em sequência otimizada." },
+      { title: "Entrega Limpa", text: "Limpeza fina, vistoria conjunta, manual de manutenção e garantia formal." },
+    ],
+    standards: [
+      "NBR 16280 (reformas em edificações)",
+      "NBR 5410 (instalações elétricas)",
+      "NBR 15575 (desempenho — conforto acústico)",
+      "NBR 14725 (rotulagem de tintas) para quarto infantil",
+      "Convenção do condomínio quando aplicável",
+    ],
+    trust: [
+      "Reforma de quarto em 5 a 10 dias úteis com cronograma definido em contrato",
+      "Equipe própria CLT com proteção do restante do apartamento",
+      "Tintas antimofo e baixo VOC, especialmente em quarto infantil",
+      "Garantia formal de 12 meses sobre execução conforme NBR 16280",
+      "Atendimento pós-obra para ajustes finos por até 90 dias",
+    ],
+    geo: "Atendemos reforma de quarto em apartamentos e casas em Fortaleza — Aldeota, Meireles, Cocó, Papicu, Varjota, Edson Queiroz, Sapiranga, Eng. Luciano Cavalcante, Cidade dos Funcionários, Cambeba, Messejana, Praia do Futuro, Beira Mar e Mucuripe — e em Eusébio, Aquiraz, Caucaia, Pacatuba e Maracanaú. Em quartos próximos ao mar especificamos tinta acrílica premium antimofo e ferragens em inox para a marcenaria.",
+    faq: [
+      { q: "Quanto custa uma reforma de quarto em Fortaleza?", a: "Reforma de quarto simples (piso, pintura, ponto de ar-condicionado) parte de R$ 8 mil. Suíte do casal completa com closet e banheiro fica entre R$ 35 mil e R$ 70 mil." },
+      { q: "Quanto tempo demora uma reforma de quarto?", a: "Quarto padrão (12 m²) com troca de piso, pintura e marcenaria: 5 a 10 dias úteis. Suíte completa com banheiro: 20 a 35 dias úteis." },
+      { q: "Vocês fazem reforma de quarto infantil com tinta segura?", a: "Sim. Usamos tinta acrílica baixo VOC, lavável e antimofo, conforme NBR 14725, e mobiliário sob medida sem cantos vivos." },
+      { q: "Trabalham com isolamento acústico em quarto?", a: "Sim. Aplicamos parede drywall com lã de rocha, janela acústica e selantes em portas e tomadas para quarto de bebê ou home office." },
+      { q: "Posso morar no apartamento durante a reforma do quarto?", a: "Sim. Isolamos o quarto reformado com plástico bolha e fita, mantendo o restante do apartamento habitável durante a obra." },
+    ],
+    related: ["apartamento", "casa", "cozinha"],
+  },
+];
+
+export const getReformaSubservice = (slug: string): ReformaSubservice | undefined =>
+  reformaSubservices.find((s) => s.slug === slug);
+
+
 
 
 
