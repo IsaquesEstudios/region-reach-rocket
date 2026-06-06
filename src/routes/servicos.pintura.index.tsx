@@ -3,7 +3,7 @@ import { pinturaSubservices, site, whatsappLink } from "@/lib/site";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { QuoteForm } from "@/components/site/QuoteForm";
 
-const pinturaHero = "https://images.unsplash.com/photo-1589939705384-5185138a047a?q=80&w=1280&auto=format&fit=crop";
+const pinturaHero = "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=1280&auto=format&fit=crop";
 
 const HUB_URL = "/servicos/pintura";
 
