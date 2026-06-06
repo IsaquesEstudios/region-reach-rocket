@@ -2,12 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { services } from "@/lib/site";
 import { ArrowRight } from "lucide-react";
 const imageBySlug: Record<string, string> = {
-  pintura: "https://images.unsplash.com/photo-1589939705384-5185138a047a?q=80&w=800&auto=format&fit=crop",
+  pintura: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=800&auto=format&fit=crop",
   eletrica: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop",
-  hidraulica: "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?q=80&w=800&auto=format&fit=crop",
-  drywall: "https://images.unsplash.com/photo-1504148455328-497c5efdf13a?q=80&w=800&auto=format&fit=crop",
+  hidraulica: "https://images.unsplash.com/photo-1585704032915-c3400ca1f963?q=80&w=800&auto=format&fit=crop",
+  drywall: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?q=80&w=800&auto=format&fit=crop",
   "juntas-dilatacao": "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=800&auto=format&fit=crop",
-  seguranca: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=800&auto=format&fit=crop",
+  seguranca: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=800&auto=format&fit=crop",
   reformas: "https://images.unsplash.com/photo-1503387762-592dee58c460?q=80&w=800&auto=format&fit=crop",
   manutencao: "https://images.unsplash.com/photo-1581578731522-745d05db9ad0?q=80&w=800&auto=format&fit=crop",
 };
