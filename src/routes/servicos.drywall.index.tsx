@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { drywallSubservices, site, whatsappLink } from "@/lib/site";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { QuoteForm } from "@/components/site/QuoteForm";
-import drywallHero from "@/assets/servico-drywall.jpg";
+
+const drywallHero = "https://images.unsplash.com/photo-1504148455328-497c5efdf13a?q=80&w=1280&auto=format&fit=crop";
 
 const HUB_URL = "/servicos/drywall";
 

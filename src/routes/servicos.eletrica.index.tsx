@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { eletricaSubservices, site, whatsappLink } from "@/lib/site";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { QuoteForm } from "@/components/site/QuoteForm";
-import eletricaHero from "@/assets/servico-eletrica.jpg";
+
+const eletricaHero = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1280&auto=format&fit=crop";
 
 const HUB_URL = "/servicos/eletrica";
 
