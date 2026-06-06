@@ -13,7 +13,7 @@ import {
   segurancaSubservices,
   reformaSubservices,
 } from "@/lib/site";
-import logo from "@/assets/chico-resolve-logo.png.asset.json";
+const logo = { url: "https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/logos/stackblitz-icon.svg" }; // Fallback placeholder logo
 
 const subservicesBySlug: Record<string, { slug: string; shortTitle: string; code: string }[]> = {
   pintura: pinturaSubservices,

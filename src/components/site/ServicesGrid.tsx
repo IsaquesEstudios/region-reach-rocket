@@ -1,24 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { services } from "@/lib/site";
 import { ArrowRight } from "lucide-react";
-import pinturaImg from "@/assets/servico-pintura.jpg";
-import eletricaImg from "@/assets/servico-eletrica.jpg";
-import hidraulicaImg from "@/assets/servico-hidraulica.jpg";
-import drywallImg from "@/assets/servico-drywall.jpg";
-import juntasImg from "@/assets/servico-juntas.jpg";
-import segurancaImg from "@/assets/servico-seguranca.jpg";
-import reformasImg from "@/assets/servico-reformas.jpg";
-import manutencaoImg from "@/assets/servico-manutencao.jpg";
-
 const imageBySlug: Record<string, string> = {
-  pintura: pinturaImg,
-  eletrica: eletricaImg,
-  hidraulica: hidraulicaImg,
-  drywall: drywallImg,
-  "juntas-dilatacao": juntasImg,
-  seguranca: segurancaImg,
-  reformas: reformasImg,
-  manutencao: manutencaoImg,
+  pintura: "https://images.unsplash.com/photo-1589939705384-5185138a047a?q=80&w=800&auto=format&fit=crop",
+  eletrica: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&auto=format&fit=crop",
+  hidraulica: "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?q=80&w=800&auto=format&fit=crop",
+  drywall: "https://images.unsplash.com/photo-1504148455328-497c5efdf13a?q=80&w=800&auto=format&fit=crop",
+  "juntas-dilatacao": "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=800&auto=format&fit=crop",
+  seguranca: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=800&auto=format&fit=crop",
+  reformas: "https://images.unsplash.com/photo-1503387762-592dee58c460?q=80&w=800&auto=format&fit=crop",
+  manutencao: "https://images.unsplash.com/photo-1581578731522-745d05db9ad0?q=80&w=800&auto=format&fit=crop",
 };
 
 function ServiceCard({ s }: { s: typeof services[number] }) {
