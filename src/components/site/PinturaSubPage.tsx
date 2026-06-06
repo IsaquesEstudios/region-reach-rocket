@@ -31,7 +31,7 @@ export function PinturaSubPage({ data, image }: Props) {
           <div className="lg:col-span-7">
             <span className="inline-block rounded-full bg-primary/10 text-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest">{data.code} · Pintura · {data.shortTitle}</span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-balance">
-              {data.h1} <span className="text-primary">/CE</span>
+              {data.h1} em <span className="text-primary">Teresina</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-[60ch] leading-relaxed">{data.intro}</p>
           </div>
