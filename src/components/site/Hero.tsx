@@ -1,8 +1,9 @@
 import { whatsappLink, site } from "@/lib/site";
-import heroImg from "@/assets/hero-fachada.jpg";
 import { Check, Phone } from "lucide-react";
 
 export function Hero() {
+  const heroImg = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2400&auto=format&fit=crop";
+
   return (
     <section className="relative isolate overflow-hidden">
       {/* Background image */}

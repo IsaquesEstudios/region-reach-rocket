@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { hidraulicaSubservices, site, whatsappLink } from "@/lib/site";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { QuoteForm } from "@/components/site/QuoteForm";
-import hidraulicaHero from "@/assets/servico-hidraulica.jpg";
+
+const hidraulicaHero = "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?q=80&w=1280&auto=format&fit=crop";
 
 const HUB_URL = "/servicos/hidraulica";
 
