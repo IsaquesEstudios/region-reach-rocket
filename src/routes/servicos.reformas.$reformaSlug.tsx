@@ -12,7 +12,7 @@ import fachadaImg from "@/assets/reforma-fachada.jpg";
 import piscinaImg from "@/assets/reforma-piscina.jpg";
 import pisosImg from "@/assets/reforma-pisos.jpg";
 import cozinhaImg from "@/assets/reforma-cozinha.jpg";
-import quadrasImg from "@/assets/reforma-quadras.jpg";
+import quadrasImg from "@/assets/reforma-quadras.png";
 import quartoImg from "@/assets/reforma-quarto.jpg";
 
 const images: Record<ReformaSlug, string> = {
