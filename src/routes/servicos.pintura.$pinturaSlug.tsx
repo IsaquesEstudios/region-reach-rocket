@@ -2,11 +2,11 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getPinturaSubservice, type PinturaSlug, site } from "@/lib/site";
 import { PinturaSubPage } from "@/components/site/PinturaSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
-import pisoConcretoImg from "@/assets/pintura-piso-concreto.jpg";
+import pisoConcretoImg from "@/assets/pintura-piso-concreto.png";
 import residencialImg from "@/assets/pintura-residencial.jpg";
 import apartamentoImg from "@/assets/pintura-apartamento.jpg";
 import industrialImg from "@/assets/pintura-industrial.jpg";
-import quadraImg from "@/assets/pintura-quadra-poliesportiva.jpg";
+import quadraImg from "@/assets/pintura-quadra-poliesportiva.png";
 
 const images: Record<PinturaSlug, string> = {
   "piso-concreto": pisoConcretoImg,
