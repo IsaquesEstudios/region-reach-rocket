@@ -2,24 +2,15 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getJuntaSubservice, type JuntaSlug, site } from "@/lib/site";
 import { JuntasSubPage } from "@/components/site/JuntasSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
-import tratamentoImg from "@/assets/juntas-tratamento.jpg";
-import vedacaoFachadaImg from "@/assets/juntas-vedacao-fachada.jpg";
-import manutencaoImg from "@/assets/juntas-manutencao.jpg";
-import recuperacaoImg from "@/assets/juntas-recuperacao.jpg";
-import infiltracaoImg from "@/assets/juntas-infiltracao.jpg";
-import impermeabilizacaoImg from "@/assets/juntas-impermeabilizacao.jpg";
-import rachaduraImg from "@/assets/juntas-rachadura.jpg";
-import vazamentoFachadaImg from "@/assets/juntas-vazamento-fachada.jpg";
-
 const images: Record<JuntaSlug, string> = {
-  "tratamento-dilatacao": tratamentoImg,
-  "vedacao-fachada": vedacaoFachadaImg,
-  "manutencao-movimentacao": manutencaoImg,
-  "recuperacao-estrutural": recuperacaoImg,
-  infiltracao: infiltracaoImg,
-  impermeabilizacao: impermeabilizacaoImg,
-  "rachadura-entre-predios": rachaduraImg,
-  "vazamento-fachada": vazamentoFachadaImg,
+  "tratamento-dilatacao": "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=1280&auto=format&fit=crop",
+  "vedacao-fachada": "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1280&auto=format&fit=crop",
+  "manutencao-movimentacao": "https://images.unsplash.com/photo-1503387762-592dee58c460?q=80&w=1280&auto=format&fit=crop",
+  "recuperacao-estrutural": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=1280&auto=format&fit=crop",
+  infiltracao: "https://images.unsplash.com/photo-1605152276897-4f618f831968?q=80&w=1280&auto=format&fit=crop",
+  impermeabilizacao: "https://images.unsplash.com/photo-1604709177225-055f99402ea3?q=80&w=1280&auto=format&fit=crop",
+  "rachadura-entre-predios": "https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1280&auto=format&fit=crop",
+  "vazamento-fachada": "https://images.unsplash.com/photo-1597047084897-51e81819a499?q=80&w=1280&auto=format&fit=crop",
 };
 
 export const Route = createFileRoute("/servicos/juntas-dilatacao/$juntaSlug")({

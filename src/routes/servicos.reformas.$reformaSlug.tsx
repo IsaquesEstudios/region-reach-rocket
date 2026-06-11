@@ -2,32 +2,21 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getReformaSubservice, type ReformaSlug, site } from "@/lib/site";
 import { ReformasSubPage } from "@/components/site/ReformasSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
-import apartamentoImg from "@/assets/reforma-apartamento.jpg";
-import empresaImg from "@/assets/reforma-empresa.jpg";
-import comercialImg from "@/assets/reforma-comercial.jpg";
-import casaImg from "@/assets/reforma-casa.jpg";
-import banheiroImg from "@/assets/reforma-banheiro.jpg";
-import telhadoImg from "@/assets/reforma-telhado.jpg";
-import fachadaImg from "@/assets/reforma-fachada.jpg";
-import piscinaImg from "@/assets/reforma-piscina.jpg";
-import pisosImg from "@/assets/reforma-pisos.jpg";
-import cozinhaImg from "@/assets/reforma-cozinha.jpg";
 import quadrasImg from "@/assets/reforma-quadras.png";
-import quartoImg from "@/assets/reforma-quarto.jpg";
 
 const images: Record<ReformaSlug, string> = {
-  apartamento: apartamentoImg,
-  "empresa-de-reforma": empresaImg,
-  comercial: comercialImg,
-  casa: casaImg,
-  banheiro: banheiroImg,
-  telhado: telhadoImg,
-  fachada: fachadaImg,
-  piscina: piscinaImg,
-  pisos: pisosImg,
-  cozinha: cozinhaImg,
+  apartamento: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1280&auto=format&fit=crop",
+  "empresa-de-reforma": "https://images.unsplash.com/photo-1503387762-592dee58c460?q=80&w=1280&auto=format&fit=crop",
+  comercial: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1280&auto=format&fit=crop",
+  casa: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=1280&auto=format&fit=crop",
+  banheiro: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1280&auto=format&fit=crop",
+  telhado: "https://images.unsplash.com/photo-1632759145355-8b8f0c0d0e3a?q=80&w=1280&auto=format&fit=crop",
+  fachada: "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1280&auto=format&fit=crop",
+  piscina: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1280&auto=format&fit=crop",
+  pisos: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=1280&auto=format&fit=crop",
+  cozinha: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1280&auto=format&fit=crop",
   "quadras-esportivas": quadrasImg,
-  quarto: quartoImg,
+  quarto: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1280&auto=format&fit=crop",
 };
 
 export const Route = createFileRoute("/servicos/reformas/$reformaSlug")({

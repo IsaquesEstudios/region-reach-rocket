@@ -2,20 +2,13 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getDrywallSubservice, type DrywallSlug, site } from "@/lib/site";
 import { DrywallSubPage } from "@/components/site/DrywallSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
-import instalacaoImg from "@/assets/drywall-instalacao.jpg";
-import gessoAcartonadoImg from "@/assets/drywall-gesso-acartonado.jpg";
-import gesseiroImg from "@/assets/drywall-gesseiro.jpg";
-import forroImg from "@/assets/drywall-forro-de-gesso.jpg";
-import paredeImg from "@/assets/drywall-parede-de-drywall.jpg";
-import divisoriaImg from "@/assets/drywall-divisoria-ambiente.jpg";
-
 const images: Record<DrywallSlug, string> = {
-  "instalacao-drywall": instalacaoImg,
-  "gesso-acartonado": gessoAcartonadoImg,
-  gesseiro: gesseiroImg,
-  "forro-de-gesso": forroImg,
-  "parede-de-drywall": paredeImg,
-  "divisoria-de-ambiente": divisoriaImg,
+  "instalacao-drywall": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1280&auto=format&fit=crop",
+  "gesso-acartonado": "https://images.unsplash.com/photo-1503387837-b154d5074bd2?q=80&w=1280&auto=format&fit=crop",
+  gesseiro: "https://images.unsplash.com/photo-1572297794125-3ffd9bf86b80?q=80&w=1280&auto=format&fit=crop",
+  "forro-de-gesso": "https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=1280&auto=format&fit=crop",
+  "parede-de-drywall": "https://images.unsplash.com/photo-1599619351208-3e6c839d6828?q=80&w=1280&auto=format&fit=crop",
+  "divisoria-de-ambiente": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1280&auto=format&fit=crop",
 };
 
 export const Route = createFileRoute("/servicos/drywall/$drywallSlug")({

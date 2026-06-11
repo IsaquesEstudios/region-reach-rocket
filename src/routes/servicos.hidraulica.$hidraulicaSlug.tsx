@@ -2,18 +2,12 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getHidraulicaSubservice, type HidraulicaSlug, site } from "@/lib/site";
 import { HidraulicaSubPage } from "@/components/site/HidraulicaSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
-import servicoHidraulicoImg from "@/assets/hidraulica-servico-hidraulico.jpg";
-import desentupidoraImg from "@/assets/hidraulica-desentupidora.jpg";
-import desentupimentoEsgotoImg from "@/assets/hidraulica-desentupimento-esgoto.jpg";
-import encanadorResidencialImg from "@/assets/hidraulica-encanador-residencial.jpg";
-import encanadorPredialImg from "@/assets/hidraulica-encanador-predial.jpg";
-
 const images: Record<HidraulicaSlug, string> = {
-  "servico-hidraulico": servicoHidraulicoImg,
-  desentupidora: desentupidoraImg,
-  "desentupimento-esgoto": desentupimentoEsgotoImg,
-  "encanador-residencial": encanadorResidencialImg,
-  "encanador-predial": encanadorPredialImg,
+  "servico-hidraulico": "https://images.unsplash.com/photo-1585704032915-c3400ca1f963?q=80&w=1280&auto=format&fit=crop",
+  desentupidora: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?q=80&w=1280&auto=format&fit=crop",
+  "desentupimento-esgoto": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1280&auto=format&fit=crop",
+  "encanador-residencial": "https://images.unsplash.com/photo-1542013936693-884638332954?q=80&w=1280&auto=format&fit=crop",
+  "encanador-predial": "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1280&auto=format&fit=crop",
 };
 
 export const Route = createFileRoute("/servicos/hidraulica/$hidraulicaSlug")({
