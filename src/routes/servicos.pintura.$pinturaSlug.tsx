@@ -3,6 +3,7 @@ import { getPinturaSubservice, type PinturaSlug, site } from "@/lib/site";
 import { PinturaSubPage } from "@/components/site/PinturaSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import pisoConcretoImg from "@/assets/pintura-piso-concreto.png";
+import quadraImg from "@/assets/pintura-quadra-poliesportiva.png";
 
 const images: Record<PinturaSlug, string> = {
   "piso-concreto": pisoConcretoImg,

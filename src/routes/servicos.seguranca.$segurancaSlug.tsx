@@ -2,12 +2,9 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getSegurancaSubservice, type SegurancaSlug, site } from "@/lib/site";
 import { SegurancaSubPage } from "@/components/site/SegurancaSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
-import camerasImg from "@/assets/seguranca-cameras.jpg";
-import alarmesImg from "@/assets/seguranca-alarmes.jpg";
-
 const images: Record<SegurancaSlug, string> = {
-  "instalacao-cameras": camerasImg,
-  "instalacao-alarmes": alarmesImg,
+  "instalacao-cameras": "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1280&auto=format&fit=crop",
+  "instalacao-alarmes": "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1280&auto=format&fit=crop",
 };
 
 export const Route = createFileRoute("/servicos/seguranca/$segurancaSlug")({
