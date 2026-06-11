@@ -13,7 +13,7 @@ import {
   segurancaSubservices,
   reformaSubservices,
 } from "@/lib/site";
-const logo = { url: "https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/logos/stackblitz-icon.svg" }; // Fallback placeholder logo
+import logo from "@/assets/chico-resolve-logo.png.asset.json";
 
 const subservicesBySlug: Record<string, { slug: string; shortTitle: string; code: string }[]> = {
   pintura: pinturaSubservices,
@@ -46,9 +46,9 @@ export function Header() {
           <img
             src={logo.url}
             alt={`Logo ${site.name}`}
-            width={180}
-            height={36}
-            className="h-9 w-auto"
+            width={480}
+            height={150}
+            className="h-11 w-auto"
           />
         </Link>
 
