@@ -2,14 +2,10 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getEletricaSubservice, type EletricaSlug, site } from "@/lib/site";
 import { EletricaSubPage } from "@/components/site/EletricaSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
-import industrialImg from "@/assets/eletrica-industrial.jpg";
-import residencialImg from "@/assets/eletrica-residencial.jpg";
-import predialImg from "@/assets/eletrica-predial.jpg";
-
 const images: Record<EletricaSlug, string> = {
-  industrial: industrialImg,
-  residencial: residencialImg,
-  predial: predialImg,
+  industrial: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1280&auto=format&fit=crop",
+  residencial: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1280&auto=format&fit=crop",
+  predial: "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1280&auto=format&fit=crop",
 };
 
 export const Route = createFileRoute("/servicos/eletrica/$eletricaSlug")({

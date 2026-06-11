@@ -3,16 +3,12 @@ import { getPinturaSubservice, type PinturaSlug, site } from "@/lib/site";
 import { PinturaSubPage } from "@/components/site/PinturaSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import pisoConcretoImg from "@/assets/pintura-piso-concreto.png";
-import residencialImg from "@/assets/pintura-residencial.jpg";
-import apartamentoImg from "@/assets/pintura-apartamento.jpg";
-import industrialImg from "@/assets/pintura-industrial.jpg";
-import quadraImg from "@/assets/pintura-quadra-poliesportiva.png";
 
 const images: Record<PinturaSlug, string> = {
   "piso-concreto": pisoConcretoImg,
-  residencial: residencialImg,
-  apartamento: apartamentoImg,
-  industrial: industrialImg,
+  residencial: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=1280&auto=format&fit=crop",
+  apartamento: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=1280&auto=format&fit=crop",
+  industrial: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1280&auto=format&fit=crop",
   "quadra-poliesportiva": quadraImg,
 };
 

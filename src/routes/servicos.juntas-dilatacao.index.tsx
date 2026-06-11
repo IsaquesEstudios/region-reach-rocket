@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { juntaSubservices, site, whatsappLink } from "@/lib/site";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { QuoteForm } from "@/components/site/QuoteForm";
-import juntasHero from "@/assets/juntas-hub.jpg";
+const juntasHero = "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=1280&auto=format&fit=crop";
 
 const HUB_URL = "/servicos/juntas-dilatacao";
 

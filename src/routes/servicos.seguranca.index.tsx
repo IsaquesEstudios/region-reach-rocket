@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { segurancaSubservices, site, whatsappLink } from "@/lib/site";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { QuoteForm } from "@/components/site/QuoteForm";
-import segurancaHero from "@/assets/seguranca-hub.jpg";
+const segurancaHero = "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1280&auto=format&fit=crop";
 
 const HUB_URL = "/servicos/seguranca";
 
