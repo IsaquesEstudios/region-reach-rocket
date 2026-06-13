@@ -11,7 +11,6 @@ export const Route = createFileRoute("/admin/login")({
 function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -24,20 +23,10 @@ function AdminLogin() {
     e.preventDefault();
     setLoading(true);
     try {
-      if (mode === "signin") {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-        toast.success("Bem-vindo!");
-        navigate({ to: "/admin" });
-      } else {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: { emailRedirectTo: `${window.location.origin}/admin` },
-        });
-        if (error) throw error;
-        toast.success("Conta criada. Verifique seu e-mail se a confirmação estiver ativa.");
-      }
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      toast.success("Bem-vindo!");
+      navigate({ to: "/admin" });
     } catch (err) {
       toast.error((err as Error).message);
     } finally {
@@ -49,7 +38,7 @@ function AdminLogin() {
     <div className="min-h-screen flex items-center justify-center bg-muted/30 px-4">
       <div className="w-full max-w-md bg-card border border-border rounded-2xl p-8 shadow-sm">
         <p className="text-xs font-bold uppercase tracking-widest text-primary">Admin</p>
-        <h1 className="text-2xl font-extrabold mt-1">{mode === "signin" ? "Entrar" : "Criar conta"}</h1>
+        <h1 className="text-2xl font-extrabold mt-1">Entrar</h1>
         <p className="text-sm text-muted-foreground mt-1">Painel administrativo do blog</p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -79,17 +68,9 @@ function AdminLogin() {
             disabled={loading}
             className="w-full bg-primary text-primary-foreground font-bold py-2.5 rounded-lg hover:bg-primary/90 disabled:opacity-50"
           >
-            {loading ? "Aguarde…" : mode === "signin" ? "Entrar" : "Criar conta"}
+            {loading ? "Aguarde…" : "Entrar"}
           </button>
         </form>
-
-        <button
-          type="button"
-          onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
-          className="mt-4 text-sm text-muted-foreground hover:text-primary w-full text-center"
-        >
-          {mode === "signin" ? "Não tem conta? Criar uma" : "Já tem conta? Entrar"}
-        </button>
       </div>
     </div>
   );
