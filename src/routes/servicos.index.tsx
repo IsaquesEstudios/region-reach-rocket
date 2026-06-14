@@ -6,9 +6,9 @@ export const Route = createFileRoute("/servicos/")({
   head: () => ({
     meta: [
       { title: "Serviços de Manutenção Predial em Teresina | Chico Resolve" },
-      { name: "description", content: "Conheça todos os serviços da Chico Resolve em Teresina: pintura, elétrica, hidráulica, drywall, juntas de dilatação, segurança, reformas e manutenção." },
+      { name: "description", content: "Conheça os serviços da Chico Resolve em Teresina: pintura, elétrica, hidráulica, drywall, obras estruturais, segurança, reformas e manutenção." },
       { property: "og:title", content: "Serviços — Chico Resolve" },
-      { property: "og:description", content: "Pintura, elétrica, hidráulica, drywall, juntas, segurança, reformas e manutenção em Teresina." },
+      { property: "og:description", content: "Pintura, elétrica, hidráulica, drywall, obras estruturais, segurança, reformas e manutenção em Teresina." },
       { property: "og:url", content: "/servicos" },
     ],
     links: [{ rel: "canonical", href: "/servicos" }],

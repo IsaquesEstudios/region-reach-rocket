@@ -2,6 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { services, serviceContent, type ServiceSlug } from "@/lib/site";
 import { ServicePage } from "@/components/site/ServicePage";
 import { CtaBanner } from "@/components/site/CtaBanner";
+import obraEstruturalHero from "@/assets/obra-estrutural-hero.webp";
 const images: Record<ServiceSlug, string> = {
   pintura: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=1280&auto=format&fit=crop",
   eletrica: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1280&auto=format&fit=crop",
@@ -10,6 +11,7 @@ const images: Record<ServiceSlug, string> = {
   "juntas-dilatacao": "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=1280&auto=format&fit=crop",
   seguranca: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1280&auto=format&fit=crop",
   reformas: "https://images.unsplash.com/photo-1503387762-592dee58c460?q=80&w=1280&auto=format&fit=crop",
+  "obra-estrutural": obraEstruturalHero,
   manutencao: "https://images.unsplash.com/photo-1581578731522-745d05db9ad0?q=80&w=1280&auto=format&fit=crop",
 };
 

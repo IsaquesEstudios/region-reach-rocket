@@ -6,7 +6,7 @@ export const site = {
   legalName: "Chico Resolve — Inteligência em Manutenção Predial",
   tagline: "Inteligência em Manutenção Predial",
   description:
-    "Engenharia de manutenção predial em Teresina/PI: pintura, elétrica, hidráulica, drywall, juntas de dilatação, segurança e reformas com rigor técnico e prazos cumpridos.",
+    "Engenharia de manutenção predial em Teresina/PI: pintura, elétrica, hidráulica, drywall, obras estruturais, segurança e reformas com rigor técnico e prazos cumpridos.",
   city: "Teresina",
   region: "PI",
   country: "BR",
@@ -42,6 +42,7 @@ export type ServiceSlug =
   | "juntas-dilatacao"
   | "seguranca"
   | "reformas"
+  | "obra-estrutural"
   | "manutencao";
 
 export interface ServiceMeta {
@@ -131,6 +132,17 @@ export const services: ServiceMeta[] = [
     metaTitle: "Reformas em Teresina | Comerciais e Residenciais",
     metaDescription:
       "Reformas residenciais e comerciais em Teresina com gerenciamento técnico, equipe própria e prazos cumpridos. Solicite uma visita técnica.",
+  },
+  {
+    slug: "obra-estrutural",
+    code: "OE",
+    shortTitle: "Obra Estrutural",
+    title: "Obras Estruturais",
+    summary:
+      "Execução e recuperação de fundações, pilares, vigas e lajes com planejamento técnico, segurança e controle de qualidade.",
+    metaTitle: "Obra Estrutural em Teresina | Chico Resolve",
+    metaDescription:
+      "Obra estrutural em Teresina: fundações, pilares, vigas, lajes e reforço estrutural com execução técnica, segurança e acompanhamento profissional.",
   },
 ];
 
@@ -288,6 +300,27 @@ export const serviceContent: Record<ServiceSlug, ServiceContent> = {
       { q: "Vocês são responsáveis pelo cronograma?", a: "Sim, cronograma físico-financeiro com multa contratual se descumprido." },
       { q: "Trabalham com arquiteto do cliente?", a: "Sim, executamos projetos de qualquer arquiteto ou designer parceiro." },
       { q: "Reforma incomoda os vizinhos?", a: "Respeitamos horários de condomínio e fazemos contenção de pó/ruído." },
+    ],
+  },
+  "obra-estrutural": {
+    hero: "Obras Estruturais com Planejamento, Segurança e Precisão",
+    intro:
+      "Executamos estruturas de concreto armado para obras residenciais, comerciais e prediais em Teresina. Da fundação à concretagem de pilares, vigas e lajes, cada etapa segue projeto, sequência executiva e controle de qualidade para entregar estabilidade, durabilidade e segurança.",
+    bullets: [
+      { title: "Fundações", text: "Execução de sapatas, blocos, baldrames e demais soluções previstas no projeto estrutural." },
+      { title: "Concreto Armado", text: "Montagem de formas e armaduras, concretagem de pilares, vigas, escadas e lajes." },
+      { title: "Reforço Estrutural", text: "Intervenções corretivas e reforços definidos a partir de avaliação e projeto técnico." },
+    ],
+    process: [
+      { title: "Visita e Análise Técnica", text: "Levantamos as condições do local, acessos, interferências e requisitos da execução." },
+      { title: "Planejamento da Obra", text: "Definimos etapas, equipe, materiais, segurança e cronograma conforme o projeto estrutural." },
+      { title: "Execução Controlada", text: "Realizamos formas, armações e concretagens com conferência técnica em cada fase." },
+      { title: "Inspeção e Entrega", text: "Registramos os serviços, verificamos o acabamento e entregamos a etapa estrutural documentada." },
+    ],
+    faq: [
+      { q: "A Chico Resolve executa a estrutura completa?", a: "Sim. Executamos fundações, pilares, vigas, lajes e escadas conforme o projeto estrutural da obra." },
+      { q: "Vocês fazem reforço estrutural?", a: "Sim, desde que a intervenção seja definida por avaliação e projeto de profissional habilitado." },
+      { q: "É necessário ter projeto estrutural?", a: "Sim. O projeto orienta dimensões, armaduras, resistência do concreto e sequência segura de execução." },
     ],
   },
   manutencao: {
