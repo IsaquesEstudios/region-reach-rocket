@@ -19,6 +19,7 @@ import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as ServicosSegurancaRouteImport } from './routes/servicos.seguranca'
 import { Route as ServicosReformasRouteImport } from './routes/servicos.reformas'
 import { Route as ServicosPinturaRouteImport } from './routes/servicos.pintura'
+import { Route as ServicosObraEstruturalRouteImport } from './routes/servicos.obra-estrutural'
 import { Route as ServicosJuntasDilatacaoRouteImport } from './routes/servicos.juntas-dilatacao'
 import { Route as ServicosHidraulicaRouteImport } from './routes/servicos.hidraulica'
 import { Route as ServicosEletricaRouteImport } from './routes/servicos.eletrica'
@@ -32,6 +33,7 @@ import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
 import { Route as ServicosSegurancaIndexRouteImport } from './routes/servicos.seguranca.index'
 import { Route as ServicosReformasIndexRouteImport } from './routes/servicos.reformas.index'
 import { Route as ServicosPinturaIndexRouteImport } from './routes/servicos.pintura.index'
+import { Route as ServicosObraEstruturalIndexRouteImport } from './routes/servicos.obra-estrutural.index'
 import { Route as ServicosJuntasDilatacaoIndexRouteImport } from './routes/servicos.juntas-dilatacao.index'
 import { Route as ServicosHidraulicaIndexRouteImport } from './routes/servicos.hidraulica.index'
 import { Route as ServicosEletricaIndexRouteImport } from './routes/servicos.eletrica.index'
@@ -40,6 +42,7 @@ import { Route as AdminPostsIndexRouteImport } from './routes/admin.posts.index'
 import { Route as ServicosSegurancaSegurancaSlugRouteImport } from './routes/servicos.seguranca.$segurancaSlug'
 import { Route as ServicosReformasReformaSlugRouteImport } from './routes/servicos.reformas.$reformaSlug'
 import { Route as ServicosPinturaPinturaSlugRouteImport } from './routes/servicos.pintura.$pinturaSlug'
+import { Route as ServicosObraEstruturalObraEstruturalSlugRouteImport } from './routes/servicos.obra-estrutural.$obraEstruturalSlug'
 import { Route as ServicosJuntasDilatacaoJuntaSlugRouteImport } from './routes/servicos.juntas-dilatacao.$juntaSlug'
 import { Route as ServicosHidraulicaHidraulicaSlugRouteImport } from './routes/servicos.hidraulica.$hidraulicaSlug'
 import { Route as ServicosEletricaEletricaSlugRouteImport } from './routes/servicos.eletrica.$eletricaSlug'
@@ -95,6 +98,11 @@ const ServicosReformasRoute = ServicosReformasRouteImport.update({
 const ServicosPinturaRoute = ServicosPinturaRouteImport.update({
   id: '/pintura',
   path: '/pintura',
+  getParentRoute: () => ServicosRoute,
+} as any)
+const ServicosObraEstruturalRoute = ServicosObraEstruturalRouteImport.update({
+  id: '/obra-estrutural',
+  path: '/obra-estrutural',
   getParentRoute: () => ServicosRoute,
 } as any)
 const ServicosJuntasDilatacaoRoute = ServicosJuntasDilatacaoRouteImport.update({
@@ -162,6 +170,12 @@ const ServicosPinturaIndexRoute = ServicosPinturaIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ServicosPinturaRoute,
 } as any)
+const ServicosObraEstruturalIndexRoute =
+  ServicosObraEstruturalIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ServicosObraEstruturalRoute,
+  } as any)
 const ServicosJuntasDilatacaoIndexRoute =
   ServicosJuntasDilatacaoIndexRouteImport.update({
     id: '/',
@@ -205,6 +219,12 @@ const ServicosPinturaPinturaSlugRoute =
     id: '/$pinturaSlug',
     path: '/$pinturaSlug',
     getParentRoute: () => ServicosPinturaRoute,
+  } as any)
+const ServicosObraEstruturalObraEstruturalSlugRoute =
+  ServicosObraEstruturalObraEstruturalSlugRouteImport.update({
+    id: '/$obraEstruturalSlug',
+    path: '/$obraEstruturalSlug',
+    getParentRoute: () => ServicosObraEstruturalRoute,
   } as any)
 const ServicosJuntasDilatacaoJuntaSlugRoute =
   ServicosJuntasDilatacaoJuntaSlugRouteImport.update({
@@ -256,6 +276,7 @@ export interface FileRoutesByFullPath {
   '/servicos/eletrica': typeof ServicosEletricaRouteWithChildren
   '/servicos/hidraulica': typeof ServicosHidraulicaRouteWithChildren
   '/servicos/juntas-dilatacao': typeof ServicosJuntasDilatacaoRouteWithChildren
+  '/servicos/obra-estrutural': typeof ServicosObraEstruturalRouteWithChildren
   '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/reformas': typeof ServicosReformasRouteWithChildren
   '/servicos/seguranca': typeof ServicosSegurancaRouteWithChildren
@@ -267,6 +288,7 @@ export interface FileRoutesByFullPath {
   '/servicos/eletrica/$eletricaSlug': typeof ServicosEletricaEletricaSlugRoute
   '/servicos/hidraulica/$hidraulicaSlug': typeof ServicosHidraulicaHidraulicaSlugRoute
   '/servicos/juntas-dilatacao/$juntaSlug': typeof ServicosJuntasDilatacaoJuntaSlugRoute
+  '/servicos/obra-estrutural/$obraEstruturalSlug': typeof ServicosObraEstruturalObraEstruturalSlugRoute
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/reformas/$reformaSlug': typeof ServicosReformasReformaSlugRoute
   '/servicos/seguranca/$segurancaSlug': typeof ServicosSegurancaSegurancaSlugRoute
@@ -275,6 +297,7 @@ export interface FileRoutesByFullPath {
   '/servicos/eletrica/': typeof ServicosEletricaIndexRoute
   '/servicos/hidraulica/': typeof ServicosHidraulicaIndexRoute
   '/servicos/juntas-dilatacao/': typeof ServicosJuntasDilatacaoIndexRoute
+  '/servicos/obra-estrutural/': typeof ServicosObraEstruturalIndexRoute
   '/servicos/pintura/': typeof ServicosPinturaIndexRoute
   '/servicos/reformas/': typeof ServicosReformasIndexRoute
   '/servicos/seguranca/': typeof ServicosSegurancaIndexRoute
@@ -298,6 +321,7 @@ export interface FileRoutesByTo {
   '/servicos/eletrica/$eletricaSlug': typeof ServicosEletricaEletricaSlugRoute
   '/servicos/hidraulica/$hidraulicaSlug': typeof ServicosHidraulicaHidraulicaSlugRoute
   '/servicos/juntas-dilatacao/$juntaSlug': typeof ServicosJuntasDilatacaoJuntaSlugRoute
+  '/servicos/obra-estrutural/$obraEstruturalSlug': typeof ServicosObraEstruturalObraEstruturalSlugRoute
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/reformas/$reformaSlug': typeof ServicosReformasReformaSlugRoute
   '/servicos/seguranca/$segurancaSlug': typeof ServicosSegurancaSegurancaSlugRoute
@@ -306,6 +330,7 @@ export interface FileRoutesByTo {
   '/servicos/eletrica': typeof ServicosEletricaIndexRoute
   '/servicos/hidraulica': typeof ServicosHidraulicaIndexRoute
   '/servicos/juntas-dilatacao': typeof ServicosJuntasDilatacaoIndexRoute
+  '/servicos/obra-estrutural': typeof ServicosObraEstruturalIndexRoute
   '/servicos/pintura': typeof ServicosPinturaIndexRoute
   '/servicos/reformas': typeof ServicosReformasIndexRoute
   '/servicos/seguranca': typeof ServicosSegurancaIndexRoute
@@ -327,6 +352,7 @@ export interface FileRoutesById {
   '/servicos/eletrica': typeof ServicosEletricaRouteWithChildren
   '/servicos/hidraulica': typeof ServicosHidraulicaRouteWithChildren
   '/servicos/juntas-dilatacao': typeof ServicosJuntasDilatacaoRouteWithChildren
+  '/servicos/obra-estrutural': typeof ServicosObraEstruturalRouteWithChildren
   '/servicos/pintura': typeof ServicosPinturaRouteWithChildren
   '/servicos/reformas': typeof ServicosReformasRouteWithChildren
   '/servicos/seguranca': typeof ServicosSegurancaRouteWithChildren
@@ -338,6 +364,7 @@ export interface FileRoutesById {
   '/servicos/eletrica/$eletricaSlug': typeof ServicosEletricaEletricaSlugRoute
   '/servicos/hidraulica/$hidraulicaSlug': typeof ServicosHidraulicaHidraulicaSlugRoute
   '/servicos/juntas-dilatacao/$juntaSlug': typeof ServicosJuntasDilatacaoJuntaSlugRoute
+  '/servicos/obra-estrutural/$obraEstruturalSlug': typeof ServicosObraEstruturalObraEstruturalSlugRoute
   '/servicos/pintura/$pinturaSlug': typeof ServicosPinturaPinturaSlugRoute
   '/servicos/reformas/$reformaSlug': typeof ServicosReformasReformaSlugRoute
   '/servicos/seguranca/$segurancaSlug': typeof ServicosSegurancaSegurancaSlugRoute
@@ -346,6 +373,7 @@ export interface FileRoutesById {
   '/servicos/eletrica/': typeof ServicosEletricaIndexRoute
   '/servicos/hidraulica/': typeof ServicosHidraulicaIndexRoute
   '/servicos/juntas-dilatacao/': typeof ServicosJuntasDilatacaoIndexRoute
+  '/servicos/obra-estrutural/': typeof ServicosObraEstruturalIndexRoute
   '/servicos/pintura/': typeof ServicosPinturaIndexRoute
   '/servicos/reformas/': typeof ServicosReformasIndexRoute
   '/servicos/seguranca/': typeof ServicosSegurancaIndexRoute
@@ -368,6 +396,7 @@ export interface FileRouteTypes {
     | '/servicos/eletrica'
     | '/servicos/hidraulica'
     | '/servicos/juntas-dilatacao'
+    | '/servicos/obra-estrutural'
     | '/servicos/pintura'
     | '/servicos/reformas'
     | '/servicos/seguranca'
@@ -379,6 +408,7 @@ export interface FileRouteTypes {
     | '/servicos/eletrica/$eletricaSlug'
     | '/servicos/hidraulica/$hidraulicaSlug'
     | '/servicos/juntas-dilatacao/$juntaSlug'
+    | '/servicos/obra-estrutural/$obraEstruturalSlug'
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/reformas/$reformaSlug'
     | '/servicos/seguranca/$segurancaSlug'
@@ -387,6 +417,7 @@ export interface FileRouteTypes {
     | '/servicos/eletrica/'
     | '/servicos/hidraulica/'
     | '/servicos/juntas-dilatacao/'
+    | '/servicos/obra-estrutural/'
     | '/servicos/pintura/'
     | '/servicos/reformas/'
     | '/servicos/seguranca/'
@@ -410,6 +441,7 @@ export interface FileRouteTypes {
     | '/servicos/eletrica/$eletricaSlug'
     | '/servicos/hidraulica/$hidraulicaSlug'
     | '/servicos/juntas-dilatacao/$juntaSlug'
+    | '/servicos/obra-estrutural/$obraEstruturalSlug'
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/reformas/$reformaSlug'
     | '/servicos/seguranca/$segurancaSlug'
@@ -418,6 +450,7 @@ export interface FileRouteTypes {
     | '/servicos/eletrica'
     | '/servicos/hidraulica'
     | '/servicos/juntas-dilatacao'
+    | '/servicos/obra-estrutural'
     | '/servicos/pintura'
     | '/servicos/reformas'
     | '/servicos/seguranca'
@@ -438,6 +471,7 @@ export interface FileRouteTypes {
     | '/servicos/eletrica'
     | '/servicos/hidraulica'
     | '/servicos/juntas-dilatacao'
+    | '/servicos/obra-estrutural'
     | '/servicos/pintura'
     | '/servicos/reformas'
     | '/servicos/seguranca'
@@ -449,6 +483,7 @@ export interface FileRouteTypes {
     | '/servicos/eletrica/$eletricaSlug'
     | '/servicos/hidraulica/$hidraulicaSlug'
     | '/servicos/juntas-dilatacao/$juntaSlug'
+    | '/servicos/obra-estrutural/$obraEstruturalSlug'
     | '/servicos/pintura/$pinturaSlug'
     | '/servicos/reformas/$reformaSlug'
     | '/servicos/seguranca/$segurancaSlug'
@@ -457,6 +492,7 @@ export interface FileRouteTypes {
     | '/servicos/eletrica/'
     | '/servicos/hidraulica/'
     | '/servicos/juntas-dilatacao/'
+    | '/servicos/obra-estrutural/'
     | '/servicos/pintura/'
     | '/servicos/reformas/'
     | '/servicos/seguranca/'
@@ -552,6 +588,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicosPinturaRouteImport
       parentRoute: typeof ServicosRoute
     }
+    '/servicos/obra-estrutural': {
+      id: '/servicos/obra-estrutural'
+      path: '/obra-estrutural'
+      fullPath: '/servicos/obra-estrutural'
+      preLoaderRoute: typeof ServicosObraEstruturalRouteImport
+      parentRoute: typeof ServicosRoute
+    }
     '/servicos/juntas-dilatacao': {
       id: '/servicos/juntas-dilatacao'
       path: '/juntas-dilatacao'
@@ -643,6 +686,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicosPinturaIndexRouteImport
       parentRoute: typeof ServicosPinturaRoute
     }
+    '/servicos/obra-estrutural/': {
+      id: '/servicos/obra-estrutural/'
+      path: '/'
+      fullPath: '/servicos/obra-estrutural/'
+      preLoaderRoute: typeof ServicosObraEstruturalIndexRouteImport
+      parentRoute: typeof ServicosObraEstruturalRoute
+    }
     '/servicos/juntas-dilatacao/': {
       id: '/servicos/juntas-dilatacao/'
       path: '/'
@@ -698,6 +748,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/servicos/pintura/$pinturaSlug'
       preLoaderRoute: typeof ServicosPinturaPinturaSlugRouteImport
       parentRoute: typeof ServicosPinturaRoute
+    }
+    '/servicos/obra-estrutural/$obraEstruturalSlug': {
+      id: '/servicos/obra-estrutural/$obraEstruturalSlug'
+      path: '/$obraEstruturalSlug'
+      fullPath: '/servicos/obra-estrutural/$obraEstruturalSlug'
+      preLoaderRoute: typeof ServicosObraEstruturalObraEstruturalSlugRouteImport
+      parentRoute: typeof ServicosObraEstruturalRoute
     }
     '/servicos/juntas-dilatacao/$juntaSlug': {
       id: '/servicos/juntas-dilatacao/$juntaSlug'
@@ -801,6 +858,23 @@ const ServicosJuntasDilatacaoRouteWithChildren =
     ServicosJuntasDilatacaoRouteChildren,
   )
 
+interface ServicosObraEstruturalRouteChildren {
+  ServicosObraEstruturalObraEstruturalSlugRoute: typeof ServicosObraEstruturalObraEstruturalSlugRoute
+  ServicosObraEstruturalIndexRoute: typeof ServicosObraEstruturalIndexRoute
+}
+
+const ServicosObraEstruturalRouteChildren: ServicosObraEstruturalRouteChildren =
+  {
+    ServicosObraEstruturalObraEstruturalSlugRoute:
+      ServicosObraEstruturalObraEstruturalSlugRoute,
+    ServicosObraEstruturalIndexRoute: ServicosObraEstruturalIndexRoute,
+  }
+
+const ServicosObraEstruturalRouteWithChildren =
+  ServicosObraEstruturalRoute._addFileChildren(
+    ServicosObraEstruturalRouteChildren,
+  )
+
 interface ServicosPinturaRouteChildren {
   ServicosPinturaPinturaSlugRoute: typeof ServicosPinturaPinturaSlugRoute
   ServicosPinturaIndexRoute: typeof ServicosPinturaIndexRoute
@@ -847,6 +921,7 @@ interface ServicosRouteChildren {
   ServicosEletricaRoute: typeof ServicosEletricaRouteWithChildren
   ServicosHidraulicaRoute: typeof ServicosHidraulicaRouteWithChildren
   ServicosJuntasDilatacaoRoute: typeof ServicosJuntasDilatacaoRouteWithChildren
+  ServicosObraEstruturalRoute: typeof ServicosObraEstruturalRouteWithChildren
   ServicosPinturaRoute: typeof ServicosPinturaRouteWithChildren
   ServicosReformasRoute: typeof ServicosReformasRouteWithChildren
   ServicosSegurancaRoute: typeof ServicosSegurancaRouteWithChildren
@@ -859,6 +934,7 @@ const ServicosRouteChildren: ServicosRouteChildren = {
   ServicosEletricaRoute: ServicosEletricaRouteWithChildren,
   ServicosHidraulicaRoute: ServicosHidraulicaRouteWithChildren,
   ServicosJuntasDilatacaoRoute: ServicosJuntasDilatacaoRouteWithChildren,
+  ServicosObraEstruturalRoute: ServicosObraEstruturalRouteWithChildren,
   ServicosPinturaRoute: ServicosPinturaRouteWithChildren,
   ServicosReformasRoute: ServicosReformasRouteWithChildren,
   ServicosSegurancaRoute: ServicosSegurancaRouteWithChildren,
