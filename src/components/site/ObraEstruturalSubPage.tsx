@@ -5,9 +5,10 @@ import { QuoteForm } from "./QuoteForm";
 interface Props {
   data: ObraEstruturalSubservice;
   image: string;
+  gallery: { src: string; alt: string }[];
 }
 
-export function ObraEstruturalSubPage({ data, image }: Props) {
+export function ObraEstruturalSubPage({ data, image, gallery }: Props) {
   const related = obraEstruturalSubservices.filter((service) => data.related.includes(service.slug));
 
   return (
@@ -66,6 +67,21 @@ export function ObraEstruturalSubPage({ data, image }: Props) {
                 <h3 className="text-lg font-extrabold mb-3">{item.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16" aria-labelledby="obra-real-cisternas">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">Obra real · Chico Resolve</p>
+          <h2 id="obra-real-cisternas" className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">Etapas reais da construção</h2>
+          <p className="text-base text-muted-foreground max-w-3xl mb-10">Registros da execução em campo, da preparação da base e armação até o fechamento e acabamento interno da cisterna.</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {gallery.map((photo, index) => (
+              <figure key={photo.src} className={index === 0 ? "sm:col-span-2 lg:col-span-2" : ""}>
+                <img src={photo.src} alt={photo.alt} width={1920} height={1080} loading="lazy" className="w-full h-full min-h-72 aspect-[4/3] object-cover rounded-2xl border border-border" />
+              </figure>
             ))}
           </div>
         </div>
