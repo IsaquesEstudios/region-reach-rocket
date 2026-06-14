@@ -4,12 +4,15 @@ import { PinturaSubPage } from "@/components/site/PinturaSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import pisoConcretoImg from "@/assets/pintura-piso-concreto.png";
 import quadraImg from "@/assets/pintura-quadra-poliesportiva.png";
+import residencialAsset from "@/assets/pintura-residencial-acabamento-branco.webp.asset.json";
+import apartamentoAsset from "@/assets/pintura-apartamento-acabamento-verde.webp.asset.json";
+import industrialAsset from "@/assets/pintura-industrial-cinza.webp.asset.json";
 
 const images: Record<PinturaSlug, string> = {
   "piso-concreto": pisoConcretoImg,
-  residencial: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=1280&auto=format&fit=crop",
-  apartamento: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=1280&auto=format&fit=crop",
-  industrial: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1280&auto=format&fit=crop",
+  residencial: residencialAsset.url,
+  apartamento: apartamentoAsset.url,
+  industrial: industrialAsset.url,
   "quadra-poliesportiva": quadraImg,
 };
 

@@ -2,8 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { pinturaSubservices, site, whatsappLink } from "@/lib/site";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { QuoteForm } from "@/components/site/QuoteForm";
+import pinturaHeroAsset from "@/assets/pintura-texturizada.webp.asset.json";
 
-const pinturaHero = "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=1280&auto=format&fit=crop";
+const pinturaHero = pinturaHeroAsset.url;
 
 const HUB_URL = "/servicos/pintura";
 
