@@ -2,11 +2,25 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getObraEstruturalSubservice, site, type ObraEstruturalSlug } from "@/lib/site";
 import { ObraEstruturalSubPage } from "@/components/site/ObraEstruturalSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
-import cisternaAsset from "@/assets/construcao-cisternas.webp.asset.json";
+import acabamentoAsset from "@/assets/cisterna-real-acabamento.webp.asset.json";
+import estruturaAsset from "@/assets/cisterna-real-estrutura.webp.asset.json";
+import armacaoAsset from "@/assets/cisterna-real-armacao.webp.asset.json";
+import areaFinalAsset from "@/assets/cisterna-real-area-final.webp.asset.json";
+import alvenariaAsset from "@/assets/cisterna-real-alvenaria.webp.asset.json";
+import concretagemAsset from "@/assets/cisterna-real-concretagem.webp.asset.json";
 
 const images: Record<ObraEstruturalSlug, string> = {
-  "construcao-cisternas": cisternaAsset.url,
+  "construcao-cisternas": concretagemAsset.url,
 };
+
+const cisternaGallery = [
+  { src: concretagemAsset.url, alt: "Concretagem da base de cisterna executada pela Chico Resolve" },
+  { src: armacaoAsset.url, alt: "Armação estrutural e preparação das inspeções da cisterna" },
+  { src: alvenariaAsset.url, alt: "Execução das paredes da cisterna em obra real" },
+  { src: estruturaAsset.url, alt: "Estrutura interna da cisterna durante a construção" },
+  { src: acabamentoAsset.url, alt: "Acabamento interno da cisterna construída pela Chico Resolve" },
+  { src: areaFinalAsset.url, alt: "Área externa após a execução da cisterna enterrada" },
+];
 
 export const Route = createFileRoute("/servicos/obra-estrutural/$obraEstruturalSlug")({
   beforeLoad: ({ params }) => {
@@ -42,5 +56,5 @@ function ObraEstruturalSubRoute() {
   const { obraEstruturalSlug } = Route.useParams();
   const data = getObraEstruturalSubservice(obraEstruturalSlug);
   if (!data) return null;
-  return <><ObraEstruturalSubPage data={data} image={images[data.slug]} /><CtaBanner /></>;
+  return <><ObraEstruturalSubPage data={data} image={images[data.slug]} gallery={cisternaGallery} /><CtaBanner /></>;
 }
