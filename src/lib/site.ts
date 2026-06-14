@@ -3175,3 +3175,98 @@ export const segurancaSubservices: SegurancaSubservice[] = [
 
 export const getSegurancaSubservice = (slug: string): SegurancaSubservice | undefined =>
   segurancaSubservices.find((s) => s.slug === slug);
+
+// ============================================================================
+// OBRA ESTRUTURAL — Sub-serviços
+// ============================================================================
+
+export type ObraEstruturalSlug = "construcao-cisternas";
+
+export interface ObraEstruturalSubservice {
+  slug: ObraEstruturalSlug;
+  code: string;
+  h1: string;
+  shortTitle: string;
+  metaTitle: string;
+  metaDescription: string;
+  summary: string;
+  keywords: string[];
+  intro: string;
+  whenToHire: { title: string; text: string }[];
+  types: { title: string; text: string }[];
+  process: { title: string; text: string }[];
+  standards: string[];
+  trust: string[];
+  geo: string;
+  faq: { q: string; a: string }[];
+  related: ObraEstruturalSlug[];
+}
+
+export const obraEstruturalSubservices: ObraEstruturalSubservice[] = [
+  {
+    slug: "construcao-cisternas",
+    code: "OE-01",
+    h1: "Construção de Cisternas em Teresina",
+    shortTitle: "Construção de Cisternas",
+    metaTitle: "Construção de Cisternas em Teresina | Chico Resolve",
+    metaDescription:
+      "Construção de cisternas e tanques de retenção pluvial em Teresina, com concreto armado, impermeabilização, tubulação e testes de estanqueidade.",
+    summary:
+      "Cisternas e tanques de retenção pluvial em concreto armado, com dimensionamento técnico, impermeabilização e sistema hidráulico completo.",
+    keywords: [
+      "construção de cisternas",
+      "cisterna de concreto armado",
+      "tanque de retenção pluvial",
+      "reservatório de água de chuva",
+      "cisterna em Teresina",
+    ],
+    intro:
+      "Executamos cisternas e tanques de retenção pluvial em concreto armado para residências, condomínios, comércios e empreendimentos. A solução é planejada conforme o volume de água, as condições do solo e o uso previsto, integrando estrutura, impermeabilização, entrada e extravasão, filtragem, bombeamento e acesso seguro para manutenção. Cada etapa é controlada para evitar fissuras, infiltrações e falhas de estanqueidade.",
+    whenToHire: [
+      { title: "Aproveitamento de chuva", text: "Armazenamento de água pluvial para irrigação, lavagem de pisos e outros usos não potáveis." },
+      { title: "Controle de alagamentos", text: "Retenção temporária da chuva para reduzir a sobrecarga da drenagem do imóvel ou do condomínio." },
+      { title: "Reserva técnica", text: "Reservatório enterrado ou semienterrado para complementar o abastecimento e dar autonomia ao imóvel." },
+      { title: "Obra nova ou ampliação", text: "Integração da cisterna ao projeto estrutural e hidrossanitário desde o início da construção." },
+    ],
+    types: [
+      { title: "Cisterna de Concreto Armado", text: "Reservatório moldado no local, dimensionado para suportar empuxo do solo, pressão da água e condições de uso." },
+      { title: "Tanque de Retenção Pluvial", text: "Estrutura para amortecer picos de chuva, com entrada, saída controlada, extravasor e acesso para limpeza." },
+      { title: "Sistema de Reúso", text: "Captação com descarte inicial, filtragem e bombeamento para jardins, pisos, descargas e áreas comuns." },
+      { title: "Impermeabilização e Recuperação", text: "Tratamento interno, juntas, passagens de tubulação e correção de fissuras em reservatórios existentes." },
+    ],
+    process: [
+      { title: "Levantamento e Dimensionamento", text: "Analisamos área de captação, regime de chuvas, demanda, solo, acessos e interferências existentes." },
+      { title: "Projeto e Planejamento", text: "Definimos geometria, estrutura, instalações hidráulicas, impermeabilização e sequência executiva." },
+      { title: "Escavação e Base", text: "Executamos locação, escavação, regularização, drenagem provisória e fundação conforme projeto." },
+      { title: "Estrutura de Concreto", text: "Montagem de formas e armaduras, concretagem controlada de fundo, paredes e cobertura, com tratamento das juntas." },
+      { title: "Impermeabilização e Instalações", text: "Aplicamos o sistema especificado e instalamos tubulações, filtros, extravasor, inspeção e bombeamento." },
+      { title: "Teste e Entrega", text: "Realizamos teste de estanqueidade, inspeção final, limpeza e orientação para operação e manutenção." },
+    ],
+    standards: [
+      "ABNT NBR 6118 (estruturas de concreto)",
+      "ABNT NBR 15527 (aproveitamento de água de chuva)",
+      "ABNT NBR 9575 e 9574 (impermeabilização)",
+      "ABNT NBR 5626 (sistemas prediais de água)",
+      "NR-18 e NR-33 quando aplicáveis",
+    ],
+    trust: [
+      "Execução integrada de estrutura, impermeabilização e hidráulica",
+      "Materiais especificados conforme uso, pressão e contato com água",
+      "Controle de concretagem e tratamento técnico de juntas e passagens",
+      "Teste de estanqueidade antes da liberação do reservatório",
+      "Relatório fotográfico e garantia formal de execução",
+    ],
+    geo: "Atendemos projetos de cisternas e tanques de retenção pluvial em Teresina e Grande Teresina, incluindo residências, condomínios, galpões, comércios e empreendimentos em Timon-MA, Altos e José de Freitas.",
+    faq: [
+      { q: "Qual a diferença entre cisterna e tanque de retenção?", a: "A cisterna armazena água para uso posterior. O tanque de retenção recebe a chuva e libera o volume de forma controlada para reduzir picos na drenagem; um mesmo sistema pode combinar as duas funções quando projetado para isso." },
+      { q: "A água da chuva pode ser usada para beber?", a: "Não sem tratamento específico e controle de qualidade. O uso comum é não potável, como irrigação, lavagem de pisos e descargas sanitárias, com rede devidamente identificada e separada." },
+      { q: "Como é definido o tamanho da cisterna?", a: "O volume depende da área de captação, histórico de chuvas, demanda de uso, espaço disponível e exigências locais. Fazemos o levantamento técnico antes do orçamento." },
+      { q: "Como evitam vazamentos?", a: "Com projeto estrutural adequado, controle da concretagem, tratamento de juntas e passagens, sistema de impermeabilização compatível e teste de estanqueidade antes da entrega." },
+      { q: "Vocês também instalam bombas e filtros?", a: "Sim. Entregamos o sistema completo com entrada, descarte inicial, filtragem, extravasor, bomba, boias, tubulação e pontos de inspeção conforme o escopo." },
+    ],
+    related: [],
+  },
+];
+
+export const getObraEstruturalSubservice = (slug: string): ObraEstruturalSubservice | undefined =>
+  obraEstruturalSubservices.find((s) => s.slug === slug);
