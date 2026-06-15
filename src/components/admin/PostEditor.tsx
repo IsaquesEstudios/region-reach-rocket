@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { Upload, X } from "lucide-react";
+import { Upload, X, Eye } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { RichEditor } from "./RichEditor";
@@ -187,6 +187,17 @@ export function PostEditor({ postId }: Props) {
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-extrabold">{postId ? "Editar post" : "Novo post"}</h1>
         <div className="flex gap-2">
+          {postId && form.slug && (
+            <Link
+              to="/blog/$slug"
+              params={{ slug: form.slug }}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border font-bold text-sm hover:bg-muted"
+            >
+              <Eye className="size-4" /> Visualizar
+            </Link>
+          )}
           <button onClick={() => save(false)} disabled={saving} className="px-4 py-2 rounded-lg border border-border font-bold text-sm disabled:opacity-50">
             Salvar rascunho
           </button>
