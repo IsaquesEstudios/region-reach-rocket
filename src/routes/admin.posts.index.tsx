@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { Plus, Trash2, Pencil } from "lucide-react";
+import { Plus, Trash2, Pencil, Eye } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { AdminGate } from "@/components/admin/AdminGate";
@@ -109,8 +109,18 @@ function PostsList() {
                 <td className="px-4 py-3 text-muted-foreground">{formatDate(p.published_at ?? p.created_at)}</td>
                 <td className="px-4 py-3 text-right">
                   <div className="inline-flex items-center gap-1">
-                    <Link to="/admin/posts/edit/$id" params={{ id: p.id }} className="p-2 hover:bg-muted rounded"><Pencil className="size-4" /></Link>
-                    <button onClick={() => handleDelete(p.id)} className="p-2 hover:bg-muted rounded text-destructive"><Trash2 className="size-4" /></button>
+                    <Link
+                      to="/blog/$slug"
+                      params={{ slug: p.slug }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 hover:bg-muted rounded"
+                      title="Visualizar post"
+                    >
+                      <Eye className="size-4" />
+                    </Link>
+                    <Link to="/admin/posts/edit/$id" params={{ id: p.id }} className="p-2 hover:bg-muted rounded" title="Editar"><Pencil className="size-4" /></Link>
+                    <button onClick={() => handleDelete(p.id)} className="p-2 hover:bg-muted rounded text-destructive" title="Excluir"><Trash2 className="size-4" /></button>
                   </div>
                 </td>
               </tr>
