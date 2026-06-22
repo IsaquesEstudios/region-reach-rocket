@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicosRouteImport } from './routes/servicos'
+import { Route as QuemSomosRouteImport } from './routes/quem-somos'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicosIndexRouteImport } from './routes/servicos.index'
@@ -58,6 +59,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ServicosRoute = ServicosRouteImport.update({
   id: '/servicos',
   path: '/servicos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuemSomosRoute = QuemSomosRouteImport.update({
+  id: '/quem-somos',
+  path: '/quem-somos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContatoRoute = ContatoRouteImport.update({
@@ -264,6 +270,7 @@ const AdminPostsEditIdRoute = AdminPostsEditIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
+  '/quem-somos': typeof QuemSomosRoute
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin/categories': typeof AdminCategoriesRoute
@@ -306,6 +313,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
+  '/quem-somos': typeof QuemSomosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin/categories': typeof AdminCategoriesRoute
   '/admin/login': typeof AdminLoginRoute
@@ -340,6 +348,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
+  '/quem-somos': typeof QuemSomosRoute
   '/servicos': typeof ServicosRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin/categories': typeof AdminCategoriesRoute
@@ -384,6 +393,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/contato'
+    | '/quem-somos'
     | '/servicos'
     | '/sitemap.xml'
     | '/admin/categories'
@@ -426,6 +436,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/contato'
+    | '/quem-somos'
     | '/sitemap.xml'
     | '/admin/categories'
     | '/admin/login'
@@ -459,6 +470,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/contato'
+    | '/quem-somos'
     | '/servicos'
     | '/sitemap.xml'
     | '/admin/categories'
@@ -502,6 +514,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContatoRoute: typeof ContatoRoute
+  QuemSomosRoute: typeof QuemSomosRoute
   ServicosRoute: typeof ServicosRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   AdminCategoriesRoute: typeof AdminCategoriesRoute
@@ -530,6 +543,13 @@ declare module '@tanstack/react-router' {
       path: '/servicos'
       fullPath: '/servicos'
       preLoaderRoute: typeof ServicosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quem-somos': {
+      id: '/quem-somos'
+      path: '/quem-somos'
+      fullPath: '/quem-somos'
+      preLoaderRoute: typeof QuemSomosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contato': {
@@ -948,6 +968,7 @@ const ServicosRouteWithChildren = ServicosRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContatoRoute: ContatoRoute,
+  QuemSomosRoute: QuemSomosRoute,
   ServicosRoute: ServicosRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   AdminCategoriesRoute: AdminCategoriesRoute,

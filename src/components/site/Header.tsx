@@ -109,6 +109,9 @@ export function Header() {
               </div>
             )}
           </div>
+          <Link to="/quem-somos" className="px-4 py-2 rounded-full hover:text-primary transition-colors" activeProps={{ className: "text-primary" }}>
+            Quem somos
+          </Link>
           <Link to="/blog" className="px-4 py-2 rounded-full hover:text-primary transition-colors" activeProps={{ className: "text-primary" }}>
             Blog
           </Link>
