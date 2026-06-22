@@ -50,6 +50,7 @@ export function Footer() {
           <div>
             <h2 className="font-bold text-sm tracking-tight text-accent mb-5 uppercase">Empresa</h2>
             <ul className="space-y-2.5 text-sm text-white/75">
+              <li><Link to="/quem-somos" className="hover:text-white">Quem somos</Link></li>
               <li><Link to="/servicos" className="hover:text-white">Catálogo de serviços</Link></li>
               <li><Link to="/contato" className="hover:text-white">Contato</Link></li>
               <li>Construtoras</li>
