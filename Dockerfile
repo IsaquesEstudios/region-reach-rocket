@@ -1,0 +1,47 @@
+# syntax=docker/dockerfile:1.7
+# ---------- Stage 1: build ----------
+FROM oven/bun:1.1.38 AS builder
+
+WORKDIR /app
+
+# Instala dependências (cache eficiente)
+COPY package.json bun.lock* bunfig.toml* ./
+RUN bun install --frozen-lockfile
+
+# Copia o restante do projeto e gera o build de produção
+COPY . .
+
+# Variáveis públicas (VITE_*) precisam estar disponíveis no momento do build,
+# pois o Vite as substitui estaticamente no bundle do client.
+ARG VITE_SUPABASE_URL
+ARG VITE_SUPABASE_PUBLISHABLE_KEY
+ARG VITE_SUPABASE_PROJECT_ID
+ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL
+ENV VITE_SUPABASE_PUBLISHABLE_KEY=$VITE_SUPABASE_PUBLISHABLE_KEY
+ENV VITE_SUPABASE_PROJECT_ID=$VITE_SUPABASE_PROJECT_ID
+
+RUN bun run build
+
+# ---------- Stage 2: runtime ----------
+# O build do Vite/TanStack Start gera um bundle para Cloudflare Workers (workerd),
+# que vem embutido no pacote `wrangler`. Usamos uma imagem Node enxuta para
+# executar `wrangler deploy --dry-run=false` em modo local (workerd).
+FROM node:20-slim AS runner
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOST=0.0.0.0
+
+# Copia apenas o necessário para executar o worker
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/wrangler.jsonc ./wrangler.jsonc
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+
+EXPOSE 3000
+
+# `wrangler dev` em modo local sobe o workerd como servidor HTTP.
+# --ip 0.0.0.0 expõe para a rede do container; --port casa com $PORT.
+CMD ["sh", "-c", "npx wrangler dev --ip 0.0.0.0 --port ${PORT} --local"]
