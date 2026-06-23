@@ -20,7 +20,12 @@ ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL
 ENV VITE_SUPABASE_PUBLISHABLE_KEY=$VITE_SUPABASE_PUBLISHABLE_KEY
 ENV VITE_SUPABASE_PROJECT_ID=$VITE_SUPABASE_PROJECT_ID
 
-RUN bun run build
+# Remove o routeTree gerado para forçar geração única e limpa.
+# CI=true desativa o watcher do @tanstack/router-plugin, evitando loop
+# infinito de "File ... was modified by another process during processing"
+# que ocorre em filesystems overlay (Docker) com baixa resolução de mtime.
+ENV CI=true
+RUN rm -f src/routeTree.gen.ts && bun run build
 
 # ---------- Stage 2: runtime ----------
 # O build do Vite/TanStack Start gera um bundle para Cloudflare Workers (workerd),
