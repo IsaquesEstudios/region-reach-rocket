@@ -12,4 +12,12 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+  // Fora do sandbox da Lovable, o plugin não ativa o Nitro automaticamente.
+  // O Docker/Coolify precisa desse build para gerar dist/server/index.mjs
+  // e dist/server/wrangler.json, que são os arquivos realmente executáveis.
+  nitro: {
+    preset: "cloudflare-module",
+    output: { dir: "dist", serverDir: "dist/server", publicDir: "dist/client" },
+    cloudflare: { nodeCompat: true, deployConfig: true },
+  },
 });
