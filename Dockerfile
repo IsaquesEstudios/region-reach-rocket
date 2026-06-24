@@ -31,13 +31,14 @@ RUN rm -f src/routeTree.gen.ts && bun run build
 # O build do Vite/TanStack Start gera um bundle para Cloudflare Workers (workerd),
 # que vem embutido no pacote `wrangler`. Usamos uma imagem Node enxuta para
 # executar `wrangler deploy --dry-run=false` em modo local (workerd).
-FROM node:20-slim AS runner
+FROM node:22-slim AS runner
 
 WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOST=0.0.0.0
+ENV WRANGLER_SEND_METRICS=false
 
 # Copia apenas o necessário para executar o worker
 COPY --from=builder /app/package.json ./package.json
@@ -49,4 +50,4 @@ EXPOSE 3000
 
 # `wrangler dev` em modo local sobe o workerd como servidor HTTP.
 # --ip 0.0.0.0 expõe para a rede do container; --port casa com $PORT.
-CMD ["sh", "-c", "npx wrangler dev --ip 0.0.0.0 --port ${PORT} --local"]
+CMD ["sh", "-c", "./node_modules/.bin/wrangler dev --ip 0.0.0.0 --port ${PORT} --local --show-interactive-dev-session=false"]
