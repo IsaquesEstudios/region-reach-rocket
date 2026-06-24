@@ -39,8 +39,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             .select("role")
             .eq("id", sess.user.id)
             .maybeSingle()
-            .then(({ data }) => setRole((data?.role as Role) ?? "reader"))
-            .catch(() => setRole("reader"));
+            .then(
+              ({ data }) => setRole((data?.role as Role) ?? "reader"),
+              () => setRole("reader"),
+            );
         }, 0);
       } else {
         setRole(null);
@@ -58,14 +60,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             .select("role")
             .eq("id", data.session.user.id)
             .maybeSingle()
-            .then(({ data: p }) => {
-              setRole((p?.role as Role) ?? "reader");
-              setLoading(false);
-            })
-            .catch(() => {
-              setRole("reader");
-              setLoading(false);
-            });
+            .then(
+              ({ data: p }) => {
+                setRole((p?.role as Role) ?? "reader");
+                setLoading(false);
+              },
+              () => {
+                setRole("reader");
+                setLoading(false);
+              },
+            );
         } else {
           setLoading(false);
         }
