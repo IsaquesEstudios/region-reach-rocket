@@ -13,9 +13,9 @@ COPY . .
 
 # Variáveis públicas (VITE_*) precisam estar disponíveis no momento do build,
 # pois o Vite as substitui estaticamente no bundle do client.
-ARG VITE_SUPABASE_URL
-ARG VITE_SUPABASE_PUBLISHABLE_KEY
-ARG VITE_SUPABASE_PROJECT_ID
+ARG VITE_SUPABASE_URL=https://twjwckdpjgxgfrjssvtx.supabase.co
+ARG VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_L5mZqhaIri2_DiA-kgDkig_NKaAWixW
+ARG VITE_SUPABASE_PROJECT_ID=twjwckdpjgxgfrjssvtx
 ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL
 ENV VITE_SUPABASE_PUBLISHABLE_KEY=$VITE_SUPABASE_PUBLISHABLE_KEY
 ENV VITE_SUPABASE_PROJECT_ID=$VITE_SUPABASE_PROJECT_ID
@@ -39,6 +39,9 @@ ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOST=0.0.0.0
 ENV WRANGLER_SEND_METRICS=false
+ENV SUPABASE_URL=https://twjwckdpjgxgfrjssvtx.supabase.co
+ENV SUPABASE_PUBLISHABLE_KEY=sb_publishable_L5mZqhaIri2_DiA-kgDkig_NKaAWixW
+ENV SUPABASE_PROJECT_ID=twjwckdpjgxgfrjssvtx
 
 # Copia apenas o necessário para executar o worker já compilado.
 # O build gera um wrangler.json dentro de dist/server apontando para index.mjs;

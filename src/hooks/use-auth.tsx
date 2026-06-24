@@ -21,6 +21,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY) {
+      console.error(
+        "Backend público não configurado no build. Configure VITE_SUPABASE_URL e VITE_SUPABASE_PUBLISHABLE_KEY como Build Variables.",
+      );
+      setLoading(false);
+      return;
+    }
+
     const { data: sub } = supabase.auth.onAuthStateChange((_event, sess) => {
       setSession(sess);
       setUser(sess?.user ?? null);
@@ -31,30 +39,38 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             .select("role")
             .eq("id", sess.user.id)
             .maybeSingle()
-            .then(({ data }) => setRole((data?.role as Role) ?? "reader"));
+            .then(({ data }) => setRole((data?.role as Role) ?? "reader"))
+            .catch(() => setRole("reader"));
         }, 0);
       } else {
         setRole(null);
       }
     });
 
-    supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session);
-      setUser(data.session?.user ?? null);
-      if (data.session?.user) {
-        supabase
-          .from("profiles")
-          .select("role")
-          .eq("id", data.session.user.id)
-          .maybeSingle()
-          .then(({ data: p }) => {
-            setRole((p?.role as Role) ?? "reader");
-            setLoading(false);
-          });
-      } else {
-        setLoading(false);
-      }
-    });
+    supabase.auth
+      .getSession()
+      .then(({ data }) => {
+        setSession(data.session);
+        setUser(data.session?.user ?? null);
+        if (data.session?.user) {
+          supabase
+            .from("profiles")
+            .select("role")
+            .eq("id", data.session.user.id)
+            .maybeSingle()
+            .then(({ data: p }) => {
+              setRole((p?.role as Role) ?? "reader");
+              setLoading(false);
+            })
+            .catch(() => {
+              setRole("reader");
+              setLoading(false);
+            });
+        } else {
+          setLoading(false);
+        }
+      })
+      .catch(() => setLoading(false));
 
     return () => sub.subscription.unsubscribe();
   }, []);
