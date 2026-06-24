@@ -6,7 +6,7 @@ em um container Docker que executa o `workerd` via `wrangler` em modo local.
 
 ## Arquivos preparados
 
-- `Dockerfile` — build multi-stage (Bun para build + Node slim para runtime).
+- `Dockerfile` — build multi-stage (Bun para build + Node 22 slim para runtime).
 - `.dockerignore` — evita enviar `node_modules`, `dist`, `.env` etc. para o contexto do build.
 - `docker-compose.yml` — útil para testar localmente antes de subir.
 - `.env.example` — modelo das variáveis necessárias.
@@ -72,6 +72,7 @@ docker compose up --build
   customizada com `target: 'node-server'`.
 - O `wrangler dev --local` executa o bundle no `workerd` sem precisar de conta Cloudflare nem
   de internet para a API deles — tudo roda dentro do container.
+- O runtime precisa ser **Node.js 22+**. Se aparecer no log `Wrangler requires at least Node.js v22.0.0`, o container está usando uma imagem antiga (`node:20-slim`) e vai reiniciar em loop, causando 404 no domínio.
 
 ## Atualizações
 
