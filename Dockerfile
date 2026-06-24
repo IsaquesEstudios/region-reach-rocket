@@ -40,9 +40,10 @@ ENV PORT=3000
 ENV HOST=0.0.0.0
 ENV WRANGLER_SEND_METRICS=false
 
-# Copia apenas o necessário para executar o worker
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/wrangler.jsonc ./wrangler.jsonc
+# Copia apenas o necessário para executar o worker já compilado.
+# O build gera um wrangler.json dentro de dist/server apontando para index.mjs;
+# usar o wrangler.jsonc da raiz faria o runtime procurar src/server.ts, que não
+# existe nesta imagem final e causa o 404 por restart em loop.
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 
@@ -50,4 +51,4 @@ EXPOSE 3000
 
 # `wrangler dev` em modo local sobe o workerd como servidor HTTP.
 # --ip 0.0.0.0 expõe para a rede do container; --port casa com $PORT.
-CMD ["sh", "-c", "./node_modules/.bin/wrangler dev --ip 0.0.0.0 --port ${PORT} --local --show-interactive-dev-session=false"]
+CMD ["sh", "-c", "cd dist/server && ../../node_modules/.bin/wrangler dev --ip 0.0.0.0 --port ${PORT} --local --show-interactive-dev-session=false"]

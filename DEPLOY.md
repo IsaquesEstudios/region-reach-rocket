@@ -6,7 +6,7 @@ em um container Docker que executa o `workerd` via `wrangler` em modo local.
 
 ## Arquivos preparados
 
-- `Dockerfile` — build multi-stage (Bun para build + Node 22 slim para runtime).
+- `Dockerfile` — build multi-stage (Bun para build + Node 22 slim para runtime), executando o `wrangler.json` gerado em `dist/server`.
 - `.dockerignore` — evita enviar `node_modules`, `dist`, `.env` etc. para o contexto do build.
 - `docker-compose.yml` — útil para testar localmente antes de subir.
 - `.env.example` — modelo das variáveis necessárias.
@@ -67,12 +67,14 @@ docker compose up --build
 - **Cloudflare Worker bundle**: o app roda dentro do `workerd` (mesmo runtime do Cloudflare),
   garantindo que server functions, SSR e middlewares do Supabase funcionem igual à preview.
 - **Não rode `bun run dev` em produção** — é apenas dev server.
+- **Não use o `wrangler.jsonc` da raiz no runtime** — ele aponta para `src/server.ts`, que existe no código-fonte, mas não é copiado para a imagem final. O runtime precisa entrar em `dist/server` e usar o `wrangler.json` gerado pelo build, que aponta para `index.mjs`.
 - Se quiser migrar para um adaptador Node puro no futuro (sem `workerd`), será necessário
   trocar o preset `@lovable.dev/vite-tanstack-config` por uma configuração TanStack Start
   customizada com `target: 'node-server'`.
 - O `wrangler dev --local` executa o bundle no `workerd` sem precisar de conta Cloudflare nem
   de internet para a API deles — tudo roda dentro do container.
 - O runtime precisa ser **Node.js 22+**. Se aparecer no log `Wrangler requires at least Node.js v22.0.0`, o container está usando uma imagem antiga (`node:20-slim`) e vai reiniciar em loop, causando 404 no domínio.
+- Se aparecer no log `The entry-point file at "src/server.ts" was not found`, o container ainda está usando uma imagem/configuração antiga ou está rodando o `wrangler.jsonc` da raiz. Faça um deploy com rebuild sem cache para usar o Dockerfile atualizado.
 
 ## Atualizações
 
