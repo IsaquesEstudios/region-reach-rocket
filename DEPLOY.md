@@ -30,6 +30,11 @@ em um container Docker que executa o `workerd` via `wrangler` em modo local.
    Coolify (ou adicionadas como **Build Arg**), pois o Vite as injeta no bundle do client
    durante o build — se forem apenas runtime, ficarão `undefined` no navegador.
 
+   Se a página carregar por alguns segundos e depois cair em **“Algo deu errado ao carregar
+   a página”**, abra o console do navegador: se aparecer `Missing Supabase environment
+   variable(s)`, o build foi feito sem essas `VITE_*`. Corrija as variáveis como **Build
+   Variable/Build Arg** e rode **rebuild sem cache**.
+
    Variáveis necessárias:
    - `VITE_SUPABASE_URL` (build)
    - `VITE_SUPABASE_PUBLISHABLE_KEY` (build)
@@ -75,6 +80,7 @@ docker compose up --build
   de internet para a API deles — tudo roda dentro do container.
 - O runtime precisa ser **Node.js 22+**. Se aparecer no log `Wrangler requires at least Node.js v22.0.0`, o container está usando uma imagem antiga (`node:20-slim`) e vai reiniciar em loop, causando 404 no domínio.
 - Se aparecer no log `The entry-point file at "src/server.ts" was not found`, o container ainda está usando uma imagem/configuração antiga ou está rodando o `wrangler.jsonc` da raiz. Faça um deploy com rebuild sem cache para usar o Dockerfile atualizado.
+- Se a home renderizar e depois trocar para a tela “Algo deu errado ao carregar a página”, isso é erro de hidratação no navegador. O caso mais comum neste deploy é o bundle client sem `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY` porque o Coolify recebeu essas variáveis só como runtime, não como build.
 
 ## Atualizações
 
