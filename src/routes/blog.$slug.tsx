@@ -8,7 +8,7 @@ export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }) => {
     const { data, error } = await supabase
       .from("posts")
-      .select("id,title,slug,content,excerpt,cover_image_url,reading_time,published_at,updated_at,views,meta_title,meta_description,og_image_url,category:categories(name,slug,color),author:profiles(full_name,avatar_url,bio)")
+      .select("id,title,slug,content,excerpt,cover_image_url,reading_time,published_at,updated_at,views,meta_title,meta_description,og_image_url,category:categories(name,slug,color),author:profiles(id,full_name,avatar_url,bio)")
       .eq("slug", params.slug)
       .eq("status", "published")
       .maybeSingle();
