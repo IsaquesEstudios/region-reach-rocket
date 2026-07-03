@@ -8,7 +8,7 @@ export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }) => {
     const { data, error } = await supabase
       .from("posts")
-      .select("id,title,slug,content,excerpt,cover_image_url,reading_time,published_at,updated_at,views,meta_title,meta_description,og_image_url,category:categories(name,slug,color),author:profiles(full_name,avatar_url,bio)")
+      .select("id,title,slug,content,excerpt,cover_image_url,reading_time,published_at,updated_at,views,meta_title,meta_description,og_image_url,category:categories(name,slug,color),author:profiles(id,full_name,avatar_url,bio)")
       .eq("slug", params.slug)
       .eq("status", "published")
       .maybeSingle();
@@ -133,14 +133,50 @@ function PostPage() {
           dangerouslySetInnerHTML={{ __html: post.content ?? "" }}
         />
 
-        {post.author?.bio && (
-          <div className="mt-12 p-6 bg-card border border-border rounded-xl">
-            <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Sobre o autor</p>
-            <p className="font-bold">{post.author.full_name}</p>
-            <p className="text-sm text-muted-foreground mt-1">{post.author.bio}</p>
-          </div>
+        {post.author?.full_name && (
+          <aside className="mt-14 p-6 sm:p-8 bg-card border border-border rounded-2xl flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+            {post.author.avatar_url ? (
+              <img
+                src={post.author.avatar_url}
+                alt={`Foto de ${post.author.full_name}`}
+                className="size-24 sm:size-28 rounded-2xl object-cover shrink-0"
+              />
+            ) : (
+              <div className="size-24 sm:size-28 rounded-2xl bg-primary/10 flex items-center justify-center text-3xl font-extrabold text-primary shrink-0">
+                {post.author.full_name[0]}
+              </div>
+            )}
+            <div className="flex-1 text-center sm:text-left">
+              <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">
+                Sobre o autor
+              </p>
+              <p className="text-lg font-bold">{post.author.full_name}</p>
+              {post.author.bio && (
+                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                  {post.author.bio}
+                </p>
+              )}
+              <Link
+                to="/autor/$slug"
+                params={{ slug: authorSlug(post.author.full_name) }}
+                className="inline-flex items-center gap-1 mt-4 text-sm font-bold text-primary hover:underline"
+              >
+                Ver página do autor →
+              </Link>
+            </div>
+          </aside>
         )}
       </div>
     </article>
   );
+}
+
+function authorSlug(name: string): string {
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
