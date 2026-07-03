@@ -68,6 +68,31 @@ export const Route = createFileRoute("/sitemap.xml")({
           })),
         ];
 
+        // Blog posts (dinâmico)
+        try {
+          const url = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
+          const key = process.env.SUPABASE_PUBLISHABLE_KEY ?? process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+          if (url && key) {
+            const sb = createClient(url, key, { auth: { persistSession: false } });
+            const { data: posts } = await sb
+              .from("posts")
+              .select("slug, updated_at, published_at")
+              .eq("status", "published")
+              .not("published_at", "is", null);
+            for (const p of posts ?? []) {
+              entries.push({
+                path: `/blog/${p.slug}`,
+                lastmod: (p.updated_at ?? p.published_at ?? "").slice(0, 10) || undefined,
+                changefreq: "monthly",
+                priority: "0.7",
+              });
+            }
+          }
+        } catch (e) {
+          console.error("[sitemap] blog fetch failed", e);
+        }
+
+
         const urls = entries.map((e) =>
           [
             `  <url>`,
