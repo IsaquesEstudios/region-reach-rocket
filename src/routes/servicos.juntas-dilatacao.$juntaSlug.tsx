@@ -2,11 +2,14 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getJuntaSubservice, type JuntaSlug, site } from "@/lib/site";
 import { JuntasSubPage } from "@/components/site/JuntasSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
+import juntasAsset from "@/assets/servico-juntas-dilatacao.jpg.asset.json";
+import reformasAsset from "@/assets/servico-reformas.jpg.asset.json";
+import recuperacaoAsset from "@/assets/servico-recuperacao-estrutural.jpg.asset.json";
 const images: Record<JuntaSlug, string> = {
-  "tratamento-dilatacao": "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=1280&auto=format&fit=crop",
+  "tratamento-dilatacao": juntasAsset.url,
   "vedacao-fachada": "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1280&auto=format&fit=crop",
-  "manutencao-movimentacao": "https://images.unsplash.com/photo-1503387762-592dee58c460?q=80&w=1280&auto=format&fit=crop",
-  "recuperacao-estrutural": "https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=1280&auto=format&fit=crop",
+  "manutencao-movimentacao": reformasAsset.url,
+  "recuperacao-estrutural": recuperacaoAsset.url,
   infiltracao: "https://images.unsplash.com/photo-1605152276897-4f618f831968?q=80&w=1280&auto=format&fit=crop",
   impermeabilizacao: "https://images.unsplash.com/photo-1604709177225-055f99402ea3?q=80&w=1280&auto=format&fit=crop",
   "rachadura-entre-predios": "https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1280&auto=format&fit=crop",

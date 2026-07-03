@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { reformaSubservices, site, whatsappLink } from "@/lib/site";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { QuoteForm } from "@/components/site/QuoteForm";
-const reformaHero = "https://images.unsplash.com/photo-1503387762-592dee58c460?q=80&w=1280&auto=format&fit=crop";
+import reformaHeroAsset from "@/assets/servico-reformas.jpg.asset.json";
+const reformaHero = reformaHeroAsset.url;
 
 const HUB_URL = "/servicos/reformas";
 

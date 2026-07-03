@@ -2,10 +2,11 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getDrywallSubservice, type DrywallSlug, site } from "@/lib/site";
 import { DrywallSubPage } from "@/components/site/DrywallSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
+import gesseiroAsset from "@/assets/servico-gesseiro.jpg.asset.json";
 const images: Record<DrywallSlug, string> = {
   "instalacao-drywall": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1280&auto=format&fit=crop",
   "gesso-acartonado": "https://images.unsplash.com/photo-1503387837-b154d5074bd2?q=80&w=1280&auto=format&fit=crop",
-  gesseiro: "https://images.unsplash.com/photo-1572297794125-3ffd9bf86b80?q=80&w=1280&auto=format&fit=crop",
+  gesseiro: gesseiroAsset.url,
   "forro-de-gesso": "https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=1280&auto=format&fit=crop",
   "parede-de-drywall": "https://images.unsplash.com/photo-1599619351208-3e6c839d6828?q=80&w=1280&auto=format&fit=crop",
   "divisoria-de-ambiente": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1280&auto=format&fit=crop",

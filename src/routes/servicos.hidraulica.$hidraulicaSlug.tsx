@@ -2,8 +2,9 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getHidraulicaSubservice, type HidraulicaSlug, site } from "@/lib/site";
 import { HidraulicaSubPage } from "@/components/site/HidraulicaSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
+import hidraulicaAsset from "@/assets/servico-hidraulica.jpg.asset.json";
 const images: Record<HidraulicaSlug, string> = {
-  "servico-hidraulico": "https://images.unsplash.com/photo-1585704032915-c3400ca1f963?q=80&w=1280&auto=format&fit=crop",
+  "servico-hidraulico": hidraulicaAsset.url,
   desentupidora: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?q=80&w=1280&auto=format&fit=crop",
   "desentupimento-esgoto": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1280&auto=format&fit=crop",
   "encanador-residencial": "https://images.unsplash.com/photo-1542013936693-884638332954?q=80&w=1280&auto=format&fit=crop",
