@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { drywallSubservices, eletricaSubservices, hidraulicaSubservices, juntaSubservices, obraEstruturalSubservices, pinturaSubservices, reformaSubservices, segurancaSubservices, services } from "@/lib/site";
+import { createClient } from "@supabase/supabase-js";
+import { drywallSubservices, eletricaSubservices, hidraulicaSubservices, juntaSubservices, obraEstruturalSubservices, pinturaSubservices, reformaSubservices, segurancaSubservices, services, siteUrl } from "@/lib/site";
 
-// TODO: substituir com a URL do projeto quando houver domínio definido.
-const BASE_URL = "";
+const BASE_URL = siteUrl;
 
 interface SitemapEntry {
   path: string;
