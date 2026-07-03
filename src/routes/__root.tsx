@@ -46,7 +46,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-import { siteUrl } from "@/lib/site";
+
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
