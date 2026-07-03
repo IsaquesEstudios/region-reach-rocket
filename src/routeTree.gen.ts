@@ -27,6 +27,7 @@ import { Route as ServicosEletricaRouteImport } from './routes/servicos.eletrica
 import { Route as ServicosDrywallRouteImport } from './routes/servicos.drywall'
 import { Route as ServicosSlugRouteImport } from './routes/servicos.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as AutorSlugRouteImport } from './routes/autor.$slug'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminTagsRouteImport } from './routes/admin.tags'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
@@ -139,6 +140,11 @@ const ServicosSlugRoute = ServicosSlugRouteImport.update({
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutorSlugRoute = AutorSlugRouteImport.update({
+  id: '/autor/$slug',
+  path: '/autor/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminUsersRoute = AdminUsersRouteImport.update({
@@ -277,6 +283,7 @@ export interface FileRoutesByFullPath {
   '/admin/login': typeof AdminLoginRoute
   '/admin/tags': typeof AdminTagsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/autor/$slug': typeof AutorSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/servicos/$slug': typeof ServicosSlugRoute
   '/servicos/drywall': typeof ServicosDrywallRouteWithChildren
@@ -319,6 +326,7 @@ export interface FileRoutesByTo {
   '/admin/login': typeof AdminLoginRoute
   '/admin/tags': typeof AdminTagsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/autor/$slug': typeof AutorSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/servicos/$slug': typeof ServicosSlugRoute
   '/admin': typeof AdminIndexRoute
@@ -355,6 +363,7 @@ export interface FileRoutesById {
   '/admin/login': typeof AdminLoginRoute
   '/admin/tags': typeof AdminTagsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/autor/$slug': typeof AutorSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/servicos/$slug': typeof ServicosSlugRoute
   '/servicos/drywall': typeof ServicosDrywallRouteWithChildren
@@ -400,6 +409,7 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/tags'
     | '/admin/users'
+    | '/autor/$slug'
     | '/blog/$slug'
     | '/servicos/$slug'
     | '/servicos/drywall'
@@ -442,6 +452,7 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/tags'
     | '/admin/users'
+    | '/autor/$slug'
     | '/blog/$slug'
     | '/servicos/$slug'
     | '/admin'
@@ -477,6 +488,7 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/admin/tags'
     | '/admin/users'
+    | '/autor/$slug'
     | '/blog/$slug'
     | '/servicos/$slug'
     | '/servicos/drywall'
@@ -521,6 +533,7 @@ export interface RootRouteChildren {
   AdminLoginRoute: typeof AdminLoginRoute
   AdminTagsRoute: typeof AdminTagsRoute
   AdminUsersRoute: typeof AdminUsersRoute
+  AutorSlugRoute: typeof AutorSlugRoute
   BlogSlugRoute: typeof BlogSlugRoute
   AdminIndexRoute: typeof AdminIndexRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -655,6 +668,13 @@ declare module '@tanstack/react-router' {
       path: '/blog/$slug'
       fullPath: '/blog/$slug'
       preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/autor/$slug': {
+      id: '/autor/$slug'
+      path: '/autor/$slug'
+      fullPath: '/autor/$slug'
+      preLoaderRoute: typeof AutorSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/users': {
@@ -975,6 +995,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminLoginRoute: AdminLoginRoute,
   AdminTagsRoute: AdminTagsRoute,
   AdminUsersRoute: AdminUsersRoute,
+  AutorSlugRoute: AutorSlugRoute,
   BlogSlugRoute: BlogSlugRoute,
   AdminIndexRoute: AdminIndexRoute,
   BlogIndexRoute: BlogIndexRoute,
