@@ -79,6 +79,15 @@ function QuemSomosPage() {
             {site.name} está em Teresina, pronta para atender com <strong>prazo combinado e resultado
             visível</strong>.
           </p>
+          <div className="pt-6">
+            <Link
+              to="/autor/$slug"
+              params={{ slug: "marcus-paz" }}
+              className="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-5 py-2.5 text-sm font-bold hover:bg-primary/15 transition-colors"
+            >
+              Conheça o autor do blog →
+            </Link>
+          </div>
         </div>
       </section>
 
