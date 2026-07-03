@@ -3,14 +3,16 @@ import { getReformaSubservice, type ReformaSlug, site } from "@/lib/site";
 import { ReformasSubPage } from "@/components/site/ReformasSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import quadrasImg from "@/assets/reforma-quadras.webp";
+import reformaHeroAsset from "@/assets/servico-reformas.jpg.asset.json";
+import telhadoAsset from "@/assets/servico-telhado.jpg.asset.json";
 
 const images: Record<ReformaSlug, string> = {
   apartamento: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1280&auto=format&fit=crop",
-  "empresa-de-reforma": "https://images.unsplash.com/photo-1503387762-592dee58c460?q=80&w=1280&auto=format&fit=crop",
+  "empresa-de-reforma": reformaHeroAsset.url,
   comercial: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1280&auto=format&fit=crop",
   casa: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=1280&auto=format&fit=crop",
   banheiro: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1280&auto=format&fit=crop",
-  telhado: "https://images.unsplash.com/photo-1632759145355-8b8f0c0d0e3a?q=80&w=1280&auto=format&fit=crop",
+  telhado: telhadoAsset.url,
   fachada: "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1280&auto=format&fit=crop",
   piscina: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1280&auto=format&fit=crop",
   pisos: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=1280&auto=format&fit=crop",

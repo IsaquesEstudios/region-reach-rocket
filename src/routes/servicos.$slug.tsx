@@ -3,16 +3,20 @@ import { services, serviceContent, type ServiceSlug } from "@/lib/site";
 import { ServicePage } from "@/components/site/ServicePage";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import obraEstruturalHero from "@/assets/obra-estrutural-hero.webp";
+import hidraulicaAsset from "@/assets/servico-hidraulica.jpg.asset.json";
+import juntasAsset from "@/assets/servico-juntas-dilatacao.jpg.asset.json";
+import reformasAsset from "@/assets/servico-reformas.jpg.asset.json";
+import manutencaoAsset from "@/assets/servico-manutencao-predial.jpg.asset.json";
 const images: Record<ServiceSlug, string> = {
   pintura: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=1280&auto=format&fit=crop",
   eletrica: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1280&auto=format&fit=crop",
-  hidraulica: "https://images.unsplash.com/photo-1585704032915-c3400ca1f963?q=80&w=1280&auto=format&fit=crop",
+  hidraulica: hidraulicaAsset.url,
   drywall: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?q=80&w=1280&auto=format&fit=crop",
-  "juntas-dilatacao": "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=1280&auto=format&fit=crop",
+  "juntas-dilatacao": juntasAsset.url,
   seguranca: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1280&auto=format&fit=crop",
-  reformas: "https://images.unsplash.com/photo-1503387762-592dee58c460?q=80&w=1280&auto=format&fit=crop",
+  reformas: reformasAsset.url,
   "obra-estrutural": obraEstruturalHero,
-  manutencao: "https://images.unsplash.com/photo-1581578731522-745d05db9ad0?q=80&w=1280&auto=format&fit=crop",
+  manutencao: manutencaoAsset.url,
 };
 
 function getService(slug: string) {
