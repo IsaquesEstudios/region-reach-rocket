@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { drywallSubservices, eletricaSubservices, hidraulicaSubservices, juntaSubservices, obraEstruturalSubservices, pinturaSubservices, reformaSubservices, segurancaSubservices, services } from "@/lib/site";
+import { createClient } from "@supabase/supabase-js";
+import { drywallSubservices, eletricaSubservices, hidraulicaSubservices, juntaSubservices, obraEstruturalSubservices, pinturaSubservices, reformaSubservices, segurancaSubservices, services, siteUrl } from "@/lib/site";
 
-// TODO: substituir com a URL do projeto quando houver domínio definido.
-const BASE_URL = "";
+const BASE_URL = siteUrl;
 
 interface SitemapEntry {
   path: string;
+  lastmod?: string;
   changefreq?: "weekly" | "monthly";
   priority?: string;
 }
@@ -17,8 +18,10 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: async () => {
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
+          { path: "/quem-somos", changefreq: "monthly", priority: "0.7" },
           { path: "/servicos", changefreq: "monthly", priority: "0.9" },
           { path: "/contato", changefreq: "monthly", priority: "0.7" },
+          { path: "/blog", changefreq: "weekly", priority: "0.8" },
           ...services.map((s) => ({
             path: `/servicos/${s.slug}`,
             changefreq: "monthly" as const,
@@ -66,10 +69,36 @@ export const Route = createFileRoute("/sitemap.xml")({
           })),
         ];
 
+        // Blog posts (dinâmico)
+        try {
+          const url = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
+          const key = process.env.SUPABASE_PUBLISHABLE_KEY ?? process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+          if (url && key) {
+            const sb = createClient(url, key, { auth: { persistSession: false } });
+            const { data: posts } = await sb
+              .from("posts")
+              .select("slug, updated_at, published_at")
+              .eq("status", "published")
+              .not("published_at", "is", null);
+            for (const p of posts ?? []) {
+              entries.push({
+                path: `/blog/${p.slug}`,
+                lastmod: (p.updated_at ?? p.published_at ?? "").slice(0, 10) || undefined,
+                changefreq: "monthly",
+                priority: "0.7",
+              });
+            }
+          }
+        } catch (e) {
+          console.error("[sitemap] blog fetch failed", e);
+        }
+
+
         const urls = entries.map((e) =>
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
+            e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,

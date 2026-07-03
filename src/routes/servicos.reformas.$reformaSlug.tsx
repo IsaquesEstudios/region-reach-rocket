@@ -2,7 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getReformaSubservice, type ReformaSlug, site } from "@/lib/site";
 import { ReformasSubPage } from "@/components/site/ReformasSubPage";
 import { CtaBanner } from "@/components/site/CtaBanner";
-import quadrasImg from "@/assets/reforma-quadras.png";
+import quadrasImg from "@/assets/reforma-quadras.webp";
 
 const images: Record<ReformaSlug, string> = {
   apartamento: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1280&auto=format&fit=crop",
