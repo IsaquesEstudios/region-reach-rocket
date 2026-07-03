@@ -11,7 +11,7 @@ import appCss from "../styles.css?url";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppFab } from "@/components/site/WhatsAppFab";
-import { site } from "@/lib/site";
+import { site, siteUrl } from "@/lib/site";
 import { AuthProvider } from "@/hooks/use-auth";
 
 function NotFoundComponent() {
