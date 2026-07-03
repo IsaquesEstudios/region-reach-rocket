@@ -1,6 +1,8 @@
 // Dados centrais da Chico Resolve.
 // TODO: substituir os campos marcados como placeholder com dados reais antes de publicar.
 
+export const siteUrl = "https://region-reach-rocket.lovable.app";
+
 export const site = {
   name: "Chico Resolve",
   legalName: "Chico Resolve — Inteligência em Manutenção Predial",

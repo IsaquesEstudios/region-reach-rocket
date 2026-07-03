@@ -46,15 +46,17 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+import { siteUrl } from "@/lib/site";
+
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: site.name,
   description: site.description,
-  image: "/og-default.jpg",
+  image: `${siteUrl}/og-default.jpg`,
   telephone: site.phoneE164,
   email: site.email,
-  url: "/",
+  url: siteUrl,
   address: {
     "@type": "PostalAddress",
     addressLocality: site.address.city,
@@ -85,21 +87,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#064e3b" },
-      { title: `${site.name} — ${site.tagline} | Fortaleza` },
+      { title: `${site.name} — ${site.tagline} | Teresina/PI` },
       { name: "description", content: site.description },
       { name: "author", content: site.name },
       { property: "og:site_name", content: site.name },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Chico Resolve" },
-      { property: "og:title", content: "Chico Resolve" },
-      { name: "twitter:title", content: "Chico Resolve" },
-      { name: "description", content: "Reformas e projetos residencias e prediais em teresina piaui" },
-      { property: "og:description", content: "Reformas e projetos residencias e prediais em teresina piaui" },
-      { name: "twitter:description", content: "Reformas e projetos residencias e prediais em teresina piaui" },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/758dbe91-a63f-4280-8705-56f1891d4922/id-preview-1a4be1ab--ce6964cb-e37b-4cd2-851d-915523b391c5.lovable.app-1780673858174.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/758dbe91-a63f-4280-8705-56f1891d4922/id-preview-1a4be1ab--ce6964cb-e37b-4cd2-851d-915523b391c5.lovable.app-1780673858174.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
