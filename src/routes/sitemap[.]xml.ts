@@ -7,6 +7,7 @@ const BASE_URL = siteUrl;
 
 interface SitemapEntry {
   path: string;
+  lastmod?: string;
   changefreq?: "weekly" | "monthly";
   priority?: string;
 }
