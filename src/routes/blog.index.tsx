@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useMemo } from "react";
 import { Search } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
-import { PostCard, type PostCardData } from "@/components/blog/PostCard";
+import { PostCard } from "@/components/blog/PostCard";
+import { listPublicPosts } from "@/lib/posts.functions";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({
@@ -17,39 +17,44 @@ export const Route = createFileRoute("/blog/")({
   component: BlogIndex,
 });
 
-const SELECT = "slug,title,excerpt,cover_image_url,reading_time,published_at,featured,category:categories(name,slug,color),author:profiles(full_name,avatar_url)";
-
 function BlogIndex() {
   const [search, setSearch] = useState("");
-  const [categorySlug, setCategorySlug] = useState<string | null>(null);
-
-  const { data: categories } = useQuery({
-    queryKey: ["blog-categories"],
-    queryFn: async () => {
-      const { data, error } = await supabase.from("categories").select("name,slug,color").order("name");
-      if (error) throw error;
-      return data;
-    },
-  });
+  const [categoria, setCategoria] = useState<string | null>(null);
 
   const { data: posts, isLoading } = useQuery({
-    queryKey: ["blog-posts", categorySlug, search],
-    queryFn: async () => {
-      let q = supabase
-        .from("posts")
-        .select(SELECT)
-        .eq("status", "published")
-        .order("published_at", { ascending: false });
-      if (categorySlug) q = q.eq("category.slug", categorySlug);
-      if (search) q = q.or(`title.ilike.%${search}%,excerpt.ilike.%${search}%`);
-      const { data, error } = await q;
-      if (error) throw error;
-      return (data ?? []) as unknown as (PostCardData & { featured: boolean })[];
-    },
+    queryKey: ["blog-posts"],
+    queryFn: () => listPublicPosts(),
   });
 
-  const featured = useMemo(() => posts?.find((p) => p.featured) ?? posts?.[0], [posts]);
-  const rest = useMemo(() => posts?.filter((p) => p.slug !== featured?.slug) ?? [], [posts, featured]);
+  const categorias = useMemo(() => {
+    const set = new Set<string>();
+    for (const p of posts ?? []) {
+      if (p.categoria) {
+        for (const c of p.categoria.split(",")) {
+          const t = c.trim();
+          if (t) set.add(t);
+        }
+      }
+    }
+    return Array.from(set).sort((a, b) => a.localeCompare(b));
+  }, [posts]);
+
+  const filtered = useMemo(() => {
+    let list = posts ?? [];
+    if (categoria) list = list.filter((p) => (p.categoria ?? "").toLowerCase().includes(categoria.toLowerCase()));
+    if (search) {
+      const q = search.toLowerCase();
+      list = list.filter(
+        (p) =>
+          p.title.toLowerCase().includes(q) ||
+          (p.excerpt ?? "").toLowerCase().includes(q),
+      );
+    }
+    return list;
+  }, [posts, categoria, search]);
+
+  const featured = filtered[0];
+  const rest = filtered.slice(1);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
@@ -72,28 +77,30 @@ function BlogIndex() {
             className="w-full pl-10 pr-4 py-2.5 rounded-full border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
-        <div className="flex gap-2 overflow-x-auto pb-1">
-          <button
-            onClick={() => setCategorySlug(null)}
-            className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full whitespace-nowrap ${!categorySlug ? "bg-primary text-primary-foreground" : "bg-card border border-border hover:bg-muted"}`}
-          >
-            Todas
-          </button>
-          {categories?.map((c) => (
+        {categorias.length > 0 && (
+          <div className="flex gap-2 overflow-x-auto pb-1">
             <button
-              key={c.slug}
-              onClick={() => setCategorySlug(c.slug)}
-              className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full whitespace-nowrap ${categorySlug === c.slug ? "bg-primary text-primary-foreground" : "bg-card border border-border hover:bg-muted"}`}
+              onClick={() => setCategoria(null)}
+              className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full whitespace-nowrap ${!categoria ? "bg-primary text-primary-foreground" : "bg-card border border-border hover:bg-muted"}`}
             >
-              {c.name}
+              Todas
             </button>
-          ))}
-        </div>
+            {categorias.map((c) => (
+              <button
+                key={c}
+                onClick={() => setCategoria(c)}
+                className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full whitespace-nowrap ${categoria === c ? "bg-primary text-primary-foreground" : "bg-card border border-border hover:bg-muted"}`}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {isLoading && <p className="text-muted-foreground">Carregando…</p>}
 
-      {!isLoading && posts?.length === 0 && (
+      {!isLoading && filtered.length === 0 && (
         <div className="text-center py-20 border border-dashed border-border rounded-2xl">
           <p className="text-muted-foreground">Nenhum artigo publicado ainda.</p>
         </div>

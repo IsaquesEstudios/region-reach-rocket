@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { FileText, Eye, FolderOpen, Plus } from "lucide-react";
+import { FileText, FolderOpen, Plus } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { AdminGate } from "@/components/admin/AdminGate";
 import { formatDate } from "@/lib/blog/utils";
+import { listAdminPosts } from "@/lib/posts.functions";
 
 export const Route = createFileRoute("/admin/")({
   component: () => (
@@ -14,42 +15,25 @@ export const Route = createFileRoute("/admin/")({
 });
 
 function Dashboard() {
-  const { data: stats } = useQuery({
-    queryKey: ["admin-stats"],
+  const { data: posts } = useQuery({
+    queryKey: ["admin-posts-dash"],
+    queryFn: () => listAdminPosts(),
+  });
+
+  const { data: categoriesCount } = useQuery({
+    queryKey: ["admin-categories-count"],
     queryFn: async () => {
-      const [posts, cats] = await Promise.all([
-        supabase.from("posts").select("id,status,views"),
-        supabase.from("categories").select("id"),
-      ]);
-      const all = posts.data ?? [];
-      return {
-        total: all.length,
-        published: all.filter((p) => p.status === "published").length,
-        drafts: all.filter((p) => p.status === "draft").length,
-        views: all.reduce((s, p) => s + (p.views ?? 0), 0),
-        categories: cats.data?.length ?? 0,
-      };
+      const { data } = await supabase.from("categories").select("id");
+      return data?.length ?? 0;
     },
   });
 
-  const { data: recent } = useQuery({
-    queryKey: ["admin-recent"],
-    queryFn: async () => {
-      const { data } = await supabase
-        .from("posts")
-        .select("id,title,status,published_at,created_at")
-        .order("created_at", { ascending: false })
-        .limit(5);
-      return data ?? [];
-    },
-  });
+  const total = posts?.length ?? 0;
+  const recent = (posts ?? []).slice(0, 5);
 
   const cards = [
-    { label: "Total de posts", value: stats?.total ?? 0, icon: FileText },
-    { label: "Publicados", value: stats?.published ?? 0, icon: FileText },
-    { label: "Rascunhos", value: stats?.drafts ?? 0, icon: FileText },
-    { label: "Categorias", value: stats?.categories ?? 0, icon: FolderOpen },
-    { label: "Visualizações", value: stats?.views ?? 0, icon: Eye },
+    { label: "Total de posts", value: total, icon: FileText },
+    { label: "Categorias", value: categoriesCount ?? 0, icon: FolderOpen },
   ];
 
   return (
@@ -67,7 +51,7 @@ function Dashboard() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
         {cards.map((c) => (
           <div key={c.label} className="bg-card border border-border rounded-xl p-5">
             <c.icon className="size-5 text-primary mb-2" />
@@ -86,21 +70,21 @@ function Dashboard() {
           <thead className="bg-muted/50 text-xs uppercase tracking-wider text-muted-foreground">
             <tr>
               <th className="text-left px-5 py-2 font-semibold">Título</th>
-              <th className="text-left px-5 py-2 font-semibold">Status</th>
+              <th className="text-left px-5 py-2 font-semibold">Autor</th>
               <th className="text-left px-5 py-2 font-semibold">Data</th>
             </tr>
           </thead>
           <tbody>
-            {recent?.length === 0 && (
+            {recent.length === 0 && (
               <tr><td colSpan={3} className="px-5 py-6 text-center text-muted-foreground">Nenhum post ainda.</td></tr>
             )}
-            {recent?.map((p) => (
+            {recent.map((p) => (
               <tr key={p.id} className="border-t border-border hover:bg-muted/30">
                 <td className="px-5 py-3">
                   <Link to="/admin/posts/edit/$id" params={{ id: p.id }} className="font-medium hover:text-primary">{p.title}</Link>
                 </td>
-                <td className="px-5 py-3"><StatusBadge status={p.status} /></td>
-                <td className="px-5 py-3 text-muted-foreground">{formatDate(p.published_at ?? p.created_at)}</td>
+                <td className="px-5 py-3 text-muted-foreground">{p.author_name ?? "—"}</td>
+                <td className="px-5 py-3 text-muted-foreground">{formatDate(p.date)}</td>
               </tr>
             ))}
           </tbody>
@@ -108,13 +92,4 @@ function Dashboard() {
       </div>
     </div>
   );
-}
-
-function StatusBadge({ status }: { status: string }) {
-  const map: Record<string, string> = {
-    published: "bg-emerald-100 text-emerald-700",
-    draft: "bg-amber-100 text-amber-700",
-    archived: "bg-slate-100 text-slate-700",
-  };
-  return <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${map[status] ?? ""}`}>{status}</span>;
 }

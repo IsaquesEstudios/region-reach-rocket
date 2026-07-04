@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { RichEditor } from "./RichEditor";
 import { slugify } from "@/lib/blog/utils";
+import { getAdminPost, upsertAdminPost } from "@/lib/posts.functions";
 
 interface Props {
   postId?: string;
@@ -47,13 +48,7 @@ export function PostEditor({ postId }: Props) {
     queryKey: ["post-edit", postId],
     queryFn: async () => {
       if (!postId) return null;
-      const { data, error } = await supabase
-        .from("posts")
-        .select("*")
-        .eq("id", postId)
-        .maybeSingle();
-      if (error) throw error;
-      return data;
+      return await getAdminPost({ data: { id: postId } });
     },
     enabled: !!postId,
   });
@@ -61,15 +56,15 @@ export function PostEditor({ postId }: Props) {
   useEffect(() => {
     if (existing) {
       setForm({
-        Title: existing.Title ?? "",
-        Slug: existing.Slug ?? "",
-        Excerpt: existing.Excerpt ?? "",
-        Content: existing.Content ?? "",
-        "Image URL": existing["Image URL"] ?? "",
-        Categorias: existing.Categorias ?? "",
-        "Author First Name": existing["Author First Name"] ?? "",
-        Date: existing.Date ?? "",
-        Permalink: existing.Permalink ?? "",
+        Title: existing.title ?? "",
+        Slug: existing.slug ?? "",
+        Excerpt: existing.excerpt ?? "",
+        Content: existing.content ?? "",
+        "Image URL": existing.image_url ?? "",
+        Categorias: existing.categoria ?? "",
+        "Author First Name": existing.author_name ?? "",
+        Date: existing.date ?? "",
+        Permalink: existing.permalink ?? "",
       });
     }
   }, [existing]);
@@ -101,7 +96,9 @@ export function PostEditor({ postId }: Props) {
     if (!form.Title) return toast.error("Adicione um título");
     setSaving(true);
     try {
+      const id = postId ?? crypto.randomUUID();
       const payload = {
+        id,
         Title: form.Title,
         Slug: form.Slug || slugify(form.Title),
         Excerpt: form.Excerpt || null,
@@ -113,14 +110,11 @@ export function PostEditor({ postId }: Props) {
         Permalink: form.Permalink || null,
       };
 
+      await upsertAdminPost({ data: payload });
+
       if (postId) {
-        const { error } = await supabase.from("posts").update(payload).eq("id", postId);
-        if (error) throw error;
         toast.success("Post atualizado");
       } else {
-        const id = crypto.randomUUID();
-        const { error } = await supabase.from("posts").insert({ id, ...payload });
-        if (error) throw error;
         toast.success("Post criado");
         navigate({ to: "/admin/posts/edit/$id", params: { id } });
       }
