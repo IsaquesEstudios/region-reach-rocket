@@ -1,8 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { supabase } from "@/integrations/supabase/client";
-import { PostCard, type PostCardData } from "@/components/blog/PostCard";
 import { siteUrl, whatsappLink } from "@/lib/site";
 import { Mail, MessageCircle } from "lucide-react";
+import { PostCard } from "@/components/blog/PostCard";
+import { listPublicPosts } from "@/lib/posts.functions";
 
 function slugify(input: string): string {
   return input
@@ -16,38 +16,20 @@ function slugify(input: string): string {
 
 export const Route = createFileRoute("/autor/$slug")({
   loader: async ({ params }) => {
-    const { data: profiles, error } = await supabase
-      .from("profiles")
-      .select("id, full_name, avatar_url, bio, role");
-    if (error) throw error;
-
-    const profile = (profiles ?? []).find(
-      (p) => p.full_name && slugify(p.full_name) === params.slug,
+    const posts = await listPublicPosts();
+    const byAuthor = posts.filter(
+      (p) => p.author_name && slugify(p.author_name) === params.slug,
     );
-    if (!profile) throw notFound();
-
-    const { data: posts } = await supabase
-      .from("posts")
-      .select(
-        "id,title,slug,excerpt,cover_image_url,reading_time,published_at,category:categories(name,slug,color),author:profiles(full_name,avatar_url)",
-      )
-      .eq("author_id", profile.id)
-      .eq("status", "published")
-      .order("published_at", { ascending: false })
-      .limit(9);
-
-    return { profile, posts: (posts ?? []) as unknown as PostCardData[] };
+    const name = byAuthor[0]?.author_name;
+    if (!name) throw notFound();
+    return { name, posts: byAuthor.slice(0, 9) };
   },
   head: ({ loaderData, params }) => {
     if (!loaderData) return {};
-    const { profile } = loaderData;
-    const name = profile.full_name ?? "Autor";
+    const { name } = loaderData;
     const title = `${name} — Autor | Chico Resolve`;
-    const description =
-      profile.bio ??
-      `Artigos e conteúdos publicados por ${name} no blog da Chico Resolve.`;
+    const description = `Artigos e conteúdos publicados por ${name} no blog da Chico Resolve.`;
     const url = `${siteUrl}/autor/${params.slug}`;
-    const image = profile.avatar_url ?? undefined;
     return {
       meta: [
         { title },
@@ -56,13 +38,7 @@ export const Route = createFileRoute("/autor/$slug")({
         { property: "og:description", content: description },
         { property: "og:type", content: "profile" },
         { property: "og:url", content: url },
-        ...(image
-          ? [
-              { property: "og:image", content: image },
-              { name: "twitter:image", content: image },
-            ]
-          : []),
-        { name: "twitter:card", content: image ? "summary_large_image" : "summary" },
+        { name: "twitter:card", content: "summary" },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -72,8 +48,6 @@ export const Route = createFileRoute("/autor/$slug")({
             "@context": "https://schema.org",
             "@type": "Person",
             name,
-            description: profile.bio ?? undefined,
-            image: profile.avatar_url ?? undefined,
             url,
           }),
         },
@@ -98,26 +72,16 @@ export const Route = createFileRoute("/autor/$slug")({
 });
 
 function AutorPage() {
-  const { profile, posts } = Route.useLoaderData();
-  const name = profile.full_name ?? "Autor";
+  const { name, posts } = Route.useLoaderData();
 
   return (
     <>
-      {/* Hero */}
       <section className="bg-gradient-to-b from-surface to-background py-20 sm:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row gap-10 items-center md:items-start">
           <div className="shrink-0">
-            {profile.avatar_url ? (
-              <img
-                src={profile.avatar_url}
-                alt={`Foto de ${name}`}
-                className="size-40 md:size-48 rounded-2xl object-cover border-4 border-card shadow-xl"
-              />
-            ) : (
-              <div className="size-40 md:size-48 rounded-2xl bg-primary/10 flex items-center justify-center text-5xl font-extrabold text-primary border-4 border-card shadow-xl">
-                {name[0]}
-              </div>
-            )}
+            <div className="size-40 md:size-48 rounded-2xl bg-primary/10 flex items-center justify-center text-5xl font-extrabold text-primary border-4 border-card shadow-xl">
+              {name[0]}
+            </div>
           </div>
           <div className="text-center md:text-left flex-1">
             <span className="inline-block rounded-full bg-primary/10 text-primary px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest mb-4">
@@ -126,16 +90,10 @@ function AutorPage() {
             <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
               {name}
             </h1>
-            {profile.bio ? (
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                {profile.bio}
-              </p>
-            ) : (
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                Conteúdos sobre manutenção predial, reforma, pintura e obras em
-                Teresina/PI.
-              </p>
-            )}
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+              Conteúdos sobre manutenção predial, reforma, pintura e obras em
+              Teresina/PI.
+            </p>
             <div className="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
               <a
                 href={whatsappLink(`Olá ${name}, gostaria de falar sobre um serviço.`)}
@@ -156,7 +114,6 @@ function AutorPage() {
         </div>
       </section>
 
-      {/* Posts */}
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-8">
@@ -166,7 +123,7 @@ function AutorPage() {
             <p className="text-muted-foreground">Nenhum artigo publicado ainda.</p>
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {posts.map((post: PostCardData) => (
+              {posts.map((post) => (
                 <PostCard key={post.slug} post={post} />
               ))}
             </div>
