@@ -1,42 +1,59 @@
+
 ## Objetivo
-Criar página do autor (Chico) e integrá-la ao "Quem somos" e ao final de cada artigo do blog.
+Substituir a tabela `public.posts` atual pela estrutura exata solicitada, para receber a importação vinda do Supabase externo.
 
-## 1. Nova rota `/autor/$slug`
-Arquivo: `src/routes/autor.$slug.tsx`
-- Loader busca `profiles` por `slug` (ou por `id` — ver Perguntas) com `full_name`, `avatar_url`, `bio`.
-- Também busca últimos posts publicados desse autor (`posts` where `author_id = profile.id AND status='published'` ordenados por `published_at desc`, limite 6) para listar no final da página.
-- Layout:
-  - Hero com foto grande (avatar), nome, cargo/subtítulo e bio completa.
-  - Seção "Artigos do autor" reutilizando `PostCard`.
-  - CTA para WhatsApp / contato.
-- `head()` com `title`, `description`, `og:title/description/image` (avatar_url), canonical absoluto e JSON-LD `Person`.
-- `errorComponent` e `notFoundComponent`.
+## Aviso importante
+Isto vai quebrar temporariamente:
+- Blog público (`/blog`, `/blog/$slug`)
+- Admin de posts (listar, criar, editar)
+- Sitemap dinâmico de posts
+- Página de autor (lista posts do autor)
+- Função `increment_post_views` (referencia `slug` e `status`)
+- FKs `posts_tags.post_id` e relacionamentos com `categories`/`profiles`
 
-Como não existe campo `slug` em `profiles` hoje, opções abaixo em Perguntas.
+Nada disso será refatorado neste passo — só a tabela. Depois da migração/importação decidimos como adaptar o front (ou remapear colunas).
 
-## 2. Link no "Quem somos"
-Arquivo: `src/routes/quem-somos.tsx`
-- Adicionar um bloco curto "Conheça o Chico" com foto + nome + 1 linha de bio + botão `Link to="/autor/$slug"` (ou `/autor/chico`).
-- Posicionamento: logo após a seção "História / Texto principal", antes dos Pilares.
+## Migração SQL
+Executar em uma migration única, nesta ordem:
 
-## 3. Bio do autor no final do artigo
-Arquivo: `src/routes/blog.$slug.tsx`
-- Já existe um bloco "Sobre o autor" simples ao final. Vamos substituí-lo por um card lateral/destacado com:
-  - Avatar maior à esquerda (coluna).
-  - Nome, bio e botão "Ver todos os artigos do autor" → `Link to="/autor/$slug"`.
-  - Layout em duas colunas em desktop (`md:flex-row`), empilhado em mobile.
-- Loader já traz `author` do post; adicionar `id` (ou slug) do autor no `select` para montar o link.
+1. `DROP TABLE public.posts_tags` (depende de posts).
+2. `DROP FUNCTION public.increment_post_views(text)`.
+3. `DROP TABLE public.posts CASCADE` (remove FKs de `profiles`/`categories` apontando para posts, se houver).
+4. Criar a nova tabela exatamente conforme especificado:
 
-## 4. SEO
-- Sitemap (`src/routes/sitemap[.]xml.ts`): incluir `/autor/chico` (autor único no momento) ou iterar autores com posts publicados.
-- `head()` da página do autor com metadados próprios.
+```sql
+CREATE TABLE public.posts (
+  id text NOT NULL PRIMARY KEY,
+  "Title" text,
+  "Content" text,
+  "Date" text,
+  "Permalink" text,
+  "Image URL" text,
+  "Excerpt" text,
+  "Categorias" text,
+  "Author First Name" text,
+  "Slug" text
+);
+```
 
-## Arquivos a mexer
-- `src/routes/autor.$slug.tsx` (novo)
-- `src/routes/quem-somos.tsx`
-- `src/routes/blog.$slug.tsx`
-- `src/routes/sitemap[.]xml.ts`
+5. GRANTs (obrigatório no schema public):
+```sql
+GRANT SELECT ON public.posts TO anon;
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.posts TO authenticated;
+GRANT ALL ON public.posts TO service_role;
+```
 
-## Perguntas antes de codar
-1. **Identificação do autor na URL**: Prefere `/autor/chico` (slug legível — exigiria adicionar coluna `slug` em `profiles` via migration) ou `/autor/{uuid}` (usa o `id` atual, sem migration)?
-2. **Conteúdo da página**: Você tem foto/bio/cargo definitivos do Chico para eu já preencher, ou deixo placeholder editável no admin (usando `profiles.full_name`, `avatar_url`, `bio` atuais)?
+6. `ALTER TABLE public.posts ENABLE ROW LEVEL SECURITY;`
+
+7. Políticas mínimas:
+   - `SELECT` público (anon + authenticated): leitura livre — mesma postura da tabela atual para posts publicados. Ex.: `USING (true)`.
+   - `INSERT/UPDATE/DELETE`: apenas admin via `has_role(auth.uid(),'admin')`.
+
+## O que NÃO faz parte deste passo
+- Não recria `posts_tags` (pode ser recriada depois se necessário).
+- Não recria `increment_post_views`.
+- Não altera código do front/admin — ele vai quebrar até adaptarmos.
+- Não migra dados existentes (a tabela atual será descartada).
+
+## Próximo passo sugerido (fora deste plano)
+Depois que você confirmar a importação, planejamos a adaptação do blog/admin para as novas colunas (`"Title"`, `"Slug"`, `"Content"`, etc.) — ou criamos uma view compatível com o código atual.

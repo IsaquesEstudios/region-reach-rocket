@@ -43,111 +43,42 @@ export type Database = {
       }
       posts: {
         Row: {
-          author_id: string | null
-          category_id: string | null
-          content: string | null
-          cover_image_url: string | null
-          created_at: string
-          excerpt: string | null
-          featured: boolean
+          "Author First Name": string | null
+          Categorias: string | null
+          Content: string | null
+          Date: string | null
+          Excerpt: string | null
           id: string
-          meta_description: string | null
-          meta_title: string | null
-          og_image_url: string | null
-          published_at: string | null
-          reading_time: number
-          slug: string
-          status: Database["public"]["Enums"]["post_status"]
-          title: string
-          updated_at: string
-          views: number
+          "Image URL": string | null
+          Permalink: string | null
+          Slug: string | null
+          Title: string | null
         }
         Insert: {
-          author_id?: string | null
-          category_id?: string | null
-          content?: string | null
-          cover_image_url?: string | null
-          created_at?: string
-          excerpt?: string | null
-          featured?: boolean
-          id?: string
-          meta_description?: string | null
-          meta_title?: string | null
-          og_image_url?: string | null
-          published_at?: string | null
-          reading_time?: number
-          slug: string
-          status?: Database["public"]["Enums"]["post_status"]
-          title: string
-          updated_at?: string
-          views?: number
+          "Author First Name"?: string | null
+          Categorias?: string | null
+          Content?: string | null
+          Date?: string | null
+          Excerpt?: string | null
+          id: string
+          "Image URL"?: string | null
+          Permalink?: string | null
+          Slug?: string | null
+          Title?: string | null
         }
         Update: {
-          author_id?: string | null
-          category_id?: string | null
-          content?: string | null
-          cover_image_url?: string | null
-          created_at?: string
-          excerpt?: string | null
-          featured?: boolean
+          "Author First Name"?: string | null
+          Categorias?: string | null
+          Content?: string | null
+          Date?: string | null
+          Excerpt?: string | null
           id?: string
-          meta_description?: string | null
-          meta_title?: string | null
-          og_image_url?: string | null
-          published_at?: string | null
-          reading_time?: number
-          slug?: string
-          status?: Database["public"]["Enums"]["post_status"]
-          title?: string
-          updated_at?: string
-          views?: number
+          "Image URL"?: string | null
+          Permalink?: string | null
+          Slug?: string | null
+          Title?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "posts_author_id_fkey"
-            columns: ["author_id"]
-            isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "posts_category_id_fkey"
-            columns: ["category_id"]
-            isOneToOne: false
-            referencedRelation: "categories"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      posts_tags: {
-        Row: {
-          post_id: string
-          tag_id: string
-        }
-        Insert: {
-          post_id: string
-          tag_id: string
-        }
-        Update: {
-          post_id?: string
-          tag_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "posts_tags_post_id_fkey"
-            columns: ["post_id"]
-            isOneToOne: false
-            referencedRelation: "posts"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "posts_tags_tag_id_fkey"
-            columns: ["tag_id"]
-            isOneToOne: false
-            referencedRelation: "tags"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       profiles: {
         Row: {
@@ -206,7 +137,6 @@ export type Database = {
         }
         Returns: boolean
       }
-      increment_post_views: { Args: { post_slug: string }; Returns: undefined }
     }
     Enums: {
       post_status: "draft" | "published" | "archived"
