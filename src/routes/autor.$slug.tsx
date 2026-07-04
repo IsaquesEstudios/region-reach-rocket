@@ -123,7 +123,7 @@ function AutorPage() {
             <p className="text-muted-foreground">Nenhum artigo publicado ainda.</p>
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {posts.map((post) => (
+              {posts.map((post: (typeof posts)[number]) => (
                 <PostCard key={post.slug} post={post} />
               ))}
             </div>
