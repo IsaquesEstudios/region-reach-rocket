@@ -41,45 +41,6 @@ export type Database = {
         }
         Relationships: []
       }
-      posts: {
-        Row: {
-          "Author First Name": string | null
-          Categorias: string | null
-          Content: string | null
-          Date: string | null
-          Excerpt: string | null
-          id: string
-          "Image URL": string | null
-          Permalink: string | null
-          Slug: string | null
-          Title: string | null
-        }
-        Insert: {
-          "Author First Name"?: string | null
-          Categorias?: string | null
-          Content?: string | null
-          Date?: string | null
-          Excerpt?: string | null
-          id: string
-          "Image URL"?: string | null
-          Permalink?: string | null
-          Slug?: string | null
-          Title?: string | null
-        }
-        Update: {
-          "Author First Name"?: string | null
-          Categorias?: string | null
-          Content?: string | null
-          Date?: string | null
-          Excerpt?: string | null
-          id?: string
-          "Image URL"?: string | null
-          Permalink?: string | null
-          Slug?: string | null
-          Title?: string | null
-        }
-        Relationships: []
-      }
       profiles: {
         Row: {
           avatar_url: string | null
