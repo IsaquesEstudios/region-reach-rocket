@@ -34,7 +34,7 @@ export function Testimonials() {
           {items.map((t) => (
             <figure key={t.name} className="relative rounded-2xl bg-card border border-border p-8 flex flex-col">
               <Quote className="absolute top-6 right-6 size-10 text-primary/10" aria-hidden />
-              <div className="flex gap-1 mb-5" aria-label="5 de 5 estrelas">
+              <div className="flex gap-1 mb-5" role="img" aria-label="5 de 5 estrelas">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="size-4 fill-accent text-accent" aria-hidden />
                 ))}
