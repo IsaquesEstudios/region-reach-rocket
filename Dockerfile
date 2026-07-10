@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7
 # ---------- Stage 1: build ----------
-FROM oven/bun:1.1.38 AS builder
+FROM oven/bun:1.2 AS builder
 
 WORKDIR /app
 
