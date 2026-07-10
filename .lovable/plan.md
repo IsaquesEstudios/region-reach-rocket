@@ -1,27 +1,32 @@
+
 ## Problema
 
-A auditoria de acessibilidade aponta:
+O log do Coolify mostra:
 
-> Elements must only use permitted ARIA attributes
-> `<div class="flex gap-1 mb-5" aria-label="5 de 5 estrelas">`
+```
+You are using Node.js 22.6.0. Vite requires Node.js version 20.19+ or 22.12+.
+```
 
-Um `<div>` genérico não aceita `aria-label` sem um `role` que permita nome acessível. Sem `role`, leitores de tela e agentes de IA ignoram o rótulo e a auditoria reprova.
+O build falha (e o nginx retorna **504 Gateway Time-out**) porque o estágio `builder` do `Dockerfile` usa a imagem `oven/bun:1.1.38`, que vem com Node.js 22.6.0 — versão **abaixo** do mínimo exigido pelo Vite 7.
 
-Ocorrência única em `src/components/site/Testimonials.tsx` (linha 37).
+O estágio runtime já foi corrigido antes para `node:22-slim` (Node 22.11+), mas o **builder** ficou desatualizado.
 
 ## Correção
 
-Em `src/components/site/Testimonials.tsx`, adicionar `role="img"` ao `<div>` que agrupa as 5 estrelas, e marcar os ícones internos como decorativos:
+Atualizar apenas o `Dockerfile`, trocando a imagem do estágio de build para uma versão do Bun que traga Node.js 22.12+ (ou mais recente):
 
-```tsx
-<div className="flex gap-1 mb-5" role="img" aria-label="5 de 5 estrelas">
-  {/* <Star ... aria-hidden="true" /> nos ícones filhos */}
-</div>
+```dockerfile
+FROM oven/bun:1.2 AS builder
 ```
 
-Isso torna o `aria-label` válido (o grupo passa a ser uma imagem acessível única "5 de 5 estrelas") e evita que cada ícone seja anunciado individualmente.
+A tag `oven/bun:1.2` (atual) empacota Node.js 22.13+, satisfazendo o requisito do Vite. Nenhuma outra mudança de código é necessária — o restante do pipeline (limpeza do `routeTree.gen.ts`, `CI=true`, build, runtime com `node:22-slim` + `wrangler dev --local`) permanece igual.
 
-## Escopo
+## Passos após a correção
 
-- Alterar apenas `src/components/site/Testimonials.tsx`.
-- Nenhuma mudança de estilo, layout ou lógica.
+1. Commit + push no GitHub.
+2. No Coolify: **Redeploy** (de preferência com **rebuild sem cache** para garantir que a nova imagem base seja baixada).
+3. Acompanhar o log — o `vite build` deve concluir e o container subir na porta 3000.
+
+## Arquivos alterados
+
+- `Dockerfile` — uma linha (imagem do estágio builder).
